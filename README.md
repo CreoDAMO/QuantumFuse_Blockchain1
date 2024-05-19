@@ -1,8 +1,5 @@
 # QuantumFuse_Blockchain
 
-
-# QuantumFuse Blockchain
-
 ## Core Blockchain in Rust with PoS, Governance, and Smart Contracts
 
 **Created by:** Jacque Antoine DeGraff  
