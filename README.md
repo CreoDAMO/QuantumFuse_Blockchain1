@@ -220,7 +220,3 @@ For any inquiries or further information, please contact:
 ---
 
 Thank you for using QuantumFuse! We look forward to your contributions and feedback.
-
----
-
-Feel free to customize the contact information and repository URLs as needed. This README provides a comprehensive overview of the QuantumFuse project, guiding users through installation, usage, and contributions.
