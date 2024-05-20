@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { w3cwebsocket as W3CWebSocket } from 'websocket';
 import { Line, Bar } from 'react-chartjs-2';
+import debounce from 'lodash.debounce';
 
 const client = new W3CWebSocket('wss://api.quantumfuse.com/v2/realtime');
 
@@ -10,15 +11,33 @@ function QuantumFuseApp() {
   const [filteredBlocks, setFilteredBlocks] = useState([]);
   const [chartData, setChartData] = useState({});
   const [transactionData, setTransactionData] = useState({});
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     client.onopen = () => {
       console.log('WebSocket Client Connected');
+      setLoading(false);
     };
+
+    client.onerror = (err) => {
+      console.error('WebSocket error:', err);
+      setError('WebSocket connection error');
+      setLoading(false);
+    };
+
     client.onmessage = (message) => {
       const block = JSON.parse(message.data);
       setBlocks((prevBlocks) => [block, ...prevBlocks]);
     };
+
+    return () => {
+      client.close();
+    };
+  }, []);
+
+  useEffect(() => {
+    if (blocks.length === 0) return;
 
     const blockIndexes = blocks.map((block) => block.index);
     const blockTimestamps = blocks.map((block) => new Date(block.timestamp));
@@ -35,10 +54,10 @@ function QuantumFuseApp() {
       ],
     });
 
-    const transactions = blocks.flatMap(block => block.transactions);
-    const transactionAmounts = transactions.map(tx => tx.amount);
+    const transactions = blocks.flatMap((block) => block.transactions);
+    const transactionAmounts = transactions.map((tx) => tx.amount);
     setTransactionData({
-      labels: transactions.map(tx => tx.sender),
+      labels: transactions.map((tx) => tx.sender),
       datasets: [
         {
           label: 'Transaction Amount',
@@ -49,7 +68,9 @@ function QuantumFuseApp() {
         },
       ],
     });
+  }, [blocks]);
 
+  useEffect(() => {
     setFilteredBlocks(
       blocks.filter((block) =>
         block.transactions.some(
@@ -58,22 +79,22 @@ function QuantumFuseApp() {
         )
       )
     );
-
-    return () => {
-      client.close();
-    };
   }, [blocks, searchTerm]);
 
-  const handleSearch = () => {
-    setFilteredBlocks(
-      blocks.filter((block) =>
-        block.transactions.some(
-          (transaction) =>
-            transaction.sender.includes(searchTerm) || transaction.recipient.includes(searchTerm)
-        )
-      )
-    );
-  };
+  const handleSearch = useCallback(
+    debounce((value) => {
+      setSearchTerm(value);
+    }, 300),
+    []
+  );
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>{error}</div>;
+  }
 
   return (
     <div>
@@ -83,7 +104,7 @@ function QuantumFuseApp() {
         <ul>
           {blocks.map((block) => (
             <li key={block.index}>
-              Block {block.index} - Timestamp: {block.timestamp}
+              Block {block.index} - Timestamp: {new Date(block.timestamp).toLocaleString()}
             </li>
           ))}
         </ul>
@@ -92,15 +113,13 @@ function QuantumFuseApp() {
         <h2>Search Transactions</h2>
         <input
           type="text"
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
+          onChange={(e) => handleSearch(e.target.value)}
           placeholder="Search by sender or recipient..."
         />
-        <button onClick={handleSearch}>Search</button>
         <ul>
           {filteredBlocks.map((block) => (
             <li key={block.index}>
-              Block {block.index} - Timestamp: {block.timestamp}
+              Block {block.index} - Timestamp: {new Date(block.timestamp).toLocaleString()}
               <ul>
                 {block.transactions.map((transaction, idx) => (
                   <li key={idx}>
