@@ -1,5 +1,5 @@
-Flask==2.0.1
-requests==2.25.1
+Flask==2.2.5
+requests==2.31.0
 ipfshttpclient==0.7.0
 prometheus_client==0.11.0
 qiskit==0.31.0
