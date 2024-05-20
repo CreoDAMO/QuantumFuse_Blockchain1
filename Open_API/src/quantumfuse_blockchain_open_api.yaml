@@ -1,0 +1,178 @@
+openapi: 3.0.0
+info:
+  title: QuantumFuse API
+  description: Open API for interacting with
+
+ the QuantumFuse blockchain.
+  version: 1.0.0
+
+servers:
+  - url: https://api.quantumfuse.com/v1
+    description: Main API server
+
+paths:
+  /transactions/new:
+    post:
+      summary: Create a new transaction
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Transaction'
+      responses:
+        '201':
+          description: Transaction created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TransactionResponse'
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /blocks/mine:
+    post:
+      summary: Mine a new block
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                address:
+                  type: string
+              required:
+                - address
+      responses:
+        '200':
+          description: New block mined
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Block'
+        '500':
+          description: Mining failed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /blocks:
+    get:
+      summary: Get the full blockchain
+      responses:
+        '200':
+          description: A list of all blocks
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BlockList'
+
+  /nodes/register:
+    post:
+      summary: Register a new node
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                nodes:
+                  type: array
+                  items:
+                    type: string
+              required:
+                - nodes
+      responses:
+        '201':
+          description: New node registered
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NodeResponse'
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+components:
+  schemas:
+    Transaction:
+      type: object
+      properties:
+        sender:
+          type: string
+        recipient:
+          type: string
+        amount:
+          type: number
+        signature:
+          type: string
+      required:
+        - sender
+        - recipient
+        - amount
+        - signature
+
+    TransactionResponse:
+      type: object
+      properties:
+        message:
+          type: string
+        transaction_id:
+          type: string
+
+    Block:
+      type: object
+      properties:
+        index:
+          type: integer
+        timestamp:
+          type: string
+        transactions:
+          type: array
+          items:
+            $ref: '#/components/schemas/Transaction'
+        previous_hash:
+          type: string
+        hash:
+          type: string
+        nonce:
+          type: integer
+
+    BlockList:
+      type: object
+      properties:
+        blocks:
+          type: array
+          items:
+            $ref: '#/components/schemas/Block'
+
+    NodeResponse:
+      type: object
+      properties:
+        message:
+          type: string
+        total_nodes:
+          type: array
+          items:
+            type: string
+
+    Error:
+      type: object
+      required:
+        - code
+        - message
+      properties:
+        code:
+          type: integer
+        message:
+          type: string
