@@ -4,6 +4,8 @@ use std::collections::HashMap;
 use ipfs_api::{IpfsClient, IpfsApi, TryFromUri};
 use std::io::Cursor;
 use tokio;
+use std::str::FromStr;
+use hex;
 
 #[derive(Clone, Debug, Serialize, Deserialize)]
 struct Transaction {
@@ -299,7 +301,7 @@ impl QuantumFuseBlockchain {
     }
 
     async fn store_data_on_ipfs(&self, data: String) -> Result<String, String> {
-        let client = IpfsClient::from_str("https://ipfs.infura.io:5001").unwrap();
+        let client = IpfsClient::from_str("http://ipfs.infura.io:5001").unwrap();
         let data = Cursor::new(data);
         match client.add(data).await {
             Ok(res) => Ok(res.hash),
