@@ -4,7 +4,6 @@ use std::collections::HashMap;
 use ipfs_api::{IpfsClient, IpfsApi, TryFromUri};
 use std::io::Cursor;
 use tokio;
-use std::str::FromStr;
 use hex;
 
 #[derive(Clone, Debug, Serialize, Deserialize)]
