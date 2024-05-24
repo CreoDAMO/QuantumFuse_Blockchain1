@@ -1,4 +1,4 @@
-# Variables
+# Directories
 RUST_DIR = core
 GO_DIR = node
 PYTHON_DIR = api
@@ -84,4 +84,3 @@ test-node:
 clean-node:
 	rm -rf $(FRONTEND_DIR)/node_modules
 	rm -rf $(FRONTEND_DIR)/build
-
