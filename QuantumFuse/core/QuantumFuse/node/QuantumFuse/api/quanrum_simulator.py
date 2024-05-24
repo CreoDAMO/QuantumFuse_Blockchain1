@@ -1,6 +1,5 @@
 from qiskit import QuantumCircuit, Aer, execute
 from qiskit.visualization import plot_histogram
-import numpy as np
 
 # Initialize quantum simulator backend
 simulator = Aer.get_backend('qasm_simulator')
