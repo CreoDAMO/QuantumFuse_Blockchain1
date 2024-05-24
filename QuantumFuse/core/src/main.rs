@@ -5,6 +5,7 @@ use ipfs_api::{IpfsClient, IpfsApi};
 use std::io::Cursor;
 use tokio;
 use hex;
+use std::str::FromStr;
 
 #[derive(Clone, Debug, Serialize, Deserialize)]
 struct Transaction {
@@ -73,7 +74,7 @@ struct Proposal {
     title: String,
     description: String,
     options: Vec<String>,
-    votes: HashMap<String, u64>,
+    votes: HashMap<String, String>, // changed to map voter to option
     deadline: u128,
 }
 
@@ -108,8 +109,7 @@ impl Governance {
             if proposal.votes.contains_key(&voter) {
                 println!("Voter has already voted.");
             } else {
-                *proposal.votes.entry(option).or_insert(0) += 1;
-                proposal.votes.insert(voter, 1);
+                proposal.votes.insert(voter, option);
             }
         } else {
             println!("Proposal not found.");
@@ -117,7 +117,20 @@ impl Governance {
     }
 
     fn get_results(&self, proposal_id: u64) -> Option<HashMap<String, u64>> {
-        self.proposals.iter().find(|p| p.id == proposal_id).map(|p| p.votes.clone())
+        if let Some(proposal) = self.proposals.iter().find(|p| p.id == proposal_id) {
+            let mut results = HashMap::new();
+            for option in &proposal.options {
+                results.insert(option.clone(), 0);
+            }
+            for option in proposal.votes.values() {
+                if let Some(count) = results.get_mut(option) {
+                    *count += 1;
+                }
+            }
+            Some(results)
+        } else {
+            None
+        }
     }
 }
 
@@ -137,11 +150,13 @@ impl SmartContract {
     }
 }
 
+#[derive(Clone)]
 struct Shard {
     shard_id: u64,
     blocks: Vec<Block>,
 }
 
+#[derive(Clone)]
 struct DecentralizedIdentity {
     did: String,
     public_key: String,
@@ -187,6 +202,8 @@ impl QuantumFuseBlockchain {
     fn add_multisig_transaction(&mut self, transaction: MultiSigTransaction) {
         if transaction.is_valid() {
             self.multisig_transactions.push(transaction);
+        } else {
+            println!("Invalid MultiSigTransaction: insufficient signatures");
         }
     }
 
@@ -262,6 +279,7 @@ impl QuantumFuseBlockchain {
     fn add_block_to_shard(&mut self, shard_id: u64, block: Block) {
         if let Some(shard) = self.shards.get_mut(&shard_id) {
             shard.blocks.push(block);
+            println!("Block added to shard with id: {}", shard.shard_id);
         }
     }
 
@@ -271,14 +289,19 @@ impl QuantumFuseBlockchain {
 
     fn verify_identity(&self, did: &str, public_key: &str) -> bool {
         if let Some(identity) = self.identities.get(did) {
-            identity.public_key == public_key
+            if identity.public_key == public_key {
+                println!("Identity verified with attributes: {:?}", identity.attributes);
+                true
+            } else {
+                false
+            }
         } else {
             false
         }
     }
 
     async fn store_data_on_ipfs(&self, data: String) -> Result<String, String> {
-        let client = IpfsClient::default();
+        let client = IpfsClient::from_str("https://ipfs.infura.io:5001").unwrap();
         let data = Cursor::new(data);
         match client.add(data).await {
             Ok(res) => Ok(res.hash),
@@ -305,7 +328,15 @@ async fn main() {
         amount: 10,
         signature: "signature".to_string(),
     };
-    blockchain.add_transaction(tx);
+    blockchain.add_transaction(tx.clone());
+
+    let multisig_tx = MultiSigTransaction {
+        sender: "Alice".to_string(),
+        receivers: vec!["Bob".to_string(), "Charlie".to_string()],
+        amount: 20,
+        signatures: vec!["signature1".to_string(), "signature2".to_string()],
+    };
+    blockchain.add_multisig_transaction(multisig_tx);
 
     blockchain.mine_pending_transactions("miner_address");
 
@@ -318,7 +349,7 @@ async fn main() {
     println!("Selected validator: {}", validator);
 
     // Demonstrate deploying and executing a smart contract
-    let mut contract = SmartContract {
+    let contract = SmartContract {
         id: "contract1".to_string(),
         code: "code".to_string(),
         owner: "Alice".to_string(),
@@ -338,10 +369,12 @@ async fn main() {
     println!("Shard 1 blocks: {:?}", blockchain.shards.get(&1).unwrap().blocks);
 
     // Demonstrate registering and verifying a decentralized identity
+    let mut attributes = HashMap::new();
+    attributes.insert("email".to_string(), "alice@example.com".to_string());
     let identity = DecentralizedIdentity {
         did: "did:example:123456".to_string(),
         public_key: "public_key".to_string(),
-        attributes: HashMap::new(),
+        attributes,
     };
     blockchain.register_identity(identity.clone());
     let identity_verified = blockchain.verify_identity(&identity.did, &identity.public_key);
@@ -353,4 +386,20 @@ async fn main() {
         Ok(hash) => println!("Stored data on IPFS with hash: {}", hash),
         Err(e) => println!("Failed to store data on IPFS: {}", e),
     }
+
+    // Demonstrate creating a governance proposal and voting
+    blockchain.governance.create_proposal(
+        "Increase Block Size".to_string(),
+        "Proposal to increase the block size to 2MB".to_string(),
+        vec!["Yes".to_string(), "No".to_string()],
+        current_timestamp() + 10000,
+    );
+    blockchain.governance.vote(0, "Yes".to_string(), "Alice".to_string());
+    blockchain.governance.vote(0, "No".to_string(), "Bob".to_string());
+    let results = blockchain.governance.get_results(0);
+    println!("Governance proposal results: {:?}", results);
+
+    // Demonstrate fetching balance of an address
+    let balance = blockchain.get_balance_of_address("Alice");
+    println!("Balance of Alice: {}", balance);
 }
