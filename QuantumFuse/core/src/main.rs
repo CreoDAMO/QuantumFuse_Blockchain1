@@ -275,12 +275,10 @@ impl QuantumFuseBlockchain {
         }
     }
 
-    fn store_data_on_ipfs(&self, data: &str) -> Result<String, String> {
+    async fn store_data_on_ipfs(&self, data: &str) -> Result<String, String> {
         let client = IpfsClient::default();
         let data = Cursor::new(data);
-        match client.add
-
-(data).await {
+        match client.add(data).await {
             Ok(res) => Ok(res.hash),
             Err(e) => Err(e.to_string()),
         }
@@ -292,4 +290,28 @@ fn current_timestamp() -> u128 {
     let start = SystemTime::now();
     let since_epoch = start.duration_since(UNIX_EPOCH).expect("Time went backwards");
     since_epoch.as_millis()
+}
+
+#[tokio::main]
+async fn main() {
+    let mut blockchain = QuantumFuseBlockchain::new(4, 100);
+
+    // Example usage
+    let tx = Transaction {
+        sender: "Alice".to_string(),
+        receiver: "Bob".to_string(),
+        amount: 10,
+        signature: "signature".to_string(),
+    };
+    blockchain.add_transaction(tx);
+
+    blockchain.mine_pending_transactions("miner_address");
+
+    println!("Blockchain: {:?}", blockchain.blocks);
+
+    let result = blockchain.store_data_on_ipfs("Hello, IPFS!").await;
+    match result {
+        Ok(hash) => println!("Stored data on IPFS with hash: {}", hash),
+        Err(e) => println!("Failed to store data on IPFS: {}", e),
+    }
 }
