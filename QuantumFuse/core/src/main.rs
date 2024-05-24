@@ -1,8 +1,10 @@
 use serde::{Deserialize, Serialize};
 use sha2::{Digest, Sha256};
 use std::collections::HashMap;
-use ipfs_api::IpfsClient;
+use ipfs_api::{IpfsClient, IpfsApi};
 use std::io::Cursor;
+use tokio;
+use hex;
 
 #[derive(Clone, Debug, Serialize, Deserialize)]
 struct Transaction {
@@ -26,7 +28,7 @@ impl MultiSigTransaction {
     }
 }
 
-#[derive(Clone, Serialize, Deserialize)]
+#[derive(Clone, Debug, Serialize, Deserialize)]
 struct Block {
     index: u64,
     timestamp: u128,
@@ -275,7 +277,7 @@ impl QuantumFuseBlockchain {
         }
     }
 
-    async fn store_data_on_ipfs(&self, data: &str) -> Result<String, String> {
+    async fn store_data_on_ipfs(&self, data: String) -> Result<String, String> {
         let client = IpfsClient::default();
         let data = Cursor::new(data);
         match client.add(data).await {
@@ -309,7 +311,44 @@ async fn main() {
 
     println!("Blockchain: {:?}", blockchain.blocks);
 
-    let result = blockchain.store_data_on_ipfs("Hello, IPFS!").await;
+    // Demonstrate using staking and selecting a validator
+    blockchain.stake("Alice".to_string(), 50);
+    blockchain.stake("Bob".to_string(), 100);
+    let validator = blockchain.select_validator();
+    println!("Selected validator: {}", validator);
+
+    // Demonstrate deploying and executing a smart contract
+    let mut contract = SmartContract {
+        id: "contract1".to_string(),
+        code: "code".to_string(),
+        owner: "Alice".to_string(),
+        state: HashMap::new(),
+    };
+    blockchain.deploy_smart_contract(contract.clone());
+    let execution_result = blockchain.execute_smart_contract(&contract.id, "input data");
+    match execution_result {
+        Ok(result) => println!("Smart contract execution result: {}", result),
+        Err(e) => println!("Smart contract execution failed: {}", e),
+    }
+
+    // Demonstrate creating a shard and adding a block to it
+    blockchain.create_shard(1);
+    let shard_block = Block::new(0, current_timestamp(), vec![tx.clone()], "0");
+    blockchain.add_block_to_shard(1, shard_block);
+    println!("Shard 1 blocks: {:?}", blockchain.shards.get(&1).unwrap().blocks);
+
+    // Demonstrate registering and verifying a decentralized identity
+    let identity = DecentralizedIdentity {
+        did: "did:example:123456".to_string(),
+        public_key: "public_key".to_string(),
+        attributes: HashMap::new(),
+    };
+    blockchain.register_identity(identity.clone());
+    let identity_verified = blockchain.verify_identity(&identity.did, &identity.public_key);
+    println!("Identity verified: {}", identity_verified);
+
+    // Attempt to store data on IPFS
+    let result = blockchain.store_data_on_ipfs("Hello, IPFS!".to_string()).await;
     match result {
         Ok(hash) => println!("Stored data on IPFS with hash: {}", hash),
         Err(e) => println!("Failed to store data on IPFS: {}", e),
