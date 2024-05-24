@@ -1,11 +1,9 @@
 use serde::{Deserialize, Serialize};
 use sha2::{Digest, Sha256};
 use std::collections::HashMap;
-use ipfs_api::{IpfsClient, IpfsApi};
+use ipfs_api::{IpfsClient, IpfsApi, TryFromUri};
 use std::io::Cursor;
 use tokio;
-use hex;
-use std::str::FromStr;
 
 #[derive(Clone, Debug, Serialize, Deserialize)]
 struct Transaction {
