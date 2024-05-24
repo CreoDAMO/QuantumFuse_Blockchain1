@@ -24,12 +24,8 @@ def main(input_path, output_path):
 
 if __name__ == "__main__":
     import argparse
-
-    # Set up argument parsing
     parser = argparse.ArgumentParser(description="Blockchain Analytics with Spark")
-    parser.add_argument("--input", required=True, help="Path to the input blockchain data")
-    parser.add_argument("--output", required=True, help="Path to save the analytics results")
+    parser.add_argument('input_path', type=str, help='Path to the input blockchain data (JSON format)')
+    parser.add_argument('output_path', type=str, help='Path to save the analytics results (CSV format)')
     args = parser.parse_args()
-
-    # Run the main function with the provided arguments
-    main(args.input, args.output)
+    main(args.input_path, args.output_path)
