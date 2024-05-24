@@ -22,7 +22,9 @@ def token_required(f):
             return jsonify({'message': 'Token is missing'}), 403
         try:
             data = jwt.decode(token, app.config['SECRET_KEY'], algorithms=["HS256"])
-        except:
+        except jwt.ExpiredSignatureError:
+            return jsonify({'message': 'Token has expired'}), 403
+        except jwt.InvalidTokenError:
             return jsonify({'message': 'Token is invalid'}), 403
         return f(*args, **kwargs)
     return decorated
@@ -42,7 +44,7 @@ def new_transaction():
     values = request.get_json()
     required = ['sender', 'recipient', 'amount', 'signature']
     if not all(k in values for k in required):
-        return 'Missing values', 400
+        return jsonify({'message': 'Missing values'}), 400
 
     transaction = {
         "sender": values['sender'],
@@ -65,7 +67,7 @@ def mine_block():
     values = request.get_json()
     address = values.get('address')
     if not address:
-        return 'Missing address', 400
+        return jsonify({'message': 'Missing address'}), 400
 
     response = requests.post(f"{blockchain_url}/blocks/mine", json={"address": address})
     return jsonify(response.json()), response.status_code
@@ -73,7 +75,11 @@ def mine_block():
 @app.route('/ipfs/add', methods=['POST'])
 @token_required
 def add_to_ipfs():
+    if 'file' not in request.files:
+        return jsonify({'message': 'No file part'}), 400
     file = request.files['file']
+    if file.filename == '':
+        return jsonify({'message': 'No selected file'}), 400
     res = ipfs.add(file)
     return jsonify(res), 200
 
