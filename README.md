@@ -111,8 +111,8 @@ The React frontend provides an interface to visualize the blockchain in real-tim
 
 1. **Clone the Repository**:
    ```bash
-   git clone https://github.com/yourusername/quantumfuse.git
-   cd quantumfuse
+   git clone https://github.com/CreoDAMO/QuantumFuse_Blockchain.git
+   cd QuantumFuse
    ```
 
 2. **Install Dependencies**:
