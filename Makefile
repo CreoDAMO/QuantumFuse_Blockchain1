@@ -1,6 +1,6 @@
 # Directories
 RUST_DIR = QuantumFuse/core
-GO_DIR = QuantumFuse/core/QuantumFuse/node/QuantumFuse
+GO_DIR = QuantumFuse/core/QuantumFuse/node
 PYTHON_DIR = QuantumFuse/core/QuantumFuse/node/QuantumFuse/api
 FRONTEND_DIR = QuantumFuse/core/QuantumFuse/node/QuantumFuse/frontend
 
@@ -70,7 +70,7 @@ clean-python:
 
 # Node.js targets
 setup-node:
-	cd $(FRONTEND_DIR) && npm install
+	cd $(FRONTEND_DIR) && npm install -g npm@10.8.0
 
 build-node:
 	cd $(FRONTEND_DIR) && npm run build
