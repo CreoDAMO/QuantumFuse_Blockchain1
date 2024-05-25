@@ -40,10 +40,10 @@ setup-go:
 	cd $(GO_DIR) && go mod tidy
 
 build-go:
-	cd $(GO_DIR) && go build -o main
+	cd $(GO_DIR) && go build
 
 run-go:
-	cd $(GO_DIR) && ./main
+	cd $(GO_DIR) && go run main.go
 
 test-go:
 	cd $(GO_DIR) && go test ./...
@@ -70,7 +70,7 @@ clean-python:
 
 # Node.js targets
 setup-node:
-	cd $(FRONTEND_DIR) && npm install -g npm@10.8.0
+	cd $(FRONTEND_DIR) && npm install
 
 build-node:
 	cd $(FRONTEND_DIR) && npm run build
