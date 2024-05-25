@@ -1,7 +1,15 @@
 # Directories
 RUST_DIR = QuantumFuse/core
 GO_DIR = QuantumFuse/core/QuantumFuse/node
+PYTHON_DIR = QuantumFuse/core/QuantumFuse/node/QuantumFuse/api/api.py
+PYTHON_DIR = QuantumFuse/core/QuantumFuse/node/QuantumFuse/api/ar_vr_xr.py
+PYTHON_DIR = QuantumFuse/core/QuantumFuse/node/QuantumFuse/api/auth.py
+PYTHON_DIR = QuantumFuse/core/QuantumFuse/node/QuantumFuse/api/cli.py
+PYTHON_DIR = QuantumFuse/core/QuantumFuse/node/QuantumFuse/api/quanrum_simulator.py
+PYTHON_DIR = QuantumFuse/core/QuantumFuse/node/QuantumFuse/api/renwable_energy_system_model.py
 PYTHON_DIR = QuantumFuse/core/QuantumFuse/node/QuantumFuse/api/requirements.txt
+PYTHON_DIR = QuantumFuse/core/QuantumFuse/node/QuantumFuse/api/spark.py
+PYTHON_DIR = QuantumFuse/core/QuantumFuse/node/QuantumFuse/api/user-authentication.py
 FRONTEND_DIR = QuantumFuse/core/QuantumFuse/node/frontend
 
 # Targets
