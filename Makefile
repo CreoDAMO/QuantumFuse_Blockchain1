@@ -1,8 +1,8 @@
 # Directories
 RUST_DIR = QuantumFuse/core
 GO_DIR = QuantumFuse/core/QuantumFuse/node
-PYTHON_DIR = QuantumFuse/core/QuantumFuse/node/QuantumFuse/api
-FRONTEND_DIR = QuantumFuse/core/QuantumFuse/node/QuantumFuse/frontend/QuantumFuse/frontend/src
+PYTHON_DIR = QuantumFuse/core/QuantumFuse/node/api
+FRONTEND_DIR = QuantumFuse/core/QuantumFuse/node/frontend
 
 # Targets
 .PHONY: all setup build run test clean
@@ -40,16 +40,16 @@ setup-go:
 	cd $(GO_DIR) && go mod tidy
 
 build-go:
-	cd $(GO_DIR) && go build
+	cd $(GO_DIR) && go build -o QuantumFuseNode
 
 run-go:
-	cd $(GO_DIR) && go run main.go
+	cd $(GO_DIR) && ./QuantumFuseNode
 
 test-go:
 	cd $(GO_DIR) && go test ./...
 
 clean-go:
-	rm -f $(GO_DIR)/main
+	rm -f $(GO_DIR)/QuantumFuseNode
 
 # Python targets
 setup-python:
