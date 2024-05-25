@@ -1,7 +1,7 @@
 # Directories
 RUST_DIR = QuantumFuse/core
-GO_DIR = QuantumFuse/src
-PYTHON_DIR = api
+GO_DIR = QuantumFuse/node
+PYTHON_DIR = QuantumFuse/api
 FRONTEND_DIR = QuantumFuse/frontend
 
 # Targets
@@ -84,3 +84,4 @@ test-node:
 clean-node:
 	rm -rf $(FRONTEND_DIR)/node_modules
 	rm -rf $(FRONTEND_DIR)/build
+
