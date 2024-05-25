@@ -2,7 +2,7 @@
 RUST_DIR = QuantumFuse/core
 GO_DIR = QuantumFuse/core/QuantumFuse/node/QuantumFuse
 PYTHON_DIR = QuantumFuse/core/QuantumFuse/node/QuantumFuse/api
-FRONTEND_DIR = QuantumFuse/frontend
+FRONTEND_DIR = QuantumFuse/core/QuantumFuse/node/QuantumFuse/frontend
 
 # Targets
 .PHONY: all setup build run test clean
