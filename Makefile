@@ -1,8 +1,8 @@
 # Project Directories
-RUST_DIR = core
-GO_DIR = node
-PYTHON_DIR = api
-FRONTEND_DIR = frontend
+RUST_DIR = QuantumFuse/core
+GO_DIR = QuantumFuse/core/QuantumFuse/node
+PYTHON_DIR = QuantumFuse/core/QuantumFuse/node/api
+FRONTEND_DIR = QuantumFuse/core/QuantumFuse/node/frontend
 
 # Targets
 .PHONY: all setup build run test clean
@@ -11,7 +11,7 @@ FRONTEND_DIR = frontend
 all: setup build
 
 # Setup all projects
-setup: setup-check setup-rust setup-go setup-python setup-node
+setup: setup-rust setup-go setup-python setup-node
 
 # Build all projects
 build: build-rust build-go build-python build-node
@@ -25,75 +25,163 @@ test: test-rust test-go test-python test-node
 # Clean all projects
 clean: clean-rust clean-go clean-python clean-node
 
-# Check for necessary tools
-setup-check:
-	@command -v cargo >/dev/null 2>&1 || { echo >&2 "Cargo is not installed. Aborting."; exit 1; }
-	@command -v go >/dev/null 2>&1 || { echo >&2 "Go is not installed. Aborting."; exit 1; }
-	@command -v python >/dev/null 2>&1 || { echo >&2 "Python is not installed. Aborting."; exit 1; }
-	@command -v npm >/dev/null 2>&1 || { echo >&2 "npm is not installed. Aborting."; exit 1; }
-
 # Rust targets
 setup-rust:
-	@[ -d $(RUST_DIR) ] && (cd $(RUST_DIR) && cargo build) || echo "Rust directory not found."
+	@if [ -d $(RUST_DIR) ]; then \
+		cd $(RUST_DIR) && cargo build; \
+	else \
+		echo "Error: $(RUST_DIR) does not exist."; \
+		exit 1; \
+	fi
 
 build-rust:
-	@[ -d $(RUST_DIR) ] && (cd $(RUST_DIR) && cargo build --release) || echo "Rust directory not found."
+	@if [ -d $(RUST_DIR) ]; then \
+		cd $(RUST_DIR) && cargo build --release; \
+	else \
+		echo "Error: $(RUST_DIR) does not exist."; \
+		exit 1; \
+	fi
 
 run-rust:
-	@[ -d $(RUST_DIR) ] && (cd $(RUST_DIR) && cargo run) || echo "Rust directory not found."
+	@if [ -d $(RUST_DIR) ]; then \
+		cd $(RUST_DIR) && cargo run; \
+	else \
+		echo "Error: $(RUST_DIR) does not exist."; \
+		exit 1; \
+	fi
 
 test-rust:
-	@[ -d $(RUST_DIR) ] && (cd $(RUST_DIR) && cargo test) || echo "Rust directory not found."
+	@if [ -d $(RUST_DIR) ]; then \
+		cd $(RUST_DIR) && cargo test; \
+	else \
+		echo "Error: $(RUST_DIR) does not exist."; \
+		exit 1; \
+	fi
 
 clean-rust:
-	@[ -d $(RUST_DIR) ] && (cd $(RUST_DIR) && cargo clean) || echo "Rust directory not found."
+	@if [ -d $(RUST_DIR) ]; then \
+		cd $(RUST_DIR) && cargo clean; \
+	else \
+		echo "Error: $(RUST_DIR) does not exist."; \
+		exit 1; \
+	fi
 
 # Go targets
 setup-go:
-	@[ -d $(GO_DIR) ] && (cd $(GO_DIR) && go mod tidy) || echo "Go directory not found."
+	@if [ -d $(GO_DIR) ]; then \
+		cd $(GO_DIR) && go mod tidy; \
+	else \
+		echo "Error: $(GO_DIR) does not exist."; \
+		exit 1; \
+	fi
 
 build-go:
-	@[ -d $(GO_DIR) ] && (cd $(GO_DIR) && go build) || echo "Go directory not found."
+	@if [ -d $(GO_DIR) ]; then \
+		cd $(GO_DIR) && go build; \
+	else \
+		echo "Error: $(GO_DIR) does not exist."; \
+		exit 1; \
+	fi
 
 run-go:
-	@[ -d $(GO_DIR) ] && (cd $(GO_DIR) && go run main.go) || echo "Go directory not found."
+	@if [ -d $(GO_DIR) ]; then \
+		cd $(GO_DIR) && go run main.go; \
+	else \
+		echo "Error: $(GO_DIR) does not exist."; \
+		exit 1; \
+	fi
 
 test-go:
-	@[ -d $(GO_DIR) ] && (cd $(GO_DIR) && go test ./...) || echo "Go directory not found."
+	@if [ -d $(GO_DIR) ]; then \
+		cd $(GO_DIR) && go test ./...; \
+	else \
+		echo "Error: $(GO_DIR) does not exist."; \
+		exit 1; \
+	fi
 
 clean-go:
-	@[ -d $(GO_DIR) ] && rm -f $(GO_DIR)/main || echo "Go directory not found."
+	@if [ -d $(GO_DIR) ]; then \
+		rm -f $(GO_DIR)/main; \
+	else \
+		echo "Error: $(GO_DIR) does not exist."; \
+		exit 1; \
+	fi
 
 # Python targets
 setup-python:
-	@[ -d $(PYTHON_DIR) ] && (cd $(PYTHON_DIR) && pip install -r requirements.txt) || echo "Python directory not found."
+	@if [ -d $(PYTHON_DIR) ]; then \
+		cd $(PYTHON_DIR) && pip install -r requirements.txt; \
+	else \
+		echo "Error: $(PYTHON_DIR) does not exist."; \
+		exit 1; \
+	fi
 
 build-python: # No build step needed for Python
 	@echo "No build step needed for Python."
 
 run-python:
-	@[ -d $(PYTHON_DIR) ] && (cd $(PYTHON_DIR) && python api.py) || echo "Python directory not found."
+	@if [ -d $(PYTHON_DIR) ]; then \
+		cd $(PYTHON_DIR) && python api.py; \
+	else \
+		echo "Error: $(PYTHON_DIR) does not exist."; \
+		exit 1; \
+	fi
 
 test-python:
-	@[ -d $(PYTHON_DIR) ] && (cd $(PYTHON_DIR) && pytest) || echo "Python directory not found."
+	@if [ -d $(PYTHON_DIR) ]; then \
+		cd $(PYTHON_DIR) && pytest; \
+	else \
+		echo "Error: $(PYTHON_DIR) does not exist."; \
+		exit 1; \
+	fi
 
 clean-python:
-	@[ -d $(PYTHON_DIR) ] && find $(PYTHON_DIR) -type f -name "*.pyc" -delete || echo "Python directory not found."
-	@[ -d $(PYTHON_DIR) ] && find $(PYTHON_DIR) -type d -name "__pycache__" -delete || echo "Python directory not found."
+	@if [ -d $(PYTHON_DIR) ]; then \
+		find $(PYTHON_DIR) -type f -name "*.pyc" -delete; \
+		find $(PYTHON_DIR) -type d -name "__pycache__" -delete; \
+	else \
+		echo "Error: $(PYTHON_DIR) does not exist."; \
+		exit 1; \
+	fi
 
 # Node.js targets
 setup-node:
-	@[ -d $(FRONTEND_DIR) ] && (cd $(FRONTEND_DIR) && npm install) || echo "Node.js directory not found."
+	@if [ -d $(FRONTEND_DIR) ]; then \
+		cd $(FRONTEND_DIR) && npm install; \
+	else \
+		echo "Error: $(FRONTEND_DIR) does not exist."; \
+		exit 1; \
+	fi
 
 build-node:
-	@[ -d $(FRONTEND_DIR) ] && (cd $(FRONTEND_DIR) && npm run build) || echo "Node.js directory not found."
+	@if [ -d $(FRONTEND_DIR) ]; then \
+		cd $(FRONTEND_DIR) && npm run build; \
+	else \
+		echo "Error: $(FRONTEND_DIR) does not exist."; \
+		exit 1; \
+	fi
 
 run-node:
-	@[ -d $(FRONTEND_DIR) ] && (cd $(FRONTEND_DIR) && npm start) || echo "Node.js directory not found."
+	@if [ -d $(FRONTEND_DIR) ]; then \
+		cd $(FRONTEND_DIR) && npm start; \
+	else \
+		echo "Error: $(FRONTEND_DIR) does not exist."; \
+		exit 1; \
+	fi
 
 test-node:
-	@[ -d $(FRONTEND_DIR) ] && (cd $(FRONTEND_DIR) && npm test) || echo "Node.js directory not found."
+	@if [ -d $(FRONTEND_DIR) ]; then \
+		cd $(FRONTEND_DIR) && npm test; \
+	else \
+		echo "Error: $(FRONTEND_DIR) does not exist."; \
+		exit 1; \
+	fi
 
 clean-node:
-	@[ -d $(FRONTEND_DIR) ] && rm -rf $(FRONTEND_DIR)/node_modules || echo "Node.js directory not found."
-	@[ -d $(FRONTEND_DIR) ] && rm -rf $(FRONTEND_DIR)/build || echo "Node.js directory not found."
+	@if [ -d $(FRONTEND_DIR) ]; then \
+		rm -rf $(FRONTEND_DIR)/node_modules; \
+		rm -rf $(FRONTEND_DIR)/build; \
+	else \
+		echo "Error: $(FRONTEND_DIR) does not exist."; \
+		exit 1; \
+	fi
