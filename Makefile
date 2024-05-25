@@ -1,7 +1,7 @@
 # Directories
 RUST_DIR = QuantumFuse/core
 GO_DIR = QuantumFuse/core/QuantumFuse/node/QuantumFuse
-PYTHON_DIR = QuantumFuse/api
+PYTHON_DIR = QuantumFuse/core/QuantumFuse/node/QuantumFuse/api
 FRONTEND_DIR = QuantumFuse/frontend
 
 # Targets
