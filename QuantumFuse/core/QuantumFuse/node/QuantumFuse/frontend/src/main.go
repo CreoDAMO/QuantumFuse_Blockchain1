@@ -112,14 +112,14 @@ func handleMineBlock(w http.ResponseWriter, r *http.Request) {
 // handleIPFSAdd handles the /ipfs/add endpoint to add a file to IPFS
 func handleIPFSAdd(w http.ResponseWriter, r *http.Request) {
     file, _, err := r.FormFile("file")
-    if err != nil {
+    if (err != nil) {
         http.Error(w, err.Error(), http.StatusInternalServerError)
         return
     }
     defer file.Close()
 
     cid, err := sh.Add(file)
-    if err != nil {
+    if (err != nil) {
         http.Error(w, err.Error(), http.StatusInternalServerError)
         return
     }
