@@ -2391,7 +2391,7 @@ PYTHON_DIR = QuantumFuse/core/QuantumFuse/node/QuantumFuse/api
 FRONTEND_DIR = QuantumFuse/core/QuantumFuse/node/QuantumFuse/frontend/QuantumFuse/frontend/src
 
 # Targets
-.PHONY: all setup build run test clean
+.PHONY: all setup build run test clean update
 
 all: setup build
 
@@ -2404,6 +2404,8 @@ run: run-rust run-go run-python run-node
 test: test-rust test-go test-python test-node
 
 clean: clean-rust clean-go clean-python clean-node
+
+update: update-node
 
 # Rust targets
 setup-rust:
@@ -2455,7 +2457,7 @@ clean-python:
 	find $(PYTHON_DIR) -type d -name "__pycache__" -delete
 
 # Node.js targets
-setup-node:
+setup-node: update-npm
 	cd $(FRONTEND_DIR) && npm install
 
 build-node:
@@ -2470,5 +2472,11 @@ test-node:
 clean-node:
 	rm -rf $(FRONTEND_DIR)/node_modules
 	rm -rf $(FRONTEND_DIR)/build
+
+update-node:
+	cd $(FRONTEND_DIR) && ncu -u && npm install
+
+update-npm:
+	npm install -g npm@latest
 
 ```
