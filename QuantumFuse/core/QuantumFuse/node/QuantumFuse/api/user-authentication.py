@@ -2,6 +2,11 @@ from flask import Flask, jsonify, request, make_response
 import jwt
 import datetime
 from functools import wraps
+import logging
+
+# Initialize logging
+logging.basicConfig(level=logging.ERROR)
+logger = logging.getLogger(__name__)
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'your_secret_key'
@@ -33,7 +38,8 @@ def login():
             )
             return jsonify({'token': token})
         except Exception as e:
-            return jsonify({'message': f"Error generating token: {e}"}), 500
+            logger.error(f"Error generating token: {e}")
+            return jsonify({'message': 'Error generating token'}), 500
     return make_response('Could not verify', 401, {'WWW-Authenticate': 'Basic realm="Login required!"'})
 
 @app.route('/transactions/new', methods=['POST'])
