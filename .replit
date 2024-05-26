@@ -8,3 +8,7 @@ channel = "stable-23_11"
 [deployment]
 run = ["sh", "-c", "make setup"]
 build = ["sh", "-c", "make"]
+
+[[ports]]
+localPort = 3000
+externalPort = 80
