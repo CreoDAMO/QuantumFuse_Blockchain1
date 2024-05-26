@@ -105,6 +105,10 @@ impl Governance {
 
     fn vote(&mut self, proposal_id: u64, option: String, voter: String) {
         if let Some(proposal) = self.proposals.iter_mut().find(|p| p.id == proposal_id) {
+            if current_timestamp() > proposal.deadline {
+                println!("Voting period has ended for this proposal.");
+                return;
+            }
             if proposal.votes.contains_key(&voter) {
                 println!("Voter has already voted.");
             } else {
@@ -228,18 +232,23 @@ impl QuantumFuseBlockchain {
     }
 
     fn get_balance_of_address(&self, address: &str) -> u64 {
-        let mut balance = 0;
+        let mut balance: i64 = 0; // Use i64 to avoid underflow during calculation
         for block in &self.blocks {
             for transaction in &block.transactions {
                 if transaction.sender == address {
-                    balance -= transaction.amount;
+                    balance -= transaction.amount as i64;
                 }
                 if transaction.receiver == address {
-                    balance += transaction.amount;
+                    balance += transaction.amount as i64;
                 }
             }
         }
-        balance
+        if balance < 0 {
+            println!("Error: balance underflow for address {}", address);
+            0
+        } else {
+            balance as u64
+        }
     }
 
     fn stake(&mut self, address: String, amount: u64) {
