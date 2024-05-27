@@ -1,4 +1,3 @@
-```markdown
 # QuantumFuse Blockchain
 
 QuantumFuse is a decentralized blockchain platform designed to enhance scalability, security, and energy efficiency in e-commerce and other industries. This project encompasses various components including core blockchain functionality, APIs, smart contracts, and a frontend interface.
