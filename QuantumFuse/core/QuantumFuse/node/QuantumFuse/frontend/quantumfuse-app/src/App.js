@@ -2,7 +2,7 @@ import React, { useEffect, useState, useCallback } from 'react';
 import { w3cwebsocket as W3CWebSocket } from 'websocket';
 import { Line, Bar } from 'react-chartjs-2';
 import 'chart.js/auto';
-import logo from './QuantumFuse.webp';
+import logo from './QuantumFuse.png';
 import './App.css';
 
 const client = new W3CWebSocket('wss://api.quantumfuse.com/v2/realtime');
