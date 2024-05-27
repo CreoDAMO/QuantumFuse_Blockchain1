@@ -2,7 +2,7 @@ import React, { useEffect, useState, useCallback } from 'react';
 import { w3cwebsocket as W3CWebSocket } from 'websocket';
 import { Line, Bar } from 'react-chartjs-2';
 import 'chart.js/auto';
-import logo from './logo.svg';
+import logo from './QuantumFuse.webp';
 import './App.css';
 
 const client = new W3CWebSocket('wss://api.quantumfuse.com/v2/realtime');
@@ -84,19 +84,8 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+        <img src={logo} className="App-logo" alt="Quantum Fuse Coin Logo" />
         <h1>QuantumFuse Explorer</h1>
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
       </header>
       <main>
         <div>
@@ -147,4 +136,3 @@ function App() {
 }
 
 export default App;
-
