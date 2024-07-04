@@ -644,8 +644,8 @@ async fn main() {
     println!("Storage status: {}%", energy_manager.get_storage_status() * 100.0);
 
     // Example usage of DAO
-    energy_dao.add_member("Alice".to_string());
-    energy_dao.add_member("Bob".to_string());
+    energy_dao.add_member("Meaghan".to_string());
+    energy_dao.add_member("Jacque".to_string());
     let proposal = Proposal {
         id: 1,
         title: "Increase energy storage capacity".to_string(),
@@ -655,8 +655,8 @@ async fn main() {
         deadline: current_timestamp() + 10000,
     };
     energy_dao.create_proposal(proposal);
-    energy_dao.vote_on_proposal(0, "Alice".to_string(), true);
-    energy_dao.vote_on_proposal(0, "Bob".to_string(), false);
+    energy_dao.vote_on_proposal(0, "Meaghan".to_string(), true);
+    energy_dao.vote_on_proposal(0, "Jacque".to_string(), false);
 
     if let Some((yes_votes, no_votes)) = energy_dao.tally_votes(0) {
         println!("Proposal 0: Yes votes: {}, No votes: {}", yes_votes, no_votes);
@@ -673,15 +673,15 @@ async fn main() {
     }
 
     // Example usage of incentive system
-    incentive_system.reward("Alice".to_string(), 50.0);
+    incentive_system.reward("Meaghan".to_string(), 50.0);
     if let Some(token) = incentive_system.get_token("token_1") {
         println!("Token ID: {}, Owner: {}, Amount: {}", token.token_id, token.owner, token.amount);
     }
 
     // Example usage of fault detection and dashboard
     let tx = Transaction {
-        sender: "Alice".to_string(),
-        receiver: "Bob".to_string(),
+        sender: "Meaghan".to_string(),
+        receiver: "Jacque".to_string(),
         amount: 10,
         signature: "signature".to_string(),
     };
@@ -711,8 +711,8 @@ async fn main() {
         votes: HashMap::new(),
         deadline: current_timestamp() + 10000,
     });
-    dao.vote_on_proposal(proposal_id, "Alice".to_string(), true);
-    dao.vote_on_proposal(proposal_id, "Bob".to_string(), false);
+    dao.vote_on_proposal(proposal_id, "Meaghan".to_string(), true);
+    dao.vote_on_proposal(proposal_id, "Jacque".to_string(), false);
 
     if let Some((yes_votes, no_votes)) = dao.tally_votes(proposal_id) {
         println!("Proposal {}: Yes votes: {}, No votes: {}", proposal_id, yes_votes, no_votes);
@@ -725,7 +725,7 @@ async fn main() {
     }
 
     // Deploy and execute a smart contract
-    let mut contract = SmartContract::new("contract1", "dummy_code", "Alice");
+    let mut contract = SmartContract::new("contract1", "dummy_code", "Meaghan");
     blockchain.deploy_smart_contract(contract);
 
     match blockchain.execute_smart_contract("contract1", "test_input") {
@@ -744,19 +744,19 @@ async fn main() {
 
     // Generate and mint an NFT with live metadata
     let nft_metadata = generate_metadata(&blockchain);
-    let nft_id = blockchain.nft_contract.mint_nft("Alice", &nft_metadata);
+    let nft_id = blockchain.nft_contract.mint_nft("Meaghan", &nft_metadata);
     println!("Minted NFT with ID: {}", nft_id);
 
     // Create and manage F-NFTs
     let original_nft_id = "nft_123";
     let mut fractions = HashMap::new();
-    fractions.insert("Alice".to_string(), Fraction { owner: "Alice".to_string(), percentage: 50.0 });
-    fractions.insert("Bob".to_string(), Fraction { owner: "Bob".to_string(), percentage: 50.0 });
+    fractions.insert("Meaghan".to_string(), Fraction { owner: "Meaghan".to_string(), percentage: 50.0 });
+    fractions.insert("Jacque".to_string(), Fraction { owner: "Jacque".to_string(), percentage: 50.0 });
 
     let fnft_id = fnft_contract.create_fnft(original_nft_id, fractions);
     println!("Created FNFT with ID: {}", fnft_id);
 
-    match fnft_contract.trade_fraction(&fnft_id, "Alice", "Charlie") {
+    match fnft_contract.trade_fraction(&fnft_id, "Meaghan", "Dean") {
         Ok(_) => println!("Fraction traded successfully!"),
         Err(e) => println!("Failed to trade fraction: {}", e),
     }
