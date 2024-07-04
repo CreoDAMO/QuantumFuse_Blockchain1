@@ -7,6 +7,7 @@ from sklearn.gaussian_process import GaussianProcessRegressor
 from sklearn.gaussian_process.kernels import RBF, WhiteKernel, ExpSineSquared
 import requests
 import json
+import logging
 
 class RenewableEnergySystemModel:
     def __init__(self, energy_data_path, weather_data_path):
@@ -14,33 +15,52 @@ class RenewableEnergySystemModel:
         self.weather_data = pd.read_csv(weather_data_path)
         self.model = ConcreteModel()
         self.solver = SolverFactory('gurobi')
+        self._setup_logger()
+
+    def _setup_logger(self):
+        logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+        self.logger = logging.getLogger(__name__)
 
     def preprocess_data(self):
         """
         Implement data cleaning, feature engineering, etc.
         """
-        # Placeholder for data preprocessing logic
-        pass
+        try:
+            # Placeholder for data preprocessing logic
+            self.logger.info("Preprocessing data.")
+        except Exception as e:
+            self.logger.error(f"Error in data preprocessing: {e}")
 
     def simulate_solar_power(self):
         """
         Use Gaussian Process Regression for surrogate modeling of solar output.
         """
-        # Placeholder for solar power simulation logic
-        pass
+        try:
+            self.logger.info("Simulating solar power.")
+            # Placeholder for solar power simulation logic
+            return np.random.random()
+        except Exception as e:
+            self.logger.error(f"Error in solar power simulation: {e}")
+            return None
 
     def simulate_wind_power(self):
         """
         Use Gaussian Process Regression for surrogate modeling of wind output.
         """
-        # Placeholder for wind power simulation logic
-        pass
+        try:
+            self.logger.info("Simulating wind power.")
+            # Placeholder for wind power simulation logic
+            return np.random.random()
+        except Exception as e:
+            self.logger.error(f"Error in wind power simulation: {e}")
+            return None
 
     def optimize_energy_mix(self):
         """
         Set up and solve the optimization model for the energy mix.
         """
         try:
+            self.logger.info("Optimizing energy mix.")
             # Define variables for solar, wind, and storage
             self.model.x = Var(range(3), domain=NonNegativeReals)
             
@@ -54,17 +74,20 @@ class RenewableEnergySystemModel:
             results = self.solver.solve(self.model)
             if results.solver.termination_condition == TerminationCondition.optimal:
                 optimal_mix = [self.model.x[i].value for i in range(3)]
+                self.logger.info(f"Optimal energy mix found: {optimal_mix}")
                 return optimal_mix
             else:
                 raise ValueError('Optimal solution not found')
         except Exception as e:
-            print(f"Error in optimization: {e}")
+            self.logger.error(f"Error in optimization: {e}")
+            return None
 
     def visualize_energy_distribution(self, optimal_mix):
         """
         Visualize the distribution of energy sources in the optimal mix.
         """
         try:
+            self.logger.info("Visualizing energy distribution.")
             labels = ['Solar', 'Wind', 'Storage']
             plt.bar(labels, optimal_mix)
             plt.xlabel('Energy Sources')
@@ -72,7 +95,7 @@ class RenewableEnergySystemModel:
             plt.title('Optimal Energy Distribution for eVTOL Operations')
             plt.show()
         except Exception as e:
-            print(f"Error in visualization: {e}")
+            self.logger.error(f"Error in visualization: {e}")
 
     def record_transaction_on_blockchain(self, transaction_data):
         """
@@ -81,25 +104,28 @@ class RenewableEnergySystemModel:
         blockchain_api_url = "https://example.com/api/record_transaction"  # Replace with the actual blockchain API endpoint
 
         try:
+            self.logger.info("Recording transaction on blockchain.")
             response = requests.post(blockchain_api_url, data=json.dumps(transaction_data), headers={'Content-Type': 'application/json'})
             if response.status_code == 200:
-                print("Transaction recorded on the blockchain.")
+                self.logger.info("Transaction recorded on the blockchain.")
             else:
-                print(f"Failed to record transaction on the blockchain. Status Code: {response.status_code}")
+                self.logger.error(f"Failed to record transaction on the blockchain. Status Code: {response.status_code}")
         except requests.RequestException as e:
-            print(f"Error recording transaction: {e}")
+            self.logger.error(f"Error recording transaction: {e}")
 
     def optimize_blockchain_operations(self):
         """
         Placeholder for optimizing blockchain operations.
         """
-        pass
+        self.logger.info("Optimizing blockchain operations.")
+        # Placeholder logic for blockchain operations optimization
 
     def secure_communication_with_blockchain(self):
         """
         Placeholder for secure communication with the blockchain network.
         """
-        pass
+        self.logger.info("Securing communication with blockchain.")
+        # Placeholder logic for secure communication with the blockchain
 
 if __name__ == '__main__':
     # Initialize the model with data paths

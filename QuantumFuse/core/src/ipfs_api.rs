@@ -301,10 +301,12 @@ async fn main() {
 
     // Example usage
     let tx = Transaction {
-        sender: "Alice".to_string(),
-        receiver: "Bob".to_string(),
+        sender: "Meaghan".to_string(),
+        receiver: "Jacque".to_string(),
         amount: 10,
-        signature: "signature".to_string(),
+        signature: "signature".to
+
+_string(),
     };
     blockchain.add_transaction(tx);
 
