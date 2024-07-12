@@ -112,168 +112,198 @@ This component explores the integration of blockchain with AR/VR/XR environments
 
 The React frontend provides an interface to visualize the blockchain in real-time, search transactions, and analyze blockchain data.
 
-## Repo Structure
+### Root Directory
 
 ```
-QuantumFuse/
-├── .gitignore
-├── .replit
-├── LICENSE
-├── Makefile
-├── README.md
-├── Cargo.lock
-├── Cargo.toml
-├── dockerfile
-├── get-pip.py
+.vscode/
+├── settings.json
+
+Open_API/src/
 ├── quantumfuse_blockchain_open_api.yaml
-├── Open_API/
-│   └── src/
-│       └── quantumfuse_blockchain_open_api.yaml
+
+QuantumFuse/
 ├── core/
-│   ├── src/
-│   │   ├── dao/
-│   │   │   ├── energydao.rs
-│   │   │   ├── advanced_simulation_tools_and_visualization_techniques.rs
-│   │   │   ├── cross-chain_communication_and_asset_transfer.rs
-│   │   │   ├── energy_forecast.rs
-│   │   │   ├── energy_nft_listing.rs
-│   │   │   ├── energy_storage_system.rs
-│   │   │   ├── grid_stability_event.rs
-│   │   │   ├── integration_of_quantum-inspired_algorithm.rs
-│   │   │   ├── multi-objective_optimization_algorithm.rs
-│   │   │   ├── real-time_grid_simulation_environment.rs
-│   │   │   ├── regulatory_update.rs
-│   │   │   ├── reputation_system.rs
-│   │   │   ├── resilience_scenario.rs
-│   │   │   ├── sustainability_token.rs
-│   │   │   ├── tokenized_incentive_system.rs
-│   │   │   ├── version_control_system_for_regulations.rs
-│   │   ├── marketplace/
-│   │   │   ├── quantumfuse_marketplace.rs
-│   │   ├── nfts/
-│   │   │   ├── fnft/
-│   │   │   │   ├── fnft.rs
-│   │   │   ├── live_metadata/
-│   │   │   │   ├── lmd-nft.rs
-│   │   ├── smartcontract/
-│   │   │   ├── quantumfuse_smartcontract.rs
-│   │   │   ├── sustainable_energy_smartcontract.rs
-│   │   ├── wallets/
-│   │   │   ├── community/
-│   │   │   │   ├── wallet_main.rs
-│   │   │   ├── founder/
-│   │   │   │   ├── wallet_main.rs
+│   ├── main.rs
+│   ├── dao/
+│   │   └── energydao.rs
+│   ├── data_structure/
+│   │   ├── advanced_simulation_tools_and_visualization_techniques.rs
+│   │   ├── cross-chain_communication_and_asset_transfer.rs
+│   │   ├── energy_forecast.rs
+│   │   ├── energy_nft_listing.rs
+│   │   ├── energy_storage_system.rs
+│   │   ├── grid_stability_event.rs
+│   │   ├── integration_of_quantum-inspired_algorithm.rs
+│   │   ├── multi-objective_optimization_algorithm.rs
+│   │   ├── real-time_grid_simulation_environment.rs
+│   │   ├── regulatory_update.rs
+│   │   ├── reputation_system.rs
+│   │   ├── resilience_scenario.rs
+│   │   ├── sustainability_token.rs
+│   │   ├── tokenized_incentive_system.rs
+│   │   ├── version_control_system_for_regulations.rs
+│   ├── marketplace/
+│   │   └── quantumfuse_marketplace.rs
+│   ├── nfts/
+│   │   ├── fnft/
+│   │   │   └── fnft.rs
+│   │   ├── live_metadata/
+│   │   │   └── lmd-nft.rs
+│   ├── smartcontract/
+│   │   ├── quantumfuse_smartcontract.rs
+│   │   └── sustainable_energy_smartcontract.rs
+│   ├── wallets/
+│   │   ├── community/
+│   │   │   └── wallet_main.rs
+│   │   ├── founder/
+│   │   │   └── wallet_main.rs
 │   │   ├── ai_monitor.rs
 │   │   ├── fusion.rs
 │   │   ├── ipfs_api.rs
-│   │   ├── main.rs
-│   ├── QuantumFuseNode/
-│   │   ├── main.go
-│   │   ├── go.mod
-│   │   ├── go.sum
-├── node/
-├── api/
-│   ├── api.py
-│   ├── ar_vr_xr.py
-│   ├── auth.py
-│   ├── blockchain.py
-│   ├── cli.py
-│   ├── quantum_simulator.py
-│   ├── renewable_energy_system_model.py
-│   ├── requirements.txt
-│   ├── spark.py
-│   ├── user-authentication.py
-├── frontend/
-│   ├── quantumfuse-app/
-│   │   ├── public/
-│   │   │   ├── favicon.ico
-│   │   │   ├── index.html
-│   │   │   ├── logo-192x192.png
-│   │   │   ├── logo-512x512.png
-│   │   │   ├── manifest.json
-│   │   │   ├── robots.txt
-│   │   ├── src/
-│   │   │   ├── App.css
-│   │   │   ├── App.js
-│   │   │   ├── App.test.js
-│   │   │   ├── index.css
-│   │   │   ├── index.js
-│   │   │   ├── logo.svg
-│   │   │   ├── reportWebVitals.js
-│   │   │   ├── setupTests.js
-│   │   ├── .gitignore
-│   │   ├── README.md
-│   │   ├── package-lock.json
-│   │   ├── package.json
-├── target/
-│   ├── ... (build output files)
+│   │   └── main.rs
+
+QuantumFuseNode/
+├── main.go
+
+api/
+├── api.py
+├── ar_vr_xr.py
+├── auth.py
+├── blockchain.py
+├── cli.py
+├── quantum_simulator.py
+├── renewable_energy_system_model.py
+├── spark.py
+├── user-authentication.py
+
+frontend/
+├── quantumfuse-app/
+│   ├── public/
+│   │   ├── favicon.ico
+│   │   ├── index.html
+│   │   ├── logo-192x192.png
+│   │   ├── logo-512x512.png
+│   │   ├── manifest.json
+│   │   ├── robots.txt
+│   ├── src/
+│   │   ├── App.css
+│   │   ├── App.js
+│   │   ├── App.test.js
+│   │   ├── index.css
+│   │   ├── index.js
+│   │   ├── logo.svg
+│   │   ├── reportWebVitals.js
+│   │   ├── setupTests.js
+
+node_modules/
+.gitignore
+Cargo.lock
+Cargo.toml
+LICENSE
+Makefile
+README.md
+dockerfile
+get-pip.py
+go.mod
+package-lock.json
+replit.nix
 ```
 
-### Breakdown of Key Directories and Files
+### Explanation of Each Section:
 
-#### Root Directory
+1. **.vscode/**
+    - `settings.json`: Visual Studio Code settings.
 
-- `.gitignore`: Specifies files and directories to be ignored by Git.
-- `.replit`: Configuration file for Replit IDE.
-- `LICENSE`: License information for the project.
-- `Makefile`: Makefile for automating build tasks.
-- `README.md`: Project readme file with project details and instructions.
-- `Cargo.lock`, `Cargo.toml`: Rust dependency management files.
-- `dockerfile`: Docker configuration file for containerizing the project.
-- `get-pip.py`: Script to install pip, the Python package installer.
-- `quantumfuse_blockchain_open_api.yaml`: Open API specification file.
+2. **Open_API/src/**
+    - `quantumfuse_blockchain_open_api.yaml`: OpenAPI specifications for QuantumFuse blockchain.
 
-#### Open_API Directory
+3. **QuantumFuse/core/**
+    - `main.rs`: Main entry point for core blockchain functionalities.
+    - **dao/**: Directory for DAO-related functionalities.
+        - `energydao.rs`: Energy DAO implementation.
+    - **data_structure/**: Directory for advanced simulation tools and visualization techniques.
+        - Contains various modules such as:
+            - `advanced_simulation_tools_and_visualization_techniques.rs`
+            - `cross-chain_communication_and_asset_transfer.rs`
+            - `energy_forecast.rs`
+            - `energy_nft_listing.rs`
+            - `energy_storage_system.rs`
+            - `grid_stability_event.rs`
+            - `integration_of_quantum-inspired_algorithm.rs`
+            - `multi-objective_optimization_algorithm.rs`
+            - `real-time_grid_simulation_environment.rs`
+            - `regulatory_update.rs`
+            - `reputation_system.rs`
+            - `resilience_scenario.rs`
+            - `sustainability_token.rs`
+            - `tokenized_incentive_system.rs`
+            - `version_control_system_for_regulations.rs`
+    - **marketplace/**: Directory for marketplace functionalities.
+        - `quantumfuse_marketplace.rs`: QuantumFuse marketplace implementation.
+    - **nfts/**: Directory for NFT-related functionalities.
+        - **fnft/**: Directory for fractional NFTs.
+            - `fnft.rs`: FNFT implementation.
+        - **live_metadata/**: Directory for live metadata NFTs.
+            - `lmd-nft.rs`: Live metadata NFT implementation.
+    - **smartcontract/**: Directory for smart contract-related functionalities.
+        - `quantumfuse_smartcontract.rs`: QuantumFuse smart contract implementation.
+        - `sustainable_energy_smartcontract.rs`: Sustainable energy smart contract implementation.
+    - **wallets/**: Directory for wallet-related functionalities.
+        - **community/**: Directory for community wallet functionalities.
+            - `wallet_main.rs`: Community wallet main implementation.
+        - **founder/**: Directory for founder wallet functionalities.
+            - `wallet_main.rs`: Founder wallet main implementation.
+        - Additional wallet-related files:
+            - `ai_monitor.rs`: AI monitor for wallets.
+            - `fusion.rs`: Fusion-related functionalities for wallets.
+            - `ipfs_api.rs`: IPFS API integration.
+            - `main.rs`: Combined core blockchain main file.
 
-- `quantumfuse_blockchain_open_api.yaml`: Open API specification for QuantumFuse Blockchain.
+4. **QuantumFuseNode/**
+    - `main.go`: Main entry point for the QuantumFuse node written in Go.
 
-#### Core Directory
+5. **api/**
+    - `api.py`: Main API script.
+    - `ar_vr_xr.py`: AR/VR/XR integration script.
+    - `auth.py`: Authentication script.
+    - `blockchain.py`: Blockchain interaction script.
+    - `cli.py`: Command-line interface script.
+    - `quantum_simulator.py`: Quantum simulator script.
+    - `renewable_energy_system_model.py`: Renewable energy system model script.
+    - `spark.py`: Apache Spark integration script.
+    - `user-authentication.py`: User authentication script.
 
-- `src/`: Contains the source code for the core blockchain functionality and related modules.
-  - `dao/`: Directory for DAO-related Rust files.
-  - `marketplace/`: Directory for marketplace-related Rust files.
-  - `nfts/`: Directory for NFT-related Rust files, including fractional NFTs (FNFTs) and live metadata NFTs.
-  - `smartcontract/`: Directory for smart contract-related Rust files.
-  - `wallets/`: Directory for wallet-related Rust files for community and founder wallets.
-  - `ai_monitor.rs`: AI monitoring module.
-  - `fusion.rs`: Fusion module.
-  - `ipfs_api.rs`: IPFS API integration.
-  - `main.rs`: Main entry point for the Rust core blockchain.
-- `QuantumFuseNode/`: Contains Go implementation for node functionality.
-  - `main.go`: Main entry point for the Go node.
-  - `go.mod`, `go.sum`: Go dependency management files.
+6. **frontend/quantumfuse-app/**
+    - **public/**: Directory for public assets.
+        - `favicon.ico`: Favicon.
+        - `index.html`: Main HTML file.
+        - `logo-192x192.png`: Logo (192x192).
+        - `logo-512x512.png`: Logo (512x512).
+        - `manifest.json`: Web app manifest.
+        - `robots.txt`: Robots.txt file for web crawlers.
+    - **src/**: Directory for source code.
+        - `App.css`: Main CSS file for the app.
+        - `App.js`: Main React component.
+        - `App.test.js`: Test file for the app.
+        - `index.css`: CSS file for index.
+        - `index.js`: Main entry point for the React app.
+        - `logo.svg`: Logo in SVG format.
+        - `reportWebVitals.js`: Web vitals report script.
+        - `setupTests.js`: Setup script for tests.
 
-#### Node Directory
-
-- This directory can be used for node-specific configurations and implementations if needed in the future.
-
-#### API Directory
-
-- `api.py`: Main API script.
-- `ar_vr_xr.py`: Script for AR/VR/XR environment integration.
-- `auth.py`: Authentication module.
-- `blockchain.py`: Blockchain interaction module.
-- `cli.py`: Command-line interface script.
-- `quantum_simulator.py`: Quantum computing simulation script.
-- `renewable_energy_system_model.py`: Renewable energy system model script.
-- `requirements.txt`: Python dependencies.
-- `spark.py`: Integration script for Apache Spark.
-- `user-authentication.py`: User authentication module.
-
-#### Frontend Directory
-
-- `quantumfuse-app/`: Contains the React frontend application.
-  - `public/`: Public assets for the React app.
-    - `favicon.ico`, `index.html`, `logo-192x192.png`, `logo-512x512.png`, `manifest.json`, `robots.txt`
-  - `src/`: Source code for the React app.
-    - `App.css`, `App.js`, `App.test.js`, `index.css`, `index.js`, `logo.svg`, `reportWebVitals.js`, `setupTests.js`
-  - `.gitignore`: Specifies files and directories to be ignored by Git for the frontend.
-  - `README.md`: Readme file for the frontend.
-  - `package-lock.json`, `package.json`: Node.js dependency management files.
-
-#### Target Directory
-
-- `...`: Contains build output files generated by Rust's cargo build command.
+7. **Miscellaneous**
+    - `node_modules/`: Directory for Node.js modules.
+    - `.gitignore`: Git ignore file.
+    - `Cargo.lock`: Cargo lock file.
+    - `Cargo.toml`: Cargo configuration file.
+    - `LICENSE`: License file.
+    - `Makefile`: Makefile for building the project.
+    - `README.md`: Readme file.
+    - `dockerfile`: Dockerfile for containerizing the application.
+    - `get-pip.py`: Script to install pip.
+    - `go.mod`: Go module file.
+    - `package-lock.json`: NPM package lock file.
+    - `replit.nix`: Replit Nix configuration file.
 
 ## Installation
 
