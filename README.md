@@ -114,7 +114,7 @@ The React frontend provides an interface to visualize the blockchain in real-tim
 
 ### Root Directory
 
-```
+```css
 .vscode/
 ├── settings.json
 
