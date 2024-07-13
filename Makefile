@@ -19,11 +19,11 @@ test: test-rust test-go test-python test-node
 
 clean: clean-rust clean-go clean-python clean-node
 
-update: update-node
+update: update-rust update-go update-python update-node
 
 # Rust targets
 setup-rust:
-	cd $(RUST_DIR) && cargo build
+	cd $(RUST_DIR) && cargo update && cargo build
 
 build-rust:
 	cd $(RUST_DIR) && cargo build --release
@@ -36,6 +36,9 @@ test-rust:
 
 clean-rust:
 	cd $(RUST_DIR) && cargo clean
+
+update-rust:
+	cd $(RUST_DIR) && cargo update
 
 # Go targets
 setup-go:
@@ -53,6 +56,9 @@ test-go:
 clean-go:
 	rm -f $(GO_DIR)/QuantumFuseNode
 
+update-go:
+	cd $(GO_DIR) && go get -u ./...
+
 # Python targets
 setup-python:
 	cd $(PYTHON_DIR) && pip install -r requirements.txt
@@ -69,6 +75,9 @@ test-python:
 clean-python:
 	find $(PYTHON_DIR) -type f -name "*.pyc" -delete
 	find $(PYTHON_DIR) -type d -name "__pycache__" -delete
+
+update-python:
+	cd $(PYTHON_DIR) && pip install --upgrade -r requirements.txt
 
 # Node.js targets
 setup-node: update-npm
