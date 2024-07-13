@@ -16,8 +16,7 @@ jobs:
         ports:
           - 5001:5001
         options: >-
-          --mount source=/root/.ipfs,target=/data/ipfs
-          --entrypoint=sh -c "ipfs daemon"
+          --entrypoint "ipfs daemon"
 
     strategy:
       matrix:
