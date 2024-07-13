@@ -18,9 +18,13 @@ serde_json = "1.0.120"
 sha2 = "0.10.8"
 hex = "0.4.3"
 
+# Cryptographic primitives
+rand = "0.6.2"
+
 # Web framework
 rocket = { version = "0.5.1", features = ["json"] }
-rocket_okapi = { version = "0.8.0", features = ["swagger-ui"] }
+rocket_okapi = { version = "0.5.0" }
+rocket_cors = { version = "0.6.0"}
 
 # GraphQL integration
 juniper = "0.16.1"
@@ -43,7 +47,7 @@ tracing = "0.1.40"
 dotenv = "0.15.0"
 
 # Libp2p for decentralized event bus
-libp2p = { version = "0.53.2", features = ["tcp-tokio", "dns-tokio"] }
+libp2p = { version = "0.45.1", features = ["tcp-tokio", "dns-tokio"] }
 
 # Substrate for blockchain interactions
 substrate-api-client = "0.18.0"
@@ -52,7 +56,7 @@ substrate-api-client = "0.18.0"
 assert_cmd = "2.0.14"
 
 # PEM file handling
-pem = "3.0.4"
+pem = "1.1.1"
 
 [features]
 default = ["tokio/macros", "serde/derive"]
@@ -65,3 +69,12 @@ opt-level = 3
 
 [profile.test]
 opt-level = 1
+
+[profile.bench]
+opt-level = 2
+
+[profile.doc]
+opt-level = 0
+
+[profile.doc.test]
+opt-level = 0
