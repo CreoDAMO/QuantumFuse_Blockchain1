@@ -16,7 +16,7 @@ jobs:
         ports:
           - 5001:5001
         options: >-
-          --entrypoint "ipfs daemon"
+          --entrypoint /usr/local/bin/start_ipfs
 
     strategy:
       matrix:
