@@ -101,6 +101,98 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
 
+  /wallets/create:
+    post:
+      summary: Create a new wallet
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WalletRequest'
+      responses:
+        '201':
+          description: Wallet created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WalletResponse'
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /wallets/balance:
+    get:
+      summary: Get wallet balance
+      parameters:
+        - name: address
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Wallet balance retrieved
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WalletBalance'
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /smartcontracts/deploy:
+    post:
+      summary: Deploy a new smart contract
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SmartContractRequest'
+      responses:
+        '201':
+          description: Smart contract deployed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SmartContractResponse'
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /smartcontracts/execute:
+    post:
+      summary: Execute a smart contract
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ExecuteSmartContractRequest'
+      responses:
+        '200':
+          description: Smart contract executed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SmartContractExecutionResponse'
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
 components:
   schemas:
     Transaction:
@@ -163,6 +255,71 @@ components:
           type: array
           items:
             type: string
+
+    WalletRequest:
+      type: object
+      properties:
+        password:
+          type: string
+      required:
+        - password
+
+    WalletResponse:
+      type: object
+      properties:
+        address:
+          type: string
+        private_key:
+          type: string
+
+    WalletBalance:
+      type: object
+      properties:
+        address:
+          type: string
+        balance:
+          type: number
+
+    SmartContractRequest:
+      type: object
+      properties:
+        code:
+          type: string
+        params:
+          type: array
+          items:
+            type: string
+      required:
+        - code
+        - params
+
+    SmartContractResponse:
+      type: object
+      properties:
+        contract_address:
+          type: string
+
+    ExecuteSmartContractRequest:
+      type: object
+      properties:
+        contract_address:
+          type: string
+        function_name:
+          type: string
+        params:
+          type: array
+          items:
+            type: string
+      required:
+        - contract_address
+        - function_name
+        - params
+
+    SmartContractExecutionResponse:
+      type: object
+      properties:
+        result:
+          type: string
 
     Error:
       type: object

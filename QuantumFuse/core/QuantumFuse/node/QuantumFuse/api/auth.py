@@ -49,7 +49,7 @@ def new_transaction():
     }
 
     # Assuming the blockchain_url is defined elsewhere in the code
-    response = requests.post(f"{blockchain_url}/transactions/new", json=transaction)
+    response = request.post(f"{blockchain_url}/transactions/new", json=transaction) # type: ignore
     return jsonify(response.json()), response.status_code
 
 if __name__ == '__main__':

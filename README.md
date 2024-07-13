@@ -1,14 +1,16 @@
 ![android-chrome-512x512](https://github.com/CreoDAMO/QuantumFuse_Blockchain/assets/151800081/dc3d8b97-dc95-4f27-a901-36bd1de2a2b2)
+
 # QuantumFuse Blockchain
 
 QuantumFuse is a decentralized blockchain platform designed to enhance scalability, security, and energy efficiency in e-commerce and other industries. This project encompasses various components including core blockchain functionality, APIs, smart contracts, and a frontend interface.
 
 ## Project Overview
 
-### Created by:
+### Created by
+
 - **Jacque Antoine DeGraff**
 - **President Of CreoDAMO Inc.**
-- **Email:** jacquedegraff@creodamo.com
+- **Email:** <jacquedegraff@creodamo.com>
 - **Publication Date:** May 19, 2024
 
 ## Table of Contents
@@ -28,6 +30,7 @@ QuantumFuse is a decentralized blockchain platform designed to enhance scalabili
    - [Renewable Energy System Model](#renewable-energy-system-model)
    - [AR/VR/XR Environment Integration](#arvrxr-environment-integration)
    - [React Frontend](#react-frontend)
+   - [Repository Structure](#repo-structure)
 4. [Installation](#installation)
 5. [Usage](#usage)
    - [Running the Blockchain](#running-the-blockchain)
@@ -61,6 +64,7 @@ The existing blockchain solutions often face challenges related to scalability, 
 ### Solution
 
 QuantumFuse proposes a multifaceted solution that addresses current blockchain limitations through a combination of advanced technologies and sustainable practices. Key features include:
+
 - Implementing a Rust-based core blockchain to ensure high performance and security.
 - Utilizing Go for node operations and IPFS integration to enable decentralized storage and efficient network management.
 - Developing a comprehensive API using Python and Flask to facilitate seamless interaction with the blockchain.
@@ -71,37 +75,240 @@ QuantumFuse proposes a multifaceted solution that addresses current blockchain l
 ### Case Studies
 
 #### Decentralized Identity Management
+
 QuantumFuse enables decentralized identity management, allowing users to register and verify identities securely on the blockchain. This feature enhances privacy and security while providing a robust mechanism for identity verification across various applications.
 
 #### Renewable Energy Optimization
+
 By integrating renewable energy systems with the blockchain, QuantumFuse optimizes energy distribution and management for eVTOL operations. This model demonstrates the potential for blockchain technology to drive sustainability and efficiency in the energy sector.
 
 ## Project Components
 
 ### Core Blockchain in Rust
+
 The core blockchain module written in Rust provides essential functionalities such as transaction management, block creation, mining, and smart contract execution. The use of Rust ensures memory safety and concurrency, crucial for building a reliable blockchain.
 
 ### Node Implementation in Go with IPFS Integration
+
 The Go implementation handles the networking aspects, including the operation of nodes and integration with IPFS for decentralized storage. This approach ensures robust and scalable network operations.
 
 ### API and Advanced Functionalities in Python
+
 The API developed with Python's Flask framework facilitates interaction with the blockchain and IPFS. The inclusion of Prometheus for monitoring and JWT for secure user authentication enhances the overall functionality and security of the system.
 
 ### Quantum Computing Simulation in Python
+
 Using Qiskit, the project simulates quantum secure communication and optimizes blockchain operations, preparing the system for future advancements in quantum computing.
 
 ### Renewable Energy System Model
+
 A model for integrating renewable energy systems with the blockchain is presented, leveraging optimization techniques and Gaussian Process Regression to ensure efficient energy distribution and management.
 
 ### AR/VR/XR Environment Integration
+
 This component explores the integration of blockchain with AR/VR/XR environments, enhancing interactive and immersive experiences through secure and verifiable transactions on the blockchain.
 
 ### React Frontend
+
 The React frontend provides an interface to visualize the blockchain in real-time, search transactions, and analyze blockchain data.
+
+### Root Directory
+
+```css
+.vscode/
+├── settings.json
+
+Open_API/src/
+├── quantumfuse_blockchain_open_api.yaml
+
+QuantumFuse/
+├── core/
+│   ├── main.rs
+│   ├── dao/
+│   │   └── energydao.rs
+│   ├── data_structure/
+│   │   ├── advanced_simulation_tools_and_visualization_techniques.rs
+│   │   ├── cross-chain_communication_and_asset_transfer.rs
+│   │   ├── energy_forecast.rs
+│   │   ├── energy_nft_listing.rs
+│   │   ├── energy_storage_system.rs
+│   │   ├── grid_stability_event.rs
+│   │   ├── integration_of_quantum-inspired_algorithm.rs
+│   │   ├── multi-objective_optimization_algorithm.rs
+│   │   ├── real-time_grid_simulation_environment.rs
+│   │   ├── regulatory_update.rs
+│   │   ├── reputation_system.rs
+│   │   ├── resilience_scenario.rs
+│   │   ├── sustainability_token.rs
+│   │   ├── tokenized_incentive_system.rs
+│   │   ├── version_control_system_for_regulations.rs
+│   ├── marketplace/
+│   │   └── quantumfuse_marketplace.rs
+│   ├── nfts/
+│   │   ├── fnft/
+│   │   │   └── fnft.rs
+│   │   ├── live_metadata/
+│   │   │   └── lmd-nft.rs
+│   ├── smartcontract/
+│   │   ├── quantumfuse_smartcontract.rs
+│   │   └── sustainable_energy_smartcontract.rs
+│   ├── wallets/
+│   │   ├── community/
+│   │   │   └── wallet_main.rs
+│   │   ├── founder/
+│   │   │   └── wallet_main.rs
+│   │   ├── ai_monitor.rs
+│   │   ├── fusion.rs
+│   │   ├── ipfs_api.rs
+│   │   └── main.rs
+
+QuantumFuseNode/
+├── main.go
+
+api/
+├── api.py
+├── ar_vr_xr.py
+├── auth.py
+├── blockchain.py
+├── cli.py
+├── quantum_simulator.py
+├── renewable_energy_system_model.py
+├── spark.py
+├── user-authentication.py
+
+frontend/
+├── quantumfuse-app/
+│   ├── public/
+│   │   ├── favicon.ico
+│   │   ├── index.html
+│   │   ├── logo-192x192.png
+│   │   ├── logo-512x512.png
+│   │   ├── manifest.json
+│   │   ├── robots.txt
+│   ├── src/
+│   │   ├── App.css
+│   │   ├── App.js
+│   │   ├── App.test.js
+│   │   ├── index.css
+│   │   ├── index.js
+│   │   ├── logo.svg
+│   │   ├── reportWebVitals.js
+│   │   ├── setupTests.js
+
+node_modules/
+.gitignore
+Cargo.lock
+Cargo.toml
+LICENSE
+Makefile
+README.md
+dockerfile
+get-pip.py
+go.mod
+package-lock.json
+replit.nix
+```
+
+### Explanation of Each Section:
+
+1. **.vscode/**
+    - `settings.json`: Visual Studio Code settings.
+
+2. **Open_API/src/**
+    - `quantumfuse_blockchain_open_api.yaml`: OpenAPI specifications for QuantumFuse blockchain.
+
+3. **QuantumFuse/core/**
+    - `main.rs`: Main entry point for core blockchain functionalities.
+    - **dao/**: Directory for DAO-related functionalities.
+        - `energydao.rs`: Energy DAO implementation.
+    - **data_structure/**: Directory for advanced simulation tools and visualization techniques.
+        - Contains various modules such as:
+            - `advanced_simulation_tools_and_visualization_techniques.rs`
+            - `cross-chain_communication_and_asset_transfer.rs`
+            - `energy_forecast.rs`
+            - `energy_nft_listing.rs`
+            - `energy_storage_system.rs`
+            - `grid_stability_event.rs`
+            - `integration_of_quantum-inspired_algorithm.rs`
+            - `multi-objective_optimization_algorithm.rs`
+            - `real-time_grid_simulation_environment.rs`
+            - `regulatory_update.rs`
+            - `reputation_system.rs`
+            - `resilience_scenario.rs`
+            - `sustainability_token.rs`
+            - `tokenized_incentive_system.rs`
+            - `version_control_system_for_regulations.rs`
+    - **marketplace/**: Directory for marketplace functionalities.
+        - `quantumfuse_marketplace.rs`: QuantumFuse marketplace implementation.
+    - **nfts/**: Directory for NFT-related functionalities.
+        - **fnft/**: Directory for fractional NFTs.
+            - `fnft.rs`: FNFT implementation.
+        - **live_metadata/**: Directory for live metadata NFTs.
+            - `lmd-nft.rs`: Live metadata NFT implementation.
+    - **smartcontract/**: Directory for smart contract-related functionalities.
+        - `quantumfuse_smartcontract.rs`: QuantumFuse smart contract implementation.
+        - `sustainable_energy_smartcontract.rs`: Sustainable energy smart contract implementation.
+    - **wallets/**: Directory for wallet-related functionalities.
+        - **community/**: Directory for community wallet functionalities.
+            - `wallet_main.rs`: Community wallet main implementation.
+        - **founder/**: Directory for founder wallet functionalities.
+            - `wallet_main.rs`: Founder wallet main implementation.
+        - Additional wallet-related files:
+            - `ai_monitor.rs`: AI monitor for wallets.
+            - `fusion.rs`: Fusion-related functionalities for wallets.
+            - `ipfs_api.rs`: IPFS API integration.
+            - `main.rs`: Combined core blockchain main file.
+
+4. **QuantumFuseNode/**
+    - `main.go`: Main entry point for the QuantumFuse node written in Go.
+
+5. **api/**
+    - `api.py`: Main API script.
+    - `ar_vr_xr.py`: AR/VR/XR integration script.
+    - `auth.py`: Authentication script.
+    - `blockchain.py`: Blockchain interaction script.
+    - `cli.py`: Command-line interface script.
+    - `quantum_simulator.py`: Quantum simulator script.
+    - `renewable_energy_system_model.py`: Renewable energy system model script.
+    - `spark.py`: Apache Spark integration script.
+    - `user-authentication.py`: User authentication script.
+
+6. **frontend/quantumfuse-app/**
+    - **public/**: Directory for public assets.
+        - `favicon.ico`: Favicon.
+        - `index.html`: Main HTML file.
+        - `logo-192x192.png`: Logo (192x192).
+        - `logo-512x512.png`: Logo (512x512).
+        - `manifest.json`: Web app manifest.
+        - `robots.txt`: Robots.txt file for web crawlers.
+    - **src/**: Directory for source code.
+        - `App.css`: Main CSS file for the app.
+        - `App.js`: Main React component.
+        - `App.test.js`: Test file for the app.
+        - `index.css`: CSS file for index.
+        - `index.js`: Main entry point for the React app.
+        - `logo.svg`: Logo in SVG format.
+        - `reportWebVitals.js`: Web vitals report script.
+        - `setupTests.js`: Setup script for tests.
+
+7. **Miscellaneous**
+    - `node_modules/`: Directory for Node.js modules.
+    - `.gitignore`: Git ignore file.
+    - `Cargo.lock`: Cargo lock file.
+    - `Cargo.toml`: Cargo configuration file.
+    - `LICENSE`: License file.
+    - `Makefile`: Makefile for building the project.
+    - `README.md`: Readme file.
+    - `dockerfile`: Dockerfile for containerizing the application.
+    - `get-pip.py`: Script to install pip.
+    - `go.mod`: Go module file.
+    - `package-lock.json`: NPM package lock file.
+    - `replit.nix`: Replit Nix configuration file.
 
 ## Installation
 
 To run this project, you need the following:
+
 - Rust
 - Go
 - Node.js
@@ -111,6 +318,7 @@ To run this project, you need the following:
 ## Usage
 
 ### Running the Blockchain
+
 Navigate to the `core` directory and build the Rust project:
 
 ```sh
@@ -120,6 +328,7 @@ cargo run --release
 ```
 
 ### Interacting with the API
+
 Navigate to the `api` directory and install Python dependencies:
 
 ```sh
@@ -129,6 +338,7 @@ flask run
 ```
 
 ### Running Quantum Simulations
+
 Using Qiskit to simulate quantum operations:
 
 ```python
@@ -136,6 +346,7 @@ Using Qiskit to simulate quantum operations:
 ```
 
 ### Visualizing the Blockchain
+
 Navigate to the `frontend` directory and install Node.js dependencies:
 
 ```sh
@@ -145,6 +356,7 @@ npm start
 ```
 
 ### Running Smart Contract
+
 Use tools like Truffle or Hardhat to deploy and interact with the smart contracts:
 
 ```sh
@@ -166,17 +378,20 @@ pip-audit
 ## Build Results Summary
 
 ### Core Blockchain (Rust)
+
 - **Build Status**: Successful
 - **Command**: `cargo build --release`
 - **Output**: Finished release [optimized] target(s) in 7m 23s
 
 ### Node (Go)
-- **Setup**: 
+
+- **Setup**:
   - `go mod tidy` - Successfully downloaded and prepared dependencies.
   - `go build -o QuantumFuseNode` - Successfully built the Go node executable.
 
 ### API (Python)
-- **Setup**: 
+
+- **Setup**:
   - `pip install -r requirements.txt` - Successfully installed all dependencies.
   - **Notable Dependencies**:
     - Flask==2.2.5
@@ -186,18 +401,20 @@ pip-audit
     - qiskit==1.1.0
 
 ### Frontend (React)
-- **Setup**: 
+
+- **Setup**:
   - `npm install` - Successfully installed all dependencies.
   - `npm run build` - Successfully created an optimized production build.
   - **Output**:
     - Main JavaScript file: 46.58 kB (gzip)
     - Chunk JavaScript file: 1.79 kB (gzip)
     - CSS file: 515 B (gzip)
-- **Vulnerabilities**: 
-  - Initially found 8 vulnerabilities (2 moderate, 6 high). 
+- **Vulnerabilities**:
+  - Initially found 8 vulnerabilities (2 moderate, 6 high).
   - Resolved by running `npm audit fix --force` resulting in zero vulnerabilities.
 
 ### Vulnerability Management
+
 - **Rust**:
   - `cargo audit` - Ensure dependencies are up-to-date and free of vulnerabilities.
 - **Python**:
@@ -233,7 +450,7 @@ For any inquiries or issues, please contact:
 
 - **Jacque Antoine DeGraff**
 - **President Of CreoDAMO Inc.**
-- **Email:** jacquedegraff@creodamo.com
+- **Email:** <jacquedegraff@creodamo.com>
 
 ## Acknowledgements
 
