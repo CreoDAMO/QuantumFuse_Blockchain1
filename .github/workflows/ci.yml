@@ -24,6 +24,11 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4
 
+    - name: Verify directory structure
+      run: |
+        echo "Current directory structure:"
+        ls -R
+
     - name: Install dependencies
       run: sudo apt-get install -y make
 
@@ -62,9 +67,7 @@ jobs:
 
     - name: Setup Python Dependencies
       if: matrix.language == 'python'
-      run: |
-        cd QuantumFuse/api || exit 1
-        pip install -r requirements.txt
+      run: make setup-python
 
     - name: Test Python
       if: matrix.language == 'python'
