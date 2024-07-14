@@ -23,15 +23,20 @@ update: update-rust update-go update-python update-node
 
 # Rust targets
 setup-rust:
+	rustup default nightly
+	rustup component add rust-src --toolchain nightly
 	cd $(RUST_DIR) && cargo update && cargo build
 
 build-rust:
+	rustup default nightly
 	cd $(RUST_DIR) && cargo build --release
 
 run-rust:
+	rustup default nightly
 	cd $(RUST_DIR) && cargo run
 
 test-rust:
+	rustup default nightly
 	cd $(RUST_DIR) && cargo test
 
 clean-rust:
