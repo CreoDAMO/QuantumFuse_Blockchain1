@@ -1,109 +1,108 @@
-name: CI/CD Pipeline
+# Directories
+RUST_DIR = QuantumFuse/core
+GO_DIR = QuantumFuseNode
+PYTHON_DIR = QuantumFuse/api
+FRONTEND_DIR = QuantumFuse/frontend/quantumfuse-app
 
-on:
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
+# Targets
+.PHONY: all setup build run test clean update
 
-jobs:
-  build:
-    runs-on: ubuntu-latest
+all: setup build
 
-    services:
-      ipfs:
-        image: ipfs/go-ipfs:latest
-        ports:
-          - 5001:5001
+setup: setup-rust setup-go setup-python setup-node
 
-    strategy:
-      matrix:
-        language: [rust, go, python, nodejs]
+build: build-rust build-go build-python build-node
 
-    steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
+run: run-rust run-go run-python run-node
 
-    - name: Set up Rust nightly toolchain
-      if: matrix.language == 'rust'
-      uses: actions-rs/toolchain@v1
-      with:
-        toolchain: nightly
-        override: true
+test: test-rust test-go test-python test-node
 
-    - name: Cache Rust dependencies
-      if: matrix.language == 'rust'
-      uses: actions/cache@v2
-      with:
-        path: ~/.cargo/registry
-        key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
-        restore-keys: |
-          ${{ runner.os }}-cargo-
+clean: clean-rust clean-go clean-python clean-node
 
-    - name: Build with cargo
-      if: matrix.language == 'rust'
-      run: |
-        cargo build --release
-        cargo test
+update: update-rust update-go update-python update-node
 
-    - name: Set up Go
-      if: matrix.language == 'go'
-      uses: actions/setup-go@v2
-      with:
-        go-version: '^1.16'
+# Rust targets
+setup-rust:
+	rustup default nightly
+	rustup component add rust-src --toolchain nightly
+	cd $(RUST_DIR) && cargo update && cargo build
 
-    - name: Cache Go modules
-      if: matrix.language == 'go'
-      uses: actions/cache@v2
-      with:
-        path: ~/go/pkg/mod
-        key: ${{ runner.os }}-go-${{ hashFiles('**/go.sum') }}
-        restore-keys: |
-          ${{ runner.os }}-go-
+build-rust:
+	rustup default nightly
+	cd $(RUST_DIR) && cargo build --release
 
-    - name: Build with go
-      if: matrix.language == 'go'
-      run: |
-        go build ./...
-        go test ./...
+run-rust:
+	rustup default nightly
+	cd $(RUST_DIR) && cargo run
 
-    - name: Set up Python
-      if: matrix.language == 'python'
-      uses: actions/setup-python@v4
-      with:
-        python-version: '3.x'
+test-rust:
+	rustup default nightly
+	cd $(RUST_DIR) && cargo test
 
-    - name: Install Python dependencies
-      if: matrix.language == 'python'
-      run: |
-        python -m pip install --upgrade pip
-        pip install -r QuantumFuse/api/requirements.txt
+clean-rust:
+	cd $(RUST_DIR) && cargo clean
 
-    - name: Test with pytest
-      if: matrix.language == 'python'
-      run: |
-        pytest QuantumFuse/api
+update-rust:
+	cd $(RUST_DIR) && cargo update
 
-    - name: Set up Node.js
-      if: matrix.language == 'nodejs'
-      uses: actions/setup-node@v4
-      with:
-        node-version: '16'
+# Go targets
+setup-go:
+	cd $(GO_DIR) && go mod tidy
 
-    - name: Install Node.js dependencies
-      if: matrix.language == 'nodejs'
-      run: |
-        cd QuantumFuse/frontend/quantumfuse-app
-        npm install
+build-go:
+	cd $(GO_DIR) && go build -o QuantumFuseNode
 
-    - name: Build with npm
-      if: matrix.language == 'nodejs'
-      run: |
-        cd QuantumFuse/frontend/quantumfuse-app
-        npm run build
+run-go:
+	cd $(GO_DIR) && ./QuantumFuseNode
 
-    - name: Test with npm
-      if: matrix.language == 'nodejs'
-      run: |
-        cd QuantumFuse/frontend/quantumfuse-app
-        npm test
+test-go:
+	cd $(GO_DIR) && go test ./...
+
+clean-go:
+	rm -f $(GO_DIR)/QuantumFuseNode
+
+update-go:
+	cd $(GO_DIR) && go get -u ./...
+
+# Python targets
+setup-python:
+	cd $(PYTHON_DIR) && pip install -r requirements.txt
+
+build-python: # No build step needed for Python
+	@echo "No build step needed for Python."
+
+run-python:
+	cd $(PYTHON_DIR) && python api.py
+
+test-python:
+	cd $(PYTHON_DIR) && pytest
+
+clean-python:
+	find $(PYTHON_DIR) -type f -name "*.pyc" -delete
+	find $(PYTHON_DIR) -type d -name "__pycache__" -delete
+
+update-python:
+	cd $(PYTHON_DIR) && pip install --upgrade -r requirements.txt
+
+# Node.js targets
+setup-node: update-npm
+	cd $(FRONTEND_DIR) && npm install
+
+build-node:
+	cd $(FRONTEND_DIR) && npm run build
+
+run-node:
+	cd $(FRONTEND_DIR) && npm start
+
+test-node:
+	cd $(FRONTEND_DIR) && npm test
+
+clean-node:
+	rm -rf $(FRONTEND_DIR)/node_modules
+	rm -rf $(FRONTEND_DIR)/build
+
+update-node:
+	cd $(FRONTEND_DIR) && ncu -u && npm install
+
+update-npm:
+	npm install -g npm@latest
