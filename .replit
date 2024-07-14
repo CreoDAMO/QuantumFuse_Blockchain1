@@ -1,6 +1,6 @@
 run = "make setup"
 compile = "make"
-modules = ["python-3.12", "rust-stable", "nodejs-20", "go-1.21", "rust-nightly", "web"]
+modules = ["python-3.12", "rust-stable", "nodejs-20", "go-1.21", "rust-nightly"]
 
 [nix]
 channel = "stable-24_05"

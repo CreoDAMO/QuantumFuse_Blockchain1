@@ -1,0 +1,317 @@
+cargo:rerun-if-changed=/home/runner/QuantumFuseBlockchain/.cargo/registry/src/index.crates.io-6f17d22bba15001f/prost-build-0.10.4/third-party/protobuf/cmake
+CMAKE_TOOLCHAIN_FILE_x86_64-unknown-linux-gnu = None
+CMAKE_TOOLCHAIN_FILE_x86_64_unknown_linux_gnu = None
+HOST_CMAKE_TOOLCHAIN_FILE = None
+CMAKE_TOOLCHAIN_FILE = None
+CMAKE_GENERATOR_x86_64-unknown-linux-gnu = None
+CMAKE_GENERATOR_x86_64_unknown_linux_gnu = None
+HOST_CMAKE_GENERATOR = None
+CMAKE_GENERATOR = None
+CMAKE_PREFIX_PATH_x86_64-unknown-linux-gnu = None
+CMAKE_PREFIX_PATH_x86_64_unknown_linux_gnu = None
+HOST_CMAKE_PREFIX_PATH = None
+CMAKE_PREFIX_PATH = Some("/nix/store/nbad47q0m0m9c5xid7zh05hiknwircbp-patchelf-0.15.0:/nix/store/bq6xbl9cq6hkcn65mz2fzc2k38xiv87h-update-autotools-gnu-config-scripts-hook:/nix/store/9bv7dcvmfcjnmg5mnqwqlq2wxfn8d7yi-gcc-wrapper-13.2.0:/nix/store/kln7kinji3b7sz8r50h4gn9yy6k1js9a-binutils-wrapper-2.41:/nix/store/q1nssraba326p2kp6627hldd2bhg254c-cmake-3.29.2:/nix/store/mzhqknx2mc94jdz4n320hn1lml86398y-clang-wrapper-17.0.6:/nix/store/7bd6mlnyj4192ssw50hksnqbxmj98p26-binutils-wrapper-2.41:/nix/store/zdvrzlvzbn9ymb0z8na50w995j8np16z-pkg-config-wrapper-0.29.2:/nix/store/191vca5vdxdlr32k2hpzd66mic98930f-openssl-3.0.13-dev:/nix/store/qannz09m66qpcy3ny1f4nkl4ql0g71ks-openssl-3.0.13-bin:/nix/store/gp504m4dvw5k2pdx6pccf1km79fkcwgf-openssl-3.0.13:/nix/store/7hnr99nxrd2aw6lghybqdmkckq60j6l9-python3-3.11.9:/nix/store/xhldz66b9bl8hwyhamx46wyyaklqr235-python3.11-pip-24.0:/nix/store/00mg4vlhzmm7gi9bd5v5ydjlgrywpc3n-go-1.22.3:/nix/store/7xvqal33iahnz89h4b7b1q9cjnxphmz3-kubo-0.28.0:/nix/store/l6sykmmiavsfl44p16643x59282n78ll-nodejs-18.20.2:/nix/store/k0d34jsjxzr7mg1c02vvbr616rb1m8nq-yarn-1.22.22:/nix/store/hggpnywm6l7cfh2ml1ynm50ap9x4f9rn-mesa-24.0.7-drivers:/nix/store/smacbfb82wp7ncz2rwac68jd50qxr70a-libglvnd-1.7.0-dev:/nix/store/jz3vvf4nsyirb25rh9dbhksm4gq6wybb-libglvnd-1.7.0:/nix/store/a83znbrflv30lvhww0d2rljbyd5mw0c0-pulseaudio-17.0-dev:/nix/store/xslrgzkvciny0m0cqbgq4bnvydvpdkgx-libcap-2.69-dev:/nix/store/nn78wg4rgns62w5sfzyxashxizd0lfva-attr-2.5.2-dev:/nix/store/ha8rh8jg19r8418baa8ps9b9kvd6szcf-attr-2.5.2-bin:/nix/store/5nk2ga7i2f030am4qpcdsd8qlk6i3z83-attr-2.5.2:/nix/store/yvhyhcfhc98wm86pw4ygk5jdr804iwrw-libcap-2.69-lib:/nix/store/cnnmb3axmv43lj22gny3m4hj06i1nc7c-libcap-2.69:/nix/store/pn9glkalcj7i5p549dpsl1c46pkb13xr-pulseaudio-17.0:/nix/store/x9pcjqpxv8j7fsc5aivx0m38529fxsmi-compiler-rt-libc-17.0.6-dev:/nix/store/2ryq88lrrrrmidsvridcv8rcs3arp1f3-compiler-rt-libc-17.0.6")
+CMAKE_x86_64-unknown-linux-gnu = None
+CMAKE_x86_64_unknown_linux_gnu = None
+HOST_CMAKE = None
+CMAKE = None
+running: cd "/home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/debug/build/prost-build-3b98527a7dd7781f/out/build" && CMAKE_PREFIX_PATH="/nix/store/nbad47q0m0m9c5xid7zh05hiknwircbp-patchelf-0.15.0:/nix/store/bq6xbl9cq6hkcn65mz2fzc2k38xiv87h-update-autotools-gnu-config-scripts-hook:/nix/store/9bv7dcvmfcjnmg5mnqwqlq2wxfn8d7yi-gcc-wrapper-13.2.0:/nix/store/kln7kinji3b7sz8r50h4gn9yy6k1js9a-binutils-wrapper-2.41:/nix/store/q1nssraba326p2kp6627hldd2bhg254c-cmake-3.29.2:/nix/store/mzhqknx2mc94jdz4n320hn1lml86398y-clang-wrapper-17.0.6:/nix/store/7bd6mlnyj4192ssw50hksnqbxmj98p26-binutils-wrapper-2.41:/nix/store/zdvrzlvzbn9ymb0z8na50w995j8np16z-pkg-config-wrapper-0.29.2:/nix/store/191vca5vdxdlr32k2hpzd66mic98930f-openssl-3.0.13-dev:/nix/store/qannz09m66qpcy3ny1f4nkl4ql0g71ks-openssl-3.0.13-bin:/nix/store/gp504m4dvw5k2pdx6pccf1km79fkcwgf-openssl-3.0.13:/nix/store/7hnr99nxrd2aw6lghybqdmkckq60j6l9-python3-3.11.9:/nix/store/xhldz66b9bl8hwyhamx46wyyaklqr235-python3.11-pip-24.0:/nix/store/00mg4vlhzmm7gi9bd5v5ydjlgrywpc3n-go-1.22.3:/nix/store/7xvqal33iahnz89h4b7b1q9cjnxphmz3-kubo-0.28.0:/nix/store/l6sykmmiavsfl44p16643x59282n78ll-nodejs-18.20.2:/nix/store/k0d34jsjxzr7mg1c02vvbr616rb1m8nq-yarn-1.22.22:/nix/store/hggpnywm6l7cfh2ml1ynm50ap9x4f9rn-mesa-24.0.7-drivers:/nix/store/smacbfb82wp7ncz2rwac68jd50qxr70a-libglvnd-1.7.0-dev:/nix/store/jz3vvf4nsyirb25rh9dbhksm4gq6wybb-libglvnd-1.7.0:/nix/store/a83znbrflv30lvhww0d2rljbyd5mw0c0-pulseaudio-17.0-dev:/nix/store/xslrgzkvciny0m0cqbgq4bnvydvpdkgx-libcap-2.69-dev:/nix/store/nn78wg4rgns62w5sfzyxashxizd0lfva-attr-2.5.2-dev:/nix/store/ha8rh8jg19r8418baa8ps9b9kvd6szcf-attr-2.5.2-bin:/nix/store/5nk2ga7i2f030am4qpcdsd8qlk6i3z83-attr-2.5.2:/nix/store/yvhyhcfhc98wm86pw4ygk5jdr804iwrw-libcap-2.69-lib:/nix/store/cnnmb3axmv43lj22gny3m4hj06i1nc7c-libcap-2.69:/nix/store/pn9glkalcj7i5p549dpsl1c46pkb13xr-pulseaudio-17.0:/nix/store/x9pcjqpxv8j7fsc5aivx0m38529fxsmi-compiler-rt-libc-17.0.6-dev:/nix/store/2ryq88lrrrrmidsvridcv8rcs3arp1f3-compiler-rt-libc-17.0.6" "cmake" "/home/runner/QuantumFuseBlockchain/.cargo/registry/src/index.crates.io-6f17d22bba15001f/prost-build-0.10.4/third-party/protobuf/cmake" "-Dprotobuf_BUILD_TESTS=OFF" "-DCMAKE_INSTALL_PREFIX=/home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/debug/build/prost-build-3b98527a7dd7781f/out" "-DCMAKE_C_FLAGS= -ffunction-sections -fdata-sections -fPIC -m64" "-DCMAKE_C_COMPILER=/nix/store/9bv7dcvmfcjnmg5mnqwqlq2wxfn8d7yi-gcc-wrapper-13.2.0/bin/gcc" "-DCMAKE_CXX_FLAGS= -ffunction-sections -fdata-sections -fPIC -m64" "-DCMAKE_CXX_COMPILER=/nix/store/9bv7dcvmfcjnmg5mnqwqlq2wxfn8d7yi-gcc-wrapper-13.2.0/bin/g++" "-DCMAKE_ASM_FLAGS= -ffunction-sections -fdata-sections -fPIC -m64" "-DCMAKE_ASM_COMPILER=/nix/store/9bv7dcvmfcjnmg5mnqwqlq2wxfn8d7yi-gcc-wrapper-13.2.0/bin/gcc" "-DCMAKE_BUILD_TYPE=Debug"
+-- 
+-- 3.19.4.0
+-- Could NOT find ZLIB (missing: ZLIB_LIBRARY ZLIB_INCLUDE_DIR) 
+-- Configuring done (0.2s)
+-- Generating done (0.2s)
+-- Build files have been written to: /home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/debug/build/prost-build-3b98527a7dd7781f/out/build
+running: cd "/home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/debug/build/prost-build-3b98527a7dd7781f/out/build" && MAKEFLAGS="-j --jobserver-fds=8,9 --jobserver-auth=8,9" "cmake" "--build" "." "--target" "install" "--config" "Debug"
+[ 17%] Built target libprotobuf-lite
+[ 17%] Building CXX object CMakeFiles/libprotobuf.dir/home/runner/QuantumFuseBlockchain/.cargo/registry/src/index.crates.io-6f17d22bba15001f/prost-build-0.10.4/third-party/protobuf/src/google/protobuf/generated_message_reflection.cc.o
+[ 18%] Building CXX object CMakeFiles/libprotobuf.dir/home/runner/QuantumFuseBlockchain/.cargo/registry/src/index.crates.io-6f17d22bba15001f/prost-build-0.10.4/third-party/protobuf/src/google/protobuf/generated_message_table_driven.cc.o
+[ 18%] Building CXX object CMakeFiles/libprotobuf.dir/home/runner/QuantumFuseBlockchain/.cargo/registry/src/index.crates.io-6f17d22bba15001f/prost-build-0.10.4/third-party/protobuf/src/google/protobuf/generated_message_tctable_full.cc.o
+[ 19%] Building CXX object CMakeFiles/libprotobuf.dir/home/runner/QuantumFuseBlockchain/.cargo/registry/src/index.crates.io-6f17d22bba15001f/prost-build-0.10.4/third-party/protobuf/src/google/protobuf/io/gzip_stream.cc.o
+[ 19%] Building CXX object CMakeFiles/libprotobuf.dir/home/runner/QuantumFuseBlockchain/.cargo/registry/src/index.crates.io-6f17d22bba15001f/prost-build-0.10.4/third-party/protobuf/src/google/protobuf/io/printer.cc.o
+[ 20%] Building CXX object CMakeFiles/libprotobuf.dir/home/runner/QuantumFuseBlockchain/.cargo/registry/src/index.crates.io-6f17d22bba15001f/prost-build-0.10.4/third-party/protobuf/src/google/protobuf/io/tokenizer.cc.o
+[ 20%] Building CXX object CMakeFiles/libprotobuf.dir/home/runner/QuantumFuseBlockchain/.cargo/registry/src/index.crates.io-6f17d22bba15001f/prost-build-0.10.4/third-party/protobuf/src/google/protobuf/map_field.cc.o
+[ 21%] Building CXX object CMakeFiles/libprotobuf.dir/home/runner/QuantumFuseBlockchain/.cargo/registry/src/index.crates.io-6f17d22bba15001f/prost-build-0.10.4/third-party/protobuf/src/google/protobuf/message.cc.o
+[ 21%] Building CXX object CMakeFiles/libprotobuf.dir/home/runner/QuantumFuseBlockchain/.cargo/registry/src/index.crates.io-6f17d22bba15001f/prost-build-0.10.4/third-party/protobuf/src/google/protobuf/reflection_ops.cc.o
+[ 22%] Building CXX object CMakeFiles/libprotobuf.dir/home/runner/QuantumFuseBlockchain/.cargo/registry/src/index.crates.io-6f17d22bba15001f/prost-build-0.10.4/third-party/protobuf/src/google/protobuf/service.cc.o
+[ 22%] Building CXX object CMakeFiles/libprotobuf.dir/home/runner/QuantumFuseBlockchain/.cargo/registry/src/index.crates.io-6f17d22bba15001f/prost-build-0.10.4/third-party/protobuf/src/google/protobuf/source_context.pb.cc.o
+[ 23%] Building CXX object CMakeFiles/libprotobuf.dir/home/runner/QuantumFuseBlockchain/.cargo/registry/src/index.crates.io-6f17d22bba15001f/prost-build-0.10.4/third-party/protobuf/src/google/protobuf/struct.pb.cc.o
+[ 23%] Building CXX object CMakeFiles/libprotobuf.dir/home/runner/QuantumFuseBlockchain/.cargo/registry/src/index.crates.io-6f17d22bba15001f/prost-build-0.10.4/third-party/protobuf/src/google/protobuf/stubs/substitute.cc.o
+[ 24%] Building CXX object CMakeFiles/libprotobuf.dir/home/runner/QuantumFuseBlockchain/.cargo/registry/src/index.crates.io-6f17d22bba15001f/prost-build-0.10.4/third-party/protobuf/src/google/protobuf/text_format.cc.o
+[ 24%] Building CXX object CMakeFiles/libprotobuf.dir/home/runner/QuantumFuseBlockchain/.cargo/registry/src/index.crates.io-6f17d22bba15001f/prost-build-0.10.4/third-party/protobuf/src/google/protobuf/timestamp.pb.cc.o
+[ 25%] Building CXX object CMakeFiles/libprotobuf.dir/home/runner/QuantumFuseBlockchain/.cargo/registry/src/index.crates.io-6f17d22bba15001f/prost-build-0.10.4/third-party/protobuf/src/google/protobuf/type.pb.cc.o
+[ 25%] Building CXX object CMakeFiles/libprotobuf.dir/home/runner/QuantumFuseBlockchain/.cargo/registry/src/index.crates.io-6f17d22bba15001f/prost-build-0.10.4/third-party/protobuf/src/google/protobuf/unknown_field_set.cc.o
+[ 26%] Building CXX object CMakeFiles/libprotobuf.dir/home/runner/QuantumFuseBlockchain/.cargo/registry/src/index.crates.io-6f17d22bba15001f/prost-build-0.10.4/third-party/protobuf/src/google/protobuf/util/delimited_message_util.cc.o
+[ 26%] Building CXX object CMakeFiles/libprotobuf.dir/home/runner/QuantumFuseBlockchain/.cargo/registry/src/index.crates.io-6f17d22bba15001f/prost-build-0.10.4/third-party/protobuf/src/google/protobuf/util/field_comparator.cc.o
+[ 27%] Building CXX object CMakeFiles/libprotobuf.dir/home/runner/QuantumFuseBlockchain/.cargo/registry/src/index.crates.io-6f17d22bba15001f/prost-build-0.10.4/third-party/protobuf/src/google/protobuf/util/field_mask_util.cc.o
+[ 27%] Building CXX object CMakeFiles/libprotobuf.dir/home/runner/QuantumFuseBlockchain/.cargo/registry/src/index.crates.io-6f17d22bba15001f/prost-build-0.10.4/third-party/protobuf/src/google/protobuf/util/internal/datapiece.cc.o
+[ 28%] Building CXX object CMakeFiles/libprotobuf.dir/home/runner/QuantumFuseBlockchain/.cargo/registry/src/index.crates.io-6f17d22bba15001f/prost-build-0.10.4/third-party/protobuf/src/google/protobuf/util/internal/default_value_objectwriter.cc.o
+[ 28%] Building CXX object CMakeFiles/libprotobuf.dir/home/runner/QuantumFuseBlockchain/.cargo/registry/src/index.crates.io-6f17d22bba15001f/prost-build-0.10.4/third-party/protobuf/src/google/protobuf/util/internal/error_listener.cc.o
+[ 29%] Building CXX object CMakeFiles/libprotobuf.dir/home/runner/QuantumFuseBlockchain/.cargo/registry/src/index.crates.io-6f17d22bba15001f/prost-build-0.10.4/third-party/protobuf/src/google/protobuf/util/internal/field_mask_utility.cc.o
+[ 29%] Building CXX object CMakeFiles/libprotobuf.dir/home/runner/QuantumFuseBlockchain/.cargo/registry/src/index.crates.io-6f17d22bba15001f/prost-build-0.10.4/third-party/protobuf/src/google/protobuf/util/internal/json_escaping.cc.o
+[ 30%] Building CXX object CMakeFiles/libprotobuf.dir/home/runner/QuantumFuseBlockchain/.cargo/registry/src/index.crates.io-6f17d22bba15001f/prost-build-0.10.4/third-party/protobuf/src/google/protobuf/util/internal/json_objectwriter.cc.o
+[ 30%] Building CXX object CMakeFiles/libprotobuf.dir/home/runner/QuantumFuseBlockchain/.cargo/registry/src/index.crates.io-6f17d22bba15001f/prost-build-0.10.4/third-party/protobuf/src/google/protobuf/util/internal/json_stream_parser.cc.o
+[ 31%] Building CXX object CMakeFiles/libprotobuf.dir/home/runner/QuantumFuseBlockchain/.cargo/registry/src/index.crates.io-6f17d22bba15001f/prost-build-0.10.4/third-party/protobuf/src/google/protobuf/util/internal/object_writer.cc.o
+[ 31%] Building CXX object CMakeFiles/libprotobuf.dir/home/runner/QuantumFuseBlockchain/.cargo/registry/src/index.crates.io-6f17d22bba15001f/prost-build-0.10.4/third-party/protobuf/src/google/protobuf/util/internal/proto_writer.cc.o
+[ 32%] Building CXX object CMakeFiles/libprotobuf.dir/home/runner/QuantumFuseBlockchain/.cargo/registry/src/index.crates.io-6f17d22bba15001f/prost-build-0.10.4/third-party/protobuf/src/google/protobuf/util/internal/protostream_objectsource.cc.o
+[ 32%] Building CXX object CMakeFiles/libprotobuf.dir/home/runner/QuantumFuseBlockchain/.cargo/registry/src/index.crates.io-6f17d22bba15001f/prost-build-0.10.4/third-party/protobuf/src/google/protobuf/util/internal/protostream_objectwriter.cc.o
+[ 33%] Building CXX object CMakeFiles/libprotobuf.dir/home/runner/QuantumFuseBlockchain/.cargo/registry/src/index.crates.io-6f17d22bba15001f/prost-build-0.10.4/third-party/protobuf/src/google/protobuf/util/internal/type_info.cc.o
+[ 33%] Building CXX object CMakeFiles/libprotobuf.dir/home/runner/QuantumFuseBlockchain/.cargo/registry/src/index.crates.io-6f17d22bba15001f/prost-build-0.10.4/third-party/protobuf/src/google/protobuf/util/internal/utility.cc.o
+[ 34%] Building CXX object CMakeFiles/libprotobuf.dir/home/runner/QuantumFuseBlockchain/.cargo/registry/src/index.crates.io-6f17d22bba15001f/prost-build-0.10.4/third-party/protobuf/src/google/protobuf/util/json_util.cc.o
+[ 34%] Building CXX object CMakeFiles/libprotobuf.dir/home/runner/QuantumFuseBlockchain/.cargo/registry/src/index.crates.io-6f17d22bba15001f/prost-build-0.10.4/third-party/protobuf/src/google/protobuf/util/message_differencer.cc.o
+[ 35%] Building CXX object CMakeFiles/libprotobuf.dir/home/runner/QuantumFuseBlockchain/.cargo/registry/src/index.crates.io-6f17d22bba15001f/prost-build-0.10.4/third-party/protobuf/src/google/protobuf/util/time_util.cc.o
+[ 35%] Building CXX object CMakeFiles/libprotobuf.dir/home/runner/QuantumFuseBlockchain/.cargo/registry/src/index.crates.io-6f17d22bba15001f/prost-build-0.10.4/third-party/protobuf/src/google/protobuf/util/type_resolver_util.cc.o
+[ 35%] Building CXX object CMakeFiles/libprotobuf.dir/home/runner/QuantumFuseBlockchain/.cargo/registry/src/index.crates.io-6f17d22bba15001f/prost-build-0.10.4/third-party/protobuf/src/google/protobuf/wire_format.cc.o
+[ 36%] Building CXX object CMakeFiles/libprotobuf.dir/home/runner/QuantumFuseBlockchain/.cargo/registry/src/index.crates.io-6f17d22bba15001f/prost-build-0.10.4/third-party/protobuf/src/google/protobuf/wrappers.pb.cc.o
+[ 36%] Linking CXX static library libprotobufd.a
+[ 58%] Built target libprotobuf
+[ 58%] Building CXX object CMakeFiles/libprotoc.dir/home/runner/QuantumFuseBlockchain/.cargo/registry/src/index.crates.io-6f17d22bba15001f/prost-build-0.10.4/third-party/protobuf/src/google/protobuf/compiler/code_generator.cc.o
+[ 59%] Building CXX object CMakeFiles/libprotoc.dir/home/runner/QuantumFuseBlockchain/.cargo/registry/src/index.crates.io-6f17d22bba15001f/prost-build-0.10.4/third-party/protobuf/src/google/protobuf/compiler/command_line_interface.cc.o
+[ 59%] Building CXX object CMakeFiles/libprotoc.dir/home/runner/QuantumFuseBlockchain/.cargo/registry/src/index.crates.io-6f17d22bba15001f/prost-build-0.10.4/third-party/protobuf/src/google/protobuf/compiler/cpp/cpp_enum.cc.o
+[ 60%] Building CXX object CMakeFiles/libprotoc.dir/home/runner/QuantumFuseBlockchain/.cargo/registry/src/index.crates.io-6f17d22bba15001f/prost-build-0.10.4/third-party/protobuf/src/google/protobuf/compiler/cpp/cpp_enum_field.cc.o
+[ 60%] Building CXX object CMakeFiles/libprotoc.dir/home/runner/QuantumFuseBlockchain/.cargo/registry/src/index.crates.io-6f17d22bba15001f/prost-build-0.10.4/third-party/protobuf/src/google/protobuf/compiler/cpp/cpp_extension.cc.o
+[ 60%] Building CXX object CMakeFiles/libprotoc.dir/home/runner/QuantumFuseBlockchain/.cargo/registry/src/index.crates.io-6f17d22bba15001f/prost-build-0.10.4/third-party/protobuf/src/google/protobuf/compiler/cpp/cpp_field.cc.o
+[ 61%] Building CXX object CMakeFiles/libprotoc.dir/home/runner/QuantumFuseBlockchain/.cargo/registry/src/index.crates.io-6f17d22bba15001f/prost-build-0.10.4/third-party/protobuf/src/google/protobuf/compiler/cpp/cpp_file.cc.o
+[ 61%] Building CXX object CMakeFiles/libprotoc.dir/home/runner/QuantumFuseBlockchain/.cargo/registry/src/index.crates.io-6f17d22bba15001f/prost-build-0.10.4/third-party/protobuf/src/google/protobuf/compiler/cpp/cpp_generator.cc.o
+[ 62%] Building CXX object CMakeFiles/libprotoc.dir/home/runner/QuantumFuseBlockchain/.cargo/registry/src/index.crates.io-6f17d22bba15001f/prost-build-0.10.4/third-party/protobuf/src/google/protobuf/compiler/cpp/cpp_helpers.cc.o
+[ 62%] Building CXX object CMakeFiles/libprotoc.dir/home/runner/QuantumFuseBlockchain/.cargo/registry/src/index.crates.io-6f17d22bba15001f/prost-build-0.10.4/third-party/protobuf/src/google/protobuf/compiler/cpp/cpp_map_field.cc.o
+[ 63%] Building CXX object CMakeFiles/libprotoc.dir/home/runner/QuantumFuseBlockchain/.cargo/registry/src/index.crates.io-6f17d22bba15001f/prost-build-0.10.4/third-party/protobuf/src/google/protobuf/compiler/cpp/cpp_message.cc.o
+[ 63%] Building CXX object CMakeFiles/libprotoc.dir/home/runner/QuantumFuseBlockchain/.cargo/registry/src/index.crates.io-6f17d22bba15001f/prost-build-0.10.4/third-party/protobuf/src/google/protobuf/compiler/cpp/cpp_message_field.cc.o
+[ 64%] Building CXX object CMakeFiles/libprotoc.dir/home/runner/QuantumFuseBlockchain/.cargo/registry/src/index.crates.io-6f17d22bba15001f/prost-build-0.10.4/third-party/protobuf/src/google/protobuf/compiler/cpp/cpp_padding_optimizer.cc.o
+[ 64%] Building CXX object CMakeFiles/libprotoc.dir/home/runner/QuantumFuseBlockchain/.cargo/registry/src/index.crates.io-6f17d22bba15001f/prost-build-0.10.4/third-party/protobuf/src/google/protobuf/compiler/cpp/cpp_parse_function_generator.cc.o
+[ 65%] Building CXX object CMakeFiles/libprotoc.dir/home/runner/QuantumFuseBlockchain/.cargo/registry/src/index.crates.io-6f17d22bba15001f/prost-build-0.10.4/third-party/protobuf/src/google/protobuf/compiler/cpp/cpp_primitive_field.cc.o
+[ 65%] Building CXX object CMakeFiles/libprotoc.dir/home/runner/QuantumFuseBlockchain/.cargo/registry/src/index.crates.io-6f17d22bba15001f/prost-build-0.10.4/third-party/protobuf/src/google/protobuf/compiler/cpp/cpp_service.cc.o
+[ 66%] Building CXX object CMakeFiles/libprotoc.dir/home/runner/QuantumFuseBlockchain/.cargo/registry/src/index.crates.io-6f17d22bba15001f/prost-build-0.10.4/third-party/protobuf/src/google/protobuf/compiler/cpp/cpp_string_field.cc.o
+[ 66%] Building CXX object CMakeFiles/libprotoc.dir/home/runner/QuantumFuseBlockchain/.cargo/registry/src/index.crates.io-6f17d22bba15001f/prost-build-0.10.4/third-party/protobuf/src/google/protobuf/compiler/csharp/csharp_doc_comment.cc.o
+[ 67%] Building CXX object CMakeFiles/libprotoc.dir/home/runner/QuantumFuseBlockchain/.cargo/registry/src/index.crates.io-6f17d22bba15001f/prost-build-0.10.4/third-party/protobuf/src/google/protobuf/compiler/csharp/csharp_enum.cc.o
+[ 67%] Building CXX object CMakeFiles/libprotoc.dir/home/runner/QuantumFuseBlockchain/.cargo/registry/src/index.crates.io-6f17d22bba15001f/prost-build-0.10.4/third-party/protobuf/src/google/protobuf/compiler/csharp/csharp_enum_field.cc.o
+[ 68%] Building CXX object CMakeFiles/libprotoc.dir/home/runner/QuantumFuseBlockchain/.cargo/registry/src/index.crates.io-6f17d22bba15001f/prost-build-0.10.4/third-party/protobuf/src/google/protobuf/compiler/csharp/csharp_field_base.cc.o
+[ 68%] Building CXX object CMakeFiles/libprotoc.dir/home/runner/QuantumFuseBlockchain/.cargo/registry/src/index.crates.io-6f17d22bba15001f/prost-build-0.10.4/third-party/protobuf/src/google/protobuf/compiler/csharp/csharp_generator.cc.o
+[ 69%] Building CXX object CMakeFiles/libprotoc.dir/home/runner/QuantumFuseBlockchain/.cargo/registry/src/index.crates.io-6f17d22bba15001f/prost-build-0.10.4/third-party/protobuf/src/google/protobuf/compiler/csharp/csharp_helpers.cc.o
+[ 69%] Building CXX object CMakeFiles/libprotoc.dir/home/runner/QuantumFuseBlockchain/.cargo/registry/src/index.crates.io-6f17d22bba15001f/prost-build-0.10.4/third-party/protobuf/src/google/protobuf/compiler/csharp/csharp_map_field.cc.o
+[ 70%] Building CXX object CMakeFiles/libprotoc.dir/home/runner/QuantumFuseBlockchain/.cargo/registry/src/index.crates.io-6f17d22bba15001f/prost-build-0.10.4/third-party/protobuf/src/google/protobuf/compiler/csharp/csharp_message.cc.o
+[ 70%] Building CXX object CMakeFiles/libprotoc.dir/home/runner/QuantumFuseBlockchain/.cargo/registry/src/index.crates.io-6f17d22bba15001f/prost-build-0.10.4/third-party/protobuf/src/google/protobuf/compiler/csharp/csharp_message_field.cc.o
+[ 71%] Building CXX object CMakeFiles/libprotoc.dir/home/runner/QuantumFuseBlockchain/.cargo/registry/src/index.crates.io-6f17d22bba15001f/prost-build-0.10.4/third-party/protobuf/src/google/protobuf/compiler/csharp/csharp_primitive_field.cc.o
+[ 71%] Building CXX object CMakeFiles/libprotoc.dir/home/runner/QuantumFuseBlockchain/.cargo/registry/src/index.crates.io-6f17d22bba15001f/prost-build-0.10.4/third-party/protobuf/src/google/protobuf/compiler/csharp/csharp_reflection_class.cc.o
+[ 72%] Building CXX object CMakeFiles/libprotoc.dir/home/runner/QuantumFuseBlockchain/.cargo/registry/src/index.crates.io-6f17d22bba15001f/prost-build-0.10.4/third-party/protobuf/src/google/protobuf/compiler/csharp/csharp_repeated_enum_field.cc.o
+[ 72%] Building CXX object CMakeFiles/libprotoc.dir/home/runner/QuantumFuseBlockchain/.cargo/registry/src/index.crates.io-6f17d22bba15001f/prost-build-0.10.4/third-party/protobuf/src/google/protobuf/compiler/csharp/csharp_repeated_message_field.cc.o
+[ 73%] Building CXX object CMakeFiles/libprotoc.dir/home/runner/QuantumFuseBlockchain/.cargo/registry/src/index.crates.io-6f17d22bba15001f/prost-build-0.10.4/third-party/protobuf/src/google/protobuf/compiler/csharp/csharp_repeated_primitive_field.cc.o
+[ 73%] Building CXX object CMakeFiles/libprotoc.dir/home/runner/QuantumFuseBlockchain/.cargo/registry/src/index.crates.io-6f17d22bba15001f/prost-build-0.10.4/third-party/protobuf/src/google/protobuf/compiler/csharp/csharp_source_generator_base.cc.o
+[ 74%] Building CXX object CMakeFiles/libprotoc.dir/home/runner/QuantumFuseBlockchain/.cargo/registry/src/index.crates.io-6f17d22bba15001f/prost-build-0.10.4/third-party/protobuf/src/google/protobuf/compiler/csharp/csharp_wrapper_field.cc.o
+[ 74%] Building CXX object CMakeFiles/libprotoc.dir/home/runner/QuantumFuseBlockchain/.cargo/registry/src/index.crates.io-6f17d22bba15001f/prost-build-0.10.4/third-party/protobuf/src/google/protobuf/compiler/java/java_context.cc.o
+[ 75%] Building CXX object CMakeFiles/libprotoc.dir/home/runner/QuantumFuseBlockchain/.cargo/registry/src/index.crates.io-6f17d22bba15001f/prost-build-0.10.4/third-party/protobuf/src/google/protobuf/compiler/java/java_doc_comment.cc.o
+[ 75%] Building CXX object CMakeFiles/libprotoc.dir/home/runner/QuantumFuseBlockchain/.cargo/registry/src/index.crates.io-6f17d22bba15001f/prost-build-0.10.4/third-party/protobuf/src/google/protobuf/compiler/java/java_enum.cc.o
+[ 76%] Building CXX object CMakeFiles/libprotoc.dir/home/runner/QuantumFuseBlockchain/.cargo/registry/src/index.crates.io-6f17d22bba15001f/prost-build-0.10.4/third-party/protobuf/src/google/protobuf/compiler/java/java_enum_field.cc.o
+[ 76%] Building CXX object CMakeFiles/libprotoc.dir/home/runner/QuantumFuseBlockchain/.cargo/registry/src/index.crates.io-6f17d22bba15001f/prost-build-0.10.4/third-party/protobuf/src/google/protobuf/compiler/java/java_enum_field_lite.cc.o
+[ 77%] Building CXX object CMakeFiles/libprotoc.dir/home/runner/QuantumFuseBlockchain/.cargo/registry/src/index.crates.io-6f17d22bba15001f/prost-build-0.10.4/third-party/protobuf/src/google/protobuf/compiler/java/java_enum_lite.cc.o
+[ 77%] Building CXX object CMakeFiles/libprotoc.dir/home/runner/QuantumFuseBlockchain/.cargo/registry/src/index.crates.io-6f17d22bba15001f/prost-build-0.10.4/third-party/protobuf/src/google/protobuf/compiler/java/java_extension.cc.o
+[ 78%] Building CXX object CMakeFiles/libprotoc.dir/home/runner/QuantumFuseBlockchain/.cargo/registry/src/index.crates.io-6f17d22bba15001f/prost-build-0.10.4/third-party/protobuf/src/google/protobuf/compiler/java/java_extension_lite.cc.o
+[ 78%] Building CXX object CMakeFiles/libprotoc.dir/home/runner/QuantumFuseBlockchain/.cargo/registry/src/index.crates.io-6f17d22bba15001f/prost-build-0.10.4/third-party/protobuf/src/google/protobuf/compiler/java/java_field.cc.o
+[ 79%] Building CXX object CMakeFiles/libprotoc.dir/home/runner/QuantumFuseBlockchain/.cargo/registry/src/index.crates.io-6f17d22bba15001f/prost-build-0.10.4/third-party/protobuf/src/google/protobuf/compiler/java/java_file.cc.o
+[ 79%] Building CXX object CMakeFiles/libprotoc.dir/home/runner/QuantumFuseBlockchain/.cargo/registry/src/index.crates.io-6f17d22bba15001f/prost-build-0.10.4/third-party/protobuf/src/google/protobuf/compiler/java/java_generator.cc.o
+[ 80%] Building CXX object CMakeFiles/libprotoc.dir/home/runner/QuantumFuseBlockchain/.cargo/registry/src/index.crates.io-6f17d22bba15001f/prost-build-0.10.4/third-party/protobuf/src/google/protobuf/compiler/java/java_generator_factory.cc.o
+[ 80%] Building CXX object CMakeFiles/libprotoc.dir/home/runner/QuantumFuseBlockchain/.cargo/registry/src/index.crates.io-6f17d22bba15001f/prost-build-0.10.4/third-party/protobuf/src/google/protobuf/compiler/java/java_helpers.cc.o
+[ 80%] Building CXX object CMakeFiles/libprotoc.dir/home/runner/QuantumFuseBlockchain/.cargo/registry/src/index.crates.io-6f17d22bba15001f/prost-build-0.10.4/third-party/protobuf/src/google/protobuf/compiler/java/java_kotlin_generator.cc.o
+[ 81%] Building CXX object CMakeFiles/libprotoc.dir/home/runner/QuantumFuseBlockchain/.cargo/registry/src/index.crates.io-6f17d22bba15001f/prost-build-0.10.4/third-party/protobuf/src/google/protobuf/compiler/java/java_map_field.cc.o
+[ 81%] Building CXX object CMakeFiles/libprotoc.dir/home/runner/QuantumFuseBlockchain/.cargo/registry/src/index.crates.io-6f17d22bba15001f/prost-build-0.10.4/third-party/protobuf/src/google/protobuf/compiler/java/java_map_field_lite.cc.o
+[ 82%] Building CXX object CMakeFiles/libprotoc.dir/home/runner/QuantumFuseBlockchain/.cargo/registry/src/index.crates.io-6f17d22bba15001f/prost-build-0.10.4/third-party/protobuf/src/google/protobuf/compiler/java/java_message.cc.o
+[ 82%] Building CXX object CMakeFiles/libprotoc.dir/home/runner/QuantumFuseBlockchain/.cargo/registry/src/index.crates.io-6f17d22bba15001f/prost-build-0.10.4/third-party/protobuf/src/google/protobuf/compiler/java/java_message_builder.cc.o
+[ 83%] Building CXX object CMakeFiles/libprotoc.dir/home/runner/QuantumFuseBlockchain/.cargo/registry/src/index.crates.io-6f17d22bba15001f/prost-build-0.10.4/third-party/protobuf/src/google/protobuf/compiler/java/java_message_builder_lite.cc.o
+[ 83%] Building CXX object CMakeFiles/libprotoc.dir/home/runner/QuantumFuseBlockchain/.cargo/registry/src/index.crates.io-6f17d22bba15001f/prost-build-0.10.4/third-party/protobuf/src/google/protobuf/compiler/java/java_message_field.cc.o
+[ 84%] Building CXX object CMakeFiles/libprotoc.dir/home/runner/QuantumFuseBlockchain/.cargo/registry/src/index.crates.io-6f17d22bba15001f/prost-build-0.10.4/third-party/protobuf/src/google/protobuf/compiler/java/java_message_field_lite.cc.o
+[ 84%] Building CXX object CMakeFiles/libprotoc.dir/home/runner/QuantumFuseBlockchain/.cargo/registry/src/index.crates.io-6f17d22bba15001f/prost-build-0.10.4/third-party/protobuf/src/google/protobuf/compiler/java/java_message_lite.cc.o
+[ 85%] Building CXX object CMakeFiles/libprotoc.dir/home/runner/QuantumFuseBlockchain/.cargo/registry/src/index.crates.io-6f17d22bba15001f/prost-build-0.10.4/third-party/protobuf/src/google/protobuf/compiler/java/java_name_resolver.cc.o
+[ 85%] Building CXX object CMakeFiles/libprotoc.dir/home/runner/QuantumFuseBlockchain/.cargo/registry/src/index.crates.io-6f17d22bba15001f/prost-build-0.10.4/third-party/protobuf/src/google/protobuf/compiler/java/java_primitive_field.cc.o
+[ 86%] Building CXX object CMakeFiles/libprotoc.dir/home/runner/QuantumFuseBlockchain/.cargo/registry/src/index.crates.io-6f17d22bba15001f/prost-build-0.10.4/third-party/protobuf/src/google/protobuf/compiler/java/java_primitive_field_lite.cc.o
+[ 86%] Building CXX object CMakeFiles/libprotoc.dir/home/runner/QuantumFuseBlockchain/.cargo/registry/src/index.crates.io-6f17d22bba15001f/prost-build-0.10.4/third-party/protobuf/src/google/protobuf/compiler/java/java_service.cc.o
+[ 87%] Building CXX object CMakeFiles/libprotoc.dir/home/runner/QuantumFuseBlockchain/.cargo/registry/src/index.crates.io-6f17d22bba15001f/prost-build-0.10.4/third-party/protobuf/src/google/protobuf/compiler/java/java_shared_code_generator.cc.o
+[ 87%] Building CXX object CMakeFiles/libprotoc.dir/home/runner/QuantumFuseBlockchain/.cargo/registry/src/index.crates.io-6f17d22bba15001f/prost-build-0.10.4/third-party/protobuf/src/google/protobuf/compiler/java/java_string_field.cc.o
+[ 88%] Building CXX object CMakeFiles/libprotoc.dir/home/runner/QuantumFuseBlockchain/.cargo/registry/src/index.crates.io-6f17d22bba15001f/prost-build-0.10.4/third-party/protobuf/src/google/protobuf/compiler/java/java_string_field_lite.cc.o
+[ 88%] Building CXX object CMakeFiles/libprotoc.dir/home/runner/QuantumFuseBlockchain/.cargo/registry/src/index.crates.io-6f17d22bba15001f/prost-build-0.10.4/third-party/protobuf/src/google/protobuf/compiler/js/js_generator.cc.o
+[ 89%] Building CXX object CMakeFiles/libprotoc.dir/home/runner/QuantumFuseBlockchain/.cargo/registry/src/index.crates.io-6f17d22bba15001f/prost-build-0.10.4/third-party/protobuf/src/google/protobuf/compiler/js/well_known_types_embed.cc.o
+[ 89%] Building CXX object CMakeFiles/libprotoc.dir/home/runner/QuantumFuseBlockchain/.cargo/registry/src/index.crates.io-6f17d22bba15001f/prost-build-0.10.4/third-party/protobuf/src/google/protobuf/compiler/objectivec/objectivec_enum.cc.o
+[ 90%] Building CXX object CMakeFiles/libprotoc.dir/home/runner/QuantumFuseBlockchain/.cargo/registry/src/index.crates.io-6f17d22bba15001f/prost-build-0.10.4/third-party/protobuf/src/google/protobuf/compiler/objectivec/objectivec_enum_field.cc.o
+[ 90%] Building CXX object CMakeFiles/libprotoc.dir/home/runner/QuantumFuseBlockchain/.cargo/registry/src/index.crates.io-6f17d22bba15001f/prost-build-0.10.4/third-party/protobuf/src/google/protobuf/compiler/objectivec/objectivec_extension.cc.o
+[ 91%] Building CXX object CMakeFiles/libprotoc.dir/home/runner/QuantumFuseBlockchain/.cargo/registry/src/index.crates.io-6f17d22bba15001f/prost-build-0.10.4/third-party/protobuf/src/google/protobuf/compiler/objectivec/objectivec_field.cc.o
+[ 91%] Building CXX object CMakeFiles/libprotoc.dir/home/runner/QuantumFuseBlockchain/.cargo/registry/src/index.crates.io-6f17d22bba15001f/prost-build-0.10.4/third-party/protobuf/src/google/protobuf/compiler/objectivec/objectivec_file.cc.o
+[ 92%] Building CXX object CMakeFiles/libprotoc.dir/home/runner/QuantumFuseBlockchain/.cargo/registry/src/index.crates.io-6f17d22bba15001f/prost-build-0.10.4/third-party/protobuf/src/google/protobuf/compiler/objectivec/objectivec_generator.cc.o
+[ 92%] Building CXX object CMakeFiles/libprotoc.dir/home/runner/QuantumFuseBlockchain/.cargo/registry/src/index.crates.io-6f17d22bba15001f/prost-build-0.10.4/third-party/protobuf/src/google/protobuf/compiler/objectivec/objectivec_helpers.cc.o
+[ 93%] Building CXX object CMakeFiles/libprotoc.dir/home/runner/QuantumFuseBlockchain/.cargo/registry/src/index.crates.io-6f17d22bba15001f/prost-build-0.10.4/third-party/protobuf/src/google/protobuf/compiler/objectivec/objectivec_map_field.cc.o
+[ 93%] Building CXX object CMakeFiles/libprotoc.dir/home/runner/QuantumFuseBlockchain/.cargo/registry/src/index.crates.io-6f17d22bba15001f/prost-build-0.10.4/third-party/protobuf/src/google/protobuf/compiler/objectivec/objectivec_message.cc.o
+[ 94%] Building CXX object CMakeFiles/libprotoc.dir/home/runner/QuantumFuseBlockchain/.cargo/registry/src/index.crates.io-6f17d22bba15001f/prost-build-0.10.4/third-party/protobuf/src/google/protobuf/compiler/objectivec/objectivec_message_field.cc.o
+[ 94%] Building CXX object CMakeFiles/libprotoc.dir/home/runner/QuantumFuseBlockchain/.cargo/registry/src/index.crates.io-6f17d22bba15001f/prost-build-0.10.4/third-party/protobuf/src/google/protobuf/compiler/objectivec/objectivec_oneof.cc.o
+[ 95%] Building CXX object CMakeFiles/libprotoc.dir/home/runner/QuantumFuseBlockchain/.cargo/registry/src/index.crates.io-6f17d22bba15001f/prost-build-0.10.4/third-party/protobuf/src/google/protobuf/compiler/objectivec/objectivec_primitive_field.cc.o
+[ 95%] Building CXX object CMakeFiles/libprotoc.dir/home/runner/QuantumFuseBlockchain/.cargo/registry/src/index.crates.io-6f17d22bba15001f/prost-build-0.10.4/third-party/protobuf/src/google/protobuf/compiler/php/php_generator.cc.o
+[ 96%] Building CXX object CMakeFiles/libprotoc.dir/home/runner/QuantumFuseBlockchain/.cargo/registry/src/index.crates.io-6f17d22bba15001f/prost-build-0.10.4/third-party/protobuf/src/google/protobuf/compiler/plugin.cc.o
+[ 96%] Building CXX object CMakeFiles/libprotoc.dir/home/runner/QuantumFuseBlockchain/.cargo/registry/src/index.crates.io-6f17d22bba15001f/prost-build-0.10.4/third-party/protobuf/src/google/protobuf/compiler/plugin.pb.cc.o
+[ 97%] Building CXX object CMakeFiles/libprotoc.dir/home/runner/QuantumFuseBlockchain/.cargo/registry/src/index.crates.io-6f17d22bba15001f/prost-build-0.10.4/third-party/protobuf/src/google/protobuf/compiler/python/python_generator.cc.o
+[ 97%] Building CXX object CMakeFiles/libprotoc.dir/home/runner/QuantumFuseBlockchain/.cargo/registry/src/index.crates.io-6f17d22bba15001f/prost-build-0.10.4/third-party/protobuf/src/google/protobuf/compiler/ruby/ruby_generator.cc.o
+[ 98%] Building CXX object CMakeFiles/libprotoc.dir/home/runner/QuantumFuseBlockchain/.cargo/registry/src/index.crates.io-6f17d22bba15001f/prost-build-0.10.4/third-party/protobuf/src/google/protobuf/compiler/subprocess.cc.o
+[ 98%] Building CXX object CMakeFiles/libprotoc.dir/home/runner/QuantumFuseBlockchain/.cargo/registry/src/index.crates.io-6f17d22bba15001f/prost-build-0.10.4/third-party/protobuf/src/google/protobuf/compiler/zip_writer.cc.o
+[ 99%] Linking CXX static library libprotocd.a
+[ 99%] Built target libprotoc
+[ 99%] Building CXX object CMakeFiles/protoc.dir/home/runner/QuantumFuseBlockchain/.cargo/registry/src/index.crates.io-6f17d22bba15001f/prost-build-0.10.4/third-party/protobuf/src/google/protobuf/compiler/main.cc.o
+[100%] Linking CXX executable protoc
+[100%] Built target protoc
+Install the project...
+-- Install configuration: "Debug"
+-- Installing: /home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/debug/build/prost-build-3b98527a7dd7781f/out/lib/libprotobuf-lited.a
+-- Installing: /home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/debug/build/prost-build-3b98527a7dd7781f/out/lib/libprotobufd.a
+-- Installing: /home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/debug/build/prost-build-3b98527a7dd7781f/out/lib/libprotocd.a
+-- Installing: /home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/debug/build/prost-build-3b98527a7dd7781f/out/bin/protoc-3.19.4.0
+-- Installing: /home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/debug/build/prost-build-3b98527a7dd7781f/out/bin/protoc
+-- Set non-toolchain portion of runtime path of "/home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/debug/build/prost-build-3b98527a7dd7781f/out/bin/protoc-3.19.4.0" to "$ORIGIN/../lib"
+-- Installing: /home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/debug/build/prost-build-3b98527a7dd7781f/out/lib/pkgconfig/protobuf.pc
+-- Installing: /home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/debug/build/prost-build-3b98527a7dd7781f/out/lib/pkgconfig/protobuf-lite.pc
+-- Installing: /home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/debug/build/prost-build-3b98527a7dd7781f/out/include/google/protobuf/any.h
+-- Installing: /home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/debug/build/prost-build-3b98527a7dd7781f/out/include/google/protobuf/any.pb.h
+-- Installing: /home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/debug/build/prost-build-3b98527a7dd7781f/out/include/google/protobuf/api.pb.h
+-- Installing: /home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/debug/build/prost-build-3b98527a7dd7781f/out/include/google/protobuf/arena.h
+-- Installing: /home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/debug/build/prost-build-3b98527a7dd7781f/out/include/google/protobuf/arena_impl.h
+-- Installing: /home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/debug/build/prost-build-3b98527a7dd7781f/out/include/google/protobuf/arenastring.h
+-- Installing: /home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/debug/build/prost-build-3b98527a7dd7781f/out/include/google/protobuf/compiler/code_generator.h
+-- Installing: /home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/debug/build/prost-build-3b98527a7dd7781f/out/include/google/protobuf/compiler/command_line_interface.h
+-- Installing: /home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/debug/build/prost-build-3b98527a7dd7781f/out/include/google/protobuf/compiler/cpp/cpp_file.h
+-- Installing: /home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/debug/build/prost-build-3b98527a7dd7781f/out/include/google/protobuf/compiler/cpp/cpp_generator.h
+-- Installing: /home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/debug/build/prost-build-3b98527a7dd7781f/out/include/google/protobuf/compiler/cpp/cpp_helpers.h
+-- Installing: /home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/debug/build/prost-build-3b98527a7dd7781f/out/include/google/protobuf/compiler/cpp/cpp_names.h
+-- Installing: /home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/debug/build/prost-build-3b98527a7dd7781f/out/include/google/protobuf/compiler/csharp/csharp_doc_comment.h
+-- Installing: /home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/debug/build/prost-build-3b98527a7dd7781f/out/include/google/protobuf/compiler/csharp/csharp_generator.h
+-- Installing: /home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/debug/build/prost-build-3b98527a7dd7781f/out/include/google/protobuf/compiler/csharp/csharp_names.h
+-- Installing: /home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/debug/build/prost-build-3b98527a7dd7781f/out/include/google/protobuf/compiler/csharp/csharp_options.h
+-- Installing: /home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/debug/build/prost-build-3b98527a7dd7781f/out/include/google/protobuf/compiler/importer.h
+-- Installing: /home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/debug/build/prost-build-3b98527a7dd7781f/out/include/google/protobuf/compiler/java/java_generator.h
+-- Installing: /home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/debug/build/prost-build-3b98527a7dd7781f/out/include/google/protobuf/compiler/java/java_kotlin_generator.h
+-- Installing: /home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/debug/build/prost-build-3b98527a7dd7781f/out/include/google/protobuf/compiler/java/java_names.h
+-- Installing: /home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/debug/build/prost-build-3b98527a7dd7781f/out/include/google/protobuf/compiler/js/js_generator.h
+-- Installing: /home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/debug/build/prost-build-3b98527a7dd7781f/out/include/google/protobuf/compiler/objectivec/objectivec_generator.h
+-- Installing: /home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/debug/build/prost-build-3b98527a7dd7781f/out/include/google/protobuf/compiler/objectivec/objectivec_helpers.h
+-- Installing: /home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/debug/build/prost-build-3b98527a7dd7781f/out/include/google/protobuf/compiler/parser.h
+-- Installing: /home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/debug/build/prost-build-3b98527a7dd7781f/out/include/google/protobuf/compiler/php/php_generator.h
+-- Installing: /home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/debug/build/prost-build-3b98527a7dd7781f/out/include/google/protobuf/compiler/plugin.h
+-- Installing: /home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/debug/build/prost-build-3b98527a7dd7781f/out/include/google/protobuf/compiler/plugin.pb.h
+-- Installing: /home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/debug/build/prost-build-3b98527a7dd7781f/out/include/google/protobuf/compiler/python/python_generator.h
+-- Installing: /home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/debug/build/prost-build-3b98527a7dd7781f/out/include/google/protobuf/compiler/ruby/ruby_generator.h
+-- Installing: /home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/debug/build/prost-build-3b98527a7dd7781f/out/include/google/protobuf/descriptor.h
+-- Installing: /home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/debug/build/prost-build-3b98527a7dd7781f/out/include/google/protobuf/descriptor.pb.h
+-- Installing: /home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/debug/build/prost-build-3b98527a7dd7781f/out/include/google/protobuf/descriptor_database.h
+-- Installing: /home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/debug/build/prost-build-3b98527a7dd7781f/out/include/google/protobuf/duration.pb.h
+-- Installing: /home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/debug/build/prost-build-3b98527a7dd7781f/out/include/google/protobuf/dynamic_message.h
+-- Installing: /home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/debug/build/prost-build-3b98527a7dd7781f/out/include/google/protobuf/empty.pb.h
+-- Installing: /home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/debug/build/prost-build-3b98527a7dd7781f/out/include/google/protobuf/explicitly_constructed.h
+-- Installing: /home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/debug/build/prost-build-3b98527a7dd7781f/out/include/google/protobuf/extension_set.h
+-- Installing: /home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/debug/build/prost-build-3b98527a7dd7781f/out/include/google/protobuf/extension_set_inl.h
+-- Installing: /home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/debug/build/prost-build-3b98527a7dd7781f/out/include/google/protobuf/field_access_listener.h
+-- Installing: /home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/debug/build/prost-build-3b98527a7dd7781f/out/include/google/protobuf/field_mask.pb.h
+-- Installing: /home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/debug/build/prost-build-3b98527a7dd7781f/out/include/google/protobuf/generated_enum_reflection.h
+-- Installing: /home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/debug/build/prost-build-3b98527a7dd7781f/out/include/google/protobuf/generated_enum_util.h
+-- Installing: /home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/debug/build/prost-build-3b98527a7dd7781f/out/include/google/protobuf/generated_message_bases.h
+-- Installing: /home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/debug/build/prost-build-3b98527a7dd7781f/out/include/google/protobuf/generated_message_reflection.h
+-- Installing: /home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/debug/build/prost-build-3b98527a7dd7781f/out/include/google/protobuf/generated_message_table_driven.h
+-- Installing: /home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/debug/build/prost-build-3b98527a7dd7781f/out/include/google/protobuf/generated_message_table_driven_lite.h
+-- Installing: /home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/debug/build/prost-build-3b98527a7dd7781f/out/include/google/protobuf/generated_message_tctable_decl.h
+-- Installing: /home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/debug/build/prost-build-3b98527a7dd7781f/out/include/google/protobuf/generated_message_tctable_impl.h
+-- Installing: /home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/debug/build/prost-build-3b98527a7dd7781f/out/include/google/protobuf/generated_message_tctable_impl.inc
+-- Installing: /home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/debug/build/prost-build-3b98527a7dd7781f/out/include/google/protobuf/generated_message_util.h
+-- Installing: /home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/debug/build/prost-build-3b98527a7dd7781f/out/include/google/protobuf/has_bits.h
+-- Installing: /home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/debug/build/prost-build-3b98527a7dd7781f/out/include/google/protobuf/implicit_weak_message.h
+-- Installing: /home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/debug/build/prost-build-3b98527a7dd7781f/out/include/google/protobuf/inlined_string_field.h
+-- Installing: /home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/debug/build/prost-build-3b98527a7dd7781f/out/include/google/protobuf/io/coded_stream.h
+-- Installing: /home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/debug/build/prost-build-3b98527a7dd7781f/out/include/google/protobuf/io/gzip_stream.h
+-- Installing: /home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/debug/build/prost-build-3b98527a7dd7781f/out/include/google/protobuf/io/io_win32.h
+-- Installing: /home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/debug/build/prost-build-3b98527a7dd7781f/out/include/google/protobuf/io/printer.h
+-- Installing: /home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/debug/build/prost-build-3b98527a7dd7781f/out/include/google/protobuf/io/strtod.h
+-- Installing: /home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/debug/build/prost-build-3b98527a7dd7781f/out/include/google/protobuf/io/tokenizer.h
+-- Installing: /home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/debug/build/prost-build-3b98527a7dd7781f/out/include/google/protobuf/io/zero_copy_stream.h
+-- Installing: /home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/debug/build/prost-build-3b98527a7dd7781f/out/include/google/protobuf/io/zero_copy_stream_impl.h
+-- Installing: /home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/debug/build/prost-build-3b98527a7dd7781f/out/include/google/protobuf/io/zero_copy_stream_impl_lite.h
+-- Installing: /home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/debug/build/prost-build-3b98527a7dd7781f/out/include/google/protobuf/map.h
+-- Installing: /home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/debug/build/prost-build-3b98527a7dd7781f/out/include/google/protobuf/map_entry.h
+-- Installing: /home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/debug/build/prost-build-3b98527a7dd7781f/out/include/google/protobuf/map_entry_lite.h
+-- Installing: /home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/debug/build/prost-build-3b98527a7dd7781f/out/include/google/protobuf/map_field.h
+-- Installing: /home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/debug/build/prost-build-3b98527a7dd7781f/out/include/google/protobuf/map_field_inl.h
+-- Installing: /home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/debug/build/prost-build-3b98527a7dd7781f/out/include/google/protobuf/map_field_lite.h
+-- Installing: /home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/debug/build/prost-build-3b98527a7dd7781f/out/include/google/protobuf/map_type_handler.h
+-- Installing: /home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/debug/build/prost-build-3b98527a7dd7781f/out/include/google/protobuf/message.h
+-- Installing: /home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/debug/build/prost-build-3b98527a7dd7781f/out/include/google/protobuf/message_lite.h
+-- Installing: /home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/debug/build/prost-build-3b98527a7dd7781f/out/include/google/protobuf/metadata.h
+-- Installing: /home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/debug/build/prost-build-3b98527a7dd7781f/out/include/google/protobuf/metadata_lite.h
+-- Installing: /home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/debug/build/prost-build-3b98527a7dd7781f/out/include/google/protobuf/parse_context.h
+-- Installing: /home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/debug/build/prost-build-3b98527a7dd7781f/out/include/google/protobuf/port.h
+-- Installing: /home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/debug/build/prost-build-3b98527a7dd7781f/out/include/google/protobuf/port_def.inc
+-- Installing: /home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/debug/build/prost-build-3b98527a7dd7781f/out/include/google/protobuf/port_undef.inc
+-- Installing: /home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/debug/build/prost-build-3b98527a7dd7781f/out/include/google/protobuf/reflection.h
+-- Installing: /home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/debug/build/prost-build-3b98527a7dd7781f/out/include/google/protobuf/reflection_ops.h
+-- Installing: /home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/debug/build/prost-build-3b98527a7dd7781f/out/include/google/protobuf/repeated_field.h
+-- Installing: /home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/debug/build/prost-build-3b98527a7dd7781f/out/include/google/protobuf/repeated_ptr_field.h
+-- Installing: /home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/debug/build/prost-build-3b98527a7dd7781f/out/include/google/protobuf/service.h
+-- Installing: /home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/debug/build/prost-build-3b98527a7dd7781f/out/include/google/protobuf/source_context.pb.h
+-- Installing: /home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/debug/build/prost-build-3b98527a7dd7781f/out/include/google/protobuf/struct.pb.h
+-- Installing: /home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/debug/build/prost-build-3b98527a7dd7781f/out/include/google/protobuf/stubs/bytestream.h
+-- Installing: /home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/debug/build/prost-build-3b98527a7dd7781f/out/include/google/protobuf/stubs/callback.h
+-- Installing: /home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/debug/build/prost-build-3b98527a7dd7781f/out/include/google/protobuf/stubs/casts.h
+-- Installing: /home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/debug/build/prost-build-3b98527a7dd7781f/out/include/google/protobuf/stubs/common.h
+-- Installing: /home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/debug/build/prost-build-3b98527a7dd7781f/out/include/google/protobuf/stubs/hash.h
+-- Installing: /home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/debug/build/prost-build-3b98527a7dd7781f/out/include/google/protobuf/stubs/logging.h
+-- Installing: /home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/debug/build/prost-build-3b98527a7dd7781f/out/include/google/protobuf/stubs/macros.h
+-- Installing: /home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/debug/build/prost-build-3b98527a7dd7781f/out/include/google/protobuf/stubs/map_util.h
+-- Installing: /home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/debug/build/prost-build-3b98527a7dd7781f/out/include/google/protobuf/stubs/mutex.h
+-- Installing: /home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/debug/build/prost-build-3b98527a7dd7781f/out/include/google/protobuf/stubs/once.h
+-- Installing: /home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/debug/build/prost-build-3b98527a7dd7781f/out/include/google/protobuf/stubs/platform_macros.h
+-- Installing: /home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/debug/build/prost-build-3b98527a7dd7781f/out/include/google/protobuf/stubs/port.h
+-- Installing: /home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/debug/build/prost-build-3b98527a7dd7781f/out/include/google/protobuf/stubs/status.h
+-- Installing: /home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/debug/build/prost-build-3b98527a7dd7781f/out/include/google/protobuf/stubs/stl_util.h
+-- Installing: /home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/debug/build/prost-build-3b98527a7dd7781f/out/include/google/protobuf/stubs/stringpiece.h
+-- Installing: /home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/debug/build/prost-build-3b98527a7dd7781f/out/include/google/protobuf/stubs/strutil.h
+-- Installing: /home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/debug/build/prost-build-3b98527a7dd7781f/out/include/google/protobuf/stubs/template_util.h
+-- Installing: /home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/debug/build/prost-build-3b98527a7dd7781f/out/include/google/protobuf/text_format.h
+-- Installing: /home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/debug/build/prost-build-3b98527a7dd7781f/out/include/google/protobuf/timestamp.pb.h
+-- Installing: /home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/debug/build/prost-build-3b98527a7dd7781f/out/include/google/protobuf/type.pb.h
+-- Installing: /home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/debug/build/prost-build-3b98527a7dd7781f/out/include/google/protobuf/unknown_field_set.h
+-- Installing: /home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/debug/build/prost-build-3b98527a7dd7781f/out/include/google/protobuf/util/delimited_message_util.h
+-- Installing: /home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/debug/build/prost-build-3b98527a7dd7781f/out/include/google/protobuf/util/field_comparator.h
+-- Installing: /home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/debug/build/prost-build-3b98527a7dd7781f/out/include/google/protobuf/util/field_mask_util.h
+-- Installing: /home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/debug/build/prost-build-3b98527a7dd7781f/out/include/google/protobuf/util/json_util.h
+-- Installing: /home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/debug/build/prost-build-3b98527a7dd7781f/out/include/google/protobuf/util/message_differencer.h
+-- Installing: /home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/debug/build/prost-build-3b98527a7dd7781f/out/include/google/protobuf/util/time_util.h
+-- Installing: /home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/debug/build/prost-build-3b98527a7dd7781f/out/include/google/protobuf/util/type_resolver.h
+-- Installing: /home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/debug/build/prost-build-3b98527a7dd7781f/out/include/google/protobuf/util/type_resolver_util.h
+-- Installing: /home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/debug/build/prost-build-3b98527a7dd7781f/out/include/google/protobuf/wire_format.h
+-- Installing: /home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/debug/build/prost-build-3b98527a7dd7781f/out/include/google/protobuf/wire_format_lite.h
+-- Installing: /home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/debug/build/prost-build-3b98527a7dd7781f/out/include/google/protobuf/wrappers.pb.h
+-- Installing: /home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/debug/build/prost-build-3b98527a7dd7781f/out/include/google/protobuf/any.proto
+-- Installing: /home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/debug/build/prost-build-3b98527a7dd7781f/out/include/google/protobuf/api.proto
+-- Installing: /home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/debug/build/prost-build-3b98527a7dd7781f/out/include/google/protobuf/compiler/plugin.proto
+-- Installing: /home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/debug/build/prost-build-3b98527a7dd7781f/out/include/google/protobuf/descriptor.proto
+-- Installing: /home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/debug/build/prost-build-3b98527a7dd7781f/out/include/google/protobuf/duration.proto
+-- Installing: /home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/debug/build/prost-build-3b98527a7dd7781f/out/include/google/protobuf/empty.proto
+-- Installing: /home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/debug/build/prost-build-3b98527a7dd7781f/out/include/google/protobuf/field_mask.proto
+-- Installing: /home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/debug/build/prost-build-3b98527a7dd7781f/out/include/google/protobuf/source_context.proto
+-- Installing: /home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/debug/build/prost-build-3b98527a7dd7781f/out/include/google/protobuf/struct.proto
+-- Installing: /home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/debug/build/prost-build-3b98527a7dd7781f/out/include/google/protobuf/timestamp.proto
+-- Installing: /home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/debug/build/prost-build-3b98527a7dd7781f/out/include/google/protobuf/type.proto
+-- Installing: /home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/debug/build/prost-build-3b98527a7dd7781f/out/include/google/protobuf/wrappers.proto
+-- Up-to-date: /home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/debug/build/prost-build-3b98527a7dd7781f/out/include/google/protobuf/any.proto
+-- Up-to-date: /home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/debug/build/prost-build-3b98527a7dd7781f/out/include/google/protobuf/api.proto
+-- Up-to-date: /home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/debug/build/prost-build-3b98527a7dd7781f/out/include/google/protobuf/compiler/plugin.proto
+-- Up-to-date: /home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/debug/build/prost-build-3b98527a7dd7781f/out/include/google/protobuf/descriptor.proto
+-- Up-to-date: /home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/debug/build/prost-build-3b98527a7dd7781f/out/include/google/protobuf/duration.proto
+-- Up-to-date: /home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/debug/build/prost-build-3b98527a7dd7781f/out/include/google/protobuf/empty.proto
+-- Up-to-date: /home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/debug/build/prost-build-3b98527a7dd7781f/out/include/google/protobuf/field_mask.proto
+-- Up-to-date: /home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/debug/build/prost-build-3b98527a7dd7781f/out/include/google/protobuf/source_context.proto
+-- Up-to-date: /home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/debug/build/prost-build-3b98527a7dd7781f/out/include/google/protobuf/struct.proto
+-- Up-to-date: /home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/debug/build/prost-build-3b98527a7dd7781f/out/include/google/protobuf/timestamp.proto
+-- Up-to-date: /home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/debug/build/prost-build-3b98527a7dd7781f/out/include/google/protobuf/type.proto
+-- Up-to-date: /home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/debug/build/prost-build-3b98527a7dd7781f/out/include/google/protobuf/wrappers.proto
+-- Installing: /home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/debug/build/prost-build-3b98527a7dd7781f/out/lib/cmake/protobuf/protobuf-targets.cmake
+-- Installing: /home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/debug/build/prost-build-3b98527a7dd7781f/out/lib/cmake/protobuf/protobuf-targets-debug.cmake
+-- Up-to-date: /home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/debug/build/prost-build-3b98527a7dd7781f/out/lib/cmake/protobuf
+-- Installing: /home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/debug/build/prost-build-3b98527a7dd7781f/out/lib/cmake/protobuf/protobuf-config.cmake
+-- Installing: /home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/debug/build/prost-build-3b98527a7dd7781f/out/lib/cmake/protobuf/protobuf-config-version.cmake
+-- Installing: /home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/debug/build/prost-build-3b98527a7dd7781f/out/lib/cmake/protobuf/protobuf-module.cmake
+-- Installing: /home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/debug/build/prost-build-3b98527a7dd7781f/out/lib/cmake/protobuf/protobuf-options.cmake
+cargo:root=/home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/debug/build/prost-build-3b98527a7dd7781f/out
+cargo:rustc-env=PROTOC=/home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/debug/build/prost-build-3b98527a7dd7781f/out/bin/protoc
+cargo:rustc-env=PROTOC_INCLUDE=/home/runner/QuantumFuseBlockchain/.cargo/registry/src/index.crates.io-6f17d22bba15001f/prost-build-0.10.4/third-party/include
+cargo:rerun-if-env-changed=PROTOC
+cargo:rerun-if-env-changed=PROTOC_INCLUDE

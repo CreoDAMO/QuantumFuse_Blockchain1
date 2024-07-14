@@ -40,7 +40,8 @@ prometheus = "0.13.4"
 redis = "0.25.4"
 
 # Logging
-env_logger = { version = "0.11.3", features = ["anstream"] }
+env_logger = "0.11.3"
+anstream = "0.6.14"  # Specify the version of anstream if needed
 tracing = "0.1.40"
 
 # For reading environment variables
@@ -72,9 +73,3 @@ opt-level = 1
 
 [profile.bench]
 opt-level = 2
-
-[profile.doc]
-opt-level = 0
-
-[profile.doc.test]
-opt-level = 0

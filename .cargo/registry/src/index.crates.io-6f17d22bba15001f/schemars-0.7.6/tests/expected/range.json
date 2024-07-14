@@ -1,0 +1,89 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "MyStruct",
+  "type": "object",
+  "required": [
+    "bound",
+    "inclusive",
+    "range"
+  ],
+  "properties": {
+    "bound": {
+      "$ref": "#/definitions/Bound_of_String"
+    },
+    "inclusive": {
+      "$ref": "#/definitions/Range_of_double"
+    },
+    "range": {
+      "$ref": "#/definitions/Range_of_uint"
+    }
+  },
+  "definitions": {
+    "Bound_of_String": {
+      "oneOf": [
+        {
+          "type": "object",
+          "required": [
+            "Included"
+          ],
+          "properties": {
+            "Included": {
+              "type": "string"
+            }
+          }
+        },
+        {
+          "type": "object",
+          "required": [
+            "Excluded"
+          ],
+          "properties": {
+            "Excluded": {
+              "type": "string"
+            }
+          }
+        },
+        {
+          "type": "string",
+          "const": "Unbounded"
+        }
+      ]
+    },
+    "Range_of_double": {
+      "type": "object",
+      "required": [
+        "end",
+        "start"
+      ],
+      "properties": {
+        "end": {
+          "type": "number",
+          "format": "double"
+        },
+        "start": {
+          "type": "number",
+          "format": "double"
+        }
+      }
+    },
+    "Range_of_uint": {
+      "type": "object",
+      "required": [
+        "end",
+        "start"
+      ],
+      "properties": {
+        "end": {
+          "type": "integer",
+          "format": "uint",
+          "minimum": 0.0
+        },
+        "start": {
+          "type": "integer",
+          "format": "uint",
+          "minimum": 0.0
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,41 @@
+[workspace]
+members = [
+    "core",
+    "macros",
+    "core_macros",
+    "tests/test_macros",
+    "tests/external_crate",
+    "tests/middle_crate",
+    "tests/isolated_crate",
+]
+
+[package]
+name = "macro_magic"
+version = "0.5.1"
+edition = "2021"
+authors = ["sam0x17"]
+license = "MIT"
+keywords = ["macro", "macros", "proc-macro", "proc-macros", "magic"]
+categories = ["development-tools", "development-tools::procedural-macro-helpers", "rust-patterns"]
+homepage = "https://sam0x17.dev"
+repository = "https://github.com/sam0x17/macro_magic"
+description = "Allows the exporting and importing of the tokens of items across module, file, and crate boundaries"
+
+[package.metadata.docs.rs]
+all-features = true
+
+[dependencies]
+macro_magic_macros = { version = "0.5.1", path = "macros" }
+macro_magic_core = { version = "0.5.1", path = "core", optional = true }
+syn = { version = "2", features = ["full"], optional = true }
+quote = { version = "1", optional = true }
+
+[dev-dependencies]
+test_macros = { path = "tests/test_macros" }
+external_crate = { path = "tests/external_crate" }
+middle_crate = { path = "tests/middle_crate" }
+isolated_crate = { path = "tests/isolated_crate" }
+
+[features]
+default = []
+proc_support = ["dep:macro_magic_core", "dep:syn", "dep:quote"]
