@@ -73,7 +73,7 @@ jobs:
       if: matrix.language == 'nodejs'
       uses: actions/setup-node@v4
       with:
-        node-version: '20'
+        node-version: '20.12.2'
 
     - name: Setup Node.js Dependencies
       if: matrix.language == 'nodejs'
