@@ -24,6 +24,7 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v3
 
+    # Rust setup and build
     - name: Install rustup
       if: matrix.language == 'rust'
       run: |
@@ -51,6 +52,7 @@ jobs:
         cargo build --release
         cargo test
 
+    # Go setup and build
     - name: Set up Go
       if: matrix.language == 'go'
       uses: actions/setup-go@v4
@@ -69,9 +71,11 @@ jobs:
     - name: Build with go
       if: matrix.language == 'go'
       run: |
+        cd QuantumFuseNode
         go build ./...
         go test ./...
 
+    # Python setup and build
     - name: Set up Python
       if: matrix.language == 'python'
       uses: actions/setup-python@v4
@@ -89,6 +93,7 @@ jobs:
       run: |
         pytest QuantumFuse/api
 
+    # Node.js setup and build
     - name: Set up Node.js
       if: matrix.language == 'nodejs'
       uses: actions/setup-node@v4
