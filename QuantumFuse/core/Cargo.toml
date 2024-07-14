@@ -40,7 +40,7 @@ prometheus = "0.13.4"
 redis = "0.25.4"
 
 # Logging
-env_logger = "0.11.3"
+env_logger = { version = "0.11.3", features = ["anstream"] }
 tracing = "0.1.40"
 
 # For reading environment variables
