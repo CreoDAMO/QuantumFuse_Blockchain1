@@ -53,9 +53,9 @@ jobs:
     - name: Build with cargo
       if: matrix.language == 'rust'
       run: |
-        make setup-rust
-        make build-rust
-        make test-rust
+        cd QuantumFuse/core
+        cargo build --release
+        cargo test
 
     # Go setup and build
     - name: Set up Go
@@ -67,9 +67,10 @@ jobs:
     - name: Build with go
       if: matrix.language == 'go'
       run: |
-        make setup-go
-        make build-go
-        make test-go
+        cd QuantumFuseNode
+        go mod tidy
+        go build ./...
+        go test ./...
 
     # Python setup and build
     - name: Set up Python
@@ -78,12 +79,17 @@ jobs:
       with:
         python-version: '3.x'
 
-    - name: Build with Python
+    - name: Install Python dependencies
       if: matrix.language == 'python'
       run: |
-        make setup-python
-        make build-python
-        make test-python
+        python -m pip install --upgrade pip
+        pip install -r QuantumFuse/api/requirements.txt
+
+    - name: Run Python application
+      if: matrix.language == 'python'
+      run: |
+        cd QuantumFuse/api
+        python -m unittest discover -s tests
 
     # Node.js setup and build
     - name: Set up Node.js
@@ -92,9 +98,20 @@ jobs:
       with:
         node-version: '20'
 
+    - name: Install Node.js dependencies
+      if: matrix.language == 'nodejs'
+      run: |
+        cd QuantumFuse/frontend/quantumfuse-app
+        npm install
+
     - name: Build with npm
       if: matrix.language == 'nodejs'
       run: |
-        make setup-node
-        make build-node
-        make test-node
+        cd QuantumFuse/frontend/quantumfuse-app
+        npm run build
+
+    - name: Test with npm
+      if: matrix.language == 'nodejs'
+      run: |
+        cd QuantumFuse/frontend/quantumfuse-app
+        npm test
