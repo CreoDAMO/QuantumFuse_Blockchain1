@@ -22,7 +22,7 @@ jobs:
 
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v4
+      uses: actions/checkout@v3
 
     - name: Set up cache
       uses: actions/cache@v3
@@ -54,15 +54,21 @@ jobs:
       if: matrix.language == 'rust'
       run: |
         cd QuantumFuse/core
+        cargo update
         cargo build --release
         cargo test
 
     # Go setup and build
     - name: Set up Go
       if: matrix.language == 'go'
-      uses: actions/setup-go@v4
+      uses: actions/setup-go@v3
       with:
-        go-version: '^1.18'
+        go-version: '1.20' # Ensure using the latest Go version
+
+    - name: Ensure go.sum is present
+      if: matrix.language == 'go'
+      run: |
+        test -f QuantumFuseNode/go.sum || go mod tidy
 
     - name: Build with go
       if: matrix.language == 'go'
