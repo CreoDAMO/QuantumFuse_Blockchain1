@@ -10,6 +10,16 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
+    services:
+      ipfs:
+        image: ipfs/go-ipfs:latest
+        ports:
+          - 5001:5001
+
+    strategy:
+      matrix:
+        language: [rust, go, python, nodejs]
+
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
@@ -20,21 +30,71 @@ jobs:
         path: |
           ~/.cache
           ./build
-        key: ${{ runner.os }}-build-${{ hashFiles('**/configure', '**/Makefile.am', '**/Makefile.in') }}
+        key: ${{ runner.os }}-build-${{ hashFiles('**/configure', '**/Makefile.am', '**/Makefile.in', '**/Cargo.lock', '**/go.sum', '**/requirements.txt', '**/package-lock.json') }}
         restore-keys: |
           ${{ runner.os }}-build-
 
     - name: Set up dependencies
-      run: sudo apt-get update && sudo apt-get install -y build-essential autoconf automake libtool
+      run: sudo apt-get update && sudo apt-get install -y build-essential autoconf automake libtool cmake
 
-    - name: Run configure script
-      run: ./configure
+    # Rust setup and build
+    - name: Install rustup
+      if: matrix.language == 'rust'
+      run: |
+        curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+        source $HOME/.cargo/env
 
-    - name: Build the project
-      run: make
+    - name: Set up Rust nightly toolchain
+      if: matrix.language == 'rust'
+      run: |
+        rustup default nightly
+        rustup component add rust-src --toolchain nightly
 
-    - name: Run checks
-      run: make check
+    - name: Build with cargo
+      if: matrix.language == 'rust'
+      run: |
+        make setup-rust
+        make build-rust
+        make test-rust
 
-    - name: Run distribution checks
-      run: make distcheck
+    # Go setup and build
+    - name: Set up Go
+      if: matrix.language == 'go'
+      uses: actions/setup-go@v4
+      with:
+        go-version: '^1.18'
+
+    - name: Build with go
+      if: matrix.language == 'go'
+      run: |
+        make setup-go
+        make build-go
+        make test-go
+
+    # Python setup and build
+    - name: Set up Python
+      if: matrix.language == 'python'
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.x'
+
+    - name: Build with Python
+      if: matrix.language == 'python'
+      run: |
+        make setup-python
+        make build-python
+        make test-python
+
+    # Node.js setup and build
+    - name: Set up Node.js
+      if: matrix.language == 'nodejs'
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+
+    - name: Build with npm
+      if: matrix.language == 'nodejs'
+      run: |
+        make setup-node
+        make build-node
+        make test-node
