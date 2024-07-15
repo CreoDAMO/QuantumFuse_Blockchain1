@@ -1,0 +1,18 @@
+[package]
+name = "tt-call"
+version = "1.0.9"
+authors = ["David Tolnay <dtolnay@gmail.com>"]
+description = "Token tree calling convention"
+documentation = "https://docs.rs/tt-call"
+edition = "2018"
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/dtolnay/tt-call"
+rust-version = "1.31"
+
+[dev-dependencies]
+rustversion = "1.0"
+syn = { version = "1.0", features = ["extra-traits"] }
+trybuild = { version = "1.0.49", features = ["diff"] }
+
+[package.metadata.docs.rs]
+targets = ["x86_64-unknown-linux-gnu"]

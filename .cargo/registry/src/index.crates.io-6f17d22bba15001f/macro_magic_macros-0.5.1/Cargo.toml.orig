@@ -1,0 +1,21 @@
+[package]
+name = "macro_magic_macros"
+version = "0.5.1"
+edition = "2021"
+description = "Proc-macro sub-crate for macro_magic"
+repository = "https://github.com/sam0x17/macro_magic"
+homepage = "https://sam0x17.dev"
+license = "MIT"
+
+[package.metadata.docs.rs]
+all-features = true
+
+[lib]
+proc-macro = true
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+quote = "1"
+syn = { version = "2", features = ["full"] }
+macro_magic_core = { version = "0.5.1", path = "../core"}

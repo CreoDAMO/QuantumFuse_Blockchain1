@@ -1,0 +1,24 @@
+[workspace]
+members = ["macros"]
+
+[package]
+name = "docify"
+version = "0.2.8"
+edition = "2021"
+authors = ["sam0x17"]
+license = "MIT"
+keywords = ["docify", "compile-time", "macro", "docs", "embed"]
+categories = ["development-tools", "development-tools::procedural-macro-helpers", "rust-patterns"]
+homepage = "https://sam0x17.dev"
+repository = "https://github.com/sam0x17/docify"
+description = "Docify allows you to live-embed at compile time pieces of code from throughout your project as rust doc examples."
+
+[dependencies]
+docify_macros = { path = "macros", version = "0.2.8" }
+
+[dev-dependencies]
+proc-utils = "0.1.0"
+
+[features]
+default = []
+generate-readme = []

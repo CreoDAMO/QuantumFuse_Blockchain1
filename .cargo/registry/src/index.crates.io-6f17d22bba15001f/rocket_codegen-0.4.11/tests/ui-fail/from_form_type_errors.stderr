@@ -1,0 +1,33 @@
+error[E0277]: the trait bound `Unknown: FromFormValue<'_>` is not satisfied
+ --> tests/ui-fail/from_form_type_errors.rs:7:5
+  |
+7 |     field: Unknown,
+  |     ^^^^^^^^^^^^^^ the trait `FromFormValue<'_>` is not implemented for `Unknown`
+  |
+  = help: the following other types implement trait `FromFormValue<'v>`:
+            &'v RawStr
+            IpAddr
+            Ipv4Addr
+            Ipv6Addr
+            NonZeroI128
+            NonZeroI16
+            NonZeroI32
+            NonZeroI64
+          and 29 others
+
+error[E0277]: the trait bound `Foo<usize>: FromFormValue<'_>` is not satisfied
+  --> tests/ui-fail/from_form_type_errors.rs:15:5
+   |
+15 |     field: Foo<usize>,
+   |     ^^^^^^^^^^^^^^^^^ the trait `FromFormValue<'_>` is not implemented for `Foo<usize>`
+   |
+   = help: the following other types implement trait `FromFormValue<'v>`:
+             &'v RawStr
+             IpAddr
+             Ipv4Addr
+             Ipv6Addr
+             NonZeroI128
+             NonZeroI16
+             NonZeroI32
+             NonZeroI64
+           and 29 others

@@ -1,0 +1,49 @@
+[package]
+name = "frame-metadata"
+version = "16.0.0"
+authors = ["Parity Technologies <admin@parity.io>"]
+edition = "2021"
+license = "Apache-2.0"
+homepage = "https://substrate.dev"
+repository = "https://github.com/paritytech/frame-metadata/"
+description = "Metadata types for Substrate runtimes"
+readme = "README.md"
+
+[package.metadata.docs.rs]
+targets = ["x86_64-unknown-linux-gnu"]
+
+[dependencies]
+codec = { package = "parity-scale-codec", version = "3.0.0", default-features = false, features = ["derive"] }
+cfg-if = "1.0.0"
+scale-info = { version = "2.0.0", default-features = false, optional = true, features = ["derive"] }
+serde = { version = "1.0.101", default-features = false, optional = true, features = ["derive"] }
+
+[features]
+default = ["std", "current"]
+
+# Feature flag for pre-V14 versions.
+legacy = []
+
+# The current stable metadata versions.
+current = ["scale-info"]
+
+# Unstable next metadata version.
+unstable = ["current"]
+
+# Serde support without relying on std features
+serde_full = [
+	"scale-info/serde",
+	"serde",
+	"serde/alloc",
+]
+
+# Scale decode support without relying on std features
+decode = ["scale-info/decode"]
+
+std = [
+	"decode",
+	"serde_full",
+	"codec/std",
+	"scale-info/std",
+	"serde/std",
+]
