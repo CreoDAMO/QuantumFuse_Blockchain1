@@ -8,20 +8,33 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4
+    - name: Checkout repository
+      uses: actions/checkout@v4
 
-    - name: configure
+    - name: Set up cache
+      uses: actions/cache@v3
+      with:
+        path: |
+          ~/.cache
+          ./build
+        key: ${{ runner.os }}-build-${{ hashFiles('**/configure', '**/Makefile.am', '**/Makefile.in') }}
+        restore-keys: |
+          ${{ runner.os }}-build-
+
+    - name: Set up dependencies
+      run: sudo apt-get update && sudo apt-get install -y build-essential autoconf automake libtool
+
+    - name: Run configure script
       run: ./configure
 
-    - name: Install dependencies
+    - name: Build the project
       run: make
 
-    - name: Run check
+    - name: Run checks
       run: make check
 
-    - name: Run distcheck
+    - name: Run distribution checks
       run: make distcheck
