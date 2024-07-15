@@ -1,7 +1,0 @@
-target/
-.DS*
-.*.swp
-.idea
-.vscode
-.DS_Store
-Cargo.lock
