@@ -4,72 +4,25 @@ version = "0.1.0"
 edition = "2018"
 
 [dependencies]
-# Asynchronous runtime
 tokio = { version = "1.38.0", features = ["full", "macros"] }
-
-# IPFS API integration
-ipfs-api = "0.17.0"
-
-# Serialization and Deserialization
 serde = { version = "1.0.204", features = ["derive"] }
 serde_json = "1.0.120"
-
-# Cryptographic hashing functions
 sha2 = "0.10.8"
 hex = "0.4.3"
-
-# Cryptographic primitives
 rand = "0.6.2"
-
-# Web framework
 rocket = { version = "0.5.1", features = ["json"] }
 rocket_okapi = { version = "0.5.0" }
-rocket_cors = { version = "0.6.0"}
-
-# GraphQL integration
+rocket_cors = { version = "0.6.0" }
 juniper = "0.16.1"
 juniper_rocket = "0.9.0"
-
-# JWT for authentication
 jsonwebtoken = "9.3.0"
-
-# Prometheus for metrics
 prometheus = "0.13.4"
-
-# Redis for caching
 redis = "0.25.4"
-
-# Logging
 env_logger = "0.11.3"
-anstream = "0.6.14"  # Specify the version of anstream if needed
+anstream = "0.6.14"
 tracing = "0.1.40"
-
-# For reading environment variables
 dotenv = "0.15.0"
-
-# Libp2p for decentralized event bus
 libp2p = { version = "0.45.1", features = ["tcp-tokio", "dns-tokio"] }
-
-# Substrate for blockchain interactions
 substrate-api-client = "0.18.0"
-
-# For testing
 assert_cmd = "2.0.14"
-
-# PEM file handling
 pem = "1.1.1"
-
-[features]
-default = ["tokio/macros", "serde/derive"]
-
-[profile.dev]
-opt-level = 1
-
-[profile.release]
-opt-level = 3
-
-[profile.test]
-opt-level = 1
-
-[profile.bench]
-opt-level = 2
