@@ -9,7 +9,7 @@ FRONTEND_DIR = QuantumFuse/frontend/quantumfuse-app
 
 all: setup build
 
-setup: setup-rust setup-go setup-python setup-node
+setup: setup-protoc setup-rust setup-go setup-python setup-node
 
 build: build-rust build-go build-python build-node
 
@@ -20,6 +20,16 @@ test: test-rust test-go test-python test-node
 clean: clean-rust clean-go clean-python clean-node
 
 update: update-rust update-go update-python update-node
+
+# Protoc setup
+setup-protoc:
+	@echo "Setting up Protoc..."
+	@if ! [ -x "$$(command -v protoc)" ]; then \
+		echo "Protoc not found, installing..."; \
+		sudo apt-get update && sudo apt-get install -y protobuf-compiler; \
+	else \
+		echo "Protoc already installed."; \
+	fi
 
 # Rust targets
 setup-rust:
