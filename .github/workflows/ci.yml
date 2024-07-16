@@ -18,12 +18,15 @@ jobs:
       - name: Set up Rust
         uses: actions-rs/toolchain@v1
         with:
-          toolchain: nightly
           profile: minimal
           override: true
-
+        env:
+          ACTIONS_RUNNER_HOOK_JOB: ${{ github.run_id }}
+      
       - name: Install dependencies for Rust
         run: |
+          rustup toolchain install nightly
+          rustup default nightly
           rustup component add rust-src
           sudo apt-get update
           sudo apt-get install -y protobuf-compiler
