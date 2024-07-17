@@ -1,0 +1,33 @@
+version: 2
+updates:
+  # Node.js (npm)
+  - package-ecosystem: "npm"
+    directory: "/QuantumFuse/frontend/quantumfuse-app" # Location of package.json
+    schedule:
+      interval: "weekly"
+    commit-message:
+      prefix: "deps"
+
+  # Python (pip)
+  - package-ecosystem: "pip"
+    directory: "/QuantumFuse/api" # Location of requirements.txt
+    schedule:
+      interval: "weekly"
+    commit-message:
+      prefix: "deps"
+
+  # Rust (cargo)
+  - package-ecosystem: "cargo"
+    directory: "/QuantumFuse/core" # Location of Cargo.toml
+    schedule:
+      interval: "weekly"
+    commit-message:
+      prefix: "deps"
+
+  # Go (modules)
+  - package-ecosystem: "gomod"
+    directory: "/QuantumFuseNode" # Location of go.mod
+    schedule:
+      interval: "weekly"
+    commit-message:
+      prefix: "deps"
