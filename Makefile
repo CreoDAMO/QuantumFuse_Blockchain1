@@ -3,7 +3,7 @@ DIRS = core api frontend
 
 # Tools
 RUST_VERSION = 1.65.0
-NODE_VERSION = 16.x
+NODE_VERSION = 20.
 
 # Targets  
 .PHONY: all lint test
