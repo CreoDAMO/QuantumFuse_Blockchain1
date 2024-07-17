@@ -1,0 +1,19 @@
+[package]
+name = "file-guard"
+version = "0.2.0"
+authors = ["Jeremy Larkin <jeremylarkin@gmail.com>"]
+license = "MIT"
+repository = "https://github.com/kalamay/file-guard"
+documentation = "https://docs.rs/file-guard"
+description = "A cross-platform library for simple advisory file locking."
+keywords = ["file-guard", "file", "lock", "fcntl", "LockFile"]
+edition = "2021"
+
+[target.'cfg(unix)'.dependencies]
+libc = "0.2.109"
+
+[target.'cfg(windows)'.dependencies]
+winapi = { version = "0.3.9", features = ["winerror", "minwinbase", "minwindef", "fileapi"] }
+
+[dev-dependencies]
+vmap = "0.6"

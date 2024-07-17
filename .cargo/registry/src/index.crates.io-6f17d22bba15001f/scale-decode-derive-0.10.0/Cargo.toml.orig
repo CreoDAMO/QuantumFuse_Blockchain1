@@ -1,0 +1,24 @@
+[package]
+name = "scale-decode-derive"
+documentation = "https://docs.rs/scale-decode"
+description = "Derive macro for scale-decode"
+readme = "README.md"
+
+version.workspace = true
+authors.workspace = true
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+homepage.workspace = true
+keywords.workspace = true
+include.workspace = true
+
+[lib]
+proc-macro = true
+
+[dependencies]
+syn = { version = "1", features = ["full"] }
+quote = "1"
+proc-macro2 = "1"
+proc-macro-crate = "1"
+darling = "0.14.2"

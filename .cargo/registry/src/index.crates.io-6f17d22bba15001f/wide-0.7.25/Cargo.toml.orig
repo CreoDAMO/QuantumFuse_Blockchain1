@@ -1,0 +1,28 @@
+[package]
+name = "wide"
+description = "A crate to help you go wide."
+version = "0.7.25"
+authors = ["Lokathor <zefria@gmail.com>"]
+repository = "https://github.com/Lokathor/wide"
+readme = "README.md"
+keywords = ["simd", "wide", "lokathor"]
+categories = ["data-structures", "hardware-support"]
+edition = "2018"
+license = "Zlib OR Apache-2.0 OR MIT"
+
+# minimum version supported with WASM and all intrinsics for safe_arch (also first version to support this config option)
+rust-version = "1.56"
+
+[features]
+default = ["std"]
+
+# Activate `std` within the crate. Currently this gives a much faster `sqrt`
+# impl when an explicit hardware sqrt isn't available.
+std = []
+
+[dependencies]
+safe_arch = { version = "0.7", features = ["bytemuck"] }
+bytemuck = "1"
+
+[dev-dependencies]
+rand = "0.8"

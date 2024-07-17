@@ -26,7 +26,10 @@ setup-protoc:
 	@echo "Setting up Protoc..."
 	@if ! [ -x "$$(command -v protoc)" ]; then \
 		echo "Protoc not found, installing..."; \
-		sudo apt-get update && sudo apt-get install -y protobuf-compiler; \
+		wget https://github.com/protocolbuffers/protobuf/releases/download/v3.20.1/protoc-3.20.1-linux-x86_64.zip; \
+		unzip protoc-3.20.1-linux-x86_64.zip -d protoc3; \
+		sudo mv protoc3/bin/protoc /usr/local/bin/; \
+		rm -rf protoc-3.20.1-linux-x86_64.zip protoc3; \
 	else \
 		echo "Protoc already installed."; \
 	fi
@@ -41,17 +44,17 @@ setup-rust:
 
 build-rust:
 	@echo "Building Rust..."
-	rustup default nightly
+	rustup override set nightly
 	cd $(RUST_DIR) && cargo build --release
 
 run-rust:
 	@echo "Running Rust..."
-	rustup default nightly
+	rustup override set nightly
 	cd $(RUST_DIR) && cargo run
 
 test-rust:
 	@echo "Testing Rust..."
-	rustup default nightly
+	rustup override set nightly
 	cd $(RUST_DIR) && cargo test
 
 clean-rust:
@@ -60,6 +63,7 @@ clean-rust:
 
 update-rust:
 	@echo "Updating Rust..."
+	rustup override set nightly
 	cd $(RUST_DIR) && cargo update
 
 # Go targets

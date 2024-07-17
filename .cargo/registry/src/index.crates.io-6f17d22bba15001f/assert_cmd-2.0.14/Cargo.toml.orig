@@ -1,0 +1,66 @@
+[workspace]
+resolver = "2"
+
+[workspace.package]
+license = "MIT OR Apache-2.0"
+edition = "2021"
+rust-version = "1.73"  # MSRV
+include = [
+  "build.rs",
+  "src/**/*",
+  "Cargo.toml",
+  "Cargo.lock",
+  "LICENSE*",
+  "README.md",
+  "benches/**/*",
+  "examples/**/*"
+]
+
+[package]
+name = "assert_cmd"
+version = "2.0.14"
+description = "Test CLI Applications."
+authors = ["Pascal Hertleif <killercup@gmail.com>", "Ed Page <eopage@gmail.com>"]
+repository = "https://github.com/assert-rs/assert_cmd.git"
+homepage = "https://github.com/assert-rs/assert_cmd"
+documentation = "http://docs.rs/assert_cmd/"
+readme = "README.md"
+categories = ["development-tools::testing"]
+keywords = ["cli", "test", "assert", "command", "duct"]
+license.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+include.workspace = true
+
+[package.metadata.docs.rs]
+all-features = true
+rustdoc-args = ["--cfg", "docsrs"]
+
+[package.metadata.release]
+pre-release-replacements = [
+  {file="CHANGELOG.md", search="Unreleased", replace="{{version}}", min=1},
+  {file="CHANGELOG.md", search="\\.\\.\\.HEAD", replace="...{{tag_name}}", exactly=1},
+  {file="CHANGELOG.md", search="ReleaseDate", replace="{{date}}", min=1},
+  {file="CHANGELOG.md", search="<!-- next-header -->", replace="<!-- next-header -->\n## [Unreleased] - ReleaseDate\n", exactly=1},
+  {file="CHANGELOG.md", search="<!-- next-url -->", replace="<!-- next-url -->\n[Unreleased]: https://github.com/assert-rs/assert_cmd/compare/{{tag_name}}...HEAD", exactly=1},
+]
+
+[features]
+color = ["dep:anstream", "predicates/color"]
+color-auto = ["color"]
+
+[[bin]]
+name = "bin_fixture"
+
+[dependencies]
+predicates = { version = "3.0.1", default-features = false, features = ["diff"] }
+predicates-core = "1.0.6"
+predicates-tree = "1.0.1"
+doc-comment = "0.3"
+wait-timeout = "0.2.0"
+bstr = "1.0.1"
+anstream = { version = "0.6.7", optional = true }
+anstyle = "1.0.0"
+
+[dev-dependencies]
+escargot = "0.5"

@@ -1,0 +1,17 @@
+[package]
+name = "parity-send-wrapper"
+version = "0.1.0"
+authors = ["Thomas Keh", "Parity Technologies <admin@parity.io>"]
+license = "MIT/Apache-2.0"
+description = """
+This Rust library implements a wrapper type called SendWrapper which allows you to move around non-Send types
+between threads, as long as you access the contained value only from within the original thread. You also have to
+make sure that the wrapper is dropped from within the original thread. If any of these constraints is violated,
+a panic occurs.
+
+Forked from https://github.com/thk1/send_wrapper because it was unmaintained"""
+keywords = ["send", "wrapper", "thread_local"]
+readme = "README.md"
+repository = "https://github.com/paritytech/send_wrapper"
+documentation = "https://docs.rs/parity-send-wrapper"
+categories = ["rust-patterns"]
