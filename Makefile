@@ -23,8 +23,9 @@ update: update-rust update-go update-python update-node
 
 # Rust targets
 setup-rust:
-	rustup default nightly
-	rustup component add rust-src --toolchain nightly
+	rustup install nightly-2018-10-05
+	rustup default nightly-2018-10-05
+	rustup component add rust-src --toolchain nightly-2018-10-05
 	cd $(RUST_DIR) && cargo update && cargo build
 
 build-rust:
@@ -99,3 +100,4 @@ clean-node:
 
 update-node:
 	cd $(FRONTEND_DIR) && npm update
+
