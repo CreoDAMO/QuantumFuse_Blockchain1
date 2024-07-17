@@ -209,7 +209,7 @@ package-lock.json
 replit.nix
 ```
 
-### Explanation of Each Section:
+### Explanation of Each Section
 
 1. **.vscode/**
     - `settings.json`: Visual Studio Code settings.

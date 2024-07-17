@@ -18,7 +18,7 @@ Use this section to tell people how to report a vulnerability.
 Tell them where to go, how often they can expect to get an update on a reported vulnerability, what to expect if the vulnerability is accepted or declined, etc.
 
 1. **Where to report**:
-    - Report vulnerabilities by emailing jacquedegraff@creodamo.com.
+    - Report vulnerabilities by emailing <jacquedegraff@creodamo.com>.
     - Alternatively, submit issues to our [GitHub repository's security advisories](https://github.com/yourproject/security/advisories).
 
 2. **Acknowledgment**:
