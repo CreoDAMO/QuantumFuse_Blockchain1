@@ -1,34 +1,30 @@
 # Directories
-DIRS = core api frontend
+RUST_DIR = QuantumFuse/core
+GO_DIR = QuantumFuseNode
+PYTHON_DIR = QuantumFuse/api
+FRONTEND_DIR = QuantumFuse/frontend/quantumfuse-app
 
-# Tools
-RUST_VERSION = 1.65.0
-NODE_VERSION = 20.
+# Targets
+.PHONY: all setup build run test clean update
 
-# Targets  
-.PHONY: all lint test
+all: setup build
 
-all: setup test
+setup: setup-rust setup-go setup-python setup-node
 
-setup:
- 	@echo "Installing tools..."
- 	rustup install $(RUST_VERSION)
- 	npm install -g n $(NODE_VERSION)
+build: build-rust build-go build-python build-node
 
-lint: 
- 	@echo "Linting code..."
-	@for dir in $(DIRS); do \
-	  printf "%s\n" "Linting $$dir"; \  
-	  (cd $$dir && $(LINT_COMMAND)); \
-	done
+run: run-rust run-go run-python run-node
 
-test:
- 	@echo "Testing code..."
- 	cargo test --all --verbose
- 	cd api && pytest
- 	cd frontend && npm test
+test: test-rust test-go test-python test-node
 
-# Directory specific linting
-core: LINT_COMMAND = cargo clippy --all-targets --all-features -- -D warnings
-api: LINT_COMMAND = pylint --exclude=tests 
-frontend: LINT_COMMAND = npm run lint
+clean: clean-rust clean-go clean-python clean-node
+
+update: update-rust update-go update-python update-node
+
+# Rust targets
+setup-rust:
+	rustup default nightly
+	rustup component add rust-src --toolchain nightly
+	cd $(RUST_DIR) && cargo update && cargo build
+
+build-r
