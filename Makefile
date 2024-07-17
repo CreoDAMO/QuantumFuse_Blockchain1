@@ -29,6 +29,6 @@ test:
  	cd frontend && npm test
 
 # Directory specific linting
-core:LINT_COMMAND = cargo clippy --all-targets --all-features -- -D warnings
+core: LINT_COMMAND = cargo clippy --all-targets --all-features -- -D warnings
 api: LINT_COMMAND = pylint --exclude=tests 
 frontend: LINT_COMMAND = npm run lint
