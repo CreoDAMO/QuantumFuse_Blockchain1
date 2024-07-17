@@ -45,12 +45,9 @@ jobs:
         run: |
           curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
           source $HOME/.cargo/env
-
-      - name: Set up Rust nightly toolchain
-        if: matrix.language == 'rust'
-        run: |
-          rustup default nightly
-          rustup component add rust-src --toolchain nightly
+          rustup install nightly-2018-10-05
+          rustup default nightly-2018-10-05
+          rustup component add rust-src --toolchain nightly-2018-10-05
 
       - name: Build with cargo
         if: matrix.language == 'rust'
@@ -116,7 +113,7 @@ jobs:
         uses: actions-rs/toolchain@v1
         with:
           profile: minimal
-          toolchain: stable
+          toolchain: nightly-2018-10-05
           components: clippy
           override: true
 
