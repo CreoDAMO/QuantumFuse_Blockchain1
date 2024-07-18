@@ -1,0 +1,166 @@
+error[E0277]: the trait bound `BadType: UriDisplay<rocket::http::uri::Query>` is not satisfied
+   --> tests/ui-fail/uri_display_type_errors.rs:6:13
+    |
+6   | struct Bar1(BadType);
+    |             ^^^^^^^ the trait `UriDisplay<rocket::http::uri::Query>` is not implemented for `BadType`
+    |
+    = help: the following other types implement trait `UriDisplay<P>`:
+              <&'a T as UriDisplay<P>>
+              <&'a mut T as UriDisplay<P>>
+              <Bar1 as UriDisplay<rocket::http::uri::Query>>
+              <Bar2 as UriDisplay<rocket::http::uri::Query>>
+              <Bar3 as UriDisplay<rocket::http::uri::Query>>
+              <Bar4 as UriDisplay<rocket::http::uri::Query>>
+              <Bar5 as UriDisplay<rocket::http::uri::Query>>
+              <Bar6 as UriDisplay<rocket::http::uri::Query>>
+            and 27 others
+    = note: required because of the requirements on the impl of `UriDisplay<rocket::http::uri::Query>` for `&BadType`
+note: required by a bound in `rocket::http::uri::Formatter::<'i, P>::write_value`
+   --> $WORKSPACE/core/http/src/uri/formatter.rs
+    |
+    |     pub fn write_value<T: UriDisplay<P>>(&mut self, value: T) -> fmt::Result {
+    |                           ^^^^^^^^^^^^^ required by this bound in `rocket::http::uri::Formatter::<'i, P>::write_value`
+
+error[E0277]: the trait bound `BadType: UriDisplay<rocket::http::uri::Query>` is not satisfied
+   --> tests/ui-fail/uri_display_type_errors.rs:11:5
+    |
+11  |     field: BadType,
+    |     ^^^^^^^^^^^^^^ the trait `UriDisplay<rocket::http::uri::Query>` is not implemented for `BadType`
+    |
+    = help: the following other types implement trait `UriDisplay<P>`:
+              <&'a T as UriDisplay<P>>
+              <&'a mut T as UriDisplay<P>>
+              <Bar1 as UriDisplay<rocket::http::uri::Query>>
+              <Bar2 as UriDisplay<rocket::http::uri::Query>>
+              <Bar3 as UriDisplay<rocket::http::uri::Query>>
+              <Bar4 as UriDisplay<rocket::http::uri::Query>>
+              <Bar5 as UriDisplay<rocket::http::uri::Query>>
+              <Bar6 as UriDisplay<rocket::http::uri::Query>>
+            and 27 others
+    = note: required because of the requirements on the impl of `UriDisplay<rocket::http::uri::Query>` for `&BadType`
+note: required by a bound in `rocket::http::uri::Formatter::<'i, rocket::http::uri::Query>::write_named_value`
+   --> $WORKSPACE/core/http/src/uri/formatter.rs
+    |
+    |     pub fn write_named_value<T: UriDisplay<Query>>(&mut self, name: &str, value: T) -> fmt::Result {
+    |                                 ^^^^^^^^^^^^^^^^^ required by this bound in `rocket::http::uri::Formatter::<'i, rocket::http::uri::Query>::write_named_value`
+
+error[E0277]: the trait bound `BadType: UriDisplay<rocket::http::uri::Query>` is not satisfied
+   --> tests/ui-fail/uri_display_type_errors.rs:18:5
+    |
+18  |     bad: BadType,
+    |     ^^^^^^^^^^^^ the trait `UriDisplay<rocket::http::uri::Query>` is not implemented for `BadType`
+    |
+    = help: the following other types implement trait `UriDisplay<P>`:
+              <&'a T as UriDisplay<P>>
+              <&'a mut T as UriDisplay<P>>
+              <Bar1 as UriDisplay<rocket::http::uri::Query>>
+              <Bar2 as UriDisplay<rocket::http::uri::Query>>
+              <Bar3 as UriDisplay<rocket::http::uri::Query>>
+              <Bar4 as UriDisplay<rocket::http::uri::Query>>
+              <Bar5 as UriDisplay<rocket::http::uri::Query>>
+              <Bar6 as UriDisplay<rocket::http::uri::Query>>
+            and 27 others
+    = note: required because of the requirements on the impl of `UriDisplay<rocket::http::uri::Query>` for `&BadType`
+note: required by a bound in `rocket::http::uri::Formatter::<'i, rocket::http::uri::Query>::write_named_value`
+   --> $WORKSPACE/core/http/src/uri/formatter.rs
+    |
+    |     pub fn write_named_value<T: UriDisplay<Query>>(&mut self, name: &str, value: T) -> fmt::Result {
+    |                                 ^^^^^^^^^^^^^^^^^ required by this bound in `rocket::http::uri::Formatter::<'i, rocket::http::uri::Query>::write_named_value`
+
+error[E0277]: the trait bound `BadType: UriDisplay<rocket::http::uri::Query>` is not satisfied
+   --> tests/ui-fail/uri_display_type_errors.rs:24:11
+    |
+24  |     Inner(BadType),
+    |           ^^^^^^^ the trait `UriDisplay<rocket::http::uri::Query>` is not implemented for `BadType`
+    |
+    = help: the following other types implement trait `UriDisplay<P>`:
+              <&'a T as UriDisplay<P>>
+              <&'a mut T as UriDisplay<P>>
+              <Bar1 as UriDisplay<rocket::http::uri::Query>>
+              <Bar2 as UriDisplay<rocket::http::uri::Query>>
+              <Bar3 as UriDisplay<rocket::http::uri::Query>>
+              <Bar4 as UriDisplay<rocket::http::uri::Query>>
+              <Bar5 as UriDisplay<rocket::http::uri::Query>>
+              <Bar6 as UriDisplay<rocket::http::uri::Query>>
+            and 27 others
+    = note: required because of the requirements on the impl of `UriDisplay<rocket::http::uri::Query>` for `&BadType`
+    = note: 1 redundant requirement hidden
+    = note: required because of the requirements on the impl of `UriDisplay<rocket::http::uri::Query>` for `&&BadType`
+note: required by a bound in `rocket::http::uri::Formatter::<'i, P>::write_value`
+   --> $WORKSPACE/core/http/src/uri/formatter.rs
+    |
+    |     pub fn write_value<T: UriDisplay<P>>(&mut self, value: T) -> fmt::Result {
+    |                           ^^^^^^^^^^^^^ required by this bound in `rocket::http::uri::Formatter::<'i, P>::write_value`
+
+error[E0277]: the trait bound `BadType: UriDisplay<rocket::http::uri::Query>` is not satisfied
+   --> tests/ui-fail/uri_display_type_errors.rs:31:9
+    |
+31  |         field: BadType,
+    |         ^^^^^^^^^^^^^^ the trait `UriDisplay<rocket::http::uri::Query>` is not implemented for `BadType`
+    |
+    = help: the following other types implement trait `UriDisplay<P>`:
+              <&'a T as UriDisplay<P>>
+              <&'a mut T as UriDisplay<P>>
+              <Bar1 as UriDisplay<rocket::http::uri::Query>>
+              <Bar2 as UriDisplay<rocket::http::uri::Query>>
+              <Bar3 as UriDisplay<rocket::http::uri::Query>>
+              <Bar4 as UriDisplay<rocket::http::uri::Query>>
+              <Bar5 as UriDisplay<rocket::http::uri::Query>>
+              <Bar6 as UriDisplay<rocket::http::uri::Query>>
+            and 27 others
+    = note: required because of the requirements on the impl of `UriDisplay<rocket::http::uri::Query>` for `&BadType`
+    = note: 1 redundant requirement hidden
+    = note: required because of the requirements on the impl of `UriDisplay<rocket::http::uri::Query>` for `&&BadType`
+note: required by a bound in `rocket::http::uri::Formatter::<'i, rocket::http::uri::Query>::write_named_value`
+   --> $WORKSPACE/core/http/src/uri/formatter.rs
+    |
+    |     pub fn write_named_value<T: UriDisplay<Query>>(&mut self, name: &str, value: T) -> fmt::Result {
+    |                                 ^^^^^^^^^^^^^^^^^ required by this bound in `rocket::http::uri::Formatter::<'i, rocket::http::uri::Query>::write_named_value`
+
+error[E0277]: the trait bound `BadType: UriDisplay<rocket::http::uri::Query>` is not satisfied
+   --> tests/ui-fail/uri_display_type_errors.rs:40:9
+    |
+40  |         other: BadType,
+    |         ^^^^^^^^^^^^^^ the trait `UriDisplay<rocket::http::uri::Query>` is not implemented for `BadType`
+    |
+    = help: the following other types implement trait `UriDisplay<P>`:
+              <&'a T as UriDisplay<P>>
+              <&'a mut T as UriDisplay<P>>
+              <Bar1 as UriDisplay<rocket::http::uri::Query>>
+              <Bar2 as UriDisplay<rocket::http::uri::Query>>
+              <Bar3 as UriDisplay<rocket::http::uri::Query>>
+              <Bar4 as UriDisplay<rocket::http::uri::Query>>
+              <Bar5 as UriDisplay<rocket::http::uri::Query>>
+              <Bar6 as UriDisplay<rocket::http::uri::Query>>
+            and 27 others
+    = note: required because of the requirements on the impl of `UriDisplay<rocket::http::uri::Query>` for `&BadType`
+    = note: 1 redundant requirement hidden
+    = note: required because of the requirements on the impl of `UriDisplay<rocket::http::uri::Query>` for `&&BadType`
+note: required by a bound in `rocket::http::uri::Formatter::<'i, rocket::http::uri::Query>::write_named_value`
+   --> $WORKSPACE/core/http/src/uri/formatter.rs
+    |
+    |     pub fn write_named_value<T: UriDisplay<Query>>(&mut self, name: &str, value: T) -> fmt::Result {
+    |                                 ^^^^^^^^^^^^^^^^^ required by this bound in `rocket::http::uri::Formatter::<'i, rocket::http::uri::Query>::write_named_value`
+
+error[E0277]: the trait bound `BadType: UriDisplay<rocket::http::uri::Path>` is not satisfied
+   --> tests/ui-fail/uri_display_type_errors.rs:46:12
+    |
+46  | struct Baz(BadType);
+    |            ^^^^^^^ the trait `UriDisplay<rocket::http::uri::Path>` is not implemented for `BadType`
+    |
+    = help: the following other types implement trait `UriDisplay<P>`:
+              <&'a T as UriDisplay<P>>
+              <&'a mut T as UriDisplay<P>>
+              <Bar1 as UriDisplay<rocket::http::uri::Query>>
+              <Bar2 as UriDisplay<rocket::http::uri::Query>>
+              <Bar3 as UriDisplay<rocket::http::uri::Query>>
+              <Bar4 as UriDisplay<rocket::http::uri::Query>>
+              <Bar5 as UriDisplay<rocket::http::uri::Query>>
+              <Bar6 as UriDisplay<rocket::http::uri::Query>>
+            and 27 others
+    = note: required because of the requirements on the impl of `UriDisplay<rocket::http::uri::Path>` for `&BadType`
+note: required by a bound in `rocket::http::uri::Formatter::<'i, P>::write_value`
+   --> $WORKSPACE/core/http/src/uri/formatter.rs
+    |
+    |     pub fn write_value<T: UriDisplay<P>>(&mut self, value: T) -> fmt::Result {
+    |                           ^^^^^^^^^^^^^ required by this bound in `rocket::http::uri::Formatter::<'i, P>::write_value`

@@ -1,0 +1,47 @@
+error: expected `,`
+ --> tests/ui/auto_enum/args.rs:5:21
+  |
+5 | #[auto_enum(Iterator;)] //~ ERROR expected `,`
+  |                     ^
+
+error: expected identifier
+  --> tests/ui/auto_enum/args.rs:13:22
+   |
+13 | #[auto_enum(Iterator,;)] //~ ERROR expected identifier
+   |                      ^
+
+error: expected `,`
+  --> tests/ui/auto_enum/args.rs:24:23
+   |
+24 |     #[auto_enum(marker{f}, Iterator)] //~ ERROR expected `,`
+   |                       ^
+
+error: expected `,`
+  --> tests/ui/auto_enum/args.rs:32:23
+   |
+32 |     #[auto_enum(marker[f], Iterator)] //~ ERROR expected `,`
+   |                       ^
+
+error: expected `,`
+  --> tests/ui/auto_enum/args.rs:40:23
+   |
+40 |     #[auto_enum(marker(f), Iterator)] //~ ERROR expected `,`
+   |                       ^
+
+error: duplicate `marker` argument
+  --> tests/ui/auto_enum/args.rs:48:29
+   |
+48 |     #[auto_enum(marker = f, marker = g, Iterator)] //~ ERROR duplicate `marker` argument
+   |                             ^^^^^^
+
+error: expected identifier
+  --> tests/ui/auto_enum/args.rs:56:25
+   |
+56 |     #[auto_enum(marker =, Iterator)] //~ ERROR expected identifier
+   |                         ^
+
+error: expected `,`
+  --> tests/ui/auto_enum/args.rs:64:28
+   |
+64 |     #[auto_enum(marker = f t, Iterator)] //~ ERROR expected `,`
+   |                            ^

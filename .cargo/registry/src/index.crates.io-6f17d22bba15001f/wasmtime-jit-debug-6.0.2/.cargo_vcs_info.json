@@ -1,0 +1,6 @@
+{
+  "git": {
+    "sha1": "00fd7bc4d1ce64feb3ca82161216721b740ec571"
+  },
+  "path_in_vcs": "crates/jit-debug"
+}
