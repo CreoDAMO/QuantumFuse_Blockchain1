@@ -23,79 +23,80 @@ update: update-rust update-go update-python update-node
 
 # Rust targets
 setup-rust:
-	rustup default nightly
-	rustup component add rust-src --toolchain nightly
-	cd $(RUST_DIR) && cargo update && cargo build
+	rustup default stable || exit 1
+	rustup update || exit 1
+	cd $(RUST_DIR) && cargo update || exit 1
+	cd $(RUST_DIR) && cargo build || exit 1
 
 build-rust:
-	cd $(RUST_DIR) && cargo build --release
+	cd $(RUST_DIR) && cargo build --release || exit 1
 
 run-rust:
-	cd $(RUST_DIR) && cargo run
+	cd $(RUST_DIR) && cargo run || exit 1
 
 test-rust:
-	cd $(RUST_DIR) && cargo test
+	cd $(RUST_DIR) && cargo test || exit 1
 
 clean-rust:
-	cd $(RUST_DIR) && cargo clean
+	cd $(RUST_DIR) && cargo clean || exit 1
 
 update-rust:
-	cd $(RUST_DIR) && cargo update
+	cd $(RUST_DIR) && cargo update || exit 1
 
 # Go targets
 setup-go:
-	go mod tidy
-	cd $(GO_DIR) && go get ./...
+	cd $(GO_DIR) && go mod tidy || exit 1
+	cd $(GO_DIR) && go get ./... || exit 1
 
 build-go:
-	cd $(GO_DIR) && go build
+	cd $(GO_DIR) && go build || exit 1
 
 run-go:
-	cd $(GO_DIR) && go run main.go
+	cd $(GO_DIR) && go run main.go || exit 1
 
 test-go:
-	cd $(GO_DIR) && go test ./...
+	cd $(GO_DIR) && go test ./... || exit 1
 
 clean-go:
-	rm -rf $(GO_DIR)/bin
+	rm -rf $(GO_DIR)/bin || exit 1
 
 update-go:
-	cd $(GO_DIR) && go get -u ./...
+	cd $(GO_DIR) && go get -u ./... || exit 1
 
 # Python targets
 setup-python:
-	pip install -r $(PYTHON_DIR)/requirements.txt
+	pip install -r $(PYTHON_DIR)/requirements.txt || exit 1
 
 build-python:
 	@echo "Python does not require a build step."
 
 run-python:
-	python $(PYTHON_DIR)/main.py
+	python $(PYTHON_DIR)/main.py || exit 1
 
 test-python:
-	pytest $(PYTHON_DIR)/tests
+	pytest $(PYTHON_DIR)/tests || exit 1
 
 clean-python:
-	rm -rf $(PYTHON_DIR)/__pycache__
+	rm -rf $(PYTHON_DIR)/__pycache__ || exit 1
 
 update-python:
-	pip install --upgrade -r $(PYTHON_DIR)/requirements.txt
+	pip install --upgrade -r $(PYTHON_DIR)/requirements.txt || exit 1
 
 # Node.js targets
 setup-node:
-	cd $(FRONTEND_DIR) && npm install
+	cd $(FRONTEND_DIR) && npm install || exit 1
 
 build-node:
-	cd $(FRONTEND_DIR) && npm run build
+	cd $(FRONTEND_DIR) && npm run build || exit 1
 
 run-node:
-	cd $(FRONTEND_DIR) && npm start
+	cd $(FRONTEND_DIR) && npm start || exit 1
 
 test-node:
-	cd $(FRONTEND_DIR) && npm test
+	cd $(FRONTEND_DIR) && npm test || exit 1
 
 clean-node:
-	rm -rf $(FRONTEND_DIR)/node_modules
+	rm -rf $(FRONTEND_DIR)/node_modules || exit 1
 
 update-node:
-	cd $(FRONTEND_DIR) && npm update
+	cd $(FRONTEND_DIR) && npm update || exit 1
