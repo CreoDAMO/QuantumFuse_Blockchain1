@@ -1,9 +1,0 @@
-target/
-Cargo.lock
-
-#IntelliJ project files
-.idea
-*.iml
-
-CMakeLists.txt
-cmake-build-debug

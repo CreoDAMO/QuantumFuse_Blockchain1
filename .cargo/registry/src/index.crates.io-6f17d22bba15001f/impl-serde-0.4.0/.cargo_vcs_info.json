@@ -1,6 +1,0 @@
-{
-  "git": {
-    "sha1": "7a9cc3b03c5311c24623c66fe8a750903cf34484"
-  },
-  "path_in_vcs": "primitive-types/impls/serde"
-}
