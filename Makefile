@@ -23,24 +23,30 @@ update: update-rust update-go update-python update-node
 
 # Rust targets
 setup-rust:
-	rustup default stable || exit 1
-	rustup update || exit 1
+	rustup toolchain install nightly || exit 1
+	rustup override set nightly --path $(RUST_DIR) || exit 1
+	rustup component add rust-src --toolchain nightly || exit 1
 	cd $(RUST_DIR) && cargo update || exit 1
 	cd $(RUST_DIR) && cargo build || exit 1
 
 build-rust:
+	rustup override set nightly --path $(RUST_DIR) || exit 1
 	cd $(RUST_DIR) && cargo build --release || exit 1
 
 run-rust:
+	rustup override set nightly --path $(RUST_DIR) || exit 1
 	cd $(RUST_DIR) && cargo run || exit 1
 
 test-rust:
+	rustup override set nightly --path $(RUST_DIR) || exit 1
 	cd $(RUST_DIR) && cargo test || exit 1
 
 clean-rust:
+	rustup override set nightly --path $(RUST_DIR) || exit 1
 	cd $(RUST_DIR) && cargo clean || exit 1
 
 update-rust:
+	rustup override set nightly --path $(RUST_DIR) || exit 1
 	cd $(RUST_DIR) && cargo update || exit 1
 
 # Go targets
