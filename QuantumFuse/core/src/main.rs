@@ -2,19 +2,18 @@ use std::env;
 use std::collections::HashMap;
 use std::error::Error;
 use std::fmt;
-use tokio::time::{Duration, sleep};
+use tokio::sync::mpsc::{self, Sender, Receiver};
 use serde::{Serialize, Deserialize};
 use rocket::{get, post, launch, routes, serde::json::Json};
 use juniper::{EmptyMutation, RootNode};
 use jsonwebtoken::{encode, decode, Header, Validation, EncodingKey, DecodingKey};
-use prometheus::{Encoder, TextEncoder, Counter, Opts, Registry};
+use prometheus::{Counter, Opts, Registry};
 use dotenv::dotenv;
-use tokio::sync::mpsc::{self, Sender, Receiver};
 use rocket_okapi::{openapi, openapi_get_routes};
 use rocket_okapi::swagger_ui::{make_swagger_ui, SwaggerUIConfig};
 use redis::{Commands, Client};
 
-// Import necessary modules here
+// Import necessary modules
 mod wallet;
 mod plaid;
 // Other modules...
