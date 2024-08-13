@@ -1,0 +1,63 @@
+name: Makefile CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    # Set up Rust
+    - name: Set up Rust
+      uses: actions-rs/toolchain@v1
+      with:
+        toolchain: nightly
+        override: true
+
+    - name: Install Rust components
+      run: rustup component add rust-src
+
+    # Install Protoc for Rust
+    - name: Install Protoc
+      run: sudo apt-get update && sudo apt-get install -y protobuf-compiler
+
+    # Set up Go
+    - name: Set up Go
+      uses: actions/setup-go@v3
+      with:
+        go-version: '1.18'
+
+    # Set up Python
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+
+    # Set up Node.js
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '16'
+
+    # Install dependencies for all components
+    - name: Install dependencies
+      run: make setup
+
+    # Build all components
+    - name: Build project
+      run: make build
+
+    # Run tests for all components
+    - name: Run tests
+      run: make test
+
+    # Optional: Clean up after the build and test
+    - name: Clean project
+      if: always()
+      run: make clean
