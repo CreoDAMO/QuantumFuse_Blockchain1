@@ -34,7 +34,13 @@ build-rust:
 	cd $(RUST_DIR) && rustup run nightly cargo build --release || exit 1
 
 run-rust:
-	cd $(RUST_DIR) && rustup run nightly cargo run || exit 1
+	cd $(RUST_DIR) && rustup run nightly cargo run --bin main || exit 1
+
+run-community-wallet:
+	cd $(RUST_DIR) && rustup run nightly cargo run --bin community_wallet || exit 1
+
+run-founder-wallet:
+	cd $(RUST_DIR) && rustup run nightly cargo run --bin founder_wallet || exit 1
 
 test-rust:
 	cd $(RUST_DIR) && rustup run nightly cargo test || exit 1
@@ -67,24 +73,22 @@ update-go:
 
 # Python targets
 setup-python:
-	python3 -m venv $(PYTHON_DIR)/venv || exit 1
-	$(PYTHON_DIR)/venv/bin/pip install -r $(PYTHON_DIR)/requirements.txt || exit 1
+	pip install -r $(PYTHON_DIR)/requirements.txt || exit 1
 
 build-python:
 	@echo "Python does not require a build step."
 
 run-python:
-	$(PYTHON_DIR)/venv/bin/python $(PYTHON_DIR)/api.py || exit 1
+	python $(PYTHON_DIR)/main.py || exit 1
 
 test-python:
-	$(PYTHON_DIR)/venv/bin/pytest $(PYTHON_DIR)/tests || exit 1
+	pytest $(PYTHON_DIR)/tests || exit 1
 
 clean-python:
 	rm -rf $(PYTHON_DIR)/__pycache__ || exit 1
-	rm -rf $(PYTHON_DIR)/venv || exit 1
 
 update-python:
-	$(PYTHON_DIR)/venv/bin/pip install --upgrade -r $(PYTHON_DIR)/requirements.txt || exit 1
+	pip install --upgrade -r $(PYTHON_DIR)/requirements.txt || exit 1
 
 # Node.js targets
 setup-node:
