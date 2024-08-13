@@ -26,12 +26,7 @@ libp2p = { version = "0.49.0", features = ["tcp-tokio", "dns-tokio"] }
 substrate-api-client = "0.18.0"
 assert_cmd = "2.0.14"
 pem = "3.0.4"
-frame-support = { version = "4.0.0" }
-frame-system = { version = "4.0.0" }
-schnorrkel = "0.11.4" # Make sure this matches the version you want to use
+schnorrkel = "0.11.4" # Explicitly specify the version here
 
 [dev-dependencies]
 cargo-edit = "0.12.3"
-
-[patch.crates-io]
-schnorrkel = { version = "0.11.4" } # Ensure all dependencies use the same version
