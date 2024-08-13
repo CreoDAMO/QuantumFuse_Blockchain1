@@ -67,22 +67,24 @@ update-go:
 
 # Python targets
 setup-python:
-	pip install -r $(PYTHON_DIR)/requirements.txt || exit 1
+	python3 -m venv $(PYTHON_DIR)/venv || exit 1
+	$(PYTHON_DIR)/venv/bin/pip install -r $(PYTHON_DIR)/requirements.txt || exit 1
 
 build-python:
 	@echo "Python does not require a build step."
 
 run-python:
-	python $(PYTHON_DIR)/main.py || exit 1
+	$(PYTHON_DIR)/venv/bin/python $(PYTHON_DIR)/api.py || exit 1
 
 test-python:
-	pytest $(PYTHON_DIR)/tests || exit 1
+	$(PYTHON_DIR)/venv/bin/pytest $(PYTHON_DIR)/tests || exit 1
 
 clean-python:
 	rm -rf $(PYTHON_DIR)/__pycache__ || exit 1
+	rm -rf $(PYTHON_DIR)/venv || exit 1
 
 update-python:
-	pip install --upgrade -r $(PYTHON_DIR)/requirements.txt || exit 1
+	$(PYTHON_DIR)/venv/bin/pip install --upgrade -r $(PYTHON_DIR)/requirements.txt || exit 1
 
 # Node.js targets
 setup-node:
