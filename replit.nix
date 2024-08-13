@@ -23,8 +23,8 @@
     mkdir -p $GOPATH
 
     # Python setup
-    python3 -m venv venv
-    source venv/bin/activate
+    python3 -m venv QuantumFuse/api/venv
+    source QuantumFuse/api/venv/bin/activate
     pip install -r QuantumFuse/api/requirements.txt
 
     # Node.js setup
