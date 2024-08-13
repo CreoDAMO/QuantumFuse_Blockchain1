@@ -10,11 +10,11 @@ serde_json = "1.0.120"
 sha2 = "0.10.8"
 hex = "0.4.3"
 rand = "0.8.5"
-rocket = { version = "0.5.0", features = ["json"] }
+rocket = { version = "0.5.0-rc.1", features = ["json"] }
 rocket_okapi = "0.8.0"
 rocket_cors = "0.6.0"
-juniper = "0.16.1"
-juniper_rocket = "0.9.0"
+juniper = "0.15.3"
+juniper_rocket = "0.6.1"
 jsonwebtoken = "9.3.0"
 prometheus = "0.13.4"
 redis = "0.26.1"
@@ -32,3 +32,11 @@ schnorrkel = "0.11.4"
 
 [dev-dependencies]
 cargo-edit = "0.12.3"
+
+[[bin]]
+name = "community_wallet"
+path = "src/bin/community_wallet.rs"
+
+[[bin]]
+name = "founder_wallet"
+path = "src/bin/founder_wallet.rs"
