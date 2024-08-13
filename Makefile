@@ -1,37 +1,104 @@
-[package]
-name = "quantumfuse_blockchain"
-version = "0.1.0"
-edition = "2018"
+# Directories
+RUST_DIR = QuantumFuse/core
+GO_DIR = QuantumFuseNode
+PYTHON_DIR = QuantumFuse/api
+FRONTEND_DIR = QuantumFuse/frontend/quantumfuse-app
 
-[dependencies]
-tokio = { version = "1.10.0", features = ["full", "macros"] }
-serde = { version = "1.0.204", features = ["derive"] }
-serde_json = "1.0.120"
-sha2 = "0.10.8"
-hex = "0.4.3"
-rand = "0.8.5"
-rocket = { version = "0.5.0", features = ["json"] }
-rocket_okapi = "0.8.0"
-rocket_cors = "0.6.0"
-juniper = "0.16.1"
-juniper_rocket = "0.9.0"
-jsonwebtoken = "9.3.0"
-prometheus = "0.13.4"
-redis = "0.26.1"
-env_logger = "0.11.4"
-anstream = "0.6.14"
-tracing = "0.1.40"
-dotenv = "0.15.0"
-libp2p = { version = "0.49.0", features = ["tcp-tokio", "dns-tokio"] }
-substrate-api-client = "0.18.0"
-assert_cmd = "2.0.14"
-pem = "3.0.4"
-frame-support = { version = "4.0.0" }
-frame-system = { version = "4.0.0" }
-schnorrkel = "0.11.4"
+# Targets
+.PHONY: all setup build run test clean update
 
-[dev-dependencies]
-cargo-edit = "0.12.3"
+all: setup build
 
-[patch.crates-io]
-schnorrkel = { version = "0.11.4", package = "schnorrkel" }
+setup: setup-rust setup-go setup-python setup-node
+
+build: build-rust build-go build-python build-node
+
+run: run-rust run-go run-python run-node
+
+test: test-rust test-go test-python test-node
+
+clean: clean-rust clean-go clean-python clean-node
+
+update: update-rust update-go update-python update-node
+
+# Rust targets
+setup-rust:
+	rustup toolchain install nightly || exit 1
+	rustup override set nightly --path $(RUST_DIR) || exit 1
+	rustup component add rust-src --toolchain nightly || exit 1
+	sudo apt-get update && sudo apt-get install -y protobuf-compiler || exit 1
+	cd $(RUST_DIR) && rustup run nightly cargo update || exit 1
+	cd $(RUST_DIR) && rustup run nightly cargo build || exit 1
+
+build-rust:
+	cd $(RUST_DIR) && rustup run nightly cargo build --release || exit 1
+
+run-rust:
+	cd $(RUST_DIR) && rustup run nightly cargo run || exit 1
+
+test-rust:
+	cd $(RUST_DIR) && rustup run nightly cargo test || exit 1
+
+clean-rust:
+	cd $(RUST_DIR) && rustup run nightly cargo clean || exit 1
+
+update-rust:
+	cd $(RUST_DIR) && rustup run nightly cargo update || exit 1
+
+# Go targets
+setup-go:
+	cd $(GO_DIR) && go mod tidy || exit 1
+	cd $(GO_DIR) && go get ./... || exit 1
+
+build-go:
+	cd $(GO_DIR) && go build || exit 1
+
+run-go:
+	cd $(GO_DIR) && go run main.go || exit 1
+
+test-go:
+	cd $(GO_DIR) && go test ./... || exit 1
+
+clean-go:
+	rm -rf $(GO_DIR)/bin || exit 1
+
+update-go:
+	cd $(GO_DIR) && go get -u ./... || exit 1
+
+# Python targets
+setup-python:
+	pip install -r $(PYTHON_DIR)/requirements.txt || exit 1
+
+build-python:
+	@echo "Python does not require a build step."
+
+run-python:
+	python $(PYTHON_DIR)/main.py || exit 1
+
+test-python:
+	pytest $(PYTHON_DIR)/tests || exit 1
+
+clean-python:
+	rm -rf $(PYTHON_DIR)/__pycache__ || exit 1
+
+update-python:
+	pip install --upgrade -r $(PYTHON_DIR)/requirements.txt || exit 1
+
+# Node.js targets
+setup-node:
+	cd $(FRONTEND_DIR) && npm install || exit 1
+
+build-node:
+	cd $(FRONTEND_DIR) && npm run build || exit 1
+
+run-node:
+	cd $(FRONTEND_DIR) && npm start || exit 1
+
+test-node:
+	cd $(FRONTEND_DIR) && npm test || exit 1
+
+clean-node:
+	rm -rf $(FRONTEND_DIR)/node_modules || exit 1
+
+update-node:
+	cd $(FRONTEND_DIR) && npm update || exit 1
