@@ -13,7 +13,6 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
-    # Set up Rust
     - name: Set up Rust
       uses: actions-rs/toolchain@v1
       with:
@@ -23,41 +22,37 @@ jobs:
     - name: Install Rust components
       run: rustup component add rust-src
 
-    # Install Protoc for Rust
     - name: Install Protoc
       run: sudo apt-get update && sudo apt-get install -y protobuf-compiler
 
-    # Set up Go
-    - name: Set up Go
-      uses: actions/setup-go@v3
-      with:
-        go-version: '1.18'
-
-    # Set up Python
-    - name: Set up Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: '3.10'
-
-    # Set up Node.js
-    - name: Set up Node.js
-      uses: actions/setup-node@v3
-      with:
-        node-version: '16'
-
-    # Install dependencies for all components
     - name: Install dependencies
-      run: make setup
+      run: |
+        rustup override set nightly
+        make setup-rust
 
-    # Build all components
     - name: Build project
-      run: make build
+      run: make build-rust
 
-    # Run tests for all components
     - name: Run tests
-      run: make test
+      run: make test-rust
 
-    # Optional: Clean up after the build and test
-    - name: Clean project
-      if: always()
-      run: make clean
+    - name: Build Go project
+      run: make setup-go build-go
+
+    - name: Run Go tests
+      run: make test-go
+
+    - name: Install Python dependencies
+      run: make setup-python
+
+    - name: Run Python tests
+      run: make test-python
+
+    - name: Install Node.js dependencies
+      run: make setup-node
+
+    - name: Build Node.js project
+      run: make build-node
+
+    - name: Run Node.js tests
+      run: make test-node
