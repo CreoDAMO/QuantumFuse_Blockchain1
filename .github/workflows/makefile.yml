@@ -16,6 +16,9 @@ jobs:
     - name: Set up Rust
       run: make setup-rust
 
+    - name: Prepare Cargo.toml for Rust
+      run: make prepare-cargo-toml
+
     - name: Build Rust
       run: make build-rust
 
@@ -84,4 +87,3 @@ jobs:
 
     - name: Update Node.js
       run: make update-node
-
