@@ -1,8 +1,8 @@
 # Directories
 RUST_DIR = QuantumFuse/core
 GO_DIR = QuantumFuse/core/QuantumFuse/node
-PYTHON_DIR = QuantumFuse/api
-FRONTEND_DIR = QuantumFuse/frontend/quantumfuse-app
+PYTHON_DIR = QuantumFuse/core/QuantumFuse/node/QuantumFuse/api
+FRONTEND_DIR = QuantumFuse/core/QuantumFuse/node/QuantumFuse/frontend/quantumfuse-app
 
 # Targets
 .PHONY: all setup build run test clean update
@@ -71,22 +71,22 @@ update-go:
 
 # Python targets
 setup-python:
-	@pip install -r $(PYTHON_DIR)/requirements.txt || exit 1
+	@cd $(PYTHON_DIR) && pip install -r requirements.txt || exit 1
 
 build-python:
 	@echo "Python does not require a build step."
 
 run-python:
-	@python $(PYTHON_DIR)/main.py || exit 1
+	@cd $(PYTHON_DIR) && python main.py || exit 1
 
 test-python:
-	@pytest $(PYTHON_DIR)/tests || exit 1
+	@cd $(PYTHON_DIR) && pytest tests || exit 1
 
 clean-python:
 	@rm -rf $(PYTHON_DIR)/__pycache__ || exit 1
 
 update-python:
-	@pip install --upgrade -r $(PYTHON_DIR)/requirements.txt || exit 1
+	@cd $(PYTHON_DIR) && pip install --upgrade -r requirements.txt || exit 1
 
 # Node.js targets
 setup-node:
