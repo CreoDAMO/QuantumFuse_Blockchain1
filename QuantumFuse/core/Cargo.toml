@@ -1,5 +1,5 @@
 [package]
-name = "quantumfuse_blockchain"
+name = "quantumfuse_core"
 version = "0.1.0"
 edition = "2018"
 
