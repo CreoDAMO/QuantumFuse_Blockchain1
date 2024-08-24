@@ -1,6 +1,6 @@
 # Directories
 RUST_DIR = QuantumFuse/core
-GO_DIR = QuantumFuseNode
+GO_DIR = QuantumFuse/core/QuantumFuse/node
 PYTHON_DIR = QuantumFuse/api
 FRONTEND_DIR = QuantumFuse/frontend/quantumfuse-app
 
@@ -64,7 +64,6 @@ test-go:
 	@cd $(GO_DIR) && go test ./... || exit 1
 
 clean-go:
-	@rm -rf $(GO_DIR)/bin || exit 1
 	@rm -rf $(GO_DIR)/main || exit 1
 
 update-go:
