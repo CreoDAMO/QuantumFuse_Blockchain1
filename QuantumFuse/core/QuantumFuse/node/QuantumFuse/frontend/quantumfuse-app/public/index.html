@@ -1,17 +1,1189 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="utf-8" />
-  <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#000000" />
-  <meta name="description" content="Web site created using create-react-app" />
-  <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-  <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-  <title>QuantumFuse</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuantumFuse Blockchain - Leading the Future of Decentralized Technology</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="QuantumFuse Blockchain - Leading the Future of Decentralized Technology">
+    <meta name="keywords" content="Blockchain, Decentralized, Quantum Computing, Sustainability, Tokenomics">
+    <meta name="robots" content="index, follow">
+
+    <!-- Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" async>
+
+    <!-- Animate.css for animations -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" async>
+
+    <!-- JavaScript Libraries (Defer for proper execution order) -->
+    <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/build/three.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js" defer></script>
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/particlesjs/2.2.3/particles.min.js" defer></script>
+
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="/manifest.json">
+
+    <style>
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2ecc71;
+            --background-light: #f0f0f0;
+            --background-dark: #2c3e50;
+            --text-light: #333;
+            --text-dark: #ecf0f1;
+            --neumorphic-light: 12px 12px 24px #d1d1d1, -12px -12px 24px #ffffff;
+            --neumorphic-dark: 12px 12px 24px #1c2630, -12px -12px 24px #3c5670;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            transition: background-color 0.5s ease, color 0.5s ease;
+            overflow-x: hidden;
+        }
+
+        body.light-mode {
+            background-color: var(--background-light);
+            color: var(--text-light);
+        }
+
+        body.dark-mode {
+            background-color: var(--background-dark);
+            color: var(--text-dark);
+        }
+
+        .neumorphic {
+            border-radius: 20px;
+            background: var(--background-light);
+            box-shadow: var(--neumorphic-light);
+            transition: all 0.3s ease;
+        }
+
+        .dark-mode .neumorphic {
+            background: var(--background-dark);
+            box-shadow: var(--neumorphic-dark);
+        }
+
+        .neumorphic:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        #darkModeToggle {
+            cursor: pointer;
+        }
+
+        .feature-card {
+            perspective: 1000px;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+        }
+
+        .feature-card:hover {
+            transform: rotateY(180deg);
+        }
+
+        .feature-card-front,
+        .feature-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+        }
+
+        .feature-card-back {
+            transform: rotateY(180deg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            text-align: center;
+        }
+
+        #particles-js {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+
+        .typing-effect::after {
+            content: '|';
+            animation: blink 0.7s infinite;
+        }
+
+        @keyframes blink {
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0;
+            }
+        }
+
+        .tech-cube {
+            width: 200px;
+            height: 200px;
+            position: relative;
+            transform-style: preserve-3d;
+            animation: rotate 20s infinite linear;
+        }
+
+        .tech-cube div {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid var(--primary-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            color: var(--primary-color);
+        }
+
+        @keyframes rotate {
+            0% {
+                transform: rotateX(0deg) rotateY(0deg);
+            }
+
+            100% {
+                transform: rotateX(360deg) rotateY(360deg);
+            }
+        }
+
+        .floating-action-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .floating-action-button:hover {
+            transform: scale(1.1);
+        }
+
+        .use-case-flowchart {
+            width: 100%;
+            height: 300px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .carbon-calculator {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .carbon-calculator input[type="range"] {
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        .carbon-result {
+            font-size: 24px;
+            font-weight: bold;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .flowchart {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+
+        .flowchart pre {
+            white-space: pre-wrap;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        /* SVG Animation */
+        #line1,
+        #line2,
+        #line3,
+        #line4 {
+            stroke-dasharray: 300;
+            stroke-dashoffset: 300;
+            animation: dash 2s ease-in-out forwards;
+        }
+
+        @keyframes dash {
+            to {
+                stroke-dashoffset: 0;
+            }
+        }
+
+        #node1,
+        #node2,
+        #node3,
+        #node4,
+        #node5,
+        .node-circle {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                r: 10;
+                fill-opacity: 0.5;
+            }
+
+            50% {
+                r: 15;
+                fill-opacity: 1;
+            }
+
+            100% {
+                r: 10;
+                fill-opacity: 0.5;
+            }
+        }
+
+        .animated-line {
+            stroke: #2ecc71;
+            stroke-width: 4;
+            stroke-dasharray: 1000;
+            stroke-dashoffset: 1000;
+            animation: draw 2s linear forwards;
+        }
+
+        @keyframes draw {
+            to {
+                stroke-dashoffset: 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .tech-cube {
+                width: 150px;
+                height: 150px;
+            }
+
+            .tech-cube div {
+                width: 150px;
+                height: 150px;
+                font-size: 24px;
+            }
+
+            header {
+                background-color: var(--background-light);
+                backdrop-filter: none;
+            }
+
+            #networkGraph {
+                height: 400px;
+            }
+        }
+    </style>
 </head>
-<body>
-  <noscript>You need to enable JavaScript to run this app.</noscript>
-  <div id="root"></div>
+
+<body class="light-mode">
+    <div id="particles-js"></div>
+
+    <header class="fixed w-full top-0 z-50 bg-opacity-90 backdrop-filter backdrop-blur-lg">
+        <nav class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <div class="flex items-center">
+                <img src="https://bafkreictzqaxvaguledurfb3qtpreesfiqlwltexq2oe33zy2osvgjlwd4.ipfs.w3s.link" alt="QuantumFuse Logo - Leading Decentralized Technology" class="h-10 w-10 mr-3">
+                <span class="text-xl font-bold">QuantumFuse</span>
+            </div>
+            <div class="flex items-center">
+                <a href="#features" class="mx-3 hover:text-primary-color transition-transform transform">Features</a>
+                <a href="#technology" class="mx-3 hover:text-primary-color transition-transform transform">Technology</a>
+                <a href="#tokenomics" class="mx-3 hover:text-primary-color transition-transform transform">Tokenomics</a>
+                <a href="#governance" class="mx-3 hover:text-primary-color transition-transform transform">Governance</a>
+                <a href="#sustainability" class="mx-3 hover:text-primary-color transition-transform transform">Sustainability</a>
+                <button id="darkModeToggle" class="ml-4" aria-label="Toggle Dark Mode" role="switch" aria-checked="false">
+                    <i class="fas fa-moon" aria-hidden="true"></i>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container mx-auto px-6 pt-20">
+        <section id="hero" class="min-h-screen flex items-center justify-center">
+            <div class="text-center animate__animated animate__fadeInUp">
+                <h1 class="text-5xl font-bold mb-6 animate__animated animate__fadeInDown typing-effect">Welcome to QuantumFuse Blockchain</h1>
+                <p class="text-xl mb-8 animate__animated animate__fadeInUp animate__delay-1s">The next generation of blockchain technology</p>
+                <div id="blockchain3D" class="w-full h-64 mb-8"></div>
+                <a href="#features" class="bg-primary-color text-white px-6 py-3 rounded-full hover:bg-opacity-80 transition duration-300 animate__animated animate__pulse animate__infinite">Explore Features</a>
+            </div>
+        </section>
+
+        <!-- Live Blockchain Data -->
+        <section id="liveBlockchainData" class="py-20">
+            <h2 class="text-3xl font-bold mb-10 text-center animate__animated animate__fadeInUp">Live Blockchain Data</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="neumorphic p-6">
+                    <h3 class="text-xl font-semibold mb-4">Live Transactions</h3>
+                    <div id="liveTransactions"></div>
+                </div>
+                <div class="neumorphic p-6">
+                    <h3 class="text-xl font-semibold mb-4">Latest Blocks</h3>
+                    <div id="latestBlocks"></div>
+                </div>
+                <div class="neumorphic p-6">
+                    <h3 class="text-xl font-semibold mb-4">Connected Nodes</h3>
+                    <div id="connectedNodes"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section id="features" class="py-20">
+            <h2 class="text-3xl font-bold mb-10 text-center animate__animated animate__fadeInUp">Key Features</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="neumorphic p-6 feature-card">
+                    <div class="feature-card-front">
+                        <h3 class="text-xl font-semibold mb-4">Core Blockchain in Rust</h3>
+                        <p>High-performance and secure blockchain infrastructure with PoS.</p>
+                    </div>
+                    <div class="feature-card-back">
+                        <p>Our Rust-based core ensures unparalleled speed and security, leveraging Proof of Stake for eco-friendly consensus.</p>
+                    </div>
+                </div>
+                <div class="neumorphic p-6 feature-card">
+                    <div class="feature-card-front">
+                        <h3 class="text-xl font-semibold mb-4">Node Implementation in Go</h3>
+                        <p>Efficient networking and IPFS integration.</p>
+                    </div>
+                    <div class="feature-card-back">
+                        <p>Go-powered nodes provide lightning-fast networking and seamless IPFS integration for decentralized storage.</p>
+                    </div>
+                </div>
+                <div class="neumorphic p-6 feature-card">
+                    <div class="feature-card-front">
+                        <h3 class="text-xl font-semibold mb-4">API with Python & Flask</h3>
+                        <p>Flexible and powerful API for seamless interaction.</p>
+                    </div>
+                    <div class="feature-card-back">
+                        <p>Our Python & Flask API offers developers a robust and flexible interface for building on QuantumFuse.</p>
+                    </div>
+                </div>
+                <div class="neumorphic p-6 feature-card">
+                    <div class="feature-card-front">
+                        <h3 class="text-xl font-semibold mb-4">Quantum Computing Simulation</h3>
+                        <p>Future-proof blockchain with Qiskit integration.</p>
+                    </div>
+                    <div class="feature-card-back">
+                        <p>Qiskit integration allows for quantum-resistant cryptography and advanced quantum simulations.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Node and Sharding Visualization -->
+        <section id="nodeShardingVisualization" class="py-20">
+            <h2 class="text-3xl font-bold mb-10 text-center animate__animated animate__fadeInUp">Node and Sharding Visualization</h2>
+            <div id="networkGraph" class="w-full h-96"></div>
+        </section>
+
+        <!-- Smart Contracts & NFTs -->
+        <section id="smartContractDeployment" class="py-20">
+            <h2 class="text-3xl font-bold mb-10 text-center animate__animated animate__fadeInUp">Smart Contracts & NFTs</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="neumorphic p-6">
+                    <h3 class="text-xl font-semibold mb-4">Deploy Smart Contract</h3>
+                    <form id="deployContractForm">
+                        <label for="contractCode">Contract Code:</label>
+                        <textarea id="contractCode" class="w-full p-2 mb-4"></textarea>
+                        <label for="contractParams">Parameters:</label>
+                        <input type="text" id="contractParams" class="w-full p-2 mb-4">
+                        <button type="submit" class="bg-primary-color text-white px-6 py-2 rounded-full">Deploy</button>
+                    </form>
+                </div>
+                <div class="neumorphic p-6">
+                    <h3 class="text-xl font-semibold mb-4">Mint NFT</h3>
+                    <form id="mintNFTForm">
+                        <label for="nftMetadata">Metadata:</label>
+                        <textarea id="nftMetadata" class="w-full p-2 mb-4"></textarea>
+                        <label for="nftFractional">Fractionalize?</label>
+                        <input type="checkbox" id="nftFractional" class="mb-4">
+                        <button type="submit" class="bg-secondary-color text-white px-6 py-2 rounded-full">Mint NFT</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- AI-Driven Analytics -->
+        <section id="aiAnalytics" class="py-20">
+            <h2 class="text-3xl font-bold mb-10 text-center animate__animated animate__fadeInUp">AI-Driven Analytics</h2>
+            <div class="neumorphic p-6">
+                <canvas id="aiAnalyticsChart" width="400" height="200"></canvas>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-10">
+                <div class="neumorphic p-6">
+                    <h3 class="text-xl font-semibold mb-4">Predictive Analytics</h3>
+                    <p id="predictiveData"></p>
+                </div>
+                <div class="neumorphic p-6">
+                    <h3 class="text-xl font-semibold mb-4">Anomaly Detection</h3>
+                    <p id="anomalyDetection"></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Energy Management & Sustainability -->
+        <section id="energyDashboard" class="py-20">
+            <h2 class="text-3xl font-bold mb-10 text-center animate__animated animate__fadeInUp">Energy Management & Sustainability</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="neumorphic p-6">
+                    <h3 class="text-xl font-semibold mb-4">Energy Consumption</h3>
+                    <canvas id="energyConsumptionChart"></canvas>
+                </div>
+                <div class="neumorphic p-6">
+                    <h3 class="text-xl font-semibold mb-4">Grid Stability</h3>
+                    <div id="gridStabilityStatus"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Technology Stack Section -->
+        <section id="technology" class="py-20">
+            <h2 class="text-3xl font-bold mb-10 text-center animate__animated animate__fadeInUp">Technology Stack</h2>
+            <div class="flex justify-center items-center">
+                <div class="tech-cube">
+                    <div style="transform: rotateY(0deg) translateZ(100px);">Rust</div>
+                    <div style="transform: rotateY(90deg) translateZ(100px);">Go</div>
+                    <div style="transform: rotateY(180deg) translateZ(100px);">Python</div>
+                    <div style="transform: rotateY(-90deg) translateZ(100px);">Qiskit</div>
+                    <div style="transform: rotateX(90deg) translateZ(100px);">IPFS</div>
+                    <div style="transform: rotateX(-90deg) translateZ(100px);">AI</div>
+                </div>
+            </div>
+            <div class="mt-8 text-center">
+                <button class="bg-primary-color text-white px-6 py-2 rounded-full" onclick="showModal()">Learn More</button>
+            </div>
+        </section>
+
+        <!-- AR/VR/XR Experience Section -->
+        <section id="arvrExperience" class="py-20">
+            <h2 class="text-3xl font-bold mb-10 text-center animate__animated animate__fadeInUp">Experience QuantumFuse in AR/VR</h2>
+            <a-scene embedded arjs="sourceType: webcam;" vr-mode-ui="enabled: true">
+                <a-assets>
+                    <a-asset-item id="blockchain-node" src="https://cdn.aframe.io/examples/ar/models/blockchaincube/scene.gltf"></a-asset-item>
+                    <a-asset-item id="another-model" src="https://cdn.aframe.io/examples/ar/models/anothermodel/scene.gltf"></a-asset-item>
+                    <img id="groundTexture" src="https://example.com/ground-texture.jpg" alt="Ground Texture">
+                    <audio id="bg-music" src="https://example.com/background-music.mp3"></audio>
+                </a-assets>
+
+                <!-- Ground -->
+                <a-plane src="#groundTexture" rotation="-90 0 0" width="10" height="10" position="0 0 -4"></a-plane>
+
+                <!-- Blockchain Node with rotation animation -->
+                <a-entity gltf-model="#blockchain-node" position="0 1 -3" scale="0.5 0.5 0.5" animation="property: rotation; to: 0 360 0; loop: true; dur: 5000">
+                    <a-sound src="#bg-music" autoplay="true" loop="true"></a-sound>
+                </a-entity>
+
+                <!-- Another 3D model with dynamic scaling and voice command interaction -->
+                <a-entity gltf-model="#another-model" position="2 1 -4" scale="0.8 0.8 0.8" animation="property: scale; to: 1 1 1; loop: true; dir: alternate; dur: 2000"></a-entity>
+
+                <!-- Voice command interaction for scaling the object -->
+                <a-entity id="voice-controls" voice-command="commands: grow, shrink, stop">
+                    <a-entity gltf-model="#another-model" position="2 1 -4" scale="1 1 1"></a-entity>
+                </a-entity>
+
+                <!-- Interactive Info Panel -->
+                <a-entity id="info-panel" position="0 2 -3" visible="false">
+                    <a-plane width="3" height="2" color="#FFF" opacity="0.9"></a-plane>
+                    <a-text value="Node Information: Secure and Efficient" color="#000" width="2.5" align="center"></a-text>
+                </a-entity>
+
+                <!-- Dynamic Lighting -->
+                <a-light type="ambient" color="#ffffff" intensity="0.5"></a-light>
+                <a-light type="directional" color="#ffffff" intensity="0.8" position="2 4 -3"></a-light>
+
+                <!-- Camera with wasd-controls for desktop users -->
+                <a-camera wasd-controls-enabled="true">
+                    <a-cursor></a-cursor>
+                </a-camera>
+
+                <!-- VR Controls -->
+                <a-entity oculus-touch-controls="hand: left"></a-entity>
+                <a-entity oculus-touch-controls="hand: right"></a-entity>
+
+                <!-- Physics-based interaction -->
+                <a-entity dynamic-body="shape: box" position="1 2 -3">
+                    <a-box color="#4CC3D9" depth="0.5" height="0.5" width="0.5"></a-box>
+                </a-entity>
+
+                <!-- Particle effects -->
+                <a-entity particle-system="preset: dust; color: #00FF00, #FF0000; particleCount: 5000;"></a-entity>
+            </a-scene>
+            <a href="#technology" class="bg-primary-color text-white px-6 py-3 rounded-full hover:bg-opacity-80 transition duration-300">Learn More</a>
+        </section>
+
+        <!-- Tokenomics Section -->
+        <section id="tokenomics" class="py-20">
+            <h2 class="text-3xl font-bold mb-10 text-center animate__animated animate__fadeInUp">Tokenomics</h2>
+            <div class="neumorphic p-6">
+                <canvas id="tokenomicsChart" width="400" height="200"></canvas>
+            </div>
+        </section>
+
+        <!-- Governance Model Section -->
+        <section id="governance" class="py-20">
+            <h2 class="text-3xl font-bold mb-10 text-center animate__animated animate__fadeInUp">Governance Model</h2>
+            <div class="neumorphic p-6">
+                <h3 class="text-xl font-semibold mb-4">Decentralized Decision Making</h3>
+                <p class="mb-4">Experience our innovative governance system:</p>
+                <div id="governanceSimulation" class="flex justify-around items-center">
+                    <button id="createProposal" class="bg-primary-color text-white px-4 py-2 rounded" aria-label="Create Proposal">Create Proposal</button>
+                    <div class="text-center">
+                        <span id="voteCount" class="text-2xl font-bold">0</span>
+                        <p>Votes</p>
+                    </div>
+                    <button id="castVote" class="bg-secondary-color text-white px-4 py-2 rounded" aria-label="Cast Vote">Cast Vote</button>
+                </div>
+                <div id="proposalProgress" class="mt-4 bg-gray-200 rounded-full h-2.5 dark:bg-gray-700" style="width: 0%;"></div>
+            </div>
+        </section>
+
+        <!-- Sustainability Section -->
+        <section id="sustainability" class="py-20">
+            <h2 class="text-3xl font-bold mb-10 text-center animate__animated animate__fadeInUp">Sustainability</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="neumorphic p-6 feature-card">
+                    <h3 class="text-xl font-semibold mb-4">Green Staking</h3>
+                    <p>Earn rewards while supporting eco-friendly practices through green staking initiatives.</p>
+                </div>
+                <div class="neumorphic p-6 feature-card">
+                    <h3 class="text-xl font-semibold mb-4">Carbon Credits</h3>
+                    <p>Offset your carbon footprint with our integrated blockchain-based carbon credits system.</p>
+                </div>
+            </div>
+            <div class="mt-8 carbon-calculator">
+                <h3 class="text-xl font-semibold mb-4">Carbon Footprint Calculator</h3>
+                <input type="range" id="carbonSlider" min="0" max="100" value="50">
+                <p>Your estimated carbon footprint: <span id="carbonValue">50</span> tons CO2/year</p>
+                <div class="carbon-result">
+                    Carbon credits needed: <span id="creditsNeeded">25</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Use Cases Section -->
+        <section id="useCases" class="py-20">
+            <h2 class="text-3xl font-bold mb-10 text-center animate__animated animate__fadeInUp">Use Cases</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="neumorphic p-6 feature-card">
+                    <h3 class="text-xl font-semibold mb-4">Decentralized Identity Management</h3>
+                    <div class="use-case-flowchart">
+                        <svg viewBox="0 0 500 300">
+                            <path d="M50,150 L200,50 L350,150 L200,250 Z" fill="none" stroke="#3498db" stroke-width="2" />
+                            <circle cx="50" cy="150" r="10" fill="#3498db" />
+                            <circle cx="200" cy="50" r="10" fill="#3498db" />
+                            <circle cx="350" cy="150" r="10" fill="#3498db" />
+                            <circle cx="200" cy="250" r="10" fill="#3498db" />
+                            <text x="30" y="180" fill="#333">User</text>
+                            <text x="180" y="40" fill="#333">Identity</text>
+                            <text x="330" y="180" fill="#333">Verification</text>
+                            <text x="180" y="280" fill="#333">Access</text>
+                        </svg>
+                    </div>
+                    <p>Implement secure, privacy-preserving digital identities on the QuantumFuse blockchain.</p>
+                </div>
+                <div class="neumorphic p-6 feature-card">
+                    <h3 class="text-xl font-semibold mb-4">Sustainable E-commerce</h3>
+                    <div class="use-case-flowchart">
+                        <svg viewBox="0 0 500 300">
+                            <rect x="50" y="50" width="400" height="200" rx="20" ry="20" fill="none" stroke="#2ecc71" stroke-width="2" />
+                            <line x1="50" y1="100" x2="450" y2="100" stroke="#2ecc71" stroke-width="2" />
+                            <line x1="50" y1="150" x2="450" y2="150" stroke="#2ecc71" stroke-width="2" />
+                            <line x1="50" y1="200" x2="450" y2="200" stroke="#2ecc71" stroke-width="2" />
+                            <text x="60" y="85" fill="#333">Product Listing</text>
+                            <text x="60" y="135" fill="#333">Smart Contract</text>
+                            <text x="60" y="185" fill="#333">Payment</text>
+                            <text x="60" y="235" fill="#333">Delivery</text>
+                        </svg>
+                    </div>
+                    <p>Leverage blockchain for a decentralized marketplace with trustless transactions and green logistics.</p>
+                </div>
+                <div class="neumorphic p-6 feature-card">
+                    <h3 class="text-xl font-semibold mb-4">Smart Contracts & NFTs</h3>
+                    <div class="use-case-flowchart">
+                        <svg viewBox="0 0 500 300">
+                            <polygon points="250,50 50,200 250,350 450,200" fill="none" stroke="#e74c3c" stroke-width="2" />
+                            <line x1="250" y1="50" x2="250" y2="350" stroke="#e74c3c" stroke-width="2" />
+                            <line x1="50" y1="200" x2="450" y2="200" stroke="#e74c3c" stroke-width="2" />
+                            <text x="220" y="40" fill="#333">NFT</text>
+                            <text x="20" y="210" fill="#333">Create</text>
+                            <text x="420" y="210" fill="#333">Trade</text>
+                            <text x="220" y="370" fill="#333">Manage</text>
+                        </svg>
+                    </div>
+                    <p>Manage standard and fractional NFTs with live metadata updates and secure smart contracts.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Data Flow for Blockchain Modules & Wallets -->
+        <section id="dataFlow" class="py-20">
+            <h2 class="text-3xl font-bold mb-10 text-center animate__animated animate__fadeInUp">Data Flow for Enhanced Blockchain Modules & Wallets</h2>
+            <div class="relative w-full h-96">
+                <svg width="100%" height="100%" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Draw Nodes -->
+                    <circle id="node1" cx="150" cy="100" r="20" fill="#3498db" />
+                    <text x="150" y="95" text-anchor="middle" fill="#fff" font-size="12px">Core</text>
+                    <circle id="node2" cx="400" cy="100" r="20" fill="#2ecc71" />
+                    <text x="400" y="95" text-anchor="middle" fill="#fff" font-size="12px">Wallet</text>
+                    <circle id="node3" cx="650" cy="100" r="20" fill="#e74c3c" />
+                    <text x="650" y="95" text-anchor="middle" fill="#fff" font-size="12px">API</text>
+                    <circle id="node4" cx="400" cy="300" r="20" fill="#f1c40f" />
+                    <text x="400" y="295" text-anchor="middle" fill="#fff" font-size="12px">Smart</text>
+                    <circle id="node5" cx="400" cy="500" r="20" fill="#9b59b6" />
+                    <text x="400" y="495" text-anchor="middle" fill="#fff" font-size="12px">NFT</text>
+
+                    <!-- Draw Connecting Lines -->
+                    <line id="line1" x1="150" y1="100" x2="400" y2="100" stroke="#3498db" stroke-width="2" />
+                    <line id="line2" x1="400" y1="100" x2="650" y2="100" stroke="#2ecc71" stroke-width="2" />
+                    <line id="line3" x1="400" y1="100" x2="400" y2="300" stroke="#e74c3c" stroke-width="2" />
+                    <line id="line4" x1="400" y1="300" x2="400" y2="500" stroke="#f1c40f" stroke-width="2" />
+                </svg>
+            </div>
+            <p class="mt-4">
+                This animated data flow chart shows the interaction between different components of the QuantumFuse Blockchain ecosystem.
+            </p>
+        </section>
+
+        <!-- QuantumFuse AI Optimization -->
+        <section id="quantumAI" class="py-20">
+            <h2 class="text-3xl font-bold mb-10 text-center animate__animated animate__fadeInUp">QuantumFuse AI Optimization</h2>
+            <div class="neumorphic p-6">
+                <canvas id="aiOptimizationChart" width="400" height="200"></canvas>
+            </div>
+        </section>
+
+        <!-- Fusion Reactor Monitoring -->
+        <section id="fusionReactor" class="py-20">
+            <h2 class="text-3xl font-bold mb-10 text-center animate__animated animate__fadeInUp">Fusion Reactor Monitoring</h2>
+            <div id="fusionReactor3D" class="w-full h-64 mb-8" style="background-color: #000;"></div>
+            <p class="text-center">Visualize real-time energy generation and plasma diagnostics from the Fusion Reactor.</p>
+        </section>
+
+        <!-- Dynamic NFT Minting -->
+        <section id="nftMinting" class="py-20">
+            <h2 class="text-3xl font-bold mb-10 text-center animate__animated animate__fadeInUp">Dynamic NFT Minting</h2>
+            <div class="neumorphic p-6">
+                <canvas id="nftMintingChart" width="400" height="200"></canvas>
+            </div>
+        </section>
+
+        <!-- Energy Marketplace -->
+        <section id="energyMarketplace" class="py-20">
+            <h2 class="text-3xl font-bold mb-10 text-center animate__animated animate__fadeInUp">Energy Marketplace</h2>
+            <div class="neumorphic p-6">
+                <canvas id="energyMarketplaceChart" width="400" height="200"></canvas>
+            </div>
+            <p class="text-center">Trade energy credits on the QuantumFuse Marketplace.</p>
+        </section>
+
+        <!-- Grid Stability Simulation -->
+        <section id="gridStability" class="py-20">
+            <h2 class="text-3xl font-bold mb-10 text-center animate__animated animate__fadeInUp">Grid Stability Simulation</h2>
+            <div class="neumorphic p-6">
+                <p>Interact with simulated grid stability events and see how the QuantumFuse Blockchain responds.</p>
+                <div id="gridSimulation" class="flex justify-around items-center">
+                    <button class="bg-primary-color text-white px-4 py-2 rounded" id="simulateEventBtn">Simulate Event</button>
+                    <div class="text-center">
+                        <span id="stabilityStatus" class="text-2xl font-bold">Stable</span>
+                        <p>Grid Status</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div class="floating-action-button" id="scrollToTop" aria-label="Scroll to Top">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <footer class="bg-gray-800 text-white py-10">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-wrap justify-between">
+                <div class="w-full md:w-1/3 mb-6 md:mb-0">
+                    <h3 class="text-xl font-bold mb-4">QuantumFuse</h3>
+                    <p>Revolutionizing blockchain technology with advanced quantum computing integration and sustainability initiatives.</p>
+                </div>
+                <div class="w-full md:w-1/3 mb-6 md:mb-0">
+                    <h3 class="text-xl font-bold mb-4">Quick Links</h3>
+                    <ul>
+                        <li><a href="#features" class="hover:text-primary-color transition-transform transform">Features</a></li>
+                        <li><a href="#technology" class="hover:text-primary-color transition-transform transform">Technology</a></li>
+                        <li><a href="#tokenomics" class="hover:text-primary-color transition-transform transform">Tokenomics</a></li>
+                        <li><a href="#governance" class="hover:text-primary-color transition-transform transform">Governance</a></li>
+                        <li><a href="#sustainability" class="hover:text-primary-color transition-transform transform">Sustainability</a></li>
+                    </ul>
+                </div>
+                <div class="w-full md:w-1/3">
+                    <h3 class="text-xl font-bold mb-4">Connect With Us</h3>
+                    <div class="flex space-x-4">
+                        <a href="#" class="hover:text-primary-color"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="hover:text-primary-color"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="hover:text-primary-color"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-8 text-center">
+                <p>&copy; 2024 QuantumFuse Blockchain Project. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Code to Implement Enhancements -->
+
+    <script>
+        // Smooth scrolling for internal links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Dark mode toggle with localStorage
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        const body = document.body;
+
+        if (localStorage.getItem('dark-mode') === 'enabled') {
+            body.classList.add('dark-mode');
+            body.classList.remove('light-mode');
+            darkModeToggle.setAttribute('aria-checked', 'true');
+        }
+
+        darkModeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            body.classList.toggle('light-mode');
+            const mode = body.classList.contains('dark-mode') ? 'enabled' : 'disabled';
+            localStorage.setItem('dark-mode', mode);
+            darkModeToggle.setAttribute('aria-checked', body.classList.contains('dark-mode') ? 'true' : 'false');
+        });
+
+        // WebSocket for real-time blockchain data
+        let ws = new WebSocket('wss://your-blockchain-node-url');
+
+        ws.onmessage = function(event) {
+            const data = JSON.parse(event.data);
+            document.getElementById('liveTransactions').innerText = `Transactions: ${data.transactions}`;
+            document.getElementById('latestBlocks').innerText = `Block: ${data.blockNumber}`;
+            document.getElementById('connectedNodes').innerText = `Nodes: ${data.nodes}`;
+        };
+
+        ws.onerror = function(error) {
+            console.error('WebSocket error:', error);
+            document.getElementById('liveTransactions').innerText = 'Error fetching data';
+            document.getElementById('latestBlocks').innerText = 'Please check your connection';
+            document.getElementById('connectedNodes').innerText = 'Retrying...';
+
+            // Retry connection after 5 seconds
+            setTimeout(() => {
+                ws = new WebSocket('wss://your-blockchain-node-url');
+            }, 5000);
+        };
+
+        // D3.js for Node and Sharding Visualization
+        const svg = d3.select("#networkGraph").append("svg")
+            .attr("width", "100%")
+            .attr("height", "100%");
+
+        const simulation = d3.forceSimulation()
+            .force("link", d3.forceLink().id(d => d.id))
+            .force("charge", d3.forceManyBody().strength(-50))
+            .force("center", d3.forceCenter(window.innerWidth / 2, window.innerHeight / 2));
+
+        d3.json("path-to-your-graph-data.json", function(error, graph) {
+            if (error) throw error;
+
+            const link = svg.append("g")
+                .attr("class", "links")
+                .selectAll("line")
+                .data(graph.links)
+                .enter().append("line")
+                .attr("stroke-width", 2);
+
+            const node = svg.append("g")
+                .attr("class", "nodes")
+                .selectAll("circle")
+                .data(graph.nodes)
+                .enter().append("circle")
+                .attr("r", 5)
+                .attr("fill", "blue");
+
+            node.append("title")
+                .text(d => d.id);
+
+            simulation
+                .nodes(graph.nodes)
+                .on("tick", ticked);
+
+            simulation.force("link")
+                .links(graph.links);
+
+            function ticked() {
+                link
+                    .attr("x1", d => d.source.x)
+                    .attr("y1", d => d.source.y)
+                    .attr("x2", d => d.target.x)
+                    .attr("y2", d => d.target.y);
+
+                node
+                    .attr("cx", d => d.x)
+                    .attr("cy", d => d.y);
+            }
+        });
+
+        // Smart Contract Deployment
+        document.getElementById('deployContractForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const contractCode = document.getElementById('contractCode').value;
+            const contractParams = document.getElementById('contractParams').value;
+
+            fetch('https://your-blockchain-api/deploy-contract', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ contractCode, contractParams })
+            })
+            .then(response => response.json())
+            .then(data => alert(`Contract deployed with ID: ${data.contractId}`))
+            .catch(error => {
+                console.error('Error deploying contract:', error);
+                alert('Failed to deploy contract. Please try again later.');
+            });
+        });
+
+        // NFT Minting
+        document.getElementById('mintNFTForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const metadata = document.getElementById('nftMetadata').value;
+            const isFractional = document.getElementById('nftFractional').checked;
+
+            fetch('https://your-blockchain-api/mint-nft', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ metadata, isFractional })
+            })
+            .then(response => response.json())
+            .then(data => alert(`NFT minted with ID: ${data.nftId}`))
+            .catch(error => {
+                console.error('Error minting NFT:', error);
+                alert('Failed to mint NFT. Please try again later.');
+            });
+        });
+
+        // AI-Driven Analytics
+        fetch('/api/ai-analytics')
+            .then(response => response.json())
+            .then(data => {
+                const ctx = document.getElementById('aiAnalyticsChart').getContext('2d');
+                new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: data.labels,
+                        datasets: [{
+                            label: 'AI Predictions',
+                            data: data.predictions,
+                            backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                            borderColor: 'rgba(75, 192, 192, 1)',
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            y: { beginAtZero: true }
+                        }
+                    }
+                });
+
+                document.getElementById('predictiveData').innerText = `Future Prediction: ${data.futurePrediction}`;
+                document.getElementById('anomalyDetection').innerText = `Detected Anomalies: ${data.anomalies}`;
+            })
+            .catch(error => {
+                console.error('Error fetching AI analytics:', error);
+                alert('Failed to load AI analytics data. Please try again later.');
+            });
+
+        // Energy Consumption Chart
+        const energyCtx = document.getElementById('energyConsumptionChart').getContext('2d');
+        fetch('https://your-blockchain-api/energy-data')
+            .then(response => response.json())
+            .then(data => {
+                new Chart(energyCtx, {
+                    type: 'bar',
+                    data: {
+                        labels: data.months,
+                        datasets: [{
+                            label: 'Energy Consumption (kWh)',
+                            data: data.energyConsumption,
+                            backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                            borderColor: 'rgba(255, 99, 132, 1)',
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            y: { beginAtZero: true }
+                        }
+                    }
+                });
+                document.getElementById('gridStabilityStatus').innerText = `Grid Status: ${data.gridStability}`;
+            })
+            .catch(error => {
+                console.error('Error fetching energy data:', error);
+                alert('Failed to load energy data. Please try again later.');
+            });
+
+        // Governance Simulation
+        let voteCount = 0;
+        const voteCountElement = document.getElementById('voteCount');
+        const proposalProgressElement = document.getElementById('proposalProgress');
+
+        document.getElementById('createProposal').addEventListener('click', () => {
+            voteCount = 0;
+            voteCountElement.textContent = voteCount;
+            proposalProgressElement.style.width = '0%';
+            alert('New proposal created!');
+        });
+
+        document.getElementById('castVote').addEventListener('click', () => {
+            voteCount++;
+            voteCountElement.textContent = voteCount;
+            const progress = (voteCount / 100) * 100;
+            proposalProgressElement.style.width = `${progress}%`;
+            if (voteCount >= 100) {
+                alert('Proposal passed!');
+            }
+        });
+
+        // Carbon Footprint Calculator
+        const carbonSlider = document.getElementById('carbonSlider');
+        const carbonValue = document.getElementById('carbonValue');
+        const creditsNeeded = document.getElementById('creditsNeeded');
+
+        carbonSlider.addEventListener('input', () => {
+            const footprint = carbonSlider.value;
+            carbonValue.textContent = footprint;
+            creditsNeeded.textContent = Math.ceil(footprint / 2);
+        });
+
+        // Scroll to Top
+        document.getElementById('scrollToTop').addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Mermaid.js Diagrams draggable with interact.js
+        document.addEventListener('DOMContentLoaded', () => {
+            interact('.mermaid').draggable({
+                inertia: true,
+                modifiers: [
+                    interact.modifiers.restrictRect({
+                        restriction: 'parent',
+                        endOnly: true
+                    })
+                ],
+                autoScroll: true,
+                listeners: {
+                    move(event) {
+                        var target = event.target;
+                        var x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx;
+                        var y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy;
+
+                        target.style.transform = 'translate(' + x + 'px, ' + y + 'px)';
+                        target.setAttribute('data-x', x);
+                        target.setAttribute('data-y', y);
+                    }
+                }
+            });
+        });
+
+        // 3D Fusion Reactor Simulation with Three.js
+        document.addEventListener('DOMContentLoaded', () => {
+            if ('IntersectionObserver' in window) {
+                let observer = new IntersectionObserver((entries, observer) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            try {
+                                initFusionReactor3D();
+                            } catch (error) {
+                                console.error('Three.js initialization failed', error);
+                                alert('3D visualization failed to load. Please refresh the page or check your connection.');
+                            }
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                });
+
+                observer.observe(document.querySelector('#fusionReactor3D'));
+            } else {
+                // Fallback: Initialize Three.js immediately
+                try {
+                    initFusionReactor3D();
+                } catch (error) {
+                    console.error('Three.js initialization failed', error);
+                    alert('3D visualization failed to load. Please refresh the page or check your connection.');
+                }
+            }
+        });
+
+        function initFusionReactor3D() {
+            // Scene and camera setup
+            const scene = new THREE.Scene();
+            const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+            const renderer = new THREE.WebGLRenderer({
+                antialias: true
+            });
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            document.getElementById('fusionReactor3D').appendChild(renderer.domElement);
+
+            // Toroidal geometry for plasma simulation
+            const torusGeometry = new THREE.TorusGeometry(1, 0.3, 16, 100);
+            const torusMaterial = new THREE.MeshStandardMaterial({
+                color: 0x0077ff,
+                emissive: 0x1122ff,
+                metalness: 0.8,
+                roughness: 0.3
+            });
+            const torus = new THREE.Mesh(torusGeometry, torusMaterial);
+            scene.add(torus);
+
+            // Add dynamic lighting to simulate energy fluctuations
+            const pointLight = new THREE.PointLight(0xffffff, 2, 50);
+            pointLight.position.set(0, 0, 5);
+            scene.add(pointLight);
+
+            const ambientLight = new THREE.AmbientLight(0x404040); // Soft white light
+            scene.add(ambientLight);
+
+            // Create a particle system to simulate energy particles
+            const particleCount = 500;
+            const particles = new THREE.BufferGeometry();
+            const particleMaterial = new THREE.PointsMaterial({
+                color: 0xffffff,
+                size: 0.05,
+                transparent: true,
+                opacity: 0.7
+            });
+
+            const particlePositions = new Float32Array(particleCount * 3);
+            for (let i = 0; i < particleCount; i++) {
+                particlePositions[i * 3] = (Math.random() - 0.5) * 5;
+                particlePositions[i * 3 + 1] = (Math.random() - 0.5) * 5;
+                particlePositions[i * 3 + 2] = (Math.random() - 0.5) * 5;
+            }
+            particles.setAttribute('position', new THREE.BufferAttribute(particlePositions, 3));
+
+            const particleSystem = new THREE.Points(particles, particleMaterial);
+            scene.add(particleSystem);
+
+            camera.position.z = 5;
+
+            // Animation loop
+            function animate() {
+                requestAnimationFrame(animate);
+
+                // Rotate the torus
+                torus.rotation.x += 0.01;
+                torus.rotation.y += 0.01;
+
+                // Simulate particle movement
+                const positions = particles.attributes.position.array;
+                for (let i = 0; i < particleCount; i++) {
+                    positions[i * 3 + 1] += 0.01;
+                    if (positions[i * 3 + 1] > 2.5) {
+                        positions[i * 3 + 1] = -2.5;
+                    }
+                }
+                particles.attributes.position.needsUpdate = true;
+
+                // Render the scene
+                renderer.render(scene, camera);
+            }
+            animate();
+
+            // Ensure the Three.js canvas resizes correctly
+            window.addEventListener('resize', () => {
+                camera.aspect = window.innerWidth / window.innerHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(window.innerWidth, window.innerHeight);
+            });
+        }
+
+        // Service Worker for PWA support
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/service-worker.js').then(registration => {
+                    console.log('ServiceWorker registration successful with scope: ', registration.scope);
+                }, err => {
+                    console.error('ServiceWorker registration failed: ', err);
+                });
+            });
+        }
+
+        // Show modal with blockchain architecture details
+        function showModal() {
+            // Create a modal with the detailed blockchain architecture description
+            const modalContent = `
+                <div class="fixed inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center z-50">
+                    <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-lg">
+                        <h2 class="text-2xl font-bold mb-4">Blockchain Architecture</h2>
+                        <p>QuantumFuse Blockchain is designed with a modular architecture, supporting high throughput, cross-chain compatibility, and quantum-resistance.</p>
+                        <p><strong>Core Components:</strong></p>
+                        <ul class="list-disc list-inside mb-4">
+                            <li>Modular Consensus Engine with PoS and PoA</li>
+                            <li>Quantum-Resistant Cryptographic Algorithms</li>
+                            <li>Decentralized Identity Management</li>
+                            <li>Interoperability with Cross-Chain Bridges</li>
+                            <li>Scalable Smart Contracts with AI Integration</li>
+                        </ul>
+                        <p>The architecture allows for seamless upgrades and integration with emerging technologies like AI and IoT, making QuantumFuse a future-proof solution.</p>
+                        <button class="bg-primary-color text-white px-6 py-2 rounded-full mt-4" onclick="closeModal()">Close</button>
+                    </div>
+                </div>
+            `;
+            document.body.insertAdjacentHTML('beforeend', modalContent);
+        }
+
+        // Close modal
+        function closeModal() {
+            const modal = document.querySelector('.fixed.inset-0');
+            if (modal) {
+                modal.remove();
+            }
+        }
+    </script>
 </body>
+
 </html>
