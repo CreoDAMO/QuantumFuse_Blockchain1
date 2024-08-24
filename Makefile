@@ -28,7 +28,10 @@ setup-rust:
 	@rustup component add rust-src --toolchain nightly
 	@rustup run nightly cargo update --manifest-path=$(RUST_DIR)/Cargo.toml
 
-build-rust:
+prepare-cargo-toml:
+	@sed -i '/\[dependencies\]/a\[patch.crates-io]\nschnorrkel = "=0.11.4"' $(RUST_DIR)/Cargo.toml
+
+build-rust: prepare-cargo-toml
 	@rustup run nightly cargo build --release --manifest-path=$(RUST_DIR)/Cargo.toml
 
 run-rust:
@@ -46,7 +49,7 @@ test-rust:
 clean-rust:
 	@rustup run nightly cargo clean --manifest-path=$(RUST_DIR)/Cargo.toml
 
-update-rust:
+update-rust: prepare-cargo-toml
 	@rustup run nightly cargo update --manifest-path=$(RUST_DIR)/Cargo.toml
 
 # Go targets
