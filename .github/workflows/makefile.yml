@@ -7,62 +7,81 @@ on:
     branches: [ "main" ]
 
 jobs:
-  rust:
+  build:
     runs-on: ubuntu-latest
+
     steps:
     - uses: actions/checkout@v4
+
     - name: Set up Rust
       run: make setup-rust
+
     - name: Build Rust
       run: make build-rust
+
+    - name: Run Rust
+      run: make run-rust
+
     - name: Test Rust
       run: make test-rust
+
     - name: Clean Rust
       run: make clean-rust
+
     - name: Update Rust
       run: make update-rust
 
-  go:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v4
     - name: Set up Go
       run: make setup-go
+
     - name: Build Go
       run: make build-go
+
+    - name: Run Go
+      run: make run-go
+
     - name: Test Go
       run: make test-go
+
     - name: Clean Go
       run: make clean-go
+
     - name: Update Go
       run: make update-go
 
-  python:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v4
     - name: Set up Python
       run: make setup-python
+
+    - name: Build Python (skipped)
+      run: echo "Python does not require a build step."
+
     - name: Run Python
       run: make run-python
+
     - name: Test Python
       run: make test-python
+
     - name: Clean Python
       run: make clean-python
+
     - name: Update Python
       run: make update-python
 
-  node:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v4
     - name: Set up Node.js
       run: make setup-node
+
     - name: Build Node.js
       run: make build-node
+
+    - name: Run Node.js
+      run: make run-node
+
     - name: Test Node.js
       run: make test-node
+
     - name: Clean Node.js
       run: make clean-node
+
     - name: Update Node.js
       run: make update-node
+
