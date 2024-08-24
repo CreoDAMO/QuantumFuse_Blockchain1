@@ -29,7 +29,8 @@ setup-rust:
 	@rustup run nightly cargo update --manifest-path=$(RUST_DIR)/Cargo.toml
 
 prepare-cargo-toml:
-	@sed -i '/\[dependencies\]/a\[patch.crates-io]\nschnorrkel = "=0.11.4"' $(RUST_DIR)/Cargo.toml
+	@grep -q "\[patch.crates-io\]" $(RUST_DIR)/Cargo.toml || echo "\n[patch.crates-io]" >> $(RUST_DIR)/Cargo.toml
+	@grep -q "schnorrkel = \"=0.11.4\"" $(RUST_DIR)/Cargo.toml || echo "schnorrkel = \"=0.11.4\"" >> $(RUST_DIR)/Cargo.toml
 
 build-rust: prepare-cargo-toml
 	@rustup run nightly cargo build --release --manifest-path=$(RUST_DIR)/Cargo.toml
