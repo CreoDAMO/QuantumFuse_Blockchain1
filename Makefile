@@ -28,11 +28,7 @@ setup-rust:
 	@rustup component add rust-src --toolchain nightly
 	@rustup run nightly cargo update --manifest-path=$(RUST_DIR)/Cargo.toml
 
-prepare-cargo-toml:
-	@grep -q "\[patch.crates-io\]" $(RUST_DIR)/Cargo.toml || echo "\n[patch.crates-io]" >> $(RUST_DIR)/Cargo.toml
-	@grep -q "schnorrkel = \"=0.11.4\"" $(RUST_DIR)/Cargo.toml || echo "schnorrkel = \"=0.11.4\"" >> $(RUST_DIR)/Cargo.toml
-
-build-rust: prepare-cargo-toml
+build-rust: force-schnorrkel-version
 	@rustup run nightly cargo build --release --manifest-path=$(RUST_DIR)/Cargo.toml
 
 run-rust:
@@ -50,8 +46,11 @@ test-rust:
 clean-rust:
 	@rustup run nightly cargo clean --manifest-path=$(RUST_DIR)/Cargo.toml
 
-update-rust: prepare-cargo-toml
+update-rust: force-schnorrkel-version
 	@rustup run nightly cargo update --manifest-path=$(RUST_DIR)/Cargo.toml
+
+force-schnorrkel-version:
+	@rustup run nightly cargo update -p schnorrkel --precise 0.11.4 --manifest-path=$(RUST_DIR)/Cargo.toml
 
 # Go targets
 setup-go:
