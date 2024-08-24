@@ -23,86 +23,86 @@ update: update-rust update-go update-python update-node
 
 # Rust targets
 setup-rust:
-	@rustup toolchain install nightly || exit 1
-	@rustup override set nightly --path $(RUST_DIR) || exit 1
-	@rustup component add rust-src --toolchain nightly || exit 1
-	@rustup run nightly cargo update --manifest-path=$(RUST_DIR)/Cargo.toml || exit 1
+	@rustup toolchain install nightly
+	@rustup override set nightly --path $(RUST_DIR)
+	@rustup component add rust-src --toolchain nightly
+	@rustup run nightly cargo update --manifest-path=$(RUST_DIR)/Cargo.toml
 
 build-rust:
-	@rustup run nightly cargo build --release --manifest-path=$(RUST_DIR)/Cargo.toml || exit 1
+	@rustup run nightly cargo build --release --manifest-path=$(RUST_DIR)/Cargo.toml
 
 run-rust:
-	@rustup run nightly cargo run --bin main --manifest-path=$(RUST_DIR)/Cargo.toml || exit 1
+	@rustup run nightly cargo run --bin main --manifest-path=$(RUST_DIR)/Cargo.toml
 
 run-community-wallet:
-	@rustup run nightly cargo run --bin community_wallet --manifest-path=$(RUST_DIR)/Cargo.toml || exit 1
+	@rustup run nightly cargo run --bin community_wallet --manifest-path=$(RUST_DIR)/Cargo.toml
 
 run-founder-wallet:
-	@rustup run nightly cargo run --bin founder_wallet --manifest-path=$(RUST_DIR)/Cargo.toml || exit 1
+	@rustup run nightly cargo run --bin founder_wallet --manifest-path=$(RUST_DIR)/Cargo.toml
 
 test-rust:
-	@rustup run nightly cargo test --manifest-path=$(RUST_DIR)/Cargo.toml || exit 1
+	@rustup run nightly cargo test --manifest-path=$(RUST_DIR)/Cargo.toml
 
 clean-rust:
-	@rustup run nightly cargo clean --manifest-path=$(RUST_DIR)/Cargo.toml || exit 1
+	@rustup run nightly cargo clean --manifest-path=$(RUST_DIR)/Cargo.toml
 
 update-rust:
-	@rustup run nightly cargo update --manifest-path=$(RUST_DIR)/Cargo.toml || exit 1
+	@rustup run nightly cargo update --manifest-path=$(RUST_DIR)/Cargo.toml
 
 # Go targets
 setup-go:
-	@cd $(GO_DIR) && go mod tidy || exit 1
-	@cd $(GO_DIR) && go get ./... || exit 1
+	@cd $(GO_DIR) && go mod tidy
+	@cd $(GO_DIR) && go get ./...
 
 build-go:
-	@cd $(GO_DIR) && go build -o main || exit 1
+	@cd $(GO_DIR) && go build -o main
 
 run-go:
-	@cd $(GO_DIR) && ./main || exit 1
+	@cd $(GO_DIR) && ./main
 
 test-go:
-	@cd $(GO_DIR) && go test ./... || exit 1
+	@cd $(GO_DIR) && go test ./...
 
 clean-go:
-	@rm -rf $(GO_DIR)/main || exit 1
+	@rm -rf $(GO_DIR)/main
 
 update-go:
-	@cd $(GO_DIR) && go get -u ./... || exit 1
+	@cd $(GO_DIR) && go get -u ./...
 
 # Python targets
 setup-python:
-	@cd $(PYTHON_DIR) && pip install -r requirements.txt || exit 1
+	@cd $(PYTHON_DIR) && pip install -r requirements.txt
 
 build-python:
 	@echo "Python does not require a build step."
 
 run-python:
-	@cd $(PYTHON_DIR) && python main.py || exit 1
+	@cd $(PYTHON_DIR) && python main.py
 
 test-python:
-	@cd $(PYTHON_DIR) && pytest tests || exit 1
+	@cd $(PYTHON_DIR) && pytest tests
 
 clean-python:
-	@rm -rf $(PYTHON_DIR)/__pycache__ || exit 1
+	@rm -rf $(PYTHON_DIR)/__pycache__
 
 update-python:
-	@cd $(PYTHON_DIR) && pip install --upgrade -r requirements.txt || exit 1
+	@cd $(PYTHON_DIR) && pip install --upgrade -r requirements.txt
 
 # Node.js targets
 setup-node:
-	@cd $(FRONTEND_DIR) && npm install || exit 1
+	@cd $(FRONTEND_DIR) && npm install
 
 build-node:
-	@cd $(FRONTEND_DIR) && npm run build || exit 1
+	@cd $(FRONTEND_DIR) && npm run build
 
 run-node:
-	@cd $(FRONTEND_DIR) && npm start || exit 1
+	@cd $(FRONTEND_DIR) && npm start
 
 test-node:
-	@cd $(FRONTEND_DIR) && npm test || exit 1
+	@cd $(FRONTEND_DIR) && npm test
 
 clean-node:
-	@rm -rf $(FRONTEND_DIR)/node_modules || exit 1
+	@rm -rf $(FRONTEND_DIR)/node_modules
 
 update-node:
-	@cd $(FRONTEND_DIR) && npm update || exit 1
+	@cd $(FRONTEND_DIR) && npm update
