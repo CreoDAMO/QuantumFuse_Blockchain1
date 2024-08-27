@@ -1,0 +1,35 @@
+name: Makefile CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    # Setup the project dependencies for Rust, Go, Python, and Node.js
+    - name: Setup dependencies
+      run: make setup
+
+    # Build the project for Rust, Go, and Node.js
+    - name: Build project
+      run: make build
+
+    # Run tests for Rust, Go, and Node.js
+    - name: Run tests
+      run: make test
+
+    # Clean up generated files after the build
+    - name: Clean up
+      run: make clean
+
+    # Update project dependencies if needed
+    - name: Update dependencies
+      run: make update
