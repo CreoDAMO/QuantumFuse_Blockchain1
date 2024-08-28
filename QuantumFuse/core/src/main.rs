@@ -1,50 +1,21 @@
-use wallets::community::community_wallet::Wallet;
-// You can also integrate the founder wallet functionality similarly
-
 #[tokio::main]
-async fn main() -> Result<(), Box<dyn std::error::Error>> {
-    // Initialize the blockchain with difficulty and mining reward
+async fn main() {
     let mut blockchain = Blockchain::new(4, 100);
-
-    // Initialize energy storage and management
-    let mut energy_manager = EnergyManager::new(EnergyStorageSystem::new(1000.0, 50.0, 50.0));
-
-    // Initialize the Quantum Optimizer and DAO
-    let quantum_optimizer = QuantumOptimizer::new();
-    let mut energy_dao = DAO::new();
-
-    // Initialize the Fusion Reactor
-    let mut fusion_reactor = FusionReactor::new();
-
-    // Initialize the FNFT Contract
+    let mut dashboard = EnergyDashboard::new();
+    let mut fault_detection = FaultDetection::new();
+    let mut dao = DAO::new();
     let mut fnft_contract = FNFTContract::new();
+    let mut energy_manager = EnergyManager::new(EnergyStorageSystem::new(1000.0, 50.0, 50.0));
+    let mut energy_dao = EnergyDAO::new();
+    let quantum_optimizer = QuantumOptimizer::new();
+    let blockchain_interop = BlockchainInteroperability::new();
+    let mut incentive_system = IncentiveSystem::new();
 
-    // Initialize the Wallet (Community or Founder)
-    let secret_key = vec![0u8; 32]; // Replace with actual secret key
-    let mut wallet = Wallet::new(secret_key.clone())?;
-
-    // Create and sign a transaction for the wallet
-    let mut wallet_tx = Transaction {
-        sender: wallet.address.clone(),
-        receiver: "Bob".to_string(),
-        amount: 100,
-        signature: String::new(),
-    };
-
-    wallet.sign_transaction(&mut wallet_tx, &secret_key)?;
-    let is_wallet_tx_valid = wallet.verify_transaction(&wallet_tx)?;
-    println!("Wallet Transaction valid: {}", is_wallet_tx_valid);
-
-    // Save and load wallet
-    wallet.save_to_file("wallet.json")?;
-    let loaded_wallet = Wallet::load_from_file("wallet.json")?;
-    println!("Loaded Wallet: {:?}", loaded_wallet);
-
-    // Example usage of energy management
+    // Example usage of energy manager
     energy_manager.manage_storage(200.0, 150.0);
     println!("Storage status: {}%", energy_manager.get_storage_status() * 100.0);
 
-    // DAO Governance Example
+    // Example usage of DAO
     energy_dao.add_member("Alice".to_string());
     energy_dao.add_member("Bob".to_string());
     let proposal = Proposal::new(1, "Increase energy storage capacity".to_string());
@@ -56,24 +27,23 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         println!("Proposal 0: Yes votes: {}, No votes: {}", yes_votes, no_votes);
     }
 
-    // Quantum Optimizer Example
+    // Example usage of quantum optimizer
     let optimized_distribution = quantum_optimizer.optimize_energy_distribution(&[100.0, 200.0], &[150.0, 250.0]);
     println!("Optimized energy distribution: {:?}", optimized_distribution);
 
-    // Blockchain Interoperability Example
-    let blockchain_interop = BlockchainInteroperability::new();
+    // Example usage of blockchain interoperability
     match blockchain_interop.enable_cross_chain_transfer("EnergyToken", 100.0, "Ethereum") {
         Ok(_) => println!("Cross-chain transfer successful"),
         Err(e) => println!("Cross-chain transfer failed: {}", e),
     }
 
-    // Sustainable Energy Incentive Example
-    let mut incentive_system = Marketplace::new();
-    incentive_system.trade_credit("token_1", "Alice")?;
-    let token = SustainabilityToken::new("token_1".to_string(), "Alice".to_string(), 50.0);
-    println!("Token ID: {}, Owner: {}, Amount: {}", token.token_id, token.owner, token.amount);
+    // Example usage of incentive system
+    incentive_system.reward("Alice".to_string(), 50.0);
+    if let Some(token) = incentive_system.get_token("token_1") {
+        println!("Token ID: {}, Owner: {}, Amount: {}", token.token_id, token.owner, token.amount);
+    }
 
-    // Fault Detection and Energy Dashboard Example
+    // Example usage of fault detection and dashboard
     let tx = Transaction {
         sender: "Alice".to_string(),
         receiver: "Bob".to_string(),
@@ -87,11 +57,55 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         Err(e) => println!("Failed to mine block: {}", e),
     }
 
-    // Example Fusion Reactor Optimization
-    let performance_optimization = fusion_reactor.optimize_performance();
+    println!("Blockchain: {:?}", blockchain.blocks);
+    println!("Total energy consumed: {} MJ", blockchain.get_energy_metrics());
+
+    dashboard.update_metrics("total_energy", blockchain.get_energy_metrics());
+    dashboard.display_metrics();
+
+    let faults = fault_detection.detect_faults(&dashboard.metrics);
+    for fault in faults {
+        println!("{}", fault);
+    }
+
+    let proposal_id = dao.create_proposal("Increase energy efficiency reward", "Alice");
+    dao.vote(proposal_id, "Alice", true);
+    dao.vote(proposal_id, "Bob", false);
+
+    if let Some((yes_votes, no_votes)) = dao.tally_votes(proposal_id) {
+        println!("Proposal {}: Yes votes: {}, No votes: {}", proposal_id, yes_votes, no_votes);
+    }
+
+    let result = blockchain.store_data_on_ipfs("Hello, IPFS!").await;
+    match result {
+        Ok(hash) => println!("Stored data on IPFS with hash: {}", hash),
+        Err(e) => println!("Failed to store data on IPFS: {}", e),
+    }
+
+    // Deploy and execute a smart contract
+    let mut contract = SmartContract::new("contract1", "dummy_code", "Alice");
+    blockchain.deploy_smart_contract(contract);
+
+    match blockchain.execute_smart_contract("contract1", "test_input") {
+        Ok(result) => println!("Smart contract execution result: {}", result),
+        Err(e) => println!("Smart contract execution failed: {}", e),
+    }
+
+    contract.update_state("energy_reward", "150");
+    if let Some(reward) = contract.get_state("energy_reward") {
+        println!("Energy reward state: {}", reward);
+    }
+
+    // Optimize fusion reactor performance
+    let performance_optimization = blockchain.optimize_fusion_performance();
     println!("Fusion reactor performance optimization: {}", performance_optimization);
 
-    // Example FNFT Management
+    // Generate and mint an NFT with live metadata
+    let nft_metadata = generate_metadata(&blockchain);
+    let nft_id = blockchain.nft_contract.mint_nft("Alice", &nft_metadata);
+    println!("Minted NFT with ID: {}", nft_id);
+
+    // Create and manage F-NFTs
     let original_nft_id = "nft_123";
     let mut fractions = HashMap::new();
     fractions.insert("Alice".to_string(), Fraction { owner: "Alice".to_string(), percentage: 50.0 });
@@ -108,27 +122,5 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     if let Some(fnft) = fnft_contract.get_fnft_details(&fnft_id) {
         println!("FNFT Details: {:?}", fnft);
     }
-
-    // Example of storing data on IPFS (from `blockchain`)
-    let result = blockchain.store_data_on_ipfs("Hello, IPFS!").await;
-    match result {
-        Ok(hash) => println!("Stored data on IPFS with hash: {}", hash),
-        Err(e) => println!("Failed to store data on IPFS: {}", e),
-    }
-
-    // Smart Contract Deployment and Execution Example
-    let mut contract = SmartContract::new("contract1", "dummy_code", "Alice");
-    blockchain.deploy_smart_contract(contract);
-
-    match blockchain.execute_smart_contract("contract1", "test_input") {
-        Ok(result) => println!("Smart contract execution result: {}", result),
-        Err(e) => println!("Smart contract execution failed: {}", e),
-    }
-
-    contract.update_state("energy_reward", "150");
-    if let Some(reward) = contract.get_state("energy_reward") {
-        println!("Energy reward state: {}", reward);
-    }
-
-    Ok(())
-}
+        }
+            
