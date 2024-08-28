@@ -28,24 +28,5 @@ assert_cmd = "2.0.16"
 pem = "3.0.4"
 schnorrkel = "0.11.4"
 
-# Align Substrate dependencies to compatible versions
-sp-std = { version = "14.0.0", default-features = false }
-frame-support = { version = "37.0.0", default-features = false }
-frame-system = { version = "37.0.0", default-features = false }
-sp-externalities = { version = "0.29.0", default-features = false }
-sp-io = { version = "38.0.0", default-features = false }
-sp-runtime-interface = { version = "28.0.0", default-features = false }
-
-[features]
-default = ["std"]
-std = [
-    "sp-std/std",
-    "frame-support/std",
-    "frame-system/std",
-    "sp-externalities/std",
-    "sp-io/std",
-    "sp-runtime-interface/std",
-]
-
 [dev-dependencies]
 cargo-edit = "0.12.3"
