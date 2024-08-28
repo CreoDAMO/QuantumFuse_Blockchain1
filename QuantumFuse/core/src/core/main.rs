@@ -1,30 +1,5 @@
-// Import necessary modules
-mod core;
-mod data_structure;
-mod marketplace;
-mod nfts;
-mod cross_chain;
-mod wallets;
-mod security;
-mod integration;
-mod identity;
-mod advanced;
-
-use core::blockchain::{Blockchain, Transaction, SmartContract};
-use core::fusion::FusionReactor;
-use core::energy_storage::{EnergyManager, EnergyStorageSystem};
-use core::ai_monitor::QuantumOptimizer;
-use core::dao::{DAO, Proposal};
-use data_structure::{SustainabilityToken, RegulatoryUpdate};
-use marketplace::quantumfuse_marketplace::{Marketplace, EnergyCredit};
-use nfts::fnft::{FNFTContract, Fraction};
-use cross_chain::cross_chain_communication_and_asset_transfer::BlockchainInteroperability;
 use wallets::community::community_wallet::Wallet;
-use security::biometric_auth;
-use integration::coinmarketcap_api;
-use identity::decentralized_identity::{DecentralizedIdentity, VerifiableCredential};
-use advanced::zk_snark::ZKSnark;
-use std::collections::HashMap;
+// You can also integrate the founder wallet functionality similarly
 
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
@@ -43,6 +18,27 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     // Initialize the FNFT Contract
     let mut fnft_contract = FNFTContract::new();
+
+    // Initialize the Wallet (Community or Founder)
+    let secret_key = vec![0u8; 32]; // Replace with actual secret key
+    let mut wallet = Wallet::new(secret_key.clone())?;
+
+    // Create and sign a transaction for the wallet
+    let mut wallet_tx = Transaction {
+        sender: wallet.address.clone(),
+        receiver: "Bob".to_string(),
+        amount: 100,
+        signature: String::new(),
+    };
+
+    wallet.sign_transaction(&mut wallet_tx, &secret_key)?;
+    let is_wallet_tx_valid = wallet.verify_transaction(&wallet_tx)?;
+    println!("Wallet Transaction valid: {}", is_wallet_tx_valid);
+
+    // Save and load wallet
+    wallet.save_to_file("wallet.json")?;
+    let loaded_wallet = Wallet::load_from_file("wallet.json")?;
+    println!("Loaded Wallet: {:?}", loaded_wallet);
 
     // Example usage of energy management
     energy_manager.manage_storage(200.0, 150.0);
