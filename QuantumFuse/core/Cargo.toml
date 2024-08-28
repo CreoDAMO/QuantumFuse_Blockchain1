@@ -26,19 +26,13 @@ libp2p = { version = "0.54.1", features = ["tcp-tokio", "dns-tokio"] }
 substrate-api-client = "0.18.0"
 assert_cmd = "2.0.16"
 pem = "3.0.4"
-<<<<<<< HEAD
-sp-std = { version = "14.0.0", default-features = false }
-frame-support = { version = "4.0", default-features = false }
-frame-system = { version = "4.0", default-features = false }
-=======
->>>>>>> c5232d7a94cb306d6554bb24cca869f891073a31
 schnorrkel = "0.11.4"
 
 # Align Substrate dependencies to compatible versions
-sp-std = { version = "14.0.0", default-features = false }
+sp-std = { version = "37.0.0", default-features = false }
 frame-support = { version = "37.0.0", default-features = false }
 frame-system = { version = "37.0.0", default-features = false }
-sp-externalities = { version = "0.29.0", default-features = false }
+sp-externalities = { version = "37.0.0", default-features = false }
 
 [features]
 default = ["std"]
