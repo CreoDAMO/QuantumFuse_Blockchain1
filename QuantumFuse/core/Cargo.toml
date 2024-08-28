@@ -12,7 +12,7 @@ readme = "README.md"
 [dependencies]
 serde = { version = "1.0", features = ["derive"] }
 serde_json = "1.0"
-ring = "0.16"
+ring = { version = "0.16", optional = true }
 thiserror = "1.0"
 reqwest = { version = "0.11", features = ["json"], optional = true }
 log = "0.4"
