@@ -32,6 +32,16 @@ schnorrkel = "0.11.4"
 sp-std = { version = "14.0.0", default-features = false }
 frame-support = { version = "14.0.0", default-features = false }
 frame-system = { version = "14.0.0", default-features = false }
+sp-externalities = { version = "14.0.0", default-features = false }  # Added sp-externalities to align with other Substrate crates
+
+[features]
+default = ["std"]
+std = [
+    "sp-std/std",
+    "frame-support/std",
+    "frame-system/std",
+    "sp-externalities/std",
+]
 
 [dev-dependencies]
 cargo-edit = "0.12.3"
