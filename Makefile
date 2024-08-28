@@ -28,40 +28,37 @@ setup-rust:
 	@rustup component add rust-src --toolchain nightly
 	@rustup run nightly cargo update --manifest-path=$(RUST_DIR)/Cargo.toml
 
-build-rust: force-schnorrkel-version
+build-rust: setup-rust
 	@rustup run nightly cargo build --release --manifest-path=$(RUST_DIR)/Cargo.toml
 
-run-rust:
+run-rust: build-rust
 	@rustup run nightly cargo run --manifest-path=$(RUST_DIR)/Cargo.toml
 
-test-rust:
+test-rust: setup-rust
 	@rustup run nightly cargo test --manifest-path=$(RUST_DIR)/Cargo.toml
 
 clean-rust:
 	@rustup run nightly cargo clean --manifest-path=$(RUST_DIR)/Cargo.toml
 
-update-rust: force-schnorrkel-version
+update-rust:
 	@rustup run nightly cargo update --manifest-path=$(RUST_DIR)/Cargo.toml
-
-force-schnorrkel-version:
-	@rustup run nightly cargo update -p schnorrkel --precise 0.11.4 --manifest-path=$(RUST_DIR)/Cargo.toml
 
 # Go targets
 setup-go:
 	@cd $(GO_DIR) && go mod tidy
-	@cd $(GO_DIR) && go get ./...
+	@cd $(GO_DIR) && go get -v ./...
 
-build-go:
+build-go: setup-go
 	@cd $(GO_DIR) && go build -o main
 
-run-go:
+run-go: build-go
 	@cd $(GO_DIR) && ./main
 
-test-go:
+test-go: setup-go
 	@cd $(GO_DIR) && go test ./...
 
 clean-go:
-	@rm -rf $(GO_DIR)/main
+	@rm -f $(GO_DIR)/main
 
 update-go:
 	@cd $(GO_DIR) && go get -u ./...
@@ -70,13 +67,13 @@ update-go:
 setup-python:
 	@cd $(PYTHON_DIR) && pip install -r requirements.txt
 
-build-python:
+build-python: setup-python
 	@echo "Python does not require a build step."
 
-run-python:
+run-python: build-python
 	@cd $(PYTHON_DIR) && python main.py
 
-test-python:
+test-python: setup-python
 	@cd $(PYTHON_DIR) && pytest tests
 
 clean-python:
@@ -89,13 +86,13 @@ update-python:
 setup-node:
 	@cd $(FRONTEND_DIR) && npm install
 
-build-node:
+build-node: setup-node
 	@cd $(FRONTEND_DIR) && npm run build
 
-run-node:
+run-node: build-node
 	@cd $(FRONTEND_DIR) && npm start
 
-test-node:
+test-node: setup-node
 	@cd $(FRONTEND_DIR) && npm test
 
 clean-node:
