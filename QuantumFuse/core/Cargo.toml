@@ -29,7 +29,7 @@ pem = "3.0.4"
 schnorrkel = "0.11.4"
 
 # Align Substrate dependencies to compatible versions
-sp-std = { version = "0.22.0", default-features = false }
+sp-std = { version = "0.27.0", default-features = false }
 frame-support = { version = "37.0.0", default-features = false }
 frame-system = { version = "37.0.0", default-features = false }
 sp-externalities = { version = "37.0.0", default-features = false }
