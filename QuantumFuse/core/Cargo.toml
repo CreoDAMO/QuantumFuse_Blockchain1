@@ -29,10 +29,10 @@ pem = "3.0.4"
 schnorrkel = "0.11.4"
 
 # Ensure Substrate dependencies are aligned
-sp-std = { version = "14.0.0", default-features = false }
-frame-support = { version = "14.0.0", default-features = false }
-frame-system = { version = "14.0.0", default-features = false }
-sp-externalities = { version = "14.0.0", default-features = false }  # Added sp-externalities to align with other Substrate crates
+sp-std = { version = "0.29.0", default-features = false }
+frame-support = { version = "0.29.0", default-features = false }
+frame-system = { version = "0.29.0", default-features = false }
+sp-externalities = { version = "0.29.0", default-features = false }  # Set to a compatible version
 
 [features]
 default = ["std"]
