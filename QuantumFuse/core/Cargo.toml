@@ -16,38 +16,72 @@ ring = { version = "0.16", optional = true }
 thiserror = "1.0"
 reqwest = { version = "0.11", features = ["json"], optional = true }
 log = "0.4"
-env_logger = "0.9"
+env_logger = { version = "0.11", features = ["default"] }
 futures = "0.3"
 ipfs-api = "0.7" # For IPFS integration
-rand = "0.8" # For random number generation
-rust-crypto = { version = "0.2", optional = true } # For cryptographic functions
-ed25519-dalek = { version = "1.0", optional = true } # For cryptographic signatures
-async-std = { version = "1.10", optional = true } # For asynchronous operations
-crossbeam = "0.8" # For concurrency management
-regex = "1.5" # For regex parsing
-time = "0.3" # For time-related functions
+rand = "0.8"
+rust-crypto = { version = "0.2", optional = true }
+ed25519-dalek = { version = "1.0", optional = true }
+async-std = { version = "1.10", optional = true }
+crossbeam = "0.8"
+regex = "1.5"
+time = "0.3"
 protoc-rust = "2.25.0" # For protocol buffers
 wasm-bindgen = "0.2" # For WebAssembly support
-tokio = { version = "1", features = ["full"], optional = true }
+tokio = { version = "1.39", features = ["full", "macros"], optional = true }
+sha2 = "0.10"
+hex = "0.4"
+rocket = { version = "0.5.0-rc.3", features = ["json"] }
+rocket_okapi = "0.10"
+rocket_cors = "0.6"
+juniper = "0.16"
+juniper_rocket = "0.10"
+jsonwebtoken = "9.3"
+prometheus = "0.14"
+redis = "0.26"
+anstream = "0.6"
+tracing = "0.1"
+dotenv = "0.15"
+libp2p = { version = "0.57", features = ["tcp-tokio", "dns-tokio"] }
+substrate-api-client = "0.19"
+assert_cmd = "2.0"
+pem = "3.0"
+schnorrkel = "0.11"
+sp-std = { version = "37.0", default-features = false }
+frame-support = { version = "37.0", default-features = false }
+frame-system = { version = "37.0", default-features = false }
+sp-externalities = { version = "37.0", default-features = false }
+sp-io = { version = "37.0", default-features = false }
+sp-runtime-interface = { version = "37.0", default-features = false }
 
 [dev-dependencies]
 tokio-test = "0.4"
-serde_json = "1.0"
 criterion = "0.3" # For benchmarking
 cargo-audit = "0.16" # For auditing dependencies
+cargo-edit = "0.12"
 
 [build-dependencies]
 prost-build = "0.9" # For building protocol buffers in Rust
 
 [features]
 # Default features that are enabled automatically
-default = ["async", "crypto"]
+default = ["async", "crypto", "std"]
 
 # Enable async support with tokio and async-std
 async = ["tokio", "async-std"]
 
 # Enable cryptographic features
 crypto = ["ring", "ed25519-dalek", "rust-crypto"]
+
+# Standard library features for Substrate-related crates
+std = [
+    "sp-std/std",
+    "frame-support/std",
+    "frame-system/std",
+    "sp-externalities/std",
+    "sp-io/std",
+    "sp-runtime-interface/std",
+]
 
 [workspace]
 members = [
