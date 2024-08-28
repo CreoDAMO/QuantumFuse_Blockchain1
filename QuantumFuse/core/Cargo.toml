@@ -22,7 +22,7 @@ env_logger = { version = "0.11.5", features = ["default"] }
 anstream = "0.6.15"
 tracing = "0.1.40"
 dotenv = "0.15.0"
-libp2p = { version = "0.54.1", features = ["tcp-tokio", "dns-tokio"] }
+libp2p = { version = "0.54.1", features = ["tcp-tokio"] }  # Removed dns-tokio feature
 substrate-api-client = "0.18.0"
 assert_cmd = "2.0.16"
 pem = "3.0.4"
