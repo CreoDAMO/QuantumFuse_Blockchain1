@@ -1,38 +1,66 @@
 [package]
 name = "quantumfuse_blockchain"
 version = "0.1.0"
-authors = ["Your Name <your.email@example.com>"]
+authors = ["Jacque Antoine DeGraff <jacquedegraff@creodamo.com>"]
 edition = "2021"
-description = "A blockchain system enhanced with fusion energy, AI optimizations, and sustainable practices"
+description = "QuantumFuse Blockchain - A decentralized blockchain platform for scalable, secure, and energy-efficient operations."
 license = "MIT"
-repository = "https://github.com/your-username/quantumfuse_blockchain"
-
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+repository = "https://github.com/CreoDAMO/QuantumFuse_Blockchain"
+documentation = "https://quantumfuse-blockchain-docs.readthedocs.io"
+readme = "README.md"
 
 [dependencies]
 serde = { version = "1.0", features = ["derive"] }
 serde_json = "1.0"
 tokio = { version = "1", features = ["full"] }
-rand = "0.8"
-sha2 = "0.10"
-hex = "0.4"
-time = "0.3"
-futures = "0.3"
+ring = "0.16"
+thiserror = "1.0"
 reqwest = { version = "0.11", features = ["json"] }
 log = "0.4"
 env_logger = "0.9"
-
-# Optional dependencies for enhanced functionalities (e.g., AI, cryptography)
-rand_chacha = "0.3"      # For random number generation
-ed25519-dalek = "1.0"    # For cryptographic signatures
-rayon = "1.5"            # For parallel processing
-async-std = "1.10"       # For asynchronous operations
+futures = "0.3"
+ipfs-api = "0.7" # For IPFS integration
+rand = "0.8" # For random number generation
+rust-crypto = "0.2" # For cryptographic functions
+ed25519-dalek = "1.0" # For cryptographic signatures
+async-std = "1.10" # For asynchronous operations
+crossbeam = "0.8" # For concurrency management
+regex = "1.5" # For regex parsing
+time = "0.3" # For time-related functions
+protoc-rust = "2.25.0" # For protocol buffers
+wasm-bindgen = "0.2" # For WebAssembly support
 
 [dev-dependencies]
-# Dependencies for testing
-serde_json = "1.0"
 tokio-test = "0.4"
+serde_json = "1.0"
+criterion = "0.3" # For benchmarking
+cargo-audit = "0.16" # For auditing dependencies
+
+[build-dependencies]
+prost-build = "0.9" # For building protocol buffers in Rust
 
 [features]
-default = []
-# Define additional features for optional components
+default = ["std"]
+async = ["tokio", "async-std"]
+crypto = ["ring", "ed25519-dalek", "rust-crypto"]
+
+[workspace]
+members = [
+    "dao",
+    "data_structure",
+    "marketplace",
+    "nfts",
+    "smartcontract",
+    "wallets"
+]
+
+[profile.release]
+opt-level = "z" # Optimize for size
+lto = true # Link Time Optimization for smaller binaries
+
+[patch.crates-io]
+# Override dependencies with local or alternative versions if needed
+
+[metadata]
+documentation-url = "https://quantumfuse-blockchain-docs.readthedocs.io"
+repository-url = "https://github.com/CreoDAMO/QuantumFuse_Blockchain"
