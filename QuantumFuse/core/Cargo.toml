@@ -40,8 +40,13 @@ cargo-audit = "0.16" # For auditing dependencies
 prost-build = "0.9" # For building protocol buffers in Rust
 
 [features]
-default = ["std"]
+# Default features that are enabled automatically
+default = ["async", "crypto"]
+
+# Enable async support with tokio and async-std
 async = ["tokio", "async-std"]
+
+# Enable cryptographic features
 crypto = ["ring", "ed25519-dalek", "rust-crypto"]
 
 [workspace]
