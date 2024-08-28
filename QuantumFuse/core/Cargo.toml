@@ -24,7 +24,7 @@ env_logger = "0.9"
 
 # Optional dependencies for enhanced functionalities (e.g., AI, cryptography)
 rand_chacha = "0.3"      # For random number generation
-ed25519-dalek = "1.0"    # For cryptographic signatures
+ed25519-dalek = "2.1"    # For cryptographic signatures
 rayon = "1.5"            # For parallel processing
 async-std = "1.10"       # For asynchronous operations
 
