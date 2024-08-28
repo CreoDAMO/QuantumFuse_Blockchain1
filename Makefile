@@ -22,11 +22,19 @@ clean: clean-rust clean-go clean-python clean-node
 update: update-rust update-go update-python update-node
 
 # Rust targets
-setup-rust:
+setup-rust: install-protoc
 	@rustup toolchain install nightly
 	@rustup override set nightly --path $(RUST_DIR)
 	@rustup component add rust-src --toolchain nightly
 	@rustup run nightly cargo update --manifest-path=$(RUST_DIR)/Cargo.toml
+
+install-protoc:
+	@if ! command -v protoc &> /dev/null; then \
+		echo "Installing protoc..."; \
+		sudo apt-get update && sudo apt-get install -y protobuf-compiler; \
+	else \
+		echo "protoc is already installed."; \
+	fi
 
 build-rust: setup-rust
 	@rustup run nightly cargo build --release --manifest-path=$(RUST_DIR)/Cargo.toml
