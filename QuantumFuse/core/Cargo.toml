@@ -29,17 +29,9 @@ pem = "3.0.4"
 schnorrkel = "0.11.4"
 
 # Ensure Substrate dependencies are aligned
-sp-std = { version = "4.0", default-features = false }
-frame-support = { version = "4.0", default-features = false }
-frame-system = { version = "4.0", default-features = false }
+sp-std = { version = "14.0.0", default-features = false }
+frame-support = { version = "14.0.0", default-features = false }
+frame-system = { version = "14.0.0", default-features = false }
 
 [dev-dependencies]
 cargo-edit = "0.12.3"
-
-[[bin]]
-name = "community_wallet"
-path = "src/bin/community_wallet.rs"
-
-[[bin]]
-name = "founder_wallet"
-path = "src/bin/founder_wallet.rs"
