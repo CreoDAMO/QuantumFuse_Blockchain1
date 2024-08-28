@@ -32,13 +32,7 @@ build-rust: force-schnorrkel-version
 	@rustup run nightly cargo build --release --manifest-path=$(RUST_DIR)/Cargo.toml
 
 run-rust:
-	@rustup run nightly cargo run --bin main --manifest-path=$(RUST_DIR)/Cargo.toml
-
-run-community-wallet:
-	@rustup run nightly cargo run --bin community_wallet --manifest-path=$(RUST_DIR)/Cargo.toml
-
-run-founder-wallet:
-	@rustup run nightly cargo run --bin founder_wallet --manifest-path=$(RUST_DIR)/Cargo.toml
+	@rustup run nightly cargo run --manifest-path=$(RUST_DIR)/Cargo.toml
 
 test-rust:
 	@rustup run nightly cargo test --manifest-path=$(RUST_DIR)/Cargo.toml
