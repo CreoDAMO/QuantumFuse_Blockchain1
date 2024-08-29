@@ -9,7 +9,11 @@ RUST_TOOLCHAIN = nightly
 PROTOTOOL = protoc
 
 # Targets
-.PHONY: all setup build run test clean update install-protoc help
+.PHONY: all setup build run test clean update install-protoc help \
+        setup-rust build-rust run-rust test-rust clean-rust update-rust \
+        setup-go build-go run-go test-go clean-go update-go \
+        setup-python build-python run-python test-python clean-python update-python \
+        setup-node build-node run-node test-node clean-node update-node
 
 # Default target
 all: setup build
@@ -19,30 +23,25 @@ help:
 	@echo "Usage: make [target]"
 	@echo ""
 	@echo "Targets:"
-	@echo "  all           - Set up and build the project."
-	@echo "  setup         - Set up all components."
-	@echo "  build         - Build all components."
-	@echo "  run           - Run all components."
-	@echo "  test          - Run tests for all components."
-	@echo "  clean         - Clean up all build artifacts."
-	@echo "  update        - Update all dependencies."
-	@echo "  install-protoc- Install protobuf compiler (protoc)."
-	@echo "  help          - Display this help message."
+	@echo "  all            - Set up and build the project."
+	@echo "  setup          - Set up all components."
+	@echo "  build          - Build all components."
+	@echo "  run            - Run all components."
+	@echo "  test           - Run tests for all components."
+	@echo "  clean          - Clean up all build artifacts."
+	@echo "  update         - Update all dependencies."
+	@echo "  install-protoc - Install protobuf compiler (protoc)."
+	@echo "  help           - Display this help message."
 	@echo ""
 	@echo "Component-specific targets (use with 'make component-target'):"
 	@echo "  rust, go, python, node - setup, build, run, test, clean, update"
 
 # Main Targets
 setup: setup-rust setup-go setup-python setup-node
-
 build: build-rust build-go build-python build-node
-
 run: run-rust run-go run-python run-node
-
 test: test-rust test-go test-python test-node
-
 clean: clean-rust clean-go clean-python clean-node
-
 update: update-rust update-go update-python update-node
 
 # Rust targets
@@ -81,8 +80,7 @@ update-rust:
 
 # Go targets
 setup-go:
-	@cd $(GO_DIR) && go mod tidy
-	@cd $(GO_DIR) && go get -v ./...
+	@cd $(GO_DIR) && go mod tidy && go get -v ./...
 
 build-go: setup-go
 	@cd $(GO_DIR) && go build -o main
