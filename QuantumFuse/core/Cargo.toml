@@ -3,7 +3,11 @@ name = "quantumfuse_blockchain"
 version = "0.1.0"
 authors = ["Jacque Antoine DeGraff <jacquedegraff@creodamo.com>"]
 edition = "2021"
-resolver = "2"  # Use the new resolver for better feature management
+description = "QuantumFuse Blockchain - A decentralized blockchain platform for scalable, secure, and energy-efficient operations."
+license = "MIT"
+repository = "https://github.com/CreoDAMO/QuantumFuse_Blockchain"
+documentation = "https://quantumfuse-blockchain-docs.readthedocs.io"
+readme = "README.md"
 
 [dependencies]
 serde = { version = "1.0", features = ["derive"] }
@@ -14,16 +18,16 @@ reqwest = { version = "0.11", features = ["json"], optional = true }
 log = "0.4"
 env_logger = { version = "0.11", features = ["default"] }
 futures = "0.3"
-ipfs-api = "0.7"
+ipfs-api = "0.7" # For IPFS integration
 rand = "0.8"
 rust-crypto = { version = "0.2", optional = true }
-ed25519-dalek = { version = "2.1", optional = true }
+ed25519-dalek = { version = "2.1", optional = true } # Updated to the latest patched version
 async-std = { version = "1.10", optional = true }
 crossbeam = "0.8"
 regex = "1.5"
 time = "0.3"
-protoc-rust = "2.25.0"
-wasm-bindgen = "0.2"
+protoc-rust = "2.25.0" # For protocol buffers
+wasm-bindgen = "0.2" # For WebAssembly support
 tokio = { version = "1.39", features = ["full", "macros"], optional = true }
 sha2 = "0.10"
 hex = "0.4"
@@ -51,21 +55,25 @@ sp-io = { version = "37.0", default-features = false }
 sp-runtime-interface = { version = "28.0.0", default-features = false }
 
 [dev-dependencies]
+cargo-edit = "=0.11.2"  # Downgraded to avoid conflict
+cargo-audit = "=0.15.2"  # Downgraded to avoid conflict
 tokio-test = "0.4"
-criterion = "0.3"
-cargo-audit = "0.16"
-cargo-edit = "0.12"
+criterion = "0.3" # For benchmarking
 
 [build-dependencies]
-prost-build = "0.9"
+prost-build = "0.9" # For building protocol buffers in Rust
 
 [features]
+# Default features that are enabled automatically
 default = ["async", "crypto", "std"]
 
+# Enable async support with tokio and async-std
 async = ["tokio", "async-std"]
 
+# Enable cryptographic features
 crypto = ["ring", "ed25519-dalek", "rust-crypto"]
 
+# Standard library features for Substrate-related crates
 std = [
     "sp-std/std",
     "frame-support/std",
@@ -75,6 +83,13 @@ std = [
     "sp-runtime-interface/std",
 ]
 
+[patch.crates-io]
+libgit2-sys = { version = "0.15.0+1.6.3" }  # Enforcing a specific version to avoid conflicts
+
 [profile.release]
-opt-level = "z"
-lto = true
+opt-level = "z" # Optimize for size
+lto = true # Link Time Optimization for smaller binaries
+
+[metadata]
+documentation-url = "https://quantumfuse-blockchain-docs.readthedocs.io"
+repository-url = "https://github.com/CreoDAMO/QuantumFuse_Blockchain"
