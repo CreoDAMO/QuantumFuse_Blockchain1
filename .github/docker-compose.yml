@@ -1,0 +1,53 @@
+version: '3.8'
+
+services:
+  prometheus:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+
+  grafana:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: grafana
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./dashboards:/var/lib/grafana/dashboards
+      - ./grafana.ini:/etc/grafana/grafana.ini
+
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: api
+    ports:
+      - "5000:5000"
+
+  node:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: node
+    ports:
+      - "8080:8080"
+
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: frontend
+
+  nginx:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: final
+    ports:
+      - "80:80"
