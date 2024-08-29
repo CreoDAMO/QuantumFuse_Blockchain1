@@ -43,7 +43,7 @@ anstream = "0.6"
 tracing = "0.1"
 dotenv = "0.15"
 libp2p = { version = "0.53.2", features = ["tcp-tokio", "dns-tokio"] }
-substrate-api-client = "0.19"
+substrate-api-client = "0.18.0"
 assert_cmd = "2.0"
 pem = "3.0"
 schnorrkel = "0.11"
