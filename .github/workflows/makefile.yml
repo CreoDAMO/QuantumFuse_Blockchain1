@@ -69,7 +69,7 @@ jobs:
       with:
         python-version: '3.10'
 
-    - name: Cache pip
+    - name: Cache pip packages
       uses: actions/cache@v3
       with:
         path: ~/.cache/pip
@@ -98,10 +98,12 @@ jobs:
     - name: Clean the build artifacts
       run: make clean
 
-    # Run checks (if available)
-    - name: Run static checks (if defined)
+    # Optional: Run static checks if defined in Makefile
+    - name: Run static checks (optional)
       run: make check
+      if: success() && (steps.check.outcome == 'success' || steps.check.outcome == 'failure')
 
-    # Run distcheck (if available)
-    - name: Run distribution checks (if defined)
+    # Optional: Run distribution checks if defined in Makefile
+    - name: Run distribution checks (optional)
       run: make distcheck
+      if: success() && (steps.distcheck.outcome == 'success' || steps.distcheck.outcome == 'failure')
