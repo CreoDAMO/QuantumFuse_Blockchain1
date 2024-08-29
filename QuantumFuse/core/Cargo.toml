@@ -52,7 +52,7 @@ frame-support = { version = "37.0", default-features = false }
 frame-system = { version = "37.0", default-features = false }
 sp-externalities = { version = "0.29.0", default-features = false }
 sp-io = { version = "37.0", default-features = false }
-sp-runtime-interface = { version = "37.0", default-features = false }
+sp-runtime-interface = { version = "28.0.0", default-features = false }
 
 [dev-dependencies]
 tokio-test = "0.4"
