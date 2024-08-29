@@ -57,8 +57,10 @@ criterion = "0.3"
 [build-dependencies]
 prost-build = "0.9"
 
-[patch.crates-io]
-libgit2-sys = { version = "=0.15.2+1.6.4" }
+# [patch.crates-io]
+# libgit2-sys = { version = "=0.15.2+1.6.4" } 
+# Uncomment the above section only if you need to enforce a specific version of libgit2-sys.
+# If not necessary, keep it commented out to avoid conflicts.
 
 [features]
 default = ["async", "crypto", "std"]
