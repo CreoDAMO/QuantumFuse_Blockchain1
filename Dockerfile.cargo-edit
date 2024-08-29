@@ -1,0 +1,2 @@
+docker build -f Dockerfile.cargo-edit -t cargo-edit-build .
+docker run --rm -v $(pwd):/app cargo-edit-build
