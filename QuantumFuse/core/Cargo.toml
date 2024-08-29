@@ -1,13 +1,7 @@
 [package]
 name = "quantumfuse_blockchain"
 version = "0.1.0"
-authors = ["Jacque Antoine DeGraff <jacquedegraff@creodamo.com>"]
 edition = "2021"
-description = "QuantumFuse Blockchain - A decentralized blockchain platform for scalable, secure, and energy-efficient operations."
-license = "MIT"
-repository = "https://github.com/CreoDAMO/QuantumFuse_Blockchain"
-documentation = "https://quantumfuse-blockchain-docs.readthedocs.io"
-readme = "README.md"
 
 [dependencies]
 serde = { version = "1.0", features = ["derive"] }
@@ -55,13 +49,16 @@ sp-io = { version = "37.0", default-features = false }
 sp-runtime-interface = { version = "28.0.0", default-features = false }
 
 [dev-dependencies]
-cargo-edit = "0.12.0"
+cargo-edit = { version = "0.12.0" }
 cargo-audit = "0.16.0"
 tokio-test = "0.4"
 criterion = "0.3"
 
 [build-dependencies]
 prost-build = "0.9"
+
+[patch.crates-io]
+libgit2-sys = { version = "=0.15.2+1.6.4" }
 
 [features]
 default = ["async", "crypto", "std"]
