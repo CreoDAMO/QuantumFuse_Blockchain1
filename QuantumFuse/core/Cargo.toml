@@ -55,8 +55,8 @@ sp-io = { version = "37.0", default-features = false }
 sp-runtime-interface = { version = "28.0.0", default-features = false }
 
 [dev-dependencies]
-cargo-edit = "=0.11.2"
-cargo-audit = "=0.15.2"
+cargo-edit = "0.12.0"
+cargo-audit = "0.16.0"
 tokio-test = "0.4"
 criterion = "0.3"
 
@@ -75,9 +75,6 @@ std = [
     "sp-io/std",
     "sp-runtime-interface/std",
 ]
-
-[patch.crates-io]
-libgit2-sys = { version = "=0.15.0+1.6.3" }
 
 [profile.release]
 opt-level = "z"
