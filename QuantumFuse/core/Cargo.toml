@@ -83,16 +83,6 @@ std = [
     "sp-runtime-interface/std",
 ]
 
-[workspace]
-members = [
-    "dao",
-    "data_structure",
-    "marketplace",
-    "nfts",
-    "smartcontract",
-    "wallets"
-]
-
 [profile.release]
 opt-level = "z" # Optimize for size
 lto = true # Link Time Optimization for smaller binaries
