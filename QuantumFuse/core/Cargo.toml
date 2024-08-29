@@ -21,7 +21,7 @@ futures = "0.3"
 ipfs-api = "0.7" # For IPFS integration
 rand = "0.8"
 rust-crypto = { version = "0.2", optional = true }
-ed25519-dalek = { version = "2.1", optional = true } # Updated to the latest patched version
+ed25519-dalek = { version = "2.1", optional = true }
 async-std = { version = "1.10", optional = true }
 crossbeam = "0.8"
 regex = "1.5"
@@ -57,8 +57,8 @@ sp-runtime-interface = { version = "28.0.0", default-features = false }
 [dev-dependencies]
 tokio-test = "0.4"
 criterion = "0.3" # For benchmarking
-cargo-audit = "0.16" # For auditing dependencies
-cargo-edit = "0.12"
+cargo-audit = { version = "0.16", features = ["git2/https"] }
+cargo-edit = { version = "0.12", features = ["git2/https"] }
 
 [build-dependencies]
 prost-build = "0.9" # For building protocol buffers in Rust
@@ -88,7 +88,8 @@ opt-level = "z" # Optimize for size
 lto = true # Link Time Optimization for smaller binaries
 
 [patch.crates-io]
-# Override dependencies with local or alternative versions if needed
+git2 = { version = "0.13.20", features = ["https"] }
+libgit2-sys = { version = "0.12.26+1.3.0", features = ["https"] }
 
 [metadata]
 documentation-url = "https://quantumfuse-blockchain-docs.readthedocs.io"
