@@ -42,13 +42,13 @@ assert_cmd = "2.0"
 pem = "3.0"
 schnorrkel = "0.11"
 
-# Update sp-* and frame-* dependencies to align with sp-io v38.0.0
-sp-std = { version = "38.0.0", default-features = false }
-frame-support = { version = "38.0.0", default-features = false }
-frame-system = { version = "38.0.0", default-features = false }
-sp-externalities = { version = "38.0.0", default-features = false }
-sp-io = { version = "38.0.0", default-features = false, features = ["std"] }
-sp-runtime-interface = { version = "38.0.0", default-features = false, features = ["std"] }
+# Align all Substrate-related dependencies to version 37.0.0
+sp-std = { version = "37.0.0", default-features = false }
+frame-support = { version = "37.0.0", default-features = false }
+frame-system = { version = "37.0.0", default-features = false }
+sp-externalities = { version = "37.0.0", default-features = false }
+sp-io = { version = "37.0.0", default-features = false, features = ["std"] }
+sp-runtime-interface = { version = "37.0.0", default-features = false, features = ["std"] }
 
 [dev-dependencies]
 cargo-edit = { version = "0.12.0" }
