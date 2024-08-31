@@ -1,0 +1,48 @@
+name: Makefile CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Set up Rust
+      run: curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+      # Install Rust toolchain nightly
+      run: rustup toolchain install nightly
+      # Set the default Rust toolchain to nightly
+      run: rustup default nightly
+
+    - name: Install protoc
+      run: |
+        if [ ! -x "$(command -v protoc)" ]; then
+          echo "Installing protoc..."
+          if [ "$(uname)" = "Darwin" ]; then
+            brew install protobuf
+          else
+            sudo apt-get update && sudo apt-get install -y protobuf-compiler
+          fi
+        else
+          echo "protoc is already installed."
+        fi
+
+    - name: Install dependencies for Rust
+      run: cargo install --path QuantumFuse/core
+
+    - name: Build Rust code
+      run: cargo build --release --manifest-path QuantumFuse/core/Cargo.toml
+
+    - name: Run Rust tests
+      run: cargo test --manifest-path QuantumFuse/core/Cargo.toml
+
+    - name: Clean up
+      run: cargo clean --manifest-path QuantumFuse/core/Cargo.toml
+      
