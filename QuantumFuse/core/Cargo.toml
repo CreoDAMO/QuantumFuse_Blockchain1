@@ -2,12 +2,6 @@
 name = "quantumfuse_blockchain"
 version = "0.1.0"
 edition = "2021"
-authors = ["Jacque Antoine DeGraff <jacquedegraff@creodamo.com>"]
-description = "QuantumFuse Blockchain - A decentralized blockchain platform for scalable, secure, and energy-efficient operations."
-license = "MIT"
-repository = "https://github.com/CreoDAMO/QuantumFuse_Blockchain"
-documentation = "https://quantumfuse-blockchain-docs.readthedocs.io"
-readme = "README.md"
 
 [dependencies]
 serde = { version = "1.0", features = ["derive"] }
@@ -47,12 +41,14 @@ substrate-api-client = "0.18.0"
 assert_cmd = "2.0"
 pem = "3.0"
 schnorrkel = "0.11"
-sp-std = { version = "14.0.0", default-features = false }
-frame-support = { version = "37.0", default-features = false }
-frame-system = { version = "37.0", default-features = false }
-sp-externalities = { version = "0.29.0", default-features = false }
-sp-io = { version = "37.0", default-features = false, features = ["std", "wasm"] }
-sp-runtime-interface = { version = "28.0.0", default-features = false, features = ["std", "wasm"] }
+
+# Update sp-* and frame-* dependencies to align with sp-io v38.0.0
+sp-std = { version = "38.0.0", default-features = false }
+frame-support = { version = "38.0.0", default-features = false }
+frame-system = { version = "38.0.0", default-features = false }
+sp-externalities = { version = "38.0.0", default-features = false }
+sp-io = { version = "38.0.0", default-features = false, features = ["std"] }
+sp-runtime-interface = { version = "38.0.0", default-features = false, features = ["std"] }
 
 [dev-dependencies]
 cargo-edit = { version = "0.12.0" }
@@ -64,8 +60,10 @@ criterion = "0.3"
 prost-build = "0.9"
 
 [features]
+# Default features
 default = ["std"]
-std = ["sp-std/std", "sp-io/std", "sp-runtime-interface/std", "frame-support/std", "frame-system/std"]
+
+# Define a wasm feature
 wasm = ["sp-std/wasm", "sp-io/wasm", "sp-runtime-interface/wasm"]
 
 [profile.release]
