@@ -18,28 +18,39 @@ jobs:
         curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
         rustup toolchain install nightly
         rustup default nightly
+        rustup target add wasm32-unknown-unknown
 
     - name: Install protoc
       run: |
-        if [ ! -x "$(command -v protoc)" ]; then
-          echo "Installing protoc..."
-          if [ "$(uname)" = "Darwin" ]; then
-            brew install protobuf
-          else
-            sudo apt-get update && sudo apt-get install -y protobuf-compiler
-          fi
-        else
-          echo "protoc is already installed."
-        fi
+        sudo apt-get update
+        sudo apt-get install -y protobuf-compiler libprotobuf-dev
 
-    - name: Setup and build
-      run: |
-        cargo install --path QuantumFuse/core
-        cargo build --release --manifest-path QuantumFuse/core/Cargo.toml
+    - name: Set up Cargo cache
+      uses: actions/cache@v3
+      with:
+        path: ~/.cargo/registry
+        key: ${{ runner.os }}-cargo-registry-${{ hashFiles('**/Cargo.lock') }}
+
+    - name: Set up Rust build cache
+      uses: actions/cache@v3
+      with:
+        path: target
+        key: ${{ runner.os }}-cargo-target-${{ hashFiles('**/Cargo.lock') }}
+
+    - name: Build project
+      run: make build
 
     - name: Run tests
-      run: cargo test --manifest-path QuantumFuse/core/Cargo.toml
+      run: make test
 
-    - name: Clean up
-      run: cargo clean --manifest-path QuantumFuse/core/Cargo.toml
-      
+    - name: Lint the code
+      run: make lint
+
+    - name: Generate coverage report
+      run: make coverage
+
+    - name: Build Docker image
+      run: make docker_build
+
+    - name: Run Docker container
+      run: make docker_run
