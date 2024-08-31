@@ -1,2 +1,0 @@
-docker build -f Dockerfile.cargo-audit -t cargo-audit-build .
-docker run --rm -v $(pwd):/app cargo-audit-build
