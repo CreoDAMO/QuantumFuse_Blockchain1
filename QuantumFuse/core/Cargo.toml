@@ -60,11 +60,23 @@ criterion = "0.3"
 prost-build = "0.9"
 
 [features]
-# Default features
+# Correctly define the default feature set
 default = ["std"]
 
-# Define a wasm feature
-wasm = ["sp-std/wasm", "sp-io/wasm", "sp-runtime-interface/wasm"]
+# Define std and wasm features correctly
+std = [
+    "sp-std/std",
+    "frame-support/std",
+    "frame-system/std",
+    "sp-externalities/std",
+    "sp-io/std",
+    "sp-runtime-interface/std"
+]
+wasm = [
+    "sp-std/wasm",
+    "sp-io/wasm",
+    "sp-runtime-interface/wasm"
+]
 
 [profile.release]
 opt-level = "z"
