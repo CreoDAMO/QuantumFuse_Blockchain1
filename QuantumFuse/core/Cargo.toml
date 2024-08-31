@@ -2,6 +2,12 @@
 name = "quantumfuse_blockchain"
 version = "0.1.0"
 edition = "2021"
+authors = ["Jacque Antoine DeGraff <jacquedegraff@creodamo.com>"]
+description = "QuantumFuse Blockchain - A decentralized blockchain platform for scalable, secure, and energy-efficient operations."
+license = "MIT"
+repository = "https://github.com/CreoDAMO/QuantumFuse_Blockchain"
+documentation = "https://quantumfuse-blockchain-docs.readthedocs.io"
+readme = "README.md"
 
 [dependencies]
 serde = { version = "1.0", features = ["derive"] }
@@ -45,8 +51,8 @@ sp-std = { version = "14.0.0", default-features = false }
 frame-support = { version = "37.0", default-features = false }
 frame-system = { version = "37.0", default-features = false }
 sp-externalities = { version = "0.29.0", default-features = false }
-sp-io = { version = "37.0", default-features = false }
-sp-runtime-interface = { version = "28.0.0", default-features = false }
+sp-io = { version = "37.0", default-features = false, features = ["std", "wasm"] }
+sp-runtime-interface = { version = "28.0.0", default-features = false, features = ["std", "wasm"] }
 
 [dev-dependencies]
 cargo-edit = { version = "0.12.0" }
@@ -56,6 +62,11 @@ criterion = "0.3"
 
 [build-dependencies]
 prost-build = "0.9"
+
+[features]
+default = ["std"]
+std = ["sp-std/std", "sp-io/std", "sp-runtime-interface/std", "frame-support/std", "frame-system/std"]
+wasm = ["sp-std/wasm", "sp-io/wasm", "sp-runtime-interface/wasm"]
 
 [profile.release]
 opt-level = "z"
