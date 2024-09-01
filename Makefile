@@ -15,7 +15,7 @@ CACHE_DIR = ~/.cache/quantumfuse
         setup-go build-go run-go test-go clean-go update-go lint-go coverage-go \
         setup-python build-python run-python test-python clean-python update-python \
         setup-node build-node run-node test-node clean-node update-node \
-        docker_build docker_run cache
+        docker_build docker_run cache wasm-build
 
 # Default target
 all: setup build
@@ -38,6 +38,7 @@ help:
 	@echo "  docker_build   - Build Docker image."
 	@echo "  docker_run     - Run Docker container."
 	@echo "  cache          - Set up caching for dependencies."
+	@echo "  wasm-build     - Build the Rust project with the wasm feature enabled."
 	@echo "  help           - Display this help message."
 	@echo ""
 	@echo "Component-specific targets (use with 'make component-target'):"
@@ -55,6 +56,7 @@ update: update-rust update-go update-python update-node
 docker_build: docker_build
 docker_run: docker_run
 cache: cache
+wasm-build: build-rust-wasm
 
 # Rust targets
 setup-rust: install-protoc
@@ -76,7 +78,10 @@ install-protoc:
 	fi
 
 build-rust: setup-rust
-	@rustup run $(RUST_TOOLCHAIN) cargo build --release --manifest-path=$(RUST_DIR)/Cargo.toml --features=wasm
+	@rustup run $(RUST_TOOLCHAIN) cargo build --release --manifest-path=$(RUST_DIR)/Cargo.toml
+
+build-rust-wasm: setup-rust
+	@rustup run $(RUST_TOOLCHAIN) cargo build --release --manifest-path=$(RUST_DIR)/Cargo.toml --features wasm
 
 run-rust: build-rust
 	@rustup run $(RUST_TOOLCHAIN) cargo run --manifest-path=$(RUST_DIR)/Cargo.toml
@@ -96,7 +101,7 @@ clean-rust:
 	@rustup run $(RUST_TOOLCHAIN) cargo clean --manifest-path=$(RUST_DIR)/Cargo.toml
 
 update-rust:
-	@rustup run $(RUST_TOOLCHAIN) cargo update --manifest-path=$(RUST_DIR)/Cargo
+	@rustup run $(RUST_TOOLCHAIN) cargo update --manifest-path=$(RUST_DIR)/Cargo.toml
 
 # Go targets
 setup-go:
