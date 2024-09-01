@@ -41,14 +41,6 @@ assert_cmd = "2.0"
 pem = "3.0"
 schnorrkel = "0.11"
 
-# Align all Substrate-related dependencies to version 37.0.0
-sp-std = { version = "14.0.0", default-features = false }
-frame-support = { version = "37.0.0", default-features = false }
-frame-system = { version = "37.0.0", default-features = false }
-sp-externalities = { version = "0.29.0", default-features = false }
-sp-io = { version = "37.0.0", default-features = false, features = ["std"] }
-sp-runtime-interface = { version = "28.0.0", default-features = false, features = ["std"] }
-
 [dev-dependencies]
 tokio-test = "0.4"
 criterion = "0.3"
