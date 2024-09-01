@@ -41,6 +41,14 @@ assert_cmd = "2.0"
 pem = "3.0"
 schnorrkel = "0.11"
 
+# New Dependencies
+wasm-instrument = "0.4.0"          # For handling WebAssembly modules
+coins-bip32 = "0.12.0"             # For BIP32 key derivation in blockchain
+smoldot = "0.18.0"                 # Primitives for Substrate-based blockchains
+zk_evm = "0.150.4"                 # ZK-rollup implementation, if relevant
+derivation-path = "0.2.0"          # BIP44/BIP49 derivation paths handling
+frame-support = "37.0.0"           # Updated to latest compatible version (or adjust version based on compatibility)
+
 [dev-dependencies]
 tokio-test = "0.4"
 criterion = "0.3"
