@@ -18,7 +18,7 @@ jobs:
         curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
         rustup toolchain install nightly
         rustup default nightly
-        rustup target add wasm32-unknown-unknown
+        rustup target
 
     - name: Install protoc
       run: |
