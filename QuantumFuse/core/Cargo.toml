@@ -58,10 +58,6 @@ criterion = "0.3"
 [build-dependencies]
 prost-build = "0.9"
 
-[features]
-# Correctly define the default feature set
-default = ["std"]
-
 [profile.release]
 opt-level = "z"
 lto = true
