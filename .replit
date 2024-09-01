@@ -1,0 +1,10 @@
+modules = ["web", "rust-stable", "python-3.12", "nodejs-20", "go-1.21"]
+compile = "make"
+run = "make setup"
+
+[nix]
+channel = "stable-24_05"
+
+[deployment]
+build = ["sh", "-c", "make"]
+run = ["sh", "-c", "make setup"]

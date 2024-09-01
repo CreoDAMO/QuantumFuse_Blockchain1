@@ -59,7 +59,3 @@ prost-build = "0.9"
 [profile.release]
 opt-level = "z"
 lto = true
-
-[metadata]
-documentation-url = "https://quantumfuse-blockchain-docs.readthedocs.io"
-repository-url = "https://github.com/CreoDAMO/QuantumFuse_Blockchain"
