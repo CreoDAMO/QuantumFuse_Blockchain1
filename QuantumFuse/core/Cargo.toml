@@ -6,7 +6,7 @@ edition = "2021"
 [dependencies]
 serde = { version = "1.0", features = ["derive"] }
 serde_json = "1.0"
-ring = "0.16" # Using 'ring' for secure cryptographic functions
+ring = "0.16"
 thiserror = "1.0"
 reqwest = { version = "0.11", features = ["json"], optional = true }
 log = "0.4"
@@ -14,7 +14,6 @@ env_logger = { version = "0.11", features = ["default"] }
 futures = "0.3"
 ipfs-api = "0.7"
 rand = "0.8"
-# Removed rust-crypto due to security concerns and replaced with 'ring' for consistency
 ed25519-dalek = { version = "2.1", optional = true }
 async-std = { version = "1.10", optional = true }
 crossbeam = "0.8"
@@ -40,15 +39,15 @@ substrate-api-client = "0.18.0"
 assert_cmd = "2.0"
 pem = "3.0"
 schnorrkel = "0.11"
+wasm-bindgen = { version = "0.2", optional = true } # Add this line as an optional dependency
 
-# New Dependencies for WebAssembly and Blockchain features
-wasm-bindgen = "0.2"              # Facilitates Rust-WASM interop, required for wasm-react and other WASM integrations
-wasm-react = "0.6.0"              # For integrating React with Rust components compiled to WASM
-coins-bip32 = "0.12.0"            # For BIP32 key derivation in blockchain
-smoldot = "0.18.0"                # Primitives for Substrate-based blockchains
-zk_evm = "0.150.4"                # ZK-rollup implementation
-derivation-path = "0.2.0"         # Handling BIP44/BIP49 derivation paths
-frame-support = "37.0.0"          # Ensure compatibility with other Substrate-related crates
+# New Dependencies
+wasm-instrument = { version = "0.4.0", optional = true } # Add `optional = true`
+coins-bip32 = "0.12.0"
+smoldot = "0.18.0"
+zk_evm = "0.150.4"
+derivation-path = "0.2.0"
+frame-support = "37.0.0"
 
 [dev-dependencies]
 tokio-test = "0.4"
@@ -63,5 +62,5 @@ lto = true
 
 [features]
 default = ["std"]
-std = ["serde/std", "tokio/std", "log/std", "futures/std"] # Ensure std compatibility for common libraries
-wasm = ["wasm-bindgen", "wasm-react"] # Define features necessary for Wasm builds
+std = ["wasm-instrument/std", "serde/std", "tokio/std"]
+wasm = ["wasm-instrument/wasm", "wasm-bindgen"] # Reference wasm-bindgen here
