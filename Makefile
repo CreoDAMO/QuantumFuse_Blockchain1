@@ -82,7 +82,7 @@ build-rust: setup-rust
 	@rustup run $(RUST_TOOLCHAIN) cargo build --release --manifest-path=$(RUST_DIR)/Cargo.toml
 
 build-rust-wasm: setup-rust
-	@rustup run $(RUST_TOOLCHAIN) cargo build --release --manifest-path=$(RUST_DIR)/Cargo.toml --features=wasm
+	@rustup run $(RUST_TOOLCHAIN) cargo build --release --manifest-path=$(RUST_DIR)/Cargo.toml --features wasm
 
 run-rust: build-rust
 	@rustup run $(RUST_TOOLCHAIN) cargo run --manifest-path=$(RUST_DIR)/Cargo.toml
