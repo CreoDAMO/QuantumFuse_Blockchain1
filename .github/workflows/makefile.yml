@@ -10,24 +10,31 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
+    strategy:
+      matrix:
+        job: [rust-build, docker-build]
+
     steps:
     - name: Check out the repository
       uses: actions/checkout@v4
 
     - name: Set up Rust
-      run: |
-        curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
-        source $HOME/.cargo/env
-        rustup toolchain install nightly
-        rustup default nightly
-        rustup target add wasm32-unknown-unknown
+      if: matrix.job == 'rust-build'
+      uses: actions-rs/toolchain@v1
+      with:
+        toolchain: nightly
+        profile: minimal
+        override: true
+        components: rust-src, clippy
 
     - name: Install protoc
+      if: matrix.job == 'rust-build'
       run: |
         sudo apt-get update
         sudo apt-get install -y protobuf-compiler libprotobuf-dev
 
     - name: Set up Cargo cache
+      if: matrix.job == 'rust-build'
       uses: actions/cache@v3
       with:
         path: ~/.cargo/registry
@@ -36,6 +43,7 @@ jobs:
           ${{ runner.os }}-cargo-registry-
 
     - name: Set up Rust build cache
+      if: matrix.job == 'rust-build'
       uses: actions/cache@v3
       with:
         path: target
@@ -44,25 +52,33 @@ jobs:
           ${{ runner.os }}-cargo-target-
 
     - name: Install dependencies
+      if: matrix.job == 'rust-build'
       run: make setup
 
     - name: Build project
+      if: matrix.job == 'rust-build'
       run: make build
 
     - name: Build with WebAssembly feature
+      if: matrix.job == 'rust-build'
       run: make wasm-build
 
     - name: Run tests
+      if: matrix.job == 'rust-build'
       run: make test
 
     - name: Lint the code
+      if: matrix.job == 'rust-build'
       run: make lint
 
     - name: Generate coverage report
+      if: matrix.job == 'rust-build'
       run: make coverage
 
     - name: Build Docker image
+      if: matrix.job == 'docker-build'
       run: make docker_build
 
     - name: Run Docker container
+      if: matrix.job == 'docker-build'
       run: make docker_run
