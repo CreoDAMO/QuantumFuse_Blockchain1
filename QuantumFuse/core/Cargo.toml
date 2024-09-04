@@ -41,6 +41,7 @@ pem = "3.0"
 schnorrkel = "0.11"
 wasm-react = "0.6.0"
 wasm-bindgen = { version = "0.2", optional = true }
+orx-split-vec = "3.7.0"
 
 # New Dependencies
 wasm-instrument = "0.4.0" 
