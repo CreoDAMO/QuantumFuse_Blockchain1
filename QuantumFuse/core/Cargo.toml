@@ -41,7 +41,7 @@ pem = "3.0"
 schnorrkel = "0.11"
 wasm-react = "0.6.0"
 wasm-bindgen = { version = "0.2", optional = true }
-orx-split-vec = "3.7.0"
+const_std_vec = "0.2.0"
 
 # New Dependencies
 wasm-instrument = "0.4.0" 
@@ -52,6 +52,7 @@ derivation-path = "0.2.0"
 frame-system = "37.1.0"
 frame-support = "35.0.0" 
 sp-runtime = "39.0.0"
+orx-split-vec = "3.7.0"
 
 [dev-dependencies]
 tokio-test = "0.4"
