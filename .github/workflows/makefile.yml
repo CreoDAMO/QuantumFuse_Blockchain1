@@ -78,7 +78,3 @@ jobs:
     - name: Build Docker image
       if: matrix.job == 'docker-build'
       run: make docker_build
-
-    - name: Run Docker container
-      if: matrix.job == 'docker-build'
-      run: make docker_run
