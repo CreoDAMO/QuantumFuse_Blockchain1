@@ -12,7 +12,7 @@ jobs:
 
     strategy:
       matrix:
-        job: [rust-build, docker-build]
+        job: [rust-build]
 
     steps:
     - name: Check out the repository
