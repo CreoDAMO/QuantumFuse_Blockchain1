@@ -1,6 +1,7 @@
-pub fn generate_insights(portfolio: &std::collections::HashMap<String, f64>) -> Result<Vec<Insight>, Box<dyn std::error::Error>> {
-    // Implementation
-    Ok(vec![])
+use orx_split_vec::SplitVec;  // Import SplitVec
+
+pub fn generate_insights(portfolio: &std::collections::HashMap<String, f64>) -> Result<SplitVec<Insight>, Box<dyn std::error::Error>> {
+    Ok(SplitVec::new())  // Use SplitVec instead of vec
 }
 
 pub struct Insight {
@@ -8,6 +9,5 @@ pub struct Insight {
 }
 
 pub fn predict_market_trends(data: &str) -> Result<String, Box<dyn std::error::Error>> {
-    // Implementation
     Ok("Market trend".to_string())
 }

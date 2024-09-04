@@ -948,7 +948,7 @@ dependencies = [
  "cargo-platform",
  "cargo-util",
  "cargo-util-schemas",
- "clap 4.5.16",
+ "clap 4.5.17",
  "color-print",
  "crates-io",
  "curl",
@@ -1178,18 +1178,18 @@ dependencies = [
 
 [[package]]
 name = "clap"
-version = "4.5.16"
+version = "4.5.17"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "ed6719fffa43d0d87e5fd8caeab59be1554fb028cd30edc88fc4369b17971019"
+checksum = "3e5a21b8495e732f1b3c364c9949b201ca7bae518c502c80256c96ad79eaf6ac"
 dependencies = [
  "clap_builder",
 ]
 
 [[package]]
 name = "clap_builder"
-version = "4.5.15"
+version = "4.5.17"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "216aec2b177652e3846684cbfe25c9964d18ec45234f0f5da5157b207ed1aab6"
+checksum = "8cf2dd12af7a047ad9d6da2b6b249759a22a7abc0f474c1dae1777afa4b21a73"
 dependencies = [
  "anstream",
  "anstyle",
@@ -1357,12 +1357,6 @@ dependencies = [
  "once_cell",
  "tiny-keccak",
 ]
-
-[[package]]
-name = "const_std_vec"
-version = "0.2.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "8ee6a4701b947a8608d1991b1db0cf5bab74164bf2627e5cecc9aa69dd33f172"
 
 [[package]]
 name = "constant_time_eq"
@@ -5726,6 +5720,44 @@ dependencies = [
 ]
 
 [[package]]
+name = "orx-pinned-vec"
+version = "3.7.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "4517c31b06f8e8cf79306f7d3c93af93560561a6e57c578a69a65d020ea1a39d"
+dependencies = [
+ "orx-pseudo-default",
+]
+
+[[package]]
+name = "orx-pseudo-default"
+version = "1.4.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "b97dde303d83e7609797d0c1222a9fb02e66445abc47643cc3d7168fd7c804cc"
+dependencies = [
+ "orx-pseudo-default-derive",
+]
+
+[[package]]
+name = "orx-pseudo-default-derive"
+version = "1.0.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "d77aee6e747b82e8de9b0224bdc6751d3a803f78b12def53fb8453b55e210352"
+dependencies = [
+ "quote",
+ "syn 2.0.77",
+]
+
+[[package]]
+name = "orx-split-vec"
+version = "3.7.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "bd321500c96e171a0576122108933cbf1a0e4c9a84ac329f2327abc6bd6d630e"
+dependencies = [
+ "orx-pinned-vec",
+ "orx-pseudo-default",
+]
+
+[[package]]
 name = "os_info"
 version = "3.8.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -6463,14 +6495,13 @@ dependencies = [
  "async-std",
  "cargo",
  "coins-bip32",
- "const_std_vec",
  "criterion",
  "crossbeam",
  "derivation-path",
  "dotenv",
  "ed25519-dalek",
  "env_logger",
- "frame-support 37.0.0",
+ "frame-support-procedural",
  "frame-system 37.1.0",
  "futures",
  "hex",
@@ -6480,8 +6511,8 @@ dependencies = [
  "juniper_rocket",
  "libp2p",
  "log",
- "openssl",
  "openssl-probe",
+ "orx-split-vec",
  "pem",
  "prometheus",
  "prost-build",
@@ -6500,6 +6531,7 @@ dependencies = [
  "sha2 0.10.8",
  "smoldot",
  "sp-runtime 37.0.0",
+ "sp-std",
  "substrate-api-client",
  "thiserror",
  "time",

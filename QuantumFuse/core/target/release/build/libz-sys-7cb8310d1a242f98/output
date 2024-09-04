@@ -29,9 +29,17 @@ pkg-config exited with status code 1
 
 The system library `zlib` required by crate `libz-sys` was not found.
 The file `zlib.pc` needs to be installed and the PKG_CONFIG_PATH environment variable must contain its parent directory.
-The PKG_CONFIG_PATH environment variable is not set.
+PKG_CONFIG_PATH_FOR_TARGET contains the following:
+    - /nix/store/7hnr99nxrd2aw6lghybqdmkckq60j6l9-python3-3.11.9/lib/pkgconfig
+    - /nix/store/8hrps57mvjq967m06q1mvlsmbnys4dyy-protobuf-24.4/lib/pkgconfig
+    - /nix/store/ha7gbcgbp9bv4hmll7ghy7kqrcpyjlka-abseil-cpp-20240116.2/lib/pkgconfig
+    - /nix/store/191vca5vdxdlr32k2hpzd66mic98930f-openssl-3.0.13-dev/lib/pkgconfig
+    - /nix/store/smacbfb82wp7ncz2rwac68jd50qxr70a-libglvnd-1.7.0-dev/lib/pkgconfig
+    - /nix/store/a83znbrflv30lvhww0d2rljbyd5mw0c0-pulseaudio-17.0-dev/lib/pkgconfig
+    - /nix/store/xslrgzkvciny0m0cqbgq4bnvydvpdkgx-libcap-2.69-dev/lib/pkgconfig
+    - /nix/store/nn78wg4rgns62w5sfzyxashxizd0lfva-attr-2.5.2-dev/lib/pkgconfig
 
-HINT: if you have installed the library, try setting PKG_CONFIG_PATH to the directory containing `zlib.pc`.
+HINT: you may need to install a package such as zlib, zlib-dev or zlib-devel.
 
 OPT_LEVEL = Some(z)
 TARGET = Some(x86_64-unknown-linux-gnu)

@@ -1,3 +1,4 @@
+use std::vec::Vec;
 
 pub struct Planning {
     fuel_optimizer: FuelOptimizer,

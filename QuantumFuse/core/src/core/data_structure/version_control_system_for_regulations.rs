@@ -1,3 +1,5 @@
+use std::vec::Vec;
+
 pub struct Compliance {
     rules: HashMap<String, RuleSet>,
     versions: HashMap<String, Vec<RegulatoryUpdate>>,

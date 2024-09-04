@@ -1,13 +1,15 @@
+use orx_split_vec::SplitVec;  // Import SplitVec
+
 pub struct Assessment {
     pub report: Report,
-    pub scenarios: Vec<ResilienceScenario>,
+    pub scenarios: SplitVec<ResilienceScenario>,  // Use SplitVec instead of Vec
 }
 
 impl Assessment {
     pub fn new() -> Self {
         Assessment {
             report: Report::new(),
-            scenarios: vec![],
+            scenarios: SplitVec::new(),  // Initialize with SplitVec
         }
     }
 
@@ -18,7 +20,6 @@ impl Assessment {
     }
 
     pub fn generate_report(&self) -> String {
-        // output report as string
         format!(
             "Security: {}\nReliability: {}\nScenarios: {:?}\n",
             self.report.security,
@@ -28,12 +29,10 @@ impl Assessment {
     }
 
     fn analyze_security(&self, _system: &EnergySystem) -> String {
-        // logic to analyze security
         "High".to_string()
     }
 
     fn analyze_reliability(&self, _system: &EnergySystem) -> String {
-        // logic to analyze reliability
         "99.99%".to_string()
     }
 }

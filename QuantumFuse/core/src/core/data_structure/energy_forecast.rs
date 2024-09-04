@@ -1,3 +1,5 @@
+use std::vec::Vec;
+
 pub struct EnergyForecast {
     predicted_demand: Vec<f64>,
     recommended_fuel_supply: Vec<f64>,

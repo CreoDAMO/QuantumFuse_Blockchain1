@@ -11,6 +11,7 @@ use fusion_reactor::FusionReactor;
 use nft::{NFTContract, FNFTContract};
 use marketplace::Marketplace;
 use sgx_enclave::SgxEnclave;
+use orx_split_vec::SplitVec;  // Import SplitVec to replace standard Vec
 
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
@@ -23,14 +24,14 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     // Initialize Fusion Reactor
     let fusion_reactor = FusionReactor::new();
-    
+
     // Initialize NFT and F-NFT Contracts
     let nft_contract = NFTContract::new();
     let fnft_contract = FNFTContract::new();
-    
+
     // Initialize Marketplace
     let marketplace = Marketplace::new();
-    
+
     // Initialize SGX Enclave for secure operations
     let enclave = SgxEnclave::initialize()?;
 
@@ -42,7 +43,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         timestamp: 1629814920,
         signature: String::new(),
     };
-    
+
     community_wallet.sign_transaction(&mut tx)?;
     blockchain.add_transaction(tx);
 
@@ -51,7 +52,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         Ok(_) => println!("Block mined successfully!"),
         Err(e) => println!("Failed to mine block: {}", e),
     }
-    
+
     // Example: Minting an NFT
     let nft_metadata = nft_contract.generate_metadata(&blockchain);
     let nft_id = nft_contract.mint_nft("Alice", &nft_metadata);
@@ -60,7 +61,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     // Example: Trade in the Marketplace
     let energy_credit = marketplace::EnergyCredit::new("credit_1", 100.0, "Alice".to_string(), 10.0);
     marketplace.add_credit(energy_credit);
-    
+
     // Example: Running secure operations in the SGX enclave
     enclave.run_secure_computation()?;
 

@@ -8,6 +8,8 @@
     pkgs.protobuf
     pkgs.python3Packages.pip
     pkgs.python3Packages.virtualenv
+    pkgs.openssl
+    pkgs.pkg-config
   ];
 
   shellHook = ''

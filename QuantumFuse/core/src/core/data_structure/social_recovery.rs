@@ -1,9 +1,9 @@
-pub fn distribute_key(secret_key: &[u8], num_shares: usize, threshold: usize) -> Result<Vec<Vec<u8>>, Box<dyn std::error::Error>> {
-    // Implementation
-    Ok(vec![])
+use orx_split_vec::SplitVec;  // Import SplitVec
+
+pub fn distribute_key(secret_key: &[u8], num_shares: usize, threshold: usize) -> Result<SplitVec<SplitVec<u8>>, Box<dyn std::error::Error>> {
+    Ok(SplitVec::new())  // Replace Vec with SplitVec
 }
 
-pub fn recover_key(shares: Vec<Vec<u8>>) -> Result<Vec<u8>, Box<dyn std::error::Error>> {
-    // Implementation
-    Ok(vec![])
+pub fn recover_key(shares: SplitVec<SplitVec<u8>>) -> Result<SplitVec<u8>, Box<dyn std::error::Error>> {
+    Ok(SplitVec::new())  // Replace Vec with SplitVec
 }

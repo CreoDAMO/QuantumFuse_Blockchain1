@@ -1,11 +1,13 @@
+use orx_split_vec::SplitVec;  // Import SplitVec
+
 pub struct GridSimulator {
-    events: Vec<GridStabilityEvent>,
+    events: SplitVec<GridStabilityEvent>,  // Replace Vec with SplitVec
 }
 
 impl GridSimulator {
     pub fn new() -> Self {
         GridSimulator {
-            events: vec![],
+            events: SplitVec::new(),  // Initialize with SplitVec
         }
     }
 
@@ -14,7 +16,6 @@ impl GridSimulator {
     }
 
     pub fn validate_stability_strategies(&self) -> bool {
-        // logic to validate grid stability strategies
         true
     }
 }

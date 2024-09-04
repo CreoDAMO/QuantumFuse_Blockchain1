@@ -1,0 +1,193 @@
+cargo:rerun-if-changed=curl
+cargo:rerun-if-env-changed=LIBCURL_NO_PKG_CONFIG
+cargo:rerun-if-env-changed=PKG_CONFIG_x86_64-unknown-linux-gnu
+cargo:rerun-if-env-changed=PKG_CONFIG_x86_64_unknown_linux_gnu
+cargo:rerun-if-env-changed=HOST_PKG_CONFIG
+cargo:rerun-if-env-changed=PKG_CONFIG
+cargo:rerun-if-env-changed=LIBCURL_STATIC
+cargo:rerun-if-env-changed=LIBCURL_DYNAMIC
+cargo:rerun-if-env-changed=PKG_CONFIG_ALL_STATIC
+cargo:rerun-if-env-changed=PKG_CONFIG_ALL_DYNAMIC
+cargo:rerun-if-env-changed=PKG_CONFIG_PATH_x86_64-unknown-linux-gnu
+cargo:rerun-if-env-changed=PKG_CONFIG_PATH_x86_64_unknown_linux_gnu
+cargo:rerun-if-env-changed=HOST_PKG_CONFIG_PATH
+cargo:rerun-if-env-changed=PKG_CONFIG_PATH
+cargo:rerun-if-env-changed=PKG_CONFIG_LIBDIR_x86_64-unknown-linux-gnu
+cargo:rerun-if-env-changed=PKG_CONFIG_LIBDIR_x86_64_unknown_linux_gnu
+cargo:rerun-if-env-changed=HOST_PKG_CONFIG_LIBDIR
+cargo:rerun-if-env-changed=PKG_CONFIG_LIBDIR
+cargo:rerun-if-env-changed=PKG_CONFIG_SYSROOT_DIR_x86_64-unknown-linux-gnu
+cargo:rerun-if-env-changed=PKG_CONFIG_SYSROOT_DIR_x86_64_unknown_linux_gnu
+cargo:rerun-if-env-changed=HOST_PKG_CONFIG_SYSROOT_DIR
+cargo:rerun-if-env-changed=PKG_CONFIG_SYSROOT_DIR
+Couldn't find libcurl from pkgconfig (
+pkg-config exited with status code 1
+> PKG_CONFIG_ALLOW_SYSTEM_LIBS=1 PKG_CONFIG_ALLOW_SYSTEM_CFLAGS=1 pkg-config --libs --cflags libcurl
+
+The system library `libcurl` required by crate `curl-sys` was not found.
+The file `libcurl.pc` needs to be installed and the PKG_CONFIG_PATH environment variable must contain its parent directory.
+PKG_CONFIG_PATH_FOR_TARGET contains the following:
+    - /nix/store/7hnr99nxrd2aw6lghybqdmkckq60j6l9-python3-3.11.9/lib/pkgconfig
+    - /nix/store/8hrps57mvjq967m06q1mvlsmbnys4dyy-protobuf-24.4/lib/pkgconfig
+    - /nix/store/ha7gbcgbp9bv4hmll7ghy7kqrcpyjlka-abseil-cpp-20240116.2/lib/pkgconfig
+    - /nix/store/191vca5vdxdlr32k2hpzd66mic98930f-openssl-3.0.13-dev/lib/pkgconfig
+    - /nix/store/smacbfb82wp7ncz2rwac68jd50qxr70a-libglvnd-1.7.0-dev/lib/pkgconfig
+    - /nix/store/a83znbrflv30lvhww0d2rljbyd5mw0c0-pulseaudio-17.0-dev/lib/pkgconfig
+    - /nix/store/xslrgzkvciny0m0cqbgq4bnvydvpdkgx-libcap-2.69-dev/lib/pkgconfig
+    - /nix/store/nn78wg4rgns62w5sfzyxashxizd0lfva-attr-2.5.2-dev/lib/pkgconfig
+
+HINT: you may need to install a package such as libcurl, libcurl-dev or libcurl-devel.
+), compiling it from source...
+cargo:root=/home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/release/build/curl-sys-c12634646b57e1d0/out
+cargo:include=/home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/release/build/curl-sys-c12634646b57e1d0/out/include
+cargo:static=1
+cargo:rustc-cfg=libcurl_vendored
+cargo:rustc-cfg=link_libnghttp2
+cargo:rustc-cfg=link_libz
+cargo:rustc-cfg=link_openssl
+TARGET = Some(x86_64-unknown-linux-gnu)
+OPT_LEVEL = Some(z)
+HOST = Some(x86_64-unknown-linux-gnu)
+cargo:rerun-if-env-changed=CC_x86_64-unknown-linux-gnu
+CC_x86_64-unknown-linux-gnu = None
+cargo:rerun-if-env-changed=CC_x86_64_unknown_linux_gnu
+CC_x86_64_unknown_linux_gnu = None
+cargo:rerun-if-env-changed=HOST_CC
+HOST_CC = None
+cargo:rerun-if-env-changed=CC
+CC = Some(gcc)
+cargo:rerun-if-env-changed=CC_KNOWN_WRAPPER_CUSTOM
+CC_KNOWN_WRAPPER_CUSTOM = None
+RUSTC_WRAPPER = None
+cargo:rerun-if-env-changed=CC_ENABLE_DEBUG_OUTPUT
+cargo:rerun-if-env-changed=CRATE_CC_NO_DEFAULTS
+CRATE_CC_NO_DEFAULTS = None
+DEBUG = Some(false)
+CARGO_CFG_TARGET_FEATURE = Some(fxsr,sse,sse2)
+cargo:rerun-if-env-changed=CFLAGS_x86_64-unknown-linux-gnu
+CFLAGS_x86_64-unknown-linux-gnu = None
+cargo:rerun-if-env-changed=CFLAGS_x86_64_unknown_linux_gnu
+CFLAGS_x86_64_unknown_linux_gnu = None
+cargo:rerun-if-env-changed=HOST_CFLAGS
+HOST_CFLAGS = None
+cargo:rerun-if-env-changed=CFLAGS
+CFLAGS = None
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+cargo:rerun-if-env-changed=AR_x86_64-unknown-linux-gnu
+AR_x86_64-unknown-linux-gnu = None
+cargo:rerun-if-env-changed=AR_x86_64_unknown_linux_gnu
+AR_x86_64_unknown_linux_gnu = None
+cargo:rerun-if-env-changed=HOST_AR
+HOST_AR = None
+cargo:rerun-if-env-changed=AR
+AR = Some(ar)
+cargo:rerun-if-env-changed=ARFLAGS_x86_64-unknown-linux-gnu
+ARFLAGS_x86_64-unknown-linux-gnu = None
+cargo:rerun-if-env-changed=ARFLAGS_x86_64_unknown_linux_gnu
+ARFLAGS_x86_64_unknown_linux_gnu = None
+cargo:rerun-if-env-changed=HOST_ARFLAGS
+HOST_ARFLAGS = None
+cargo:rerun-if-env-changed=ARFLAGS
+ARFLAGS = None
+cargo:rustc-link-lib=static=curl
+cargo:rustc-link-search=native=/home/runner/QuantumFuseBlockchain/QuantumFuse/core/target/release/build/curl-sys-c12634646b57e1d0/out/build

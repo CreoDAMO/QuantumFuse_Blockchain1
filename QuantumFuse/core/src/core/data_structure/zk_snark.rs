@@ -1,3 +1,5 @@
+use std::vec::Vec;
+
 pub struct Prover {}
 
 impl Prover {

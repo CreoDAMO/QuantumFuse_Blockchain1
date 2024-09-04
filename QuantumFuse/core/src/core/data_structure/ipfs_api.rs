@@ -6,6 +6,7 @@ use serde::{Deserialize, Serialize};
 use sha2::{Digest, Sha256};
 use std::collections::HashMap;
 use std::io::Cursor;
+use orx_split_vec::SplitVec;  // Import SplitVec for dynamic, pinned vectors
 
 #[derive(Clone, Debug, Serialize, Deserialize)]
 struct Transaction {
@@ -18,9 +19,9 @@ struct Transaction {
 #[derive(Clone, Debug, Serialize, Deserialize)]
 struct MultiSigTransaction {
     sender: String,
-    receivers: Vec<String>,
+    receivers: SplitVec<String>,  // Use SplitVec instead of Vec
     amount: u64,
-    signatures: Vec<String>,
+    signatures: SplitVec<String>,  // Use SplitVec instead of Vec
 }
 
 impl MultiSigTransaction {
@@ -33,14 +34,14 @@ impl MultiSigTransaction {
 struct Block {
     index: u64,
     timestamp: u128,
-    transactions: Vec<Transaction>,
+    transactions: SplitVec<Transaction>,  // Use SplitVec instead of Vec
     previous_hash: String,
     nonce: u64,
     hash: String,
 }
 
 impl Block {
-    fn new(index: u64, timestamp: u128, transactions: Vec<Transaction>, previous_hash: &str) -> Block {
+    fn new(index: u64, timestamp: u128, transactions: SplitVec<Transaction>, previous_hash: &str) -> Block {
         let mut block = Block {
             index,
             timestamp,
@@ -73,25 +74,25 @@ struct Proposal {
     id: u64,
     title: String,
     description: String,
-    options: Vec<String>,
+    options: SplitVec<String>,  // Use SplitVec instead of Vec
     votes: HashMap<String, u64>,
     deadline: u128,
 }
 
 struct Governance {
-    proposals: Vec<Proposal>,
+    proposals: SplitVec<Proposal>,  // Use SplitVec instead of Vec
     proposal_count: u64,
 }
 
 impl Governance {
     fn new() -> Self {
         Governance {
-            proposals: vec![],
+            proposals: SplitVec::new(),
             proposal_count: 0,
         }
     }
 
-    fn create_proposal(&mut self, title: String, description: String, options: Vec<String>, deadline: u128) {
+    fn create_proposal(&mut self, title: String, description: String, options: SplitVec<String>, deadline: u128) {
         let proposal = Proposal {
             id: self.proposal_count,
             title,
@@ -140,7 +141,7 @@ impl SmartContract {
 
 struct Shard {
     shard_id: u64,
-    blocks: Vec<Block>,
+    blocks: SplitVec<Block>,  // Use SplitVec instead of Vec
 }
 
 struct DecentralizedIdentity {
@@ -150,10 +151,10 @@ struct DecentralizedIdentity {
 }
 
 struct QuantumFuseBlockchain {
-    blocks: Vec<Block>,
+    blocks: SplitVec<Block>,  // Use SplitVec instead of Vec
     difficulty: usize,
-    pending_transactions: Vec<Transaction>,
-    multisig_transactions: Vec<MultiSigTransaction>,
+    pending_transactions: SplitVec<Transaction>,  // Use SplitVec instead of Vec
+    multisig_transactions: SplitVec<MultiSigTransaction>,  // Use SplitVec instead of Vec
     mining_reward: u64,
     staking_pool: HashMap<String, u64>,
     governance: Governance,
@@ -165,10 +166,10 @@ struct QuantumFuseBlockchain {
 impl QuantumFuseBlockchain {
     fn new(difficulty: usize, mining_reward: u64) -> Self {
         let mut blockchain = QuantumFuseBlockchain {
-            blocks: Vec::new(),
+            blocks: SplitVec::new(),
             difficulty,
-            pending_transactions: Vec::new(),
-            multisig_transactions: Vec::new(),
+            pending_transactions: SplitVec::new(),
+            multisig_transactions: SplitVec::new(),
             mining_reward,
             staking_pool: HashMap::new(),
             governance: Governance::new(),
@@ -176,7 +177,7 @@ impl QuantumFuseBlockchain {
             shards: HashMap::new(),
             identities: HashMap::new(),
         };
-        let genesis_block = Block::new(0, current_timestamp(), vec![], "0");
+        let genesis_block = Block::new(0, current_timestamp(), SplitVec::new(), "0");
         blockchain.blocks.push(genesis_block);
         blockchain
     }
@@ -257,7 +258,7 @@ impl QuantumFuseBlockchain {
     }
 
     fn create_shard(&mut self, shard_id: u64) {
-        self.shards.insert(shard_id, Shard { shard_id, blocks: vec![] });
+        self.shards.insert(shard_id, Shard { shard_id, blocks: SplitVec::new() });
     }
 
     fn add_block_to_shard(&mut self, shard_id: u64, block: Block) {
@@ -304,9 +305,7 @@ async fn main() {
         sender: "Meaghan".to_string(),
         receiver: "Jacque".to_string(),
         amount: 10,
-        signature: "signature".to
-
-_string(),
+        signature: "signature".to_string(),
     };
     blockchain.add_transaction(tx);
 
