@@ -2544,47 +2544,7 @@ dependencies = [
  "serde",
 ]
 
-[[package]]
-name = "frame-support"
-version = "37.0.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "ab6d7780b7f337c8a072f0a7480cbc7b580f9bf871c434fae65e8935053ee5ef"
-dependencies = [
- "aquamarine",
- "array-bytes",
- "bitflags 1.3.2",
- "docify",
- "environmental",
- "frame-metadata 16.0.0",
- "frame-support-procedural",
- "impl-trait-for-tuples",
- "k256",
- "log",
- "macro_magic",
- "parity-scale-codec",
- "paste",
- "scale-info",
- "serde",
- "serde_json",
- "smallvec",
- "sp-api 33.0.0",
- "sp-arithmetic",
- "sp-core 34.0.0",
- "sp-crypto-hashing-proc-macro",
- "sp-debug-derive",
- "sp-genesis-builder 0.14.0",
- "sp-inherents 33.0.0",
- "sp-io 37.0.0",
- "sp-metadata-ir",
- "sp-runtime 38.0.1",
- "sp-staking 33.0.0",
- "sp-state-machine 0.42.0",
- "sp-std",
- "sp-tracing",
- "sp-weights",
- "static_assertions",
- "tt-call",
-]
+
 
 [[package]]
 name = "frame-support"
