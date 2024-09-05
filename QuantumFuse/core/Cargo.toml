@@ -44,15 +44,18 @@ wasm-bindgen = { version = "0.2", optional = true }
 orx-split-vec = "3.7.0"
 openssl-probe = "0.1.5"
 cargo = "0.81.0"
-wasm-instrument = "0.4.0" 
-coins-bip32 = "0.12.0" 
-smoldot = "0.18.0" 
-zk_evm = "0.150.4" 
+wasm-instrument = "0.4.0"
+coins-bip32 = "0.12.0"
+smoldot = "0.18.0"
+zk_evm = "0.150.4"
 derivation-path = "0.2.0"
-frame-system = "37.1.0"
-frame-support = "37.0.0"
-sp-runtime = "37.0.0"
-sp-std =  "37.0.0"
+
+# Substrate dependencies pulled from GitHub
+frame-system = { git = "https://github.com/paritytech/substrate", branch = "polkadot-v0.9.37", default-features = false }
+frame-support = { git = "https://github.com/paritytech/substrate", branch = "polkadot-v0.9.37", default-features = false }
+sp-runtime = { git = "https://github.com/paritytech/substrate", branch = "polkadot-v0.9.37", default-features = false }
+sp-std = { git = "https://github.com/paritytech/substrate", branch = "polkadot-v0.9.37", default-features = false }
+sp-externalities = { git = "https://github.com/paritytech/substrate", branch = "polkadot-v0.9.37", default-features = false }
 
 [dev-dependencies]
 tokio-test = "0.4"
