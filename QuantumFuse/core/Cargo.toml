@@ -49,6 +49,8 @@ coins-bip32 = "0.12.0"
 smoldot = "0.18.0" 
 zk_evm = "0.150.4" 
 derivation-path = "0.2.0"
+frame-system = "37.1.0"
+frame-support = "37.0.0"
 sp-runtime = "37.0.0"
 sp-std =  "14.0.0"
 
