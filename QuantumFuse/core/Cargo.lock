@@ -2497,13 +2497,13 @@ dependencies = [
 
 [[package]]
 name = "frame-benchmarking"
-version = "35.0.0"
+version = "37.0.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "ad6366773db71a556710652c0560300dc938252e009d4d2c1eb9d6e5b38e0860"
 dependencies = [
- "frame-support 35.0.0",
+ "frame-support 37.0.0",
  "frame-support-procedural",
- "frame-system 35.0.0",
+ "frame-system 37.0.0",
  "linregress",
  "log",
  "parity-scale-codec",
@@ -2546,7 +2546,7 @@ dependencies = [
 
 [[package]]
 name = "frame-support"
-version = "35.0.0"
+version = "37.0.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "ab6d7780b7f337c8a072f0a7480cbc7b580f9bf871c434fae65e8935053ee5ef"
 dependencies = [
@@ -2674,13 +2674,13 @@ dependencies = [
 
 [[package]]
 name = "frame-system"
-version = "35.0.0"
+version = "37.0.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "6baa2218d90c5a23db08dd0188cfe6aa0af7d36fb9b0fc2f73bc5c4abe4dd812"
 dependencies = [
  "cfg-if",
  "docify",
- "frame-support 35.0.0",
+ "frame-support 37.0.0",
  "log",
  "parity-scale-codec",
  "scale-info",
