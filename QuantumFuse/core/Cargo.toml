@@ -20,7 +20,7 @@ crossbeam = "0.8.4"
 regex = "1.10.6"
 time = "0.3.36"
 protoc-rust = "2.28.0"
-tokio = "1.40.0"
+tokio = { version = "1.40.0", features = ["full"] }
 sha2 = "0.10.8"
 hex = "0.4.3"
 rocket = "0.5.0"
@@ -52,7 +52,7 @@ derivation-path = "0.2.0"
 frame-system = "37.1.0"
 frame-support = "37.0.0"
 sp-runtime = "37.0.0"
-sp-std =  "14.0.0"
+sp-std =  "37.0.0"
 
 [dev-dependencies]
 tokio-test = "0.4"
