@@ -22,6 +22,8 @@ sha2 = "0.10.8"
 ed25519-dalek = "2.1.1"
 ring = "0.17.8"
 rand = "0.8.5"
+bs58 = "0.5.1"
+pqcrypto = "0.17.0"
 
 # Blockchain-related dependencies
 bitcoin = "0.29"
@@ -48,6 +50,7 @@ jsonwebtoken = "9.3.0"
 # Quantum computing simulation
 qip = "0.15"
 zk_evm = "0.150.4"
+zkp = "0.8.0"
 quantum = "0.1.2"
 
 # DAO and voting
@@ -55,6 +58,18 @@ pallet-democracy = "4.0.0-dev"
 
 # Energy management
 num = "0.4"
+
+# Secure Secret Sharing
+secret_sharing = "0.2.0"
+
+# Data and Storage handling
+hashbrown = "0.14.5"
+
+# CLI Argument Parsing
+structopt = "0.3.26"
+
+# File I/O for wallet storage
+fs_extra = "1.3.0"
 
 # Other useful dependencies
 log = "0.4.22"
