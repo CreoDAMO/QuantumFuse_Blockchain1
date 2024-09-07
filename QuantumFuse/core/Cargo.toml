@@ -2,7 +2,7 @@
 name = "quantum_fuse"
 version = "0.1.0"
 edition = "2021"
-authors = ["Jacque Antoine DeGraff<jacquedegraff@creodamo.com>"]
+authors = ["Jacque Antoine DeGraff <jacquedegraff@creodamo.com>"]
 description = "A quantum-inspired blockchain project with advanced energy management and DAO features"
 
 [dependencies]
