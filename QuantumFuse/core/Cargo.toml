@@ -34,8 +34,8 @@ libp2p = "0.54.1"  # Adjusted to version range for compatibility
 ethabi = "18.0"
 
 # SGX-related dependencies
-sgx_types = { git = "https://github.com/apache/teaclave-sgx-sdk.git", branch = "v1.1.6" }
-sgx_urts = { git = "https://github.com/apache/teaclave-sgx-sdk.git", branch = "v1.1.6" }
+sgx_types = "1.1.2"
+sgx_urts = "1.1.1"
 
 # Web and APIs
 reqwest = "0.12.7"
