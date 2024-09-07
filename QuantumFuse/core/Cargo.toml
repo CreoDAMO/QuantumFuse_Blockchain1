@@ -8,17 +8,16 @@ description = "A quantum-inspired blockchain project with advanced energy manage
 [dependencies]
 # Core dependencies
 cargo = "0.82.0"
-cargo-hack = "0.6.31"
-cargo-make = "0.37.16"
-serde = { version = "1.0.209", features = ["derive", "std"] }
-serde_json = "1.0.127"
+serde = { version = "1.0.210", features = ["derive", "std"] }
+serde_json = "1.0.128"
 thiserror = "1.0.63"
-anyhow = "1.0"
-futures = "0.3.30"
+anyhow = "1.0.87"
+anyhow = "1.0.87"
+futures= "0.3.30"
 tracing = "0.1.40"
-tracing-subscriber = "0.3"
+tracing-subscriber = "0.3.18"
 tokio = { version = "1.40.0", features = ["full"] }
-async-trait = "0.1"
+async-trait = "0.1.82"
 
 # Cryptography and Blockchain
 sha2 = "0.10.8"
@@ -32,6 +31,7 @@ libp2p = { version = "0.49.0", features = ["tcp-tokio", "dns-tokio"] }
 substrate-api-client = "0.18.0"
 sp-runtime = "37.0.0"
 sp-std = "14.0.0"
+sp-core = "34.0.0"
 frame-system = "37.1.0"
 frame-support = "37.0.0"
 
@@ -52,10 +52,10 @@ zkp = "0.8.0"
 quantum = "0.1.2"
 
 # DAO and Voting
-pallet-democracy = "4.0.0-dev"
+pallet-democracy = "37.0.0"
 
 # Energy Management
-num = "0.4"
+num = "0.4.3"
 
 # Secure Secret Sharing
 secret_sharing = "0.2.0"
