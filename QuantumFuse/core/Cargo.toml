@@ -1,74 +1,83 @@
 [package]
-name = "quantumfuse_blockchain"
+name = "quantum_fuse"
 version = "0.1.0"
 edition = "2021"
+authors = ["Jacque Antoine DeGraff<jacquedegraff@creodamo.com>"]
+description = "A quantum-inspired blockchain project with advanced energy management and DAO features"
 
 [dependencies]
-serde = "1.0.209"
-serde_json = "1.0.127"
-ring = "0.17.8"
-thiserror = "1.0.63"
-reqwest = "0.12.7"
-log = "0.4.22"
-env_logger = "0.11.5"
-futures = "0.3.30"
-ipfs-api = "0.17.0"
-rand = "0.8.5"
-ed25519-dalek = "2.1.1"
-async-std = "1.12.0"
-crossbeam = "0.8.4"
-regex = "1.10.6"
-time = "0.3.36"
-protoc-rust = "2.28.0"
-tokio = { version = "1.40.0", features = ["full"] }
-sha2 = "0.10.8"
-hex = "0.4.3"
-rocket = "0.5.0"
-rocket_okapi = "0.8.0"
-rocket_cors = "0.6.0"
-juniper = "0.16.1"
-juniper_rocket = "0.9.0"
-jsonwebtoken = "9.3.0"
-prometheus = "0.13.4"
-redis = "0.26.1"
-anstream = "0.6.15"
-tracing = "0.1.40"
-dotenv = "0.15.0"
-libp2p = "=0.54.1"
-substrate-api-client = "0.18.0"
-assert_cmd = "2.0.16"
-pem = "3.0.4"
-schnorrkel = "0.11.4"
-wasm-react = "0.6.0"
-wasm-bindgen = { version = "0.2", optional = true }
-orx-split-vec = "3.7.0"
-openssl-probe = "0.1.5"
-cargo = "0.81.0"
-wasm-instrument = "0.4.0"
-coins-bip32 = "0.12.0"
-smoldot = "0.18.0"
-zk_evm = "0.150.4"
-derivation-path = "0.2.0"
+tokio = { version = "1.28", features = ["full"] }
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+thiserror = "1.0"
+anyhow = "1.0"
+async-trait = "0.1"
+futures = "0.3"
+tracing = "0.1"
+tracing-subscriber = "0.3"
 
-# Substrate dependencies pulled from GitHub
-frame-system = { git = "https://github.com/paritytech/substrate", branch = "polkadot-v0.9.36", default-features = false }
-frame-support = { git = "https://github.com/paritytech/substrate", branch = "polkadot-v0.9.36", default-features = false }
-sp-runtime = { git = "https://github.com/paritytech/substrate", branch = "polkadot-v0.9.36", default-features = false }
-sp-std = { git = "https://github.com/paritytech/substrate", branch = "polkadot-v0.9.36", default-features = false }
-sp-externalities = { git = "https://github.com/paritytech/substrate", branch = "polkadot-v0.9.36", default-features = false }
+# Blockchain related dependencies
+bitcoin = "0.29"
+ethereum-types = "0.14"
 
-[dev-dependencies]
-tokio-test = "0.4"
-criterion = "0.3"
+# Cryptography
+sha2 = "0.10"
+ed25519-dalek = "1.0"
 
-[build-dependencies]
-prost-build = "0.9"
+# SGX related dependencies
+sgx_types = { git = "https://github.com/apache/teaclave-sgx-sdk.git" }
+sgx_urts = { git = "https://github.com/apache/teaclave-sgx-sdk.git" }
 
-[profile.release]
-opt-level = "z"
-lto = true
+# NFT related dependencies
+ethabi = "18.0"
+
+# Quantum computing simulation
+qip = "0.15"
+
+# DAO and voting
+pallet-democracy = "4.0.0-dev"
+
+# Energy management
+num = "0.4"
 
 [features]
 default = ["std"]
-std = ["wasm-instrument/std", "serde/std", "tokio/full"]
-wasm = ["wasm-bindgen"] # Use wasm-bindgen for Wasm support
+std = [
+    "serde/std",
+    "sgx_types/std",
+    "sgx_urts/std",
+]
+wasm = ["getrandom/js"]
+
+[dev-dependencies]
+criterion = "0.4"
+mockall = "0.11"
+
+[[bin]]
+name = "quantum_fuse"
+path = "src/main.rs"
+
+[[bin]]
+name = "setup_fusion_reactor"
+path = "src/bin/setup_fusion_reactor.rs"
+
+[[bin]]
+name = "setup_nft_contracts"
+path = "src/bin/setup_nft_contracts.rs"
+
+[[bin]]
+name = "setup_marketplace"
+path = "src/bin/setup_marketplace.rs"
+
+[[bin]]
+name = "setup_quantum_optimizer"
+path = "src/bin/setup_quantum_optimizer.rs"
+
+[lib]
+name = "quantum_fuse_lib"
+path = "src/lib.rs"
+
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1
