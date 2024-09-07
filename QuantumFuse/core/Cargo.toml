@@ -1,39 +1,54 @@
 [package]
-name = "quantum_fuse"
+name = "quantum_fuse_blockchain"
 version = "0.1.0"
 edition = "2021"
 authors = ["Jacque Antoine DeGraff <jacquedegraff@creodamo.com>"]
-description = "A quantum-inspired blockchain project with advanced energy management and DAO features"
+description = "A quantum-inspired blockchain project with advanced energy management, DAO features, and quantum computing."
 
 [dependencies]
-tokio = { version = "1.28", features = ["full"] }
-serde = { version = "1.0", features = ["derive"] }
-serde_json = "1.0"
-thiserror = "1.0"
+# Core dependencies
+serde = { version = "1.0.209", features = ["derive", "std"] }
+serde_json = "1.0.127"
+thiserror = "1.0.63"
 anyhow = "1.0"
-async-trait = "0.1"
-futures = "0.3"
-tracing = "0.1"
+futures = "0.3.30"
+tracing = "0.1.40"
 tracing-subscriber = "0.3"
-getrandom = { version = "0.2", features = ["js"] }
-
-# Blockchain related dependencies
-bitcoin = "0.29"
-ethereum-types = "0.14"
+tokio = { version = "1.40.0", features = ["full"] }
+async-trait = "0.1"
 
 # Cryptography
-sha2 = "0.10"
-ed25519-dalek = "1.0"
+sha2 = "0.10.8"
+ed25519-dalek = "2.1.1"
+ring = "0.17.8"
+rand = "0.8.5"
+schnorrkel = "0.11.4"
 
-# SGX related dependencies
+# Blockchain-related dependencies
+bitcoin = "0.29"
+ethereum-types = "0.14"
+substrate-api-client = "0.18.0"
+libp2p = "0.54.1"  # Adjusted to version range for compatibility
+
+# NFT-related dependencies
+ethabi = "18.0"
+
+# SGX-related dependencies
 sgx_types = { git = "https://github.com/apache/teaclave-sgx-sdk.git", branch = "v1.1.6" }
 sgx_urts = { git = "https://github.com/apache/teaclave-sgx-sdk.git", branch = "v1.1.6" }
 
-# NFT related dependencies
-ethabi = "18.0"
+# Web and APIs
+reqwest = "0.12.7"
+rocket = "0.5.0"
+rocket_okapi = "0.8.0"
+rocket_cors = "0.6.0"
+juniper = "0.16.1"
+juniper_rocket = "0.9.0"
+jsonwebtoken = "9.3.0"
 
 # Quantum computing simulation
 qip = "0.15"
+zk_evm = "0.150.4"
 
 # DAO and voting
 pallet-democracy = "4.0.0-dev"
@@ -41,15 +56,50 @@ pallet-democracy = "4.0.0-dev"
 # Energy management
 num = "0.4"
 
+# Other useful dependencies
+log = "0.4.22"
+env_logger = "0.11.5"
+ipfs-api = "0.17.0"
+regex = "1.10.6"
+time = "0.3.36"
+protoc-rust = "2.28.0"
+redis = "0.26.1"
+anstream = "0.6.15"
+dotenv = "0.15.0"
+hex = "0.4.3"
+pem = "3.0.4"
+openssl-probe = "0.1.5"
+cargo = "0.81.0"
+wasm-bindgen = { version = "0.2", optional = true }
+orx-split-vec = "3.7.0"
+coins-bip32 = "0.12.0"
+smoldot = "0.18.0"
+derivation-path = "0.2.0"
+frame-system = "37.1.0"
+frame-support-procedural = "30.0.2"
+sp-runtime = "37.0.0"
+sp-std = "14.0.0"
+
+[dev-dependencies]
+tokio-test = "0.4"
+criterion = "0.3"
+
+[build-dependencies]
+prost-build = "0.9"
+
+[profile.release]
+opt-level = "z"
+lto = true
+codegen-units = 1
+
 [features]
 default = ["std"]
 std = [
-    "serde/std",
-    # Remove SGX crates from std feature as they do not support it
-    # "sgx_types/std",
-    # "sgx_urts/std",
+    "wasm-instrument/std", 
+    "serde/std", 
+    "tokio/full"
 ]
-wasm = []
+wasm = ["wasm-bindgen"]
 
 [lib]
 name = "quantum_fuse_lib"
@@ -74,8 +124,3 @@ path = "src/bin/setup_marketplace.rs"
 [[bin]]
 name = "setup_quantum_optimizer"
 path = "src/bin/setup_quantum_optimizer.rs"
-
-[profile.release]
-opt-level = 3
-lto = true
-codegen-units = 1
