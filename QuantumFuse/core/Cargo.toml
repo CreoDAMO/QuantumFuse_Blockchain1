@@ -50,15 +50,6 @@ qip = "0.15"
 zk_evm = "0.150.4"
 quantum = "0.1.2"
 
-# Energy management (ensure this module is implemented or use relevant crates)
-energy-management = "0.1"  # Placeholder
-
-# Quantum optimizer
-quantum-optimizer = "0.1"  # Placeholder
-
-# Fault detection (ensure implementation or replace)
-fault-detection = "0.1"  # Placeholder
-
 # DAO and voting
 pallet-democracy = "4.0.0-dev"
 
