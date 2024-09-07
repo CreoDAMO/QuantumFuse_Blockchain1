@@ -4,6 +4,7 @@ mod fusion_reactor;
 mod nft;
 mod marketplace;
 mod sgx_enclave;
+mod orx_split_vec;
 
 use blockchain::{Blockchain, Transaction};
 use wallet::{CommunityWallet, FounderWallet};
@@ -11,61 +12,50 @@ use fusion_reactor::FusionReactor;
 use nft::{NFTContract, FNFTContract};
 use marketplace::Marketplace;
 use sgx_enclave::SgxEnclave;
-use orx_split_vec::SplitVec;  // Import SplitVec to replace standard Vec
+use orx_split_vec::SplitVec;
 
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
-    // Initialize the Blockchain
     let mut blockchain = Blockchain::new(4, 100);
-
-    // Initialize Wallets
     let community_wallet = CommunityWallet::new()?;
     let founder_wallet = FounderWallet::new()?;
-
-    // Initialize Fusion Reactor
     let fusion_reactor = FusionReactor::new();
-
-    // Initialize NFT and F-NFT Contracts
     let nft_contract = NFTContract::new();
     let fnft_contract = FNFTContract::new();
-
-    // Initialize Marketplace
     let marketplace = Marketplace::new();
-
-    // Initialize SGX Enclave for secure operations
     let enclave = SgxEnclave::initialize()?;
 
-    // Example usage: creating a transaction from the community wallet
-    let mut tx = Transaction {
-        sender: community_wallet.get_address(),
-        recipient: "recipient_address".to_string(),
-        amount: 50,
-        timestamp: 1629814920,
-        signature: String::new(),
-    };
+    // Example usage of energy manager
+    let mut energy_manager = EnergyManager::new(EnergyStorageSystem::new(1000.0, 50.0, 50.0));
+    energy_manager.manage_storage(200.0, 150.0);
+    println!("Storage status: {}%", energy_manager.get_storage_status() * 100.0);
 
-    community_wallet.sign_transaction(&mut tx)?;
-    blockchain.add_transaction(tx);
+    // Example usage of DAO
+    let mut energy_dao = EnergyDAO::new();
+    energy_dao.add_member("Alice".to_string());
+    energy_dao.add_member("Bob".to_string());
+    let proposal = Proposal::new(1, "Increase energy storage capacity".to_string());
+    energy_dao.create_proposal(proposal);
+    energy_dao.vote_on_proposal(0, "Alice".to_string(), true);
+    energy_dao.vote_on_proposal(0, "Bob".to_string(), false);
 
-    // Example: Mining the transaction
-    match blockchain.mine_pending_transactions("miner_address") {
-        Ok(_) => println!("Block mined successfully!"),
-        Err(e) => println!("Failed to mine block: {}", e),
+    if let Some((yes_votes, no_votes)) = energy_dao.tally_votes(0) {
+        println!("Proposal 0: Yes votes: {}, No votes: {}", yes_votes, no_votes);
     }
 
-    // Example: Minting an NFT
-    let nft_metadata = nft_contract.generate_metadata(&blockchain);
-    let nft_id = nft_contract.mint_nft("Alice", &nft_metadata);
-    println!("Minted NFT with ID: {}", nft_id);
+    // Example usage of quantum optimizer
+    let quantum_optimizer = QuantumOptimizer::new();
+    let optimized_distribution = quantum_optimizer.optimize_energy_distribution(&[100.0, 200.0], &[150.0, 250.0]);
+    println!("Optimized energy distribution: {:?}", optimized_distribution);
 
-    // Example: Trade in the Marketplace
-    let energy_credit = marketplace::EnergyCredit::new("credit_1", 100.0, "Alice".to_string(), 10.0);
-    marketplace.add_credit(energy_credit);
+    // Example usage of blockchain interoperability
+    let blockchain_interop = BlockchainInteroperability::new();
+    match blockchain_interop.enable_cross_chain_transfer("EnergyToken", 100.0, "Ethereum") {
+        Ok(_) => println!("Cross-chain transfer successful"),
+        Err(e) => println!("Cross-chain transfer failed: {}", e),
+    }
 
-    // Example: Running secure operations in the SGX enclave
-    enclave.run_secure_computation()?;
-
-    // Additional logic to handle advanced features like cross-chain, decentralized identity, etc.
+    // Additional functionalities from the second version can be integrated here
 
     Ok(())
 }
