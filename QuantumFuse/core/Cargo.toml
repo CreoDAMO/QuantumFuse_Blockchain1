@@ -92,10 +92,6 @@ opt-level = "z"
 lto = true
 codegen-units = 1
 
-[features]
-default = ["std"]
-wasm = ["wasm-bindgen"]
-
 [lib]
 name = "quantum_fuse_lib"
 path = "src/lib.rs"
