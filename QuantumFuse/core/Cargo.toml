@@ -2,7 +2,7 @@
 name = "quantum_fuse"
 version = "0.1.0"
 edition = "2021"
-authors = ["Jacque Antoine DeGraff <jacquedegraff@creodamo.com>"]
+authors = ["Jacque Antoine DeGraff<jacquedegraff@creodamo.com>"]
 description = "A quantum-inspired blockchain project with advanced energy management and DAO features"
 
 [dependencies]
@@ -15,6 +15,7 @@ async-trait = "0.1"
 futures = "0.3"
 tracing = "0.1"
 tracing-subscriber = "0.3"
+getrandom = { version = "0.2", features = ["js"] }
 
 # Blockchain related dependencies
 bitcoin = "0.29"
@@ -47,11 +48,11 @@ std = [
     "sgx_types/std",
     "sgx_urts/std",
 ]
-wasm = ["getrandom/js"]
+wasm = []
 
-[dev-dependencies]
-criterion = "0.4"
-mockall = "0.11"
+[lib]
+name = "quantum_fuse_lib"
+path = "src/lib.rs"
 
 [[bin]]
 name = "quantum_fuse"
@@ -72,10 +73,6 @@ path = "src/bin/setup_marketplace.rs"
 [[bin]]
 name = "setup_quantum_optimizer"
 path = "src/bin/setup_quantum_optimizer.rs"
-
-[lib]
-name = "quantum_fuse_lib"
-path = "src/lib.rs"
 
 [profile.release]
 opt-level = 3
