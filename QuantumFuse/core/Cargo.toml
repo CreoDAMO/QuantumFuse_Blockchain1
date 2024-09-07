@@ -2,7 +2,7 @@
 name = "quantum_fuse"
 version = "0.1.0"
 edition = "2021"
-authors = ["Jacque Antoine DeGraff<jacquedegraff@creodamo.com>"]
+authors = ["Jacque Antoine DeGraff <jacquedegraff@creodamo.com>"]
 description = "A quantum-inspired blockchain project with advanced energy management and DAO features"
 
 [dependencies]
@@ -26,8 +26,8 @@ sha2 = "0.10"
 ed25519-dalek = "1.0"
 
 # SGX related dependencies
-sgx_types = { git = "https://github.com/apache/teaclave-sgx-sdk.git" }
-sgx_urts = { git = "https://github.com/apache/teaclave-sgx-sdk.git" }
+sgx_types = { git = "https://github.com/apache/teaclave-sgx-sdk.git", branch = "v1.1.6" }
+sgx_urts = { git = "https://github.com/apache/teaclave-sgx-sdk.git", branch = "v1.1.6" }
 
 # NFT related dependencies
 ethabi = "18.0"
@@ -45,8 +45,9 @@ num = "0.4"
 default = ["std"]
 std = [
     "serde/std",
-    "sgx_types/std",
-    "sgx_urts/std",
+    # Remove SGX crates from std feature as they do not support it
+    # "sgx_types/std",
+    # "sgx_urts/std",
 ]
 wasm = []
 
