@@ -31,8 +31,6 @@ substrate-api-client = "0.18.0"
 sp-runtime = "37.0.0"
 sp-std = "14.0.0"
 sp-core = "34.0.0"
-frame-system = "37.1.0"
-frame-support = "37.0.0"
 
 # Web and APIs
 reqwest = "0.12.7"
