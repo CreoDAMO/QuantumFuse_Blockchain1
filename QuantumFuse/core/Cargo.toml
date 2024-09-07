@@ -7,6 +7,9 @@ description = "A quantum-inspired blockchain project with advanced energy manage
 
 [dependencies]
 # Core dependencies
+cargo = "0.82.0"
+cargo-hack = "0.6.31"
+cargo-make = "0.37.16"
 serde = { version = "1.0.209", features = ["derive", "std"] }
 serde_json = "1.0.127"
 thiserror = "1.0.63"
