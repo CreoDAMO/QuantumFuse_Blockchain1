@@ -48,6 +48,7 @@ jsonwebtoken = "9.3.0"
 # Quantum computing simulation
 qip = "0.15"
 zk_evm = "0.150.4"
+quantum = "0.1.2"
 
 # DAO and voting
 pallet-democracy = "4.0.0-dev"
@@ -78,7 +79,8 @@ frame-system = "37.1.0"
 frame-support-procedural = "30.0.2"
 sp-runtime = "37.0.0"
 sp-std = "14.0.0"
-sp-core = "34.0.0"  # Use the latest version of sp-core
+sp-core = "34.0.0"
+schnorrkel = "0.11.4"
 
 [dev-dependencies]
 tokio-test = "0.4"
@@ -97,7 +99,7 @@ name = "quantum_fuse_lib"
 path = "src/lib.rs"
 
 [[bin]]
-name = "quantum_fuse"
+name = "quantum_fuse_blockchain"
 path = "src/main.rs"
 
 [[bin]]
