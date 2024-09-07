@@ -94,11 +94,7 @@ codegen-units = 1
 
 [features]
 default = ["std"]
-std = [
-    "wasm-instrument/std", 
-    "serde/std", 
-    "tokio/full"
-]
+
 wasm = ["wasm-bindgen"]
 
 [lib]
