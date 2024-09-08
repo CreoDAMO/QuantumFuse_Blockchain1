@@ -25,7 +25,7 @@ rand = "0.8.5"
 bs58 = "0.5.1"
 pqcrypto = "0.17.0"
 schnorrkel = "0.11.4"
-libp2p = { version = "0.49.0", features = ["tcp-tokio", "dns-tokio"] }
+libp2p = { version = "0.45.1", features = ["tcp-tokio", "dns-tokio"] }
 substrate-api-client = "0.18.0"
 sp-runtime = "37.0.0"
 sp-std = "14.0.0"
@@ -57,6 +57,9 @@ quantum = "0.1.2"
 # DAO and Voting
 dao-voting-token-staked = "2.4.2"
 pallet-democracy = "37.0.0"
+
+# Prometheus for metrics
+prometheus = "0.13.0"
 
 # Energy Management
 num = "0.4"
