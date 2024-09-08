@@ -134,7 +134,3 @@ path = "src/bin/setup_marketplace.rs"
 [[bin]]
 name = "setup_quantum_optimizer"
 path = "src/bin/setup_quantum_optimizer.rs"
-
-[lib]
-name = "quantum_fuse_blockchain_lib"
-path = "src/lib.rs"
