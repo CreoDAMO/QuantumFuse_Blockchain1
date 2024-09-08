@@ -68,6 +68,7 @@ wasm-instrument = "0.4.0"
 libp2p = "0.54.1"
 schnorrkel = "0.11.4"
 substrate-api-client = "0.18.0"
+rust-ai-generator = "0.1.9"
 
 [build-dependencies]
 prost-build = "0.9"
