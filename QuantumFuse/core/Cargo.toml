@@ -56,7 +56,7 @@ quantum = "0.1.2"
 
 # DAO and Voting
 dao-voting-token-staked = "2.4.2"
-pallet-democracy = { version = "4.0.0-dev", default-features = false }
+pallet-democracy = "37.0.0"
 
 # Energy Management
 num = "0.4"
@@ -92,8 +92,8 @@ coins-bip32 = "0.12.0"
 smoldot = "0.18.0"
 derivation-path = "0.2.0"
 
-# Wasm dependencies (optional)
-wasm-bindgen = { version = "0.2", optional = true }
+# Wasm dependencies
+wasm-bindgen = "0.2.93"
 wasm-instrument = "0.4.0"
 
 # SGX dependencies
