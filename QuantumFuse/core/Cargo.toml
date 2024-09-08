@@ -121,16 +121,16 @@ path = "src/main.rs"
 
 [[bin]]
 name = "setup_fusion_reactor"
-path = "src/bin/setup_fusion_reactor.rs"
+path = "src/core/data_structure/fusion.rs"
 
 [[bin]]
 name = "setup_nft_contracts"
-path = "src/bin/setup_nft_contracts.rs"
+path = "src/core/nfts/fnft/fnft.rs"
 
 [[bin]]
 name = "setup_marketplace"
-path = "src/bin/setup_marketplace.rs"
+path = "src/core/marketplace/quantumfuse_marketplace.rs"
 
 [[bin]]
 name = "setup_quantum_optimizer"
-path = "src/bin/setup_quantum_optimizer.rs"
+path = "src/core/data_structure/multi-objective_optimization_algorithm.rs"
