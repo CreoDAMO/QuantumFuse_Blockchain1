@@ -25,7 +25,7 @@ rand = "0.8.5"
 bs58 = "0.5.1"
 pqcrypto = "0.17.0"
 schnorrkel = "0.9.1"
-libp2p = { version = "0.52.4", features = ["tcp-tokio", "dns-tokio"] }
+libp2p = { version = "0.50.1", features = ["tcp-tokio", "dns-tokio"] }
 substrate-api-client = "0.18.0"
 sp-runtime = "37.0.0"
 sp-std = "10.0.0"
