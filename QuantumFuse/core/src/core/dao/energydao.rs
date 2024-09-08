@@ -1,27 +1,30 @@
+use orx_split_vec::SplitVec;
+use std::collections::HashMap;
+
 pub struct EnergyDAO {
-    members: Vec<String>,
-    proposals: Vec<Proposal>,
+    members: SplitVec<String>,       // Replacing Vec with SplitVec
+    proposals: SplitVec<Proposal>,   // Replacing Vec with SplitVec
 }
 
 impl EnergyDAO {
     pub fn new() -> Self {
         EnergyDAO {
-            members: vec![],
-            proposals: vec![],
+            members: SplitVec::new(),     // Initialize SplitVec for members
+            proposals: SplitVec::new(),   // Initialize SplitVec for proposals
         }
     }
 
     pub fn add_member(&mut self, member: String) {
-        self.members.push(member);
+        self.members.push(member);        // Use SplitVec's push method
     }
 
     pub fn create_proposal(&mut self, proposal: Proposal) {
-        self.proposals.push(proposal);
+        self.proposals.push(proposal);    // Use SplitVec's push method
     }
 
     pub fn vote_on_proposal(&mut self, proposal_id: usize, member: String, vote: bool) {
         if let Some(proposal) = self.proposals.get_mut(proposal_id) {
-            proposal.votes.insert(member, vote);
+            proposal.votes.insert(member, vote);  // Add or update the member's vote
         }
     }
 
