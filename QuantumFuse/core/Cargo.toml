@@ -65,10 +65,9 @@ smoldot = "0.18.0"
 derivation-path = "0.2.0"
 wasm-bindgen = { version = "0.2", optional = true }
 wasm-instrument = "0.4.0"
-libp2p = "0.54.1"
+libp2p = "0.49.0"
 schnorrkel = "0.11.4"
 substrate-api-client = "0.18.0"
-rust-ai-generator = "0.1.9"
 
 [build-dependencies]
 prost-build = "0.9"
