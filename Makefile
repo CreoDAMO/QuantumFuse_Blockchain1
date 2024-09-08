@@ -1,13 +1,13 @@
 # Directories
-RUST_DIR = QuantumFuse/core
-GO_DIR = QuantumFuse/core/QuantumFuse/node
-PYTHON_DIR = QuantumFuse/core/QuantumFuse/node/QuantumFuse/api
-FRONTEND_DIR = QuantumFuse/core/QuantumFuse/node/QuantumFuse/frontend/quantumfuse-app
+RUST_DIR ?= QuantumFuse/core
+GO_DIR ?= QuantumFuse/core/QuantumFuse/node
+PYTHON_DIR ?= QuantumFuse/core/QuantumFuse/node/QuantumFuse/api
+FRONTEND_DIR ?= QuantumFuse/core/QuantumFuse/node/QuantumFuse/frontend/quantumfuse-app
 
 # Common Variables
-RUST_TOOLCHAIN = nightly
-PROTOTOOL = protoc
-CACHE_DIR = ~/.cache/quantumfuse
+RUST_TOOLCHAIN ?= nightly
+PROTOTOOL ?= protoc
+CACHE_DIR ?= ~/.cache/quantumfuse
 
 # Targets
 .PHONY: all setup build run test clean update install-protoc help \
@@ -104,7 +104,87 @@ clean-rust:
 update-rust:
 	@rustup run $(RUST_TOOLCHAIN) cargo update --manifest-path=$(RUST_DIR)/Cargo.toml
 
-# Go, Python, Node.js targets remain unchanged...
+# Go targets (unchanged)
+setup-go:
+	@echo "Setting up Go environment..."
+	@go mod tidy -C $(GO_DIR)
+
+build-go: setup-go
+	@echo "Building Go project..."
+	@go build -o $(GO_DIR)/QuantumFuseNode $(GO_DIR)/main.go
+
+run-go: build-go
+	@echo "Running Go project..."
+	@$(GO_DIR)/QuantumFuseNode
+
+test-go: setup-go
+	@echo "Testing Go project..."
+	@go test -v -cover -C $(GO_DIR)
+
+clean-go:
+	@echo "Cleaning Go build..."
+	@rm -f $(GO_DIR)/QuantumFuseNode
+
+update-go: setup-go
+	@echo "Updating Go dependencies..."
+	@go get -u -C $(GO_DIR)
+
+lint-go:
+	@golangci-lint run $(GO_DIR)
+
+coverage-go:
+	@go test -coverprofile=coverage.out -C $(GO_DIR)
+	@go tool cover -html=coverage.out
+
+# Python targets (unchanged)
+setup-python:
+	@echo "Setting up Python environment..."
+	@pip install -r $(PYTHON_DIR)/requirements.txt
+
+build-python: setup-python
+	@echo "Building Python project..."
+	@echo "Python project does not require explicit build."
+
+run-python: setup-python
+	@echo "Running Python API..."
+	@python $(PYTHON_DIR)/api.py
+
+test-python:
+	@echo "Running Python tests..."
+	@pytest $(PYTHON_DIR)
+
+clean-python:
+	@echo "Cleaning Python environment..."
+	@find $(PYTHON_DIR) -name "*.pyc" -exec rm -f {} \;
+
+update-python:
+	@echo "Updating Python dependencies..."
+	@pip install --upgrade -r $(PYTHON_DIR)/requirements.txt
+
+# Node.js (unchanged)
+setup-node:
+	@echo "Setting up Node.js environment..."
+	@npm install --prefix $(FRONTEND_DIR)
+
+build-node: setup-node
+	@echo "Building Node.js frontend..."
+	@npm run build --prefix $(FRONTEND_DIR)
+
+run-node: setup-node
+	@echo "Running Node.js frontend..."
+	@npm start --prefix $(FRONTEND_DIR)
+
+test-node:
+	@echo "Testing Node.js project..."
+	@npm test --prefix $(FRONTEND_DIR)
+
+clean-node:
+	@echo "Cleaning Node.js environment..."
+	@rm -rf $(FRONTEND_DIR)/node_modules
+
+update-node:
+	@echo "Updating Node.js dependencies..."
+	@npm update --prefix $(FRONTEND_DIR)
 
 # Docker targets
 docker_build:
