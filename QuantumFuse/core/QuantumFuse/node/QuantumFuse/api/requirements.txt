@@ -10,7 +10,7 @@ qiskit==1.1.1
 
 pandas==2.2.2
 
-numpy==2.0.0rc2
+numpy==2.1.1
 
 scikit-learn==1.5.0
 
