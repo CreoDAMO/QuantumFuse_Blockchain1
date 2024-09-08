@@ -112,11 +112,16 @@ prost-build = "0.13.2"
 
 [workspace]
 members = [
-    "core/quantum_fuse_blockchain",
-    "core/data_structure/fusion",
-    "core/nfts/fnft",
-    "core/marketplace/quantumfuse_marketplace",
-    "core/data_structure/multi_objective_optimization_algorithm"
+    "",
+    "QuantumFuse/core/src/core/blockchain",
+    "QuantumFuse/core/src/core/dao",
+    "QuantumFuse/core/src/core/data_structure",
+    "QuantumFuse/core/src/core/marketplace",
+    "QuantumFuse/core/src/core/nfts",
+    "QuantumFuse/core/src/core/smartcontract",
+    "QuantumFuse/core/src/core/wallets",
+    "QuantumFuse/core/src/core/web_ui",
+    "QuantumFuse/core/src/main.rs",
 ]
 
 [profile.release]
