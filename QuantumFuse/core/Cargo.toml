@@ -114,23 +114,3 @@ prost-build = "0.9"
 opt-level = "z"
 lto = true
 codegen-units = 1
-
-[[bin]]
-name = "quantum_fuse_blockchain"
-path = "src/main.rs"
-
-[[bin]]
-name = "setup_fusion_reactor"
-path = "src/core/data_structure/fusion.rs"
-
-[[bin]]
-name = "setup_nft_contracts"
-path = "src/core/nfts/fnft/fnft.rs"
-
-[[bin]]
-name = "setup_marketplace"
-path = "src/core/marketplace/quantumfuse_marketplace.rs"
-
-[[bin]]
-name = "setup_quantum_optimizer"
-path = "src/core/data_structure/multi-objective_optimization_algorithm.rs"
