@@ -112,7 +112,6 @@ prost-build = "0.13.2"
 
 [workspace]
 members = [
-    "",
     "QuantumFuse/core/src/core/blockchain",
     "QuantumFuse/core/src/core/dao",
     "QuantumFuse/core/src/core/data_structure",
@@ -121,7 +120,7 @@ members = [
     "QuantumFuse/core/src/core/smartcontract",
     "QuantumFuse/core/src/core/wallets",
     "QuantumFuse/core/src/core/web_ui",
-    "QuantumFuse/core/src/main.rs",
+    "QuantumFuse/core/src/main.rs"
 ]
 
 [profile.release]
