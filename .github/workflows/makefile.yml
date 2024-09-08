@@ -25,7 +25,7 @@ jobs:
     - name: Install protoc
       run: |
         sudo apt-get update
-        sudo apt-get install -y protobuf-compiler libprotobuf-dev
+        sudo apt-get install -y protobuf-compiler libprotobuf-dev || exit 1
 
     - name: Set up Cargo cache
       uses: actions/cache@v3
@@ -44,25 +44,31 @@ jobs:
           ${{ runner.os }}-cargo-target-
 
     - name: Install dependencies
-      run: make setup
+      run: make setup || exit 1
 
     - name: Build project
-      run: make build
+      run: make build || exit 1
 
     - name: Build with WebAssembly feature
-      run: make wasm-build
+      run: make wasm-build || exit 1
 
     - name: Run tests
-      run: make test
+      run: make test || exit 1
 
     - name: Lint the code
-      run: make lint
+      run: make lint || exit 1
 
     - name: Generate coverage report
-      run: make coverage
+      run: make coverage || exit 1
+
+    - name: Upload coverage report
+      uses: actions/upload-artifact@v3
+      with:
+        name: code-coverage-report
+        path: coverage.info
 
     - name: Build Docker image
-      run: make docker_build
+      run: make docker_build || exit 1
 
     - name: Run Docker container
-      run: make docker_run
+      run: make docker_run || exit 1
