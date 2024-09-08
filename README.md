@@ -1,5 +1,3 @@
-![android-chrome-512x512](https://github.com/CreoDAMO/QuantumFuse_Blockchain/assets/151800081/dc3d8b97-dc95-4f27-a901-36bd1de2a2b2)
-
 # QuantumFuse Blockchain
 
 QuantumFuse is a decentralized blockchain platform designed to enhance scalability, security, and energy efficiency in e-commerce and other industries. This project encompasses various components including core blockchain functionality, APIs, smart contracts, and a frontend interface.
