@@ -110,19 +110,6 @@ criterion = "0.3"
 [build-dependencies]
 prost-build = "0.13.2"
 
-[workspace]
-members = [
-    "QuantumFuse/core/src/core/blockchain",
-    "QuantumFuse/core/src/core/dao",
-    "QuantumFuse/core/src/core/data_structure",
-    "QuantumFuse/core/src/core/marketplace",
-    "QuantumFuse/core/src/core/nfts",
-    "QuantumFuse/core/src/core/smartcontract",
-    "QuantumFuse/core/src/core/wallets",
-    "QuantumFuse/core/src/core/web_ui",
-    "QuantumFuse/core/src/main.rs"
-]
-
 [profile.release]
 opt-level = "z"
 lto = true
