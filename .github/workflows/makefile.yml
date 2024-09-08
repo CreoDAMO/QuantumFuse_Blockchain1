@@ -1,0 +1,74 @@
+name: Makefile CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Check out the repository
+      uses: actions/checkout@v4
+
+    - name: Set up Rust
+      run: |
+        curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+        source $HOME/.cargo/env
+        rustup toolchain install nightly
+        rustup default nightly
+        rustup target add wasm32-unknown-unknown
+
+    - name: Install protoc
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y protobuf-compiler libprotobuf-dev || exit 1
+
+    - name: Set up Cargo cache
+      uses: actions/cache@v3
+      with:
+        path: ~/.cargo/registry
+        key: ${{ runner.os }}-cargo-registry-${{ hashFiles('**/Cargo.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-cargo-registry-
+
+    - name: Set up Rust build cache
+      uses: actions/cache@v3
+      with:
+        path: target
+        key: ${{ runner.os }}-cargo-target-${{ hashFiles('**/Cargo.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-cargo-target-
+
+    - name: Install dependencies
+      run: make setup || exit 1
+
+    - name: Build project
+      run: make build || exit 1
+
+    - name: Build with WebAssembly feature
+      run: make wasm-build || exit 1
+
+    - name: Run tests
+      run: make test || exit 1
+
+    - name: Lint the code
+      run: make lint || exit 1
+
+    - name: Generate coverage report
+      run: make coverage || exit 1
+
+    - name: Upload coverage report
+      uses: actions/upload-artifact@v3
+      with:
+        name: code-coverage-report
+        path: coverage.info
+
+    - name: Build Docker image
+      run: make docker_build || exit 1
+
+    - name: Run Docker container
+      run: make docker_run || exit 1
