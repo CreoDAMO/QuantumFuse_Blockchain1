@@ -110,6 +110,15 @@ criterion = "0.3"
 [build-dependencies]
 prost-build = "0.13.2"
 
+[workspace]
+members = [
+    "core/quantum_fuse_blockchain",
+    "core/data_structure/fusion",
+    "core/nfts/fnft",
+    "core/marketplace/quantumfuse_marketplace",
+    "core/data_structure/multi_objective_optimization_algorithm"
+]
+
 [profile.release]
 opt-level = "z"
 lto = true
