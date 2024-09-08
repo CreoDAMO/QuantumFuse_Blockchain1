@@ -25,8 +25,8 @@ rand = "0.8.5"
 bs58 = "0.5.1"
 pqcrypto = "0.17.0"
 schnorrkel = "0.9.1"
-libp2p = { version = "0.45.1", features = ["tcp-tokio", "dns-tokio"] }
-substrate-api-client = "0.11.0"
+libp2p = { version = "0.52.4", features = ["tcp-tokio", "dns-tokio"] }
+substrate-api-client = "0.18.0"
 sp-runtime = "37.0.0"
 sp-std = "10.0.0"
 sp-core = "34.0.0"
@@ -37,6 +37,10 @@ cw721-marketplace-permissioned = "0.1.6"
 blockchain = "0.9.2"
 cryptoapis = "1.7.0"
 wallet = "0.1.0"
+cosmos-sdk-proto = "0.24.0"
+crypto-msg-parser = "2.9.2"
+contract-metadata = "4.1.1"
+
 
 # Web and APIs
 reqwest = "0.12.7"
