@@ -1,8 +1,9 @@
-use std::vec::Vec;
+use orx_split_vec::SplitVec;
+use std::collections::HashMap;
 
 pub struct Compliance {
     rules: HashMap<String, RuleSet>,
-    versions: HashMap<String, Vec<RegulatoryUpdate>>,
+    versions: HashMap<String, SplitVec<RegulatoryUpdate>>,  // Using SplitVec instead of Vec
 }
 
 impl Compliance {
@@ -14,8 +15,13 @@ impl Compliance {
     }
 
     pub fn update_rules(&mut self, region: String, update: RegulatoryUpdate) {
-        self.rules.get_mut(&region).map(|ruleset| ruleset.update(&update));
-        self.versions.entry(region).or_insert(vec![]).push(update);
+        if let Some(ruleset) = self.rules.get_mut(&region) {
+            ruleset.update(&update);
+        }
+        self.versions
+            .entry(region)
+            .or_insert_with(SplitVec::new)  // Use SplitVec::new
+            .push(update);
     }
 
     pub fn check_transaction(&self, tx: &Transaction) -> Result<(), String> {
@@ -23,13 +29,13 @@ impl Compliance {
         region_rules.validate(tx)
     }
 
-    pub fn get_versions(&self, region: &String) -> Option<&Vec<RegulatoryUpdate>> {
+    pub fn get_versions(&self, region: &String) -> Option<&SplitVec<RegulatoryUpdate>> {
         self.versions.get(region)
     }
 }
 
 impl RuleSet {
     pub fn update(&mut self, update: &RegulatoryUpdate) {
-        // logic to apply the regulatory update
+        // Logic to apply the regulatory update
     }
-}
+    }
