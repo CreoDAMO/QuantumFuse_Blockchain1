@@ -29,7 +29,7 @@ libp2p = { version = "0.49.0", features = ["tcp-tokio", "dns-tokio"] }
 substrate-api-client = "0.18.0"
 sp-runtime = "37.0.0"
 sp-std = "10.0.0"
-sp-core = "34.0.0"
+sp-core = "8.0.0"
 frame-system = "34.0.1"
 frame-support = "34.0.0"
 blockchain_maker = "1.1.0"
