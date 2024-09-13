@@ -1,5 +1,3 @@
-#[frame_support::pallet]
-pub mod pallet {
 mod blockchain;
 mod wallet;
 mod fusion_reactor;
