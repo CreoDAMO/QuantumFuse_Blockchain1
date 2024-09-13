@@ -39,6 +39,7 @@ cryptoapis = "1.7.0"
 wallet = "0.1.0"
 cosmos-sdk-proto = "0.24.0"
 crypto-msg-parser = "2.9.2"
+protobuf = "3.5.1"
 contract-metadata = "4.1.1"
 
 # Web and APIs
