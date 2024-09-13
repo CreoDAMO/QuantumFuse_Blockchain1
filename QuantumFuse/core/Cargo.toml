@@ -16,6 +16,7 @@ tracing = "0.1.40"
 tracing-subscriber = "0.3"
 tokio = { version = "1.40.0", features = ["full"] }
 async-trait = "0.1"
+dotenv = "0.15"  # Added dotenv for environment variables
 
 # Cryptography and Blockchain
 sha2 = "0.10.8"
@@ -85,14 +86,14 @@ redis = "0.26.1"
 
 # Other utilities
 log = "0.4.22"
-env_logger = "0.11.5"
+env_logger = "0.11.5"  # Logging library
 anstream = "0.6.15"
 regex = "1.10.6"
 time = "0.3.36"
 openssl-probe = "0.1.5"
 hex = "0.4.3"
 cargo = "0.82.0"
-orx-split-vec = "3.8.0"
+orx-split-vec = "3.8.0"  # Optimized vector handling
 coins-bip32 = "0.12.0"
 smoldot = "0.18.0"
 derivation-path = "0.2.0"
