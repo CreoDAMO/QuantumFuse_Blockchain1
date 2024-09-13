@@ -1,3 +1,5 @@
+#[frame_support::pallet]
+pub mod pallet {
 mod blockchain;
 mod wallet;
 mod fusion_reactor;
@@ -27,6 +29,9 @@ use log::{info, warn, error};
 use dotenv::dotenv;
 use std::env;
 use tokio;
+use super::*;
+use frame_support::pallet_prelude::*;
+use frame_system::pallet_prelude::*
 
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
