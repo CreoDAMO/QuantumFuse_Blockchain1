@@ -26,7 +26,7 @@ bs58 = "0.5.1"
 pqcrypto = "0.17.0"
 libp2p = { version = "0.49.0", features = ["tcp-tokio", "dns-tokio"] }
 substrate-api-client = "0.18.0"
-schnorrkel = "=0.11.4"
+schnorrkel = "=0.9.1"
 frame-system = "=35.0.0"
 frame-support = "=35.0.0"
 blockchain_maker = "1.1.0"
