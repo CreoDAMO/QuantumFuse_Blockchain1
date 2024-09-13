@@ -22,14 +22,11 @@ use energydao::EnergyDAO;
 use fault_detection::FaultDetection;
 use decentralized_identity::{DecentralizedIdentity, IdentityAttributes};
 use std::collections::HashMap;
-use orx_split_vec::SplitVec; // Use SplitVec for optimized memory handling
+use orx_split_vec::SplitVec;  // Use SplitVec for optimized memory handling
 use log::{info, warn, error};
 use dotenv::dotenv;
 use std::env;
 use tokio;
-use super::*;
-use frame_support::pallet_prelude::*;
-use frame_system::pallet_prelude::*
 
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
