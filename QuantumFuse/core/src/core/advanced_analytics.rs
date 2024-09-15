@@ -1,5 +1,3 @@
-use orx_split_vec::SplitVec;  // Import SplitVec
-
 pub fn generate_insights(portfolio: &std::collections::HashMap<String, f64>) -> Result<SplitVec<Insight>, Box<dyn std::error::Error>> {
     Ok(SplitVec::new())  // Use SplitVec instead of vec
 }
