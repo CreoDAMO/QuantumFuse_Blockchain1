@@ -1,3 +1,4 @@
+// src/core/sustainability_token.rs
 pub struct SustainabilityToken {
     token_id: String,
     owner: String,
