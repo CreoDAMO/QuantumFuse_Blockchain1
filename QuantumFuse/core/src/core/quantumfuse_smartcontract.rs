@@ -1,3 +1,4 @@
+// src/core/quantumfuse_smartcontract.rs
 extern crate serde;
 extern crate serde_json;
 extern crate sha2;
