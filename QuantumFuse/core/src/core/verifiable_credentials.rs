@@ -1,3 +1,4 @@
+// src/core/verifiable_credentials.rs
 pub struct UserData {
     // Fields
 }
