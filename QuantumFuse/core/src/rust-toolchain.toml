@@ -1,3 +1,4 @@
+// QuantumFuse/core/src/rust-toolchain.toml
 [toolchain]
 channel = "nightly"
 components = ["rust-src"]
