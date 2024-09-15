@@ -1,3 +1,4 @@
+// src/core/automation.rs
 pub fn automate_staking() -> Result<(), Box<dyn std::error::Error>> {
     // Implementation
     Ok(())
