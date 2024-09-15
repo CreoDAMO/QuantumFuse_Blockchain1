@@ -1,3 +1,4 @@
+// src/core/substrate.rs
 pub fn connect_to_substrate_node(url: &str) -> Result<(), Box<dyn std::error::Error>> {
     // Implementation
     Ok(())
