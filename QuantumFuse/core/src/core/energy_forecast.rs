@@ -1,5 +1,4 @@
-use orx_split_vec::SplitVec;
-
+// src/core/energy_forecast.rs
 pub struct EnergyForecast {
     predicted_demand: SplitVec<f64>,        // Using SplitVec for predicted demand
     recommended_fuel_supply: SplitVec<f64>, // Using SplitVec for fuel supply
