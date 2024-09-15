@@ -1,3 +1,4 @@
+// src/core/decentralized_identity.rs
 pub fn generate_did_key() -> Result<String, Box<dyn std::error::Error>> {
     // Implementation
     Ok("DID key".to_string())
