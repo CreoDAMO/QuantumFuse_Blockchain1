@@ -1,6 +1,4 @@
-use wasm_react::{h, Component, VNode};
-use wasm_react::hooks::use_state;
-
+src/core/counter.rs
 struct Counter {
     initial_counter: i32,
 }
