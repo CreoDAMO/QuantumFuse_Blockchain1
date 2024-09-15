@@ -1,3 +1,4 @@
+// src/core/integration_of_quantum-inspired_algorithm.rs
 pub struct QuantumOptimizer;
 
 impl QuantumOptimizer {
