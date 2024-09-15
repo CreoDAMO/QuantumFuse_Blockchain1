@@ -1,3 +1,4 @@
+// src/core/dao.rs
 pub fn create_dao(name: &str) -> Result<Dao, Box<dyn std::error::Error>> {
     // Implementation
     Ok(Dao {})
