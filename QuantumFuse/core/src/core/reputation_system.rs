@@ -1,3 +1,4 @@
+// src/core/reputation_system.rs
 pub struct Market {
     offers: HashMap<String, EnergyNFTListing>,
     subscriptions: HashMap<String, Subscription>,
