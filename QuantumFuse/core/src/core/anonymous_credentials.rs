@@ -1,3 +1,4 @@
+// src/core/anonymous_credentials.rs
 pub struct UserData {
     // Fields
 }
