@@ -1,3 +1,4 @@
+// src/core/quantumfuse_marketplace.rs
 pub struct EnergyCredit {
     pub id: String,
     pub amount: f64,  // Energy amount in MJ
