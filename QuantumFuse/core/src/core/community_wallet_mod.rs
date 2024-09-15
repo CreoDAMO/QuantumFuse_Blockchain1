@@ -1,16 +1,4 @@
-use ring::signature::{Ed25519KeyPair, KeyPair, Signature, UnparsedPublicKey, ED25519};
-use ring::rand::{SystemRandom, SecureRandom};
-use serde::{Serialize, Deserialize};
-use std::collections::HashMap;
-use thiserror::Error;
-use std::fs;
-use std::path::Path;
-
-mod wallet;
-
-use wallet::{Wallet, Transaction, WalletError, generate_did};
-
-#[derive(Debug, Error)]
+// src/core/community_wallet_mod.rs
 pub enum CommunityWalletError {
     #[error("Failed to generate key pair: {0}")]
     KeyPairGenerationFailed(String),
