@@ -1,5 +1,4 @@
-use orx_split_vec::SplitVec;
-
+// src/core/zk_snark.rs
 pub struct Prover;
 
 impl Prover {
