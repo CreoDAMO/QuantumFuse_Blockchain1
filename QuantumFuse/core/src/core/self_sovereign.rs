@@ -1,3 +1,4 @@
+// src/core/self_sovereign.rs
 pub struct UserData {
     // Fields
 }
