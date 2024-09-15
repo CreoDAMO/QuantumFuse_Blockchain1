@@ -1,3 +1,4 @@
+// src/core/resilience_scenario.rs
 pub struct ResilienceScenario {
     disaster_type: String,
     affected_infrastructure: String,
