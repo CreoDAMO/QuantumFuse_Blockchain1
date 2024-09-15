@@ -1,6 +1,4 @@
-use orx_split_vec::SplitVec;
-use std::collections::HashMap;
-
+// src/core/energy_dao.rs
 pub struct EnergyDAO {
     members: SplitVec<String>,       // Replacing Vec with SplitVec
     proposals: SplitVec<Proposal>,   // Replacing Vec with SplitVec
