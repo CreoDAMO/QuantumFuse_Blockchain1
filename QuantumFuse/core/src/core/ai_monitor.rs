@@ -1,7 +1,4 @@
-use std::collections::HashMap;
-use serde::{Serialize, Deserialize};
-
-#[derive(Clone, Debug, Serialize, Deserialize)]
+// src/core/ai_monitor.rs
 pub struct QuantumFuseAI {
     stability_threshold: f64,
     performance_metrics: HashMap<String, f64>,
