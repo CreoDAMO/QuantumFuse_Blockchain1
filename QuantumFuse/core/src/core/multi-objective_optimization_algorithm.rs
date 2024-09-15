@@ -1,5 +1,4 @@
-use orx_split_vec::SplitVec;
-
+// src/core/multi-objective_optimization_algorithm.rs
 pub struct QuantumOptimizer;
 
 impl QuantumOptimizer {
