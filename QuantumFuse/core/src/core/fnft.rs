@@ -1,6 +1,4 @@
-use std::collections::HashMap;
-
-#[derive(Clone, Debug, Serialize, Deserialize)]
+// src/core/fnft.rs
 pub struct FNFT {
     pub id: String,
     pub original_nft_id: String,
