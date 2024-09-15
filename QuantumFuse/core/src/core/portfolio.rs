@@ -1,3 +1,4 @@
+// src/core/portfolio.rs
 pub struct Portfolio {
     // Fields
 }
