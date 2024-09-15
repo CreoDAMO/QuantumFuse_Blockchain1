@@ -1,5 +1,4 @@
-use orx_split_vec::SplitVec;  // Import SplitVec
-
+// src/core/real-time_grid_simulation_environment.rs
 pub struct GridSimulator {
     events: SplitVec<GridStabilityEvent>,  // Replace Vec with SplitVec
 }
