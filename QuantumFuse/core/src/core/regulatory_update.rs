@@ -1,3 +1,4 @@
+// src/core/regulatory_update.rs
 pub struct RegulatoryUpdate {
     regulation_id: String,
     updated_text: String,
