@@ -1,7 +1,4 @@
-use std::collections::HashMap;
-use serde_json::json;
-
-#[derive(Clone, Debug, Serialize, Deserialize)]
+// src/core/live_metadata_nft.rs
 pub struct NFT {
     pub id: String,
     pub metadata: String,
