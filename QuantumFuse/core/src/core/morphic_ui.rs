@@ -1,3 +1,4 @@
+// src/core/morphic_ui.rs
 pub fn create_dashboard() -> Dashboard {
     // Implementation
     Dashboard {}
