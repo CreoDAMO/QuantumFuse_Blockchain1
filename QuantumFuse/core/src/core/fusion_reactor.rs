@@ -1,3 +1,4 @@
+// src/core/fusion_reactor.rs
 pub struct FusionReactor {
     energy_output: f64,  // Energy output in megajoules (MJ) per hour
     tungsten_impurity_level: f64,  // Percentage of tungsten impurities
