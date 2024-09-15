@@ -1,5 +1,4 @@
-use orx_split_vec::SplitVec;  // Import SplitVec
-
+// src/core/social_recovery.rs
 pub fn distribute_key(secret_key: &[u8], num_shares: usize, threshold: usize) -> Result<SplitVec<SplitVec<u8>>, Box<dyn std::error::Error>> {
     Ok(SplitVec::new())  // Replace Vec with SplitVec
 }
