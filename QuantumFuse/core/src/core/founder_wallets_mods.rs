@@ -1,42 +1,4 @@
-mod wallet;
-mod plaid;
-mod yodlee;
-mod morphic_ui;
-mod self_sovereign;
-mod ai_analytics;
-mod investment;
-mod anonymous_credentials;
-mod zk_snark;
-mod multiparty;
-mod sgx;
-mod substrate;
-mod dao;
-mod digital_identity;
-mod regulation_monitor;
-mod portfolio;
-mod data_policy;
-mod verifiable_credentials;
-mod coinmarketcap_api;
-mod coinbase_api;
-mod biometric_auth;
-mod cross_chain;
-mod automation;
-mod dex;
-mod integrations;
-mod decentralized_identity;
-mod social_recovery;
-mod advanced_analytics;
-mod cross_platform;
-
-use wallet::*;
-use sgx_types::*;
-use sgx_urts::SgxEnclave;
-use thiserror::Error;
-use ring::rand::{SystemRandom, SecureRandom};
-
-static ENCLAVE_FILE: &str = "enclave.signed.so";
-
-#[derive(Debug, Error)]
+// src/core/founder_wallets_mods.rs
 pub enum FounderWalletError {
     #[error("Failed to create SGX enclave: {0}")]
     SgxEnclaveError(String),
