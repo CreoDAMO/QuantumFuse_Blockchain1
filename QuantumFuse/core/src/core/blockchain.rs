@@ -1,4 +1,4 @@
-impl Blockchain {
+// src/core/blockchain.rs
     pub fn mine_pending_transactions(&mut self, mining_reward_address: &str) -> Result<(), String> {
         let energy_required = 10.0;  // Example energy required per block
         let available_energy = self.fusion_reactor.generate_energy(1.0);
