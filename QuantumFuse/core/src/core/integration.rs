@@ -1,3 +1,4 @@
+// src/core/integration.rs
 pub fn generate_tax_report(transactions: &str) -> Result<String, Box<dyn std::error::Error>> {
     // Implementation
     Ok("Tax report".to_string())
