@@ -1,3 +1,4 @@
+// src/core/energy_storage_system.rs
 pub struct EnergyStorageSystem {
     capacity: f64,
     charge_rate: f64,
