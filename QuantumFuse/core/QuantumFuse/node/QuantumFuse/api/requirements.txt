@@ -18,7 +18,7 @@ matplotlib==3.5.2
 
 gunicorn==23.0.0
 
-flask-cors==5.0.0
+flask-cors==6.0.0
 
 pyjwt==2.4.0
 
